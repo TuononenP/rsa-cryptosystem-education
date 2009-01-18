@@ -12,6 +12,7 @@ UML diagrams (class, use-case, acticity)
 
 GUI:
 --------------------
+GUI layout
 GUI element diagram
 Screenshot of the GUI
 
