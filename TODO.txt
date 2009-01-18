@@ -1,0 +1,18 @@
+To-Do list:
+
+GENERAL:
+--------------------
+Meeting a customer - due 19.1.
+Diagram with Visio which shows how the message is travelling from A to B and when/how encryption/decryption is done. - due 24.1.
+Powerpoint presentation - due 25.1.
+Poster - due 30.1.
+Sign up for the Showroom competition for student projects. - due 31.1.
+UML diagrams (class, use-case, acticity)
+
+
+GUI:
+--------------------
+GUI element diagram
+Screenshot of the GUI
+
+
