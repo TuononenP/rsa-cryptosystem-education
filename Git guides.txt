@@ -3,3 +3,6 @@ Guides to help you familiarize with the Git version tracker.
 http://nathanj.github.com/gitguide/ (short guide using Git GUI on Windows)
 http://www.kernel.org/pub/software/scm/git/docs/user-manual.html  (official Git user manual)
 http://23.fi/Git  (short guide in Finnish, command line approach)
+
+Why Git is better than other:
+http://whygitisbetterthanx.com/
