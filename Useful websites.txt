@@ -1,0 +1,6 @@
+http://pajhome.org.uk/crypt/rsa/rsa.html
+http://pajhome.org.uk/crypt/rsa/intro.html
+http://code.google.com/support/bin/answer.py?answer=71864&topic=12142
+
+ebook:
+http://www.cs.utsa.edu/~wagner/lawsbookcolor/laws.pdf
