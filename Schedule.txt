@@ -1,7 +1,7 @@
 16.1. 3h	Get to know the project (The principles of the RSA cryptosystem, thinking of project demands)
 16.1. 3h	More detailed RSA algorithm exploring.
 16.1. 3h	Prototype of the code.
-17.1. 8h	Prototype of the code. Made a repository for the project and made it public on the Internet (github.com) for version tracking.
+17.1. 8h	Prototype of the code. Made a repository for the project and made it public on the Internet (github.com) for revision control.
 18.1. 1h	Preparing to meet the customer
-18.1. 1h	Familiarizing with Git version tracker.
+18.1. 1h	Familiarizing with Git revision control.
 19.1. 4h	Customer meeting 1h and 3h core designing.
