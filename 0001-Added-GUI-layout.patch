@@ -1,0 +1,24 @@
+From cb5daab0b096b8ef345aa7244efab95503127737 Mon Sep 17 00:00:00 2001
+From: TuononenP <petri.tuononen@students.turkuamk.fi>
+Date: Mon, 19 Jan 2009 01:01:57 +0200
+Subject: [PATCH] Added GUI layout.
+
+---
+ TODO.txt |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/TODO.txt b/TODO.txt
+index 9c73316..9d11a03 100644
+--- a/TODO.txt
++++ b/TODO.txt
+@@ -12,6 +12,7 @@ UML diagrams (class, use-case, acticity)
+ 
+ GUI:
+ --------------------
++GUI layout
+ GUI element diagram
+ Screenshot of the GUI
+ 
+-- 
+1.6.1.9.g97c34
+
