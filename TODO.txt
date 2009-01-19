@@ -17,4 +17,7 @@ GUI layout
 GUI element diagram
 Screenshot of the GUI
 
+CODE:
+--------------------
+Design 3 types of padding schemes
 
