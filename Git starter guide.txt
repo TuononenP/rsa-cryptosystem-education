@@ -14,7 +14,7 @@ Git starter guide by TuononenP
 
 5. Get a full clone of all the files in repository
    (in Vista default saving location is C:\Users\username\rsa-cryptosystem-education):
-   git://github.com/TuononenP/rsa-cryptosystem-education.git
+   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git
 
 6. Get the newest files from server to your local computer:
    git pull
