@@ -3,6 +3,7 @@ To-Do list:
 GENERAL:
 --------------------
 Meeting a customer - due 19.1.
+Write list of customer demands.
 Diagram with Visio which shows how the message is travelling from A to B and when/how encryption/decryption is done. - due 24.1.
 Powerpoint presentation - due 25.1.
 Poster - due 30.1.
