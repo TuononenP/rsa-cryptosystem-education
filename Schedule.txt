@@ -5,3 +5,4 @@
 18.1. 1h	Preparing to meet the customer
 18.1. 1h	Familiarizing with Git revision control.
 19.1. 4h	Customer meeting 1h and 3h familiarizing with Git revision control.
+21.1. 2h	Deciding which diagrams and reports are needed. 
