@@ -1,0 +1,13 @@
+Methods to be implemented:
+
+1. public boolean checkUniformity(BigInteger p, BigInteger q)
+
+
+2. another method to d:n identify, check 5) from handout
+
+	d = (x*phi(n)+1)/e    (Test which x makes the 
+
+3. Create a prime number
+
+
+Padding schemes - 3 different types
