@@ -14,7 +14,7 @@ Git starter guide by TuononenP
 
 5. Get a full clone of all the files in repository
    (in Vista default saving location is C:\Users\username\rsa-cryptosystem-education):
-   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git
+   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git	  (you may need to add branch name to the end)
 
 6. Get the newest files from server to your local computer:
    git pull
@@ -25,9 +25,6 @@ Git starter guide by TuononenP
 
    cd to the right directory with bash
    git add filename         (tells to git which file you want to send to server)
-   git commit -m 'Explain what you changed'	(writes a comment)
+   git commit -m 'Explain what you changed'	(writes a comment)     
    (the next line actually applies the changes to the server)
-   git push git@github.com:TuononenP/rsa-cryptosystem-education.git master:experiment	
-
-NOTICE: (Use experimental branch)
-   git push origin master:experiment 
+   git push git@github.com:TuononenP/rsa-cryptosystem-education.git master	
