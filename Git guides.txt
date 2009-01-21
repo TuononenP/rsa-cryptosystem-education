@@ -1,8 +1,12 @@
 Guides to help you familiarize with the Git revision control software.
 
+http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html (nice Git tutorial)
 http://nathanj.github.com/gitguide/ (short guide using Git GUI on Windows)
 http://www.kernel.org/pub/software/scm/git/docs/user-manual.html  (official Git user manual)
 http://23.fi/Git  (short guide in Finnish, command line approach)
+
+Tech Talk: Linus Torvalds on git
+http://www.youtube.com/watch?v=4XpnKHJAok8
 
 Why Git is better than other revision control software:
 http://whygitisbetterthanx.com/
