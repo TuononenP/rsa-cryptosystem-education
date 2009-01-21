@@ -27,4 +27,7 @@ Git starter guide by TuononenP
    git add filename         (tells to git which file you want to send to server)
    git commit -m 'Explain what you changed'	(writes a comment)
    (the next line actually applies the changes to the server)
-   git push git@github.com:TuononenP/rsa-cryptosystem-education.git master	
+   git push git@github.com:TuononenP/rsa-cryptosystem-education.git master:experiment	
+
+NOTICE: (Use experimental branch)
+   git push origin master:experiment 
