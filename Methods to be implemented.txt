@@ -3,11 +3,11 @@ Methods to be implemented:
 1. public boolean checkUniformity(BigInteger p, BigInteger q)
 
 
-2. another method to d:n identify, check 5) from handout
+2. another method to determine d, check 5) from handout
 
-	d = (x*phi(n)+1)/e    (Test which x makes the 
+	d = (x*phi(n)+1)/e    (Test which x makes the equation to be integer, and once you find it, the equation = d)
 
-3. Create a prime number
+3. Create a prime number (100% sure the number is a prime)
 
 
-Padding schemes - 3 different types
+Padding schemes - 3 different types (see the handout)
