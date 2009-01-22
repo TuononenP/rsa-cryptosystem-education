@@ -1,13 +1,12 @@
 Methods to be implemented:
 
-1. public boolean checkUniformity(BigInteger p, BigInteger q)
+DONE public boolean checkUniformity(BigInteger p, BigInteger q)
+
+DONE Create a prime number (100% sure the number is a prime)
 
 
-2. another method to determine d, check 5) from handout
+  another method to determine d, check 5) from handout
 
 	d = (x*phi(n)+1)/e    (Test which x makes the equation to be integer, and once you find it, the equation = d)
-
-3. Create a prime number (100% sure the number is a prime)
-
 
 Padding schemes - 3 different types (see the handout)
