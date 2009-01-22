@@ -7,3 +7,4 @@
 19.1. 4h	Customer meeting 1h and 3h familiarizing with Git revision control.
 21.1. 2h	Deciding which diagrams and reports are needed. 
 21.1. 3h	UML diagrams, Powerpoint presentation, defining methods.
+22.1. 3h	Coded 'Miller-Rabin primality test' to generate primes fast and with a very high probability.
