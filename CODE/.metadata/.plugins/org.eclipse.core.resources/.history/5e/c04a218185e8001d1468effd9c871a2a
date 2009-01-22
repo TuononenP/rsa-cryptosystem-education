@@ -1,0 +1,73 @@
+import java.math.BigInteger;
+import java.util.Random;
+
+
+public class Miller_Rabin_primality_test2 {
+
+	private int a;
+	private int n;
+	private static int d;
+	private static int s;
+	static Random rnd = new Random();
+	
+	public Miller_Rabin_primality_test2(int a, int n) {
+		this.a = a;
+		this.n = n;
+	}
+	
+	private static int modular_exponent_32(int base, int power, int modulus) {
+	    long result = 1;
+	    for (int i = 31; i >= 0; i--) {
+	        result = (result*result) % modulus;
+	        if ((power & (1 << i)) != 0) {
+	            result = (result*base) % modulus;
+	        }
+	    }
+	    return (int)result; // Will not truncate since modulus is an int
+	}
+	
+	private static boolean miller_rabin_pass_32(int a, int n) {
+//	    32-bit compute s and d
+	    int a_to_power = modular_exponent_32(a, d, n);
+	    if (a_to_power == 1) return true;
+	    for (int i = 0; i < s-1; i++) {
+	        if (a_to_power == n-1) return true;
+	        a_to_power = modular_exponent_32(a_to_power, 2, n);
+	    }
+	    if (a_to_power == n-1) return true;
+	    return false;
+	}
+	
+	private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {
+	    BigInteger n_minus_one = n.subtract(BigInteger.ONE);
+//	    compute s and d
+	    BigInteger a_to_power = a.modPow(d, n);
+	    if (a_to_power.equals(BigInteger.ONE)) return true;
+	    for (int i = 0; i < s-1; i++) {
+	        if (a_to_power.equals(n_minus_one)) return true;
+	        a_to_power = a_to_power.multiply(a_to_power).mod(n);
+	    }
+	    if (a_to_power.equals(n_minus_one)) return true;
+	    return false;
+	}
+	
+	public void calculate_D_and_S(int n) {
+		int d = n - 1;
+		int s = Integer.numberOfTrailingZeros(d);
+		d >>= s;
+	}
+	    
+	public static boolean miller_rabin(BigInteger n) {
+	    for (int repeat = 0; repeat < 20; repeat++) {
+	        BigInteger a;
+	        do {
+	            a = new BigInteger(n.bitLength(), rnd);
+	        } while (a.equals(BigInteger.ZERO));
+	        if (!miller_rabin_pass(a, n)) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+
+}

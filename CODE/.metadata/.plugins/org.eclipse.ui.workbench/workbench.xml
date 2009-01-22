@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="15" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="92" y="2">
 <fastViewData fastViewLocation="1024"/>
@@ -29,6 +29,9 @@
 <presentation id="org.eclipse.ui.internal.presentations.r33.WorkbenchPresentationFactory_33">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -37,21 +40,36 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/IsPrime.java"/>
 <editorState selectionHPixel="0" selectionLength="0" selectionOffset="533"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSA_main.java" partName="RSA_main.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/RSA_main.java" title="RSA_main.java" tooltip="rsa-education/src/RSA_main.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSA_main.java" partName="RSA_main.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/RSA_main.java" title="RSA_main.java" tooltip="rsa-education/src/RSA_main.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/RSA_main.java"/>
 <editorState selectionHPixel="0" selectionLength="0" selectionOffset="182"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Miller_Rabin_primality_test2.java" partName="Miller_Rabin_primality_test2.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/Miller_Rabin_primality_test2.java" title="Miller_Rabin_primality_test2.java" tooltip="rsa-education/src/Miller_Rabin_primality_test2.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/Miller_Rabin_primality_test2.java"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="688"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Miller_Rabin_primality_test_int.java" partName="Miller_Rabin_primality_test_int.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/Miller_Rabin_primality_test_int.java" title="Miller_Rabin_primality_test_int.java" tooltip="rsa-education/src/Miller_Rabin_primality_test_int.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/Miller_Rabin_primality_test_int.java"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="1646"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Miller_Rabin_primality_test.java" partName="Miller_Rabin_primality_test.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/Miller_Rabin_primality_test.java" title="Miller_Rabin_primality_test.java" tooltip="rsa-education/src/Miller_Rabin_primality_test.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
+<editorState selectionHPixel="0" selectionLength="407" selectionOffset="2203"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.jdt.ui.TypeHierarchy" partName="Hierarchy"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
-<viewState columnWidth0="253" columnWidth1="78" columnWidth2="153" columnWidth3="63" columnWidth4="0" horizontalPosition="0" verticalPosition="0">
+<viewState columnWidth0="372" columnWidth1="78" columnWidth2="153" columnWidth3="63" columnWidth4="0" horizontalPosition="0" verticalPosition="0">
 <columnOrder columnOrderIndex="0"/>
 <columnOrder columnOrderIndex="1"/>
 <columnOrder columnOrderIndex="2"/>
 <columnOrder columnOrderIndex="3"/>
 <columnOrder columnOrderIndex="4"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" isWindowWorkingSet="true" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -139,6 +157,7 @@
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
@@ -165,18 +184,19 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.75" ratioLeft="528" ratioRight="176" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.internal.presentations.r33.WorkbenchPresentationFactory_33">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
@@ -198,12 +218,109 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/IsPrime.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/RSA_main.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/IsPrime.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test2.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test_int.java"/>
 </editors>
 <item historyLabel="IsPrime.java" index="0">
 <position/>
 </item>
-<item active="true" historyLabel="RSA_main.java" index="1">
+<item historyLabel="RSA_main.java" index="1">
 <position/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="89" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="228" y="6"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="130" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="228" y="6"/>
+</item>
+<item historyLabel="IsPrime.java" index="3">
+<position info="not_deleted" x="533" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="228" y="6"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1643" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="826" y="1"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="121" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="826" y="1"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="899" y="1"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1284" y="6"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1282" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1925" y="3"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="220" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="221" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="196" y="6"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1925" y="3"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="712" y="34"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test2.java" index="4">
+<position/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test_int.java" index="5">
+<position/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="232" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="413" y="10"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1708" y="2"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="297" y="6"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="246" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1346" y="37"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="336" y="0"/>
+</item>
+<item active="true" historyLabel="Miller_Rabin_primality_test.java" index="2">
+<position info="not_deleted" x="1346" y="37"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -218,11 +335,13 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.intro.impl.presentations.IntroLaunchBar"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Miller_Rabin_primality_test.java" tooltip="rsa-education/src/Miller_Rabin_primality_test.java">
+<persistable path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSA_main.java" tooltip="rsa-education/src/RSA_main.java">
 <persistable path="/rsa-education/src/RSA_main.java"/>
 </file>
