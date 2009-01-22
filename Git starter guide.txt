@@ -10,21 +10,36 @@ Git starter guide by TuononenP
    git config --global user.email example@gmail.com
 
 4. Create your public/private key pair (use same email you typed earlier)
-   ssh-keygen -C “name@email.com” -t rsa
+   ssh-keygen -C “name@email.com” -t rsa   (if you see question marks around email, they should be quatation marks)
 
 5. Get a full clone of all the files in repository
    (in Vista default saving location is C:\Users\username\rsa-cryptosystem-education):
-   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git	  (you may need to add branch name to the end)
+   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git
 
 6. Get the newest files from server to your local computer:
-   git pull
+   git pull origin branch_name
 
 7. Make changes to the files on your computer
 
-8. Update server's file with your modifications
-
-   cd to the right directory with bash
-   git add filename         (tells to git which file you want to send to server)
-   git commit -m 'Explain what you changed'	(writes a comment)     
+8. Update server's files with your modifications
+   cd to the right directory with bash (e.g. cd rsa-cryptosystem-education)
+   git add filename/folder     (tells git which file you want to send to server)
+   git commit -m 'Explain what you changed'	(comment changes)     
    (the next line actually applies the changes to the server)
-   git push git@github.com:TuononenP/rsa-cryptosystem-education.git master	
+   git push git@github.com:TuononenP/rsa-cryptosystem-education.git  (path needed only first time)
+
+
+To update local branch with server's branch:
+   git pull origin branch_name	(if first time pulling)
+   git pull
+
+To create experiment branch:
+   cd rsa-cryptosystem-education
+   git branch experiment
+   git pull origin experiment
+
+To change branch:
+   git checkout branch_name
+
+To check which branch you are editing:
+   git branch
