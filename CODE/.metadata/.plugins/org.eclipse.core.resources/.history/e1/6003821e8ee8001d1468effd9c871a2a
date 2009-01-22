@@ -78,7 +78,7 @@ public class Miller_Rabin_primality_test
     	System.out.println("Type number of digits you want the generated prime to be: ");
     	int nbits = sc.nextInt();
     	BigInteger p;
-    	System.out.println("The test may take some time depending on the computer hardware used.");
+    	System.out.println("The test may take some time depending on the computer hardware used.\n");
     	long startTime = System.currentTimeMillis();
         do {
             p = new BigInteger(nbits, rnd);
