@@ -1,5 +1,6 @@
 Guides to help you familiarize with the Git revision control software.
 
+http://cheat.errtheblog.com/s/git/ (excellent list of commands with great explanation)
 http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html (nice Git tutorial)
 http://github.com/guides/git-cheat-sheet (a good check-list)
 http://nathanj.github.com/gitguide/ (short guide using Git GUI on Windows)
