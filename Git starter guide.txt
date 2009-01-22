@@ -1,30 +1,56 @@
 Git starter guide by TuononenP
 
-1. Install Git
+1. Install Git (e.g. msysGit for Windows)
+   use default installation options
 
 2. Get Github account
+   forget ssh key this time, you will add it later
 
-3. Tell git your user name and email address from Github account
+3. Config Git - Tell Git your user name and email address from Github account
    (Write the following codes to Git bash, replace name and email address)
    git config --global user.name "example"
    git config --global user.email example@gmail.com
 
-4. Create your public/private key pair (use same email you typed earlier)
-   ssh-keygen -C “name@email.com” -t rsa
+4. Create your public/private key pair (use the same email you typed earlier)
+   ssh-keygen -C "name@email.com" -t rsa
 
 5. Get a full clone of all the files in repository
    (in Vista default saving location is C:\Users\username\rsa-cryptosystem-education):
-   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git	  (you may need to add branch name to the end)
+   git clone git://github.com/TuononenP/rsa-cryptosystem-education.git
 
 6. Get the newest files from server to your local computer:
+   git pull origin master	(master is a branch name)
+
+7. NOTE!
+   It is very important you don't push the updates to the master branch.
+   We use only experiment branch to edit files on local computers.
+   Then we push local experiment branch to server's experiment branch.
+   When I see that experiment branch is stable enough, only I'm allowed to
+   merge experiment and master branch. This is just a safety precaution.
+   We should always have a fully working master version what ever should happen.
+
+   Create experiment branch:
+   cd rsa-cryptosystem-education
+   git branch experiment
+   git pull origin experiment
+
+8. Make changes to the files on your computer (use "git branch" to see you are using experiment branch)
+
+9. Update server's files with your modifications
+   cd to the right directory with bash (e.g. cd rsa-cryptosystem-education)
+   git add filename/folder     (tells git which file you want to send to server)
+   git commit -m 'Explain what you changed'	(comment changes)     
+   (the next line actually applies the changes to the server)
+   git push git@github.com:TuononenP/rsa-cryptosystem-education.git  (path needed only first time)
+
+---------------------------------------------------------
+
+To update local branch with server's branch:
+   git pull origin branch_name	(if first time pulling)
    git pull
 
-7. Make changes to the files on your computer
+To change branch:
+   git checkout branch_name
 
-8. Update server's file with your modifications
-
-   cd to the right directory with bash
-   git add filename         (tells to git which file you want to send to server)
-   git commit -m 'Explain what you changed'	(writes a comment)     
-   (the next line actually applies the changes to the server)
-   git push git@github.com:TuononenP/rsa-cryptosystem-education.git master	
+To check which branch you are editing:
+   git branch
