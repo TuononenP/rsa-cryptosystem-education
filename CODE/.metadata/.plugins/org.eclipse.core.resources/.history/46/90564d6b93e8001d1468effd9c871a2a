@@ -39,13 +39,6 @@ public class Miller_Rabin_primality_test {
 	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
 
-    /**
-     * Miller-Rabin. 
-     * 
-     * @param a		Randomly generated coprime.
-     * @param n		Prime.
-     * @return		Boolean
-     */
     private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {
         BigInteger n_minus_one = n.subtract(BigInteger.ONE);
         BigInteger d = n_minus_one;
@@ -85,8 +78,7 @@ public class Miller_Rabin_primality_test {
     }
     
     /**
-     * Returns true if x is prime.
-     * 
+     * Returns true if x is a prime.
      * @param x		BigInteger tested for primality
      * @return		Boolean
      */
@@ -97,8 +89,8 @@ public class Miller_Rabin_primality_test {
     /**
      * Generates a prime of wanted bitsize.
      * 
-     * @param bitsize	The wanted bitsize of prime. 
-     * @return			Generated prime.
+     * @param digits
+     * @return
      */
     public BigInteger genPrime(int bitsize) {
     	BigInteger p;
@@ -115,21 +107,22 @@ public class Miller_Rabin_primality_test {
 
     /**
      * Tests class.
-     * Contains a primality test and prime generation.
      * 
      * @param args
      */
     public static void main(String[] args) {
-    	Miller_Rabin_primality_test primeTest = new Miller_Rabin_primality_test();
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Type a large integer to test if it's prime: ");
-    	BigInteger x = sc.nextBigInteger();
-    	System.out.println(primeTest.isPrime(x) ? "Prime" : "Composite");
+    	BigInteger n = sc.nextBigInteger();
+    	System.out.println(miller_rabin(n) ? "PRIME" : "COMPOSITE");
+    	
     	System.out.println("Type number of digits you want the generated prime to be: ");
     	int bitsize = sc.nextInt();
     	System.out.println("The test may take some time depending on the computer hardware used.");
     	long startTime = System.currentTimeMillis();
+    	Miller_Rabin_primality_test primeTest = new Miller_Rabin_primality_test();
         System.out.println(primeTest.genPrime(bitsize));
+        
         long timeElapsed = System.currentTimeMillis()-startTime;
         System.out.println("Prime generated in " + timeElapsed + " ms.");
     }

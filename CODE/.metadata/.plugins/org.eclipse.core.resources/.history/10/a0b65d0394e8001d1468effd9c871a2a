@@ -39,13 +39,6 @@ public class Miller_Rabin_primality_test {
 	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
 
-    /**
-     * Miller-Rabin. 
-     * 
-     * @param a		Randomly generated coprime.
-     * @param n		Prime.
-     * @return		Boolean
-     */
     private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {
         BigInteger n_minus_one = n.subtract(BigInteger.ONE);
         BigInteger d = n_minus_one;
@@ -85,8 +78,7 @@ public class Miller_Rabin_primality_test {
     }
     
     /**
-     * Returns true if x is prime.
-     * 
+     * Returns true if x is a prime.
      * @param x		BigInteger tested for primality
      * @return		Boolean
      */
