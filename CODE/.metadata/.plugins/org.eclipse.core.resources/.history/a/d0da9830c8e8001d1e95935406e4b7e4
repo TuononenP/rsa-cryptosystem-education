@@ -52,7 +52,7 @@ public class RSA_main {
           
         /*
          * Computes the value of Euler's function.
-         * Phi is needed to compute the exponent e for encryption.
+         * Phi is needed to compute the exponent for encryption.
          */
         phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));  
           
@@ -70,7 +70,7 @@ public class RSA_main {
         	e = e.add(new BigInteger("2"));
         }
         
-        //Compute private exponent  
+        //Compute public key  
         d = e.modInverse(phi);
         setD(d);
         
@@ -125,11 +125,11 @@ public class RSA_main {
      * @return 				Encrypted String.
      */  
     private static String bytesToString(byte[] encrypted) {  
-        String str = "";  
+        String test = "";  
         for (byte b : encrypted) {  
-            str += Byte.toString(b);  
+            test += Byte.toString(b);  
         }  
-        return str;  
+        return test;  
     }  
       
     /** 
@@ -151,32 +151,33 @@ public class RSA_main {
     }  
     
     /**
-     * Calculates the amount of time used to initialize keys with different bitsizes.
+     * Calculates the amount of time used to initialize keys with different bit sizes.
      */
     public void testInitSpeed() {
-    	System.out.println("Testing computer's speed to initialize keys with different bitsizes.");
+    	System.out.println("Testing computer's speed to initialize keys with different bit sizes.");
     	System.out.println("512 bit, 1024 bit and 2048 bit key initialization times are calculated.");
     	System.out.println("The test may take some time depending on the computer hardware used.\n");
-    	initTime(512);
-    	initTime(1024);
-    	initTime(2048);
-    }
-
-    /**
-     * Calculates time to create keys with given bitsize.
-     * 
-     * @param bitsize
-     */
-    public void initTime(int bitsize) {
-    	System.out.println("Initializing " +bitsize+ " bit keys...");
+    	
+    	System.out.println("Initializing 512 bit keys...");
     	long startTime = System.currentTimeMillis();
-    	createKeys(bitsize);
+    	createKeys(512);
     	long timeElapsed = System.currentTimeMillis()-startTime;
     	System.out.println("Initialization completed in "+timeElapsed+" ms.\n");
+    	
+    	System.out.println("Initializing 1024 bit keys...");
+    	long startTime2 = System.currentTimeMillis();
+    	createKeys(1024);
+    	long timeElapsed2 = System.currentTimeMillis()-startTime2;
+    	System.out.println("Initialization completed in "+timeElapsed2+" ms.\n");
+    	
+    	System.out.println("Initializing 2048 bit keys...");
+    	long startTime3 = System.currentTimeMillis();
+    	createKeys(2048);
+    	long timeElapsed3 = System.currentTimeMillis()-startTime3;
+    	System.out.println("Initialization completed in "+timeElapsed3+" ms.\n");
     }
     
     public static void main (String[] args) {  
-    	//Generate keys
     	long startTime = System.currentTimeMillis();
     	System.out.println("Initializing keys...");
     	RSA_main rsa = new RSA_main();  
@@ -196,11 +197,11 @@ public class RSA_main {
         System.out.println("Encrypting String: " + msg);  
         System.out.println("String in Bytes: " + bytesToString(msg.getBytes()));  
   
-        //Encrypt  
+        // encrypt  
         byte[] encrypted = rsa.encrypt(msg.getBytes(), e, n);                    
         System.out.println("Encrypted String in Bytes: " + bytesToString(encrypted));  
           
-        //Decrypt  
+        // decrypt  
         byte[] decrypted = rsa.decrypt(encrypted, d, n);        
         System.out.println("Decrypted String in Bytes: " +  bytesToString(decrypted));  
         System.out.println("Decrypted String: " + new String(decrypted));  

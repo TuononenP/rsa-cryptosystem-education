@@ -151,10 +151,10 @@ public class RSA_main {
     }  
     
     /**
-     * Calculates the amount of time used to initialize keys with different bitsizes.
+     * Calculates the amount of time used to initialize keys with different bit sizes.
      */
     public void testInitSpeed() {
-    	System.out.println("Testing computer's speed to initialize keys with different bitsizes.");
+    	System.out.println("Testing computer's speed to initialize keys with different bit sizes.");
     	System.out.println("512 bit, 1024 bit and 2048 bit key initialization times are calculated.");
     	System.out.println("The test may take some time depending on the computer hardware used.\n");
     	initTime(512);
