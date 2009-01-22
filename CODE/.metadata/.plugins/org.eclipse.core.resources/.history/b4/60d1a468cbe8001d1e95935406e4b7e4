@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Petri Tuononen
  * Project: RSA encryption/decryption software for educational usage.
  * @since 18.1.2009
- * @version 0.15
+ * @version 0.10
  */
 public class RSA_main {  
       
@@ -14,15 +14,14 @@ public class RSA_main {
     private int bitsize = 512;  
       
     /**
-     * Default constructor.
+     * Constructor.
      */
     public RSA_main() {  
     	createKeys(bitsize);
     }  
     
     /**
-     * Constructor.
-     * 
+     * Constructor
      * @param e		Public exponent
      * @param d		Private exponent
      * @param n		Modulus
@@ -81,7 +80,7 @@ public class RSA_main {
     }
     
     /**
-     * Test if prime p is equal to prime q.
+     * Tests if prime p is equal to prime q.
      * 
      * @param p		BigInteger prime
      * @param q		BigInteger prime
@@ -121,8 +120,7 @@ public class RSA_main {
     }
       
     /** 
-     * Convert a byte array to String.
-     *  
+     * Converts a byte array to String  
      * @param encrypted		Encrypted byte array
      * @return 				Encrypted String.
      */  
@@ -135,8 +133,7 @@ public class RSA_main {
     }  
       
     /** 
-     * Encrypt byte array.
-     * 
+     * Encrypt byte array
      * @param message	Message to be enrypted
      * @return 			Encrypted byte array
      */  
@@ -154,7 +151,7 @@ public class RSA_main {
     }  
     
     /**
-     * Calculate the amount of time used to initialize keys with different bitsizes.
+     * Calculates the amount of time used to initialize keys with different bitsizes.
      */
     public void testInitSpeed() {
     	System.out.println("Testing computer's speed to initialize keys with different bitsizes.");
@@ -166,7 +163,7 @@ public class RSA_main {
     }
 
     /**
-     * Calculate time to create keys with given bitsize.
+     * Calculates time to create keys with given bitsize.
      * 
      * @param bitsize
      */
