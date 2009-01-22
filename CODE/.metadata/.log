@@ -1,0 +1,60 @@
+!SESSION 2009-01-22 12:51:24.116 -----------------------------------------------
+eclipse.buildId=I20070625-1500
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fi_FI
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.jdt.core 4 1008 2009-01-22 12:54:40.566
+!MESSAGE Cannot retrieve the attached javadoc for BigInteger [in BigInteger.class [in java.math [in C:\Program Files\Java\jre6\lib\rt.jar]]]java.net.UnknownHostException: java.sun.com
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:742)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1060)
+	at org.eclipse.jdt.internal.core.BinaryField.getAttachedJavadoc(BinaryField.java:111)
+	at org.eclipse.jdt.ui.JavadocContentAccess.getHTMLContentReader(JavadocContentAccess.java:133)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:176)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getHoverInfo(AbstractJavaEditorTextHover.java:125)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:102)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo(JavaEditorTextHoverProxy.java:69)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:165)
+
+
+!ENTRY org.eclipse.jdt.core 4 1008 2009-01-22 13:10:55.256
+!MESSAGE Cannot retrieve the attached javadoc for BigInteger {key=Ljava/math/BigInteger;} [in BigInteger.class [in java.math [in C:\Program Files\Java\jre6\lib\rt.jar]]]java.net.UnknownHostException: java.sun.com
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(Unknown Source)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:742)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1060)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:972)
+	at org.eclipse.jdt.ui.JavadocContentAccess.getHTMLContentReader(JavadocContentAccess.java:133)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:176)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getHoverInfo(AbstractJavaEditorTextHover.java:125)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:102)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo(JavaEditorTextHoverProxy.java:69)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:165)
+

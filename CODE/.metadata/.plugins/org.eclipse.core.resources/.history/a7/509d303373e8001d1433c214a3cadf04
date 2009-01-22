@@ -1,0 +1,36 @@
+import java.math.BigInteger;
+
+
+public class Miller_Rabin_primality_test {
+
+	public Miller_Rabin_primality_test() {
+		
+	}
+	
+	private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {
+	    BigInteger n_minus_one = n.subtract(BigInteger.ONE);
+//	    compute s and d
+	    BigInteger a_to_power = a.modPow(d, n);
+	    if (a_to_power.equals(BigInteger.ONE)) return true;
+	    for (int i = 0; i < s-1; i++) {
+	        if (a_to_power.equals(n_minus_one)) return true;
+	        a_to_power = a_to_power.multiply(a_to_power).mod(n);
+	    }
+	    if (a_to_power.equals(n_minus_one)) return true;
+	    return false;
+	}
+	
+	public static boolean miller_rabin(BigInteger n) {
+	    for (int repeat = 0; repeat < 20; repeat++) {
+	        BigInteger a;
+	        do {
+	            a = new BigInteger(n.bitLength(), rnd);
+	        } while (a.equals(BigInteger.ZERO));
+	        if (!miller_rabin_pass(a, n)) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+
+}
