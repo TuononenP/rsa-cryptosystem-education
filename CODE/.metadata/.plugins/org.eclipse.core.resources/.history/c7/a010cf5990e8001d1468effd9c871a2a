@@ -36,7 +36,6 @@ import java.util.Scanner;
  */
 public class Miller_Rabin_primality_test {
 	
-	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
 
     private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {

@@ -26,6 +26,7 @@ Retrieved from: http://en.literateprograms.org/Miller-Rabin_primality_test_(Java
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -36,7 +37,6 @@ import java.util.Scanner;
  */
 public class Miller_Rabin_primality_test {
 	
-	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
 
     private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {
@@ -44,6 +44,7 @@ public class Miller_Rabin_primality_test {
         BigInteger d = n_minus_one;
         int s = d.getLowestSetBit();
         d = d.shiftRight(s);
+
         BigInteger a_to_power = a.modPow(d, n);
         if (a_to_power.equals(BigInteger.ONE)) return true;
         for (int i = 0; i < s-1; i++) {
@@ -55,14 +56,6 @@ public class Miller_Rabin_primality_test {
     }
 
 
-    /**
-     * Tests primality.
-     * A highly accurate probabilistic implementation.
-     * Repeated n times to make 1/4^n very small.
-     * 
-     * @param n		BigInteger tested for primality
-     * @return		Boolean
-     */
     public static boolean miller_rabin(BigInteger n) {
         for (int repeat = 0; repeat < 20; repeat++) {
             BigInteger a;
@@ -75,21 +68,7 @@ public class Miller_Rabin_primality_test {
         }
         return true;
     }
-    
-    /**
-     * Returns true if x is a prime.
-     * @param x		BigInteger tested for primality
-     * @return		Boolean
-     */
-    public boolean isPrime(BigInteger x) {
-    	return miller_rabin(x);
-    }
 
-    /**
-     * Tests class.
-     * 
-     * @param args
-     */
     public static void main(String[] args) {
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Type a large integer to test if it's a prime: ");

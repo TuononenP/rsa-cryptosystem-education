@@ -36,7 +36,6 @@ import java.util.Scanner;
  */
 public class Miller_Rabin_primality_test {
 	
-	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
 
     private static boolean miller_rabin_pass(BigInteger a, BigInteger n) {
@@ -56,12 +55,11 @@ public class Miller_Rabin_primality_test {
 
 
     /**
-     * Tests primality.
      * A highly accurate probabilistic implementation.
-     * Repeated n times to make 1/4^n very small.
+     * Repeated n times to make 1/4^k very small.
      * 
-     * @param n		BigInteger tested for primality
-     * @return		Boolean
+     * @param n
+     * @return
      */
     public static boolean miller_rabin(BigInteger n) {
         for (int repeat = 0; repeat < 20; repeat++) {
@@ -74,15 +72,6 @@ public class Miller_Rabin_primality_test {
             }
         }
         return true;
-    }
-    
-    /**
-     * Returns true if x is a prime.
-     * @param x		BigInteger tested for primality
-     * @return		Boolean
-     */
-    public boolean isPrime(BigInteger x) {
-    	return miller_rabin(x);
     }
 
     /**
