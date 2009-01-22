@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class RSA_main {  
       
     private BigInteger p, q, n, phi, e, d;  
-    private int bitsize = 512;  
+    private int bitsize = 1024;  
+//    private int blocksize = 256; //blocksize in byte //not in use yet, will improve security dramatically 
       
     /**
      * Constructor.
@@ -50,10 +51,7 @@ public class RSA_main {
         n = p.multiply(q);  
         setN(n);
           
-        /*
-         * Computes the value of Euler's function.
-         * Phi is needed to compute the exponent for encryption.
-         */
+        // Phi is needed to compute the exponent for encryption  
         phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));  
           
 //        //Compute the exponent necessary for encryption (part of public key)  
@@ -61,8 +59,7 @@ public class RSA_main {
 //        while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0 ) {  
 //            e.add(BigInteger.ONE);  
 //        }  
-        
-        //Fast method to get e
+  
         e = new BigInteger("3");
         setE(e);
         
@@ -74,7 +71,7 @@ public class RSA_main {
         d = e.modInverse(phi);
         setD(d);
         
-        //Destroy p & q for security reasons
+        // destroy p & q for security reasons
         p = null;
         q = null;
     }

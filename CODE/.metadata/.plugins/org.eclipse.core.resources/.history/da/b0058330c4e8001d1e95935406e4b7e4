@@ -35,7 +35,7 @@ import java.util.Scanner;
  * Modified by Petri Tuononen
  * 22.1.2009
  */
-public class Miller_Rabin_primality_test {
+public class Miller_Rabin_primality_test extends Thread {
 	
 	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
@@ -101,7 +101,7 @@ public class Miller_Rabin_primality_test {
      * @param bitsize	The wanted bitsize of prime. 
      * @return			Generated prime.
      */
-    public BigInteger genPrime(int bitsize) {
+    public BigInteger genPrime(int bitsize) extends Thread {
     	BigInteger p;
         do {
             p = new BigInteger(bitsize, rnd);
@@ -112,6 +112,10 @@ public class Miller_Rabin_primality_test {
             if (p.mod(BigInteger.valueOf(7)).equals(BigInteger.ZERO)) continue;
         } while (!miller_rabin(p));
         return p;
+    }
+    
+    public void run() {
+    	
     }
 
     /**

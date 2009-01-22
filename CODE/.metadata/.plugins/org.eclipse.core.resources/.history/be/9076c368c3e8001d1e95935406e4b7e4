@@ -35,7 +35,7 @@ import java.util.Scanner;
  * Modified by Petri Tuononen
  * 22.1.2009
  */
-public class Miller_Rabin_primality_test {
+public class Miller_Rabin_primality_test implement Runnable {
 	
 	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();

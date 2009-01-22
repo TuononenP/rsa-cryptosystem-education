@@ -29,11 +29,10 @@ import java.security.SecureRandom;
 import java.util.Scanner;
 
 /**
- * Randomly selects numbers of defined size until a prime is found.
- * Rapidly generates large primes for use in cryptography. 
+ * Randomly selects numbers of defined size until it finds a prime one.
+ * This code rapidly generates large primes for use in cryptography. 
  * 
  * Modified by Petri Tuononen
- * 22.1.2009
  */
 public class Miller_Rabin_primality_test {
 	

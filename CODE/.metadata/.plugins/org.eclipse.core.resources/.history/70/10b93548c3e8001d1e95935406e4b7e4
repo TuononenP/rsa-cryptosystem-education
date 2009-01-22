@@ -12,6 +12,7 @@ public class RSA_main {
       
     private BigInteger p, q, n, phi, e, d;  
     private int bitsize = 512;  
+//    private int blocksize = 256; //blocksize in byte //not in use yet, will improve security dramatically 
       
     /**
      * Constructor.

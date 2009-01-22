@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class RSA_main {  
       
     private BigInteger p, q, n, phi, e, d;  
-    private int bitsize = 512;  
+    private int bitsize = 1024;  
+//    private int blocksize = 256; //blocksize in byte //not in use yet, will improve security dramatically 
       
     /**
      * Constructor.
@@ -61,14 +62,12 @@ public class RSA_main {
 //        while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0 ) {  
 //            e.add(BigInteger.ONE);  
 //        }  
+//        while(phi.gcd(e).intValue() > 1) {
+//        	e = e.add(new BigInteger("2"));
+//        }
         
-        //Fast method to get e
         e = new BigInteger("3");
         setE(e);
-        
-        while(phi.gcd(e).intValue() > 1) {
-        	e = e.add(new BigInteger("2"));
-        }
         
         //Compute public key  
         d = e.modInverse(phi);

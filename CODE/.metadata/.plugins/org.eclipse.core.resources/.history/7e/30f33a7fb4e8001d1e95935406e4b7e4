@@ -33,7 +33,6 @@ import java.util.Scanner;
  * Rapidly generates large primes for use in cryptography. 
  * 
  * Modified by Petri Tuononen
- * 22.1.2009
  */
 public class Miller_Rabin_primality_test {
 	

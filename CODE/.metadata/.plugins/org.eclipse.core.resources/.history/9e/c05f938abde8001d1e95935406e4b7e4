@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class RSA_main {  
       
     private BigInteger p, q, n, phi, e, d;  
-    private int bitsize = 512;  
+    private int bitsize = 1024;  
+//    private int blocksize = 256; //blocksize in byte //not in use yet, will improve security dramatically 
       
     /**
      * Constructor.
@@ -36,24 +37,16 @@ public class RSA_main {
      * Create public and private keys.
      */  
     public void createKeys(int bitsize) {
+        //Generate two big primes  
     	Miller_Rabin_primality_test primeTest = new Miller_Rabin_primality_test();
-    	/* Generate two big primes.
-    	 * p and q aren't allowed to be equal for security reasons.
-    	 * Generate until p and q are unique.
-    	 */  
-    	do {
-        	p = primeTest.genPrime(bitsize);
-        	q = primeTest.genPrime(bitsize);
-    	} while (testPrimeAffinity(p, q));
+    	p = primeTest.genPrime(bitsize);
+    	q = primeTest.genPrime(bitsize);
     	
         //Calculate modulo  
         n = p.multiply(q);  
         setN(n);
           
-        /*
-         * Computes the value of Euler's function.
-         * Phi is needed to compute the exponent for encryption.
-         */
+        // Phi is needed to compute the exponent for encryption  
         phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));  
           
 //        //Compute the exponent necessary for encryption (part of public key)  
@@ -61,8 +54,7 @@ public class RSA_main {
 //        while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0 ) {  
 //            e.add(BigInteger.ONE);  
 //        }  
-        
-        //Fast method to get e
+  
         e = new BigInteger("3");
         setE(e);
         
@@ -74,18 +66,11 @@ public class RSA_main {
         d = e.modInverse(phi);
         setD(d);
         
-        //Destroy p & q for security reasons
+        // destroy p & q for security reasons
         p = null;
         q = null;
     }
     
-    /**
-     * Tests if prime p is equal to prime q.
-     * 
-     * @param p		BigInteger prime
-     * @param q		BigInteger prime
-     * @return		Boolean
-     */
     public boolean testPrimeAffinity(BigInteger p, BigInteger q) {
     	if (p.equals(q)) {
     		return true;
@@ -93,6 +78,7 @@ public class RSA_main {
     	else {
     		return false;
     	}
+    	
     }
     
     public void setE(BigInteger e) {

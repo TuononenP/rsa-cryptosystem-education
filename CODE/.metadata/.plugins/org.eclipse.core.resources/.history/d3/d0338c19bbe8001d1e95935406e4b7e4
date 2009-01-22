@@ -40,6 +40,10 @@ public class Miller_Rabin_primality_test {
 	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
 
+    public Miller_Rabin_primality_test(int bitsize) {
+    	
+    }
+    
     /**
      * Miller-Rabin. 
      * 
