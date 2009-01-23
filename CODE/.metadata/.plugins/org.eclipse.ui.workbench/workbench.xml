@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="17" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="92" y="2">
 <fastViewData fastViewLocation="1024"/>
@@ -35,11 +35,11 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSA_main.java" partName="RSA_main.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/RSA_main.java" title="RSA_main.java" tooltip="rsa-education/src/RSA_main.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/RSA_main.java"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="246"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="233"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Miller_Rabin_primality_test.java" partName="Miller_Rabin_primality_test.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/Miller_Rabin_primality_test.java" title="Miller_Rabin_primality_test.java" tooltip="rsa-education/src/Miller_Rabin_primality_test.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="1666"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2772"/>
 </editor>
 </editors>
 <views>
@@ -205,30 +205,12 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test2.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test_int.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/IsPrime.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/RSA_main.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/RSA_main.java"/>
 </editors>
-<item historyLabel="Miller_Rabin_primality_test2.java" index="1">
-<position/>
-</item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="0">
-<position/>
-</item>
-<item historyLabel="Miller_Rabin_primality_test_int.java" index="2">
-<position/>
-</item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="0">
-<position info="not_deleted" x="232" y="0"/>
-</item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="0">
-<position info="not_deleted" x="413" y="10"/>
-</item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="0">
-<position info="not_deleted" x="1708" y="2"/>
-</item>
 <item historyLabel="Miller_Rabin_primality_test.java" index="0">
 <position info="not_deleted" x="297" y="6"/>
 </item>
@@ -244,122 +226,140 @@
 <item historyLabel="Miller_Rabin_primality_test.java" index="0">
 <position/>
 </item>
-<item historyLabel="IsPrime.java" index="3">
+<item historyLabel="IsPrime.java" index="1">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1376" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="895" y="33"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="4410" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="895" y="33"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1225" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="2471" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="2246" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="4722" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="2569" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1221" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1561" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="323" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="2020" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="167" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="2020" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="1715" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="1714" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="4238" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="167" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1182" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1182" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1115" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1098" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="1666" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1098" y="0"/>
 </item>
-<item historyLabel="Miller_Rabin_primality_test.java" index="5">
+<item historyLabel="Miller_Rabin_primality_test.java" index="3">
 <position info="not_deleted" x="1666" y="0"/>
 </item>
-<item historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="1098" y="0"/>
 </item>
-<item active="true" historyLabel="RSA_main.java" index="4">
+<item historyLabel="RSA_main.java" index="2">
 <position info="not_deleted" x="4617" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="4">
+<position info="not_deleted" x="1666" y="0"/>
+</item>
+<item historyLabel="RSA_main.java" index="2">
+<position info="not_deleted" x="3944" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="4">
+<position info="not_deleted" x="1666" y="0"/>
+</item>
+<item historyLabel="RSA_main.java" index="5">
+<position info="not_deleted" x="765" y="0"/>
+</item>
+<item historyLabel="Miller_Rabin_primality_test.java" index="4">
+<position info="not_deleted" x="2772" y="0"/>
+</item>
+<item active="true" historyLabel="RSA_main.java" index="5">
+<position info="not_deleted" x="765" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

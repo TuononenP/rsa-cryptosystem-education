@@ -67,3 +67,12 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY org.eclipse.core.resources 2 10035 2009-01-22 20:37:55.946
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2009-01-23 15:45:17.525 -----------------------------------------------
+eclipse.buildId=I20070625-1500
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fi_FI
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-01-23 15:45:18.880
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

@@ -2,6 +2,7 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
+ * 
  * @author Petri Tuononen
  * Project: RSA encryption/decryption software for educational usage.
  * @since 18.1.2009
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class RSA_main {  
       
     private BigInteger p, q, n, phi, e, d;  
-    private int bitsize = 512;  
+    private int bitsize = 1024;  
       
     /**
      * Default constructor.
