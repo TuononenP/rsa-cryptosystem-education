@@ -1,6 +1,6 @@
 /**
  * Padding scheme for cryptography.
- * Divide text into blocks of 3 letters.
+ * Divide text into 3 letter blocks.
  * 
  * @author Petri Tuononen
  * @since 25.1.2009
