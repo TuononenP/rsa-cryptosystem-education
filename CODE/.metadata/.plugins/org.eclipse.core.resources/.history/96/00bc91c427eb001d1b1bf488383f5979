@@ -117,6 +117,7 @@ public class Blocks_Of_3_Padding {
 		char3 = Integer.toOctalString(alphaNum.getNum(text.substring(0, 1)));
 		formula = char1+"*"+BASE+pow_two+" + "+char2+"*"+BASE+pow_one+" + "+char3+"*"+BASE+pow_zero;
 		return formula;
+		
 	}
 	
 	/**
