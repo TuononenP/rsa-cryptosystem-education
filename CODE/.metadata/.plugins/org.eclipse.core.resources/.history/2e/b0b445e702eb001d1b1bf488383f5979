@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Padding scheme for cryptography.
  * Divide text into 3 letter blocks.
@@ -47,11 +49,11 @@ public class Blocks_Of_3_Padding {
 		//Define table size
 		block_table = new String[numOf3LetterBlocks(xWord_table)];
 		//Allocate each 3 letter block to one table cell
-		int k = 0, j = 0, alku = 0, loppu = 3;
+		int k = 0;
 		for (int i=0; i < xWord_table.length; i++) {
-			j = 0;
-			alku = 0;
-			loppu = 3;
+			int j = 0;
+			int alku = 0;
+			int loppu = 3;
 			word = xWord_table[i];
 			//3 letter blocks per word
 			threeLetterBlocks = word.length()/3;
