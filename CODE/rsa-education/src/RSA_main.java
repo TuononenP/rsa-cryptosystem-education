@@ -2,7 +2,6 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
- * 
  * @author Petri Tuononen
  * Project: RSA encryption/decryption software for educational usage.
  * @since 18.1.2009

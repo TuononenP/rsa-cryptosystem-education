@@ -1,0 +1,90 @@
+/**
+ * Padding scheme for cryptography.
+ * 
+ * @author Petri Tuononen
+ * @since 25.1.2009
+ */
+public class Blocks_Of_3_Padding {
+
+	public Blocks_Of_3_Padding() {
+	
+	}
+	
+	public String[] DivideToBlocks(String msg) {
+		String[] word_table;
+		String[] xWord_table;
+		String[] block_table;
+		String word;
+		String newWord;
+		int wordLength, tableLengt, remainder, threeLetterBlocks;
+		//Divide message to words
+		word_table = msg.split(" ");
+		tableLengt = word_table.length;
+		xWord_table = new String[tableLengt];
+		//Test every word if they can be divided by 3
+		for (int i=0; i < word_table.length; i++) {
+			word = word_table[i];
+			wordLength = word.length();
+			remainder = wordLength%3;
+			if (remainder == 2) {
+				newWord = "x" + word;
+				xWord_table[i] = newWord;
+			}
+			else if (remainder == 1) {
+				newWord = "xx" + word;
+				xWord_table[i] = newWord;
+			}
+			else {
+				xWord_table[i] = word;
+			}
+		}
+		int alku = 0;
+		int loppu = 2;
+		//Define table size
+		block_table = new String[numOf3LetterWords(xWord_table)];
+		//Allocate each 3 letter block to one table cell
+		int j = 0;
+		for (int i=0; i < xWord_table.length; i++) {
+			word = xWord_table[i];
+			//3 letter blocks per word
+			threeLetterBlocks = word.length()/3;
+			while (j < threeLetterBlocks ) {
+				block_table[j] = word.substring(alku, loppu);
+				alku += 3;
+				loppu += 3;
+				j++;
+			}
+			j += threeLetterBlocks;
+//			for (int j=0; j < threeLetterBlocks; j++) {
+//				block_table[j] = word.substring(alku, loppu);
+//				alku += 3;
+//				loppu += 3;
+//			}
+			
+		}
+		
+		
+		return xWord_table;
+	}
+	
+	public int numOf3LetterWords(String[] table) {
+		int num = 0;
+		String word;
+		for (int i=0; i < table.length; i++) {
+			word = table[i];
+			num += word.length()/3;
+		}
+		return num;
+	}
+	
+	public static void main(String[] args) {
+		Blocks_Of_3_Padding testi = new Blocks_Of_3_Padding();
+		String[] word_table = testi.DivideToBlocks("A Tama viesti testaa metodia fd");
+		String word;
+		for (int i=0; i < word_table.length; i++) {
+			word = word_table[i];
+			System.out.println(word);
+			System.out.println(word.length());
+		}
+	}
+}
