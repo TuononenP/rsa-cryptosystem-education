@@ -1,0 +1,34 @@
+import java.util.HashMap;
+
+/**
+ * 
+ * @author Petri Tuononen
+ * @since 25.1.2009
+ */
+public class AlphabetNum {
+
+	HashMap<String, Integer> alphaNum;
+	
+	public AlphabetNum() {
+		this.alphaNum = createHashMap();	
+	}
+		
+	public HashMap<String, Integer> createHashMap() {
+		HashMap<String, Integer> alphaNum = new HashMap<String, Integer>();
+		String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+				"L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+		for (int i=0; i<26; i++) {
+			alphaNum.put(alphabet[i], i);
+		}
+		return alphaNum;
+	}
+	
+	public int getNum(String letter) {
+		return alphaNum.get(letter);
+	}
+	
+	public String getLetter(int num) {
+		return alphaNum.get(num);
+	}
+	
+}

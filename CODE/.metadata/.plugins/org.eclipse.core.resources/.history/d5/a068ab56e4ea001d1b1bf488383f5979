@@ -1,0 +1,30 @@
+/**
+ * Padding scheme for cryptography.
+ * 
+ * @author Petri Tuononen
+ * @since 25.1.2009
+ */
+public class Blocks_Of_3_Padding {
+
+	public Blocks_Of_3_Padding() {
+	
+	}
+	
+	public String[] DivideToWords(String msg) {
+		String[] word_table;
+		word_table = msg.split(" ");
+		return word_table;
+	}
+	
+	
+	public static void main(String[] args) {
+		Blocks_Of_3_Padding testi = new Blocks_Of_3_Padding();
+		String[] word_table = testi.DivideToWords("Tama viesti testaa metodia");
+		String word;
+		for (int i=0; i < word_table.length; i++) {
+			word = word_table[i];
+			System.out.println(word);
+			System.out.println(word.length());
+		}
+	}
+}

@@ -1,0 +1,51 @@
+/**
+ * Padding scheme for cryptography.
+ * 
+ * @author Petri Tuononen
+ * @since 25.1.2009
+ */
+public class Blocks_Of_3_Padding {
+
+	public Blocks_Of_3_Padding() {
+	
+	}
+	
+	public String[] DivideToBlocks(String msg) {
+		String[] word_table;
+		String[] block_table;
+		String word;
+		String newWord;
+		int length, remainder;
+		//Divide message to words
+		word_table = msg.split(" ");
+		//Test every word if they can be divided by 3
+		for (int i=0; i < word_table.length; i++) {
+			word = word_table[i];
+			length = word.length();
+			remainder = length%3;
+			if (remainder == 2) {
+				newWord = "xx" + word;
+			}
+			else if (remainder == 1) {
+				newWord = "x" + word;
+			}
+			else {
+				
+			}
+		}
+		return word_table;
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		Blocks_Of_3_Padding testi = new Blocks_Of_3_Padding();
+		String[] word_table = testi.DivideToBlocks("Tama viesti testaa metodia");
+		String word;
+		for (int i=0; i < word_table.length; i++) {
+			word = word_table[i];
+			System.out.println(word);
+			System.out.println(word.length());
+		}
+	}
+}

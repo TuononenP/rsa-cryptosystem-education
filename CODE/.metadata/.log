@@ -67,3 +67,39 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY org.eclipse.core.resources 2 10035 2009-01-22 20:37:55.946
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2009-01-23 15:45:17.525 -----------------------------------------------
+eclipse.buildId=I20070625-1500
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fi_FI
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-01-23 15:45:18.880
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2009-01-25 13:41:03.803 -----------------------------------------------
+eclipse.buildId=I20070625-1500
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fi_FI
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\Users\Pepe\rsa-cryptosystem-education\CODE
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2009-01-25 15:32:52.967
+!MESSAGE Internal Error
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.computePartitioning(AbstractDocument.java:1296)
+	at org.eclipse.jface.text.TextUtilities.computePartitioning(TextUtilities.java:428)
+	at org.eclipse.jdt.internal.ui.text.spelling.JavaSpellingEngine.check(JavaSpellingEngine.java:54)
+	at org.eclipse.jdt.internal.ui.text.spelling.SpellingEngine.check(SpellingEngine.java:102)
+	at org.eclipse.jdt.internal.ui.text.spelling.DefaultSpellingEngine.check(DefaultSpellingEngine.java:75)
+	at org.eclipse.ui.texteditor.spelling.SpellingService$1.run(SpellingService.java:103)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.texteditor.spelling.SpellingService.check(SpellingService.java:108)
+	at org.eclipse.ui.texteditor.spelling.SpellingService.check(SpellingService.java:80)
+	at org.eclipse.ui.texteditor.spelling.SpellingReconcileStrategy.reconcile(SpellingReconcileStrategy.java:179)
+	at org.eclipse.jdt.internal.ui.text.spelling.JavaSpellingReconcileStrategy.reconcile(JavaSpellingReconcileStrategy.java:125)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:96)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:75)
+	at org.eclipse.jdt.internal.ui.text.JavaReconciler.process(JavaReconciler.java:373)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:204)
