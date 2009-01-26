@@ -12,3 +12,6 @@
 23.1. 3h	UML-diagrams, Powerpoint presentation designing and poster.
 25.1. 8h	Padding scheme: blocks of three. Alphabet to number and vice versa class.
 26.1. 6h	Actual Powerpoint presentation to the class of school colleagues. Designing GUI and poster.
+
+-------------------
+OVERALL: 50h
