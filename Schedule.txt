@@ -1,18 +1,18 @@
-16.1. 3h	Get to know the project (The principles of the RSA cryptosystem, thinking of project demands)
+16.1. 3h	Get to know the project (The principles of the RSA cryptosystem, thinking of project demands).
 16.1. 3h	More detailed RSA algorithm exploring.
 16.1. 3h	Prototype of the code.
 17.1. 8h	Prototype of the code. Made a repository for the project and made it public on the Internet (github.com) for revision control.
-18.1. 1h	Preparing to meet the customer
+18.1. 1h	Preparing to meet the customer.
 18.1. 1h	Familiarizing with Git revision control.
 19.1. 4h	Customer meeting 1h and 3h familiarizing with Git revision control.
 21.1. 2h	Deciding which diagrams and reports are needed. 
 21.1. 3h	UML diagrams, Powerpoint presentation designing, defining methods.
 22.1. 3h	Coded 'Miller-Rabin primality test' to generate primes fast and with a very high probability.
-22.1. 2h 	Updated main class in many ways.
+22.1. 2h	Updated main class in many ways.
 23.1. 3h	UML-diagrams, Powerpoint presentation designing and poster.
 25.1. 8h	Padding scheme: blocks of three. Alphabet to number and vice versa class.
-26.1. 8h	Actual Powerpoint presentation to the class of school colleagues. Designing GUI and poster. GUI programming.
-27.1. 4h	GUI design and programming.
+26.1. 8h	Actual Powerpoint presentation for the class of school colleagues. Designing GUI and poster. GUI programming.
+27.1. 5h	GUI design and programming. Final touches to the poster. Registered for the ICT Showroom 2009 competition.
 
 -------------------
-OVERALL: 56h
+OVERALL: 57h
