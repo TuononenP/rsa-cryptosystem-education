@@ -1,3 +1,11 @@
 INFO:
 This software is a part of OOP course work at Turku University of Applied Sciences.
-The RSA encryption/decryption software is aimed for educational usage to teach cryptography.
+The RSA encryption/decryption software is aimed for educational use to teach cryptography.
+
+Short description:
+RSA cryptosystem for educational use to teach and learn cryptography. Every step executed
+by the cryptosystem is visible (printed lines). User can select custom primes to create keys
+and then choose from three padding schemes to encrypt messages. Encryption steps are then
+printed on the screen and the user can learn how the encryption is done mathematically. User
+can even test if his/her encryption with pen and paper is correctly done. Great for teachers
+who teach cryptography and students desiring to learn.
