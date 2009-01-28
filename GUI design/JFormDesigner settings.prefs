@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE preferences SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<preferences EXTERNAL_XML_VERSION="1.0">
+  <root type="user">
+    <map/>
+    <node name="jformdesigner">
+      <map/>
+      <node name="prefs">
+        <map/>
+        <node name="designer">
+          <map>
+            <entry key="i18n.propertiestemplate" value="#\n# Date: ${date}\n#\n\n"/>
+          </map>
+          <node name="formlayout">
+            <map/>
+          </node>
+          <node name="gridbaglayout">
+            <map/>
+          </node>
+          <node name="grouplayout">
+            <map>
+              <entry key="grouplayoutstyle" value="1"/>
+            </map>
+          </node>
+          <node name="nulllayout">
+            <map/>
+          </node>
+          <node name="tablelayout">
+            <map/>
+          </node>
+        </node>
+        <node name="javacodegenerator">
+          <map>
+            <entry key="sourcecompatibility" value="6"/>
+          </map>
+          <node name="templates">
+            <map>
+              <entry key="_class.template" value="${modifiers}class ${class_name} ${extends_declaration} {\n\t${constructor_modifiers}${class_name}() {\n\t\tinitComponents();\n\t}\n\n\t${variables_declaration}\n\n\t${component_initialization}\n\t\n}\n"/>
+              <entry key="_component_i18n_initialization.template" value="private void initComponentsI18n() {\n\t// Component i18n initialization  //GEN-BEGIN:initI18n\n\t// End of component i18n initialization  //GEN-END:initI18n\n}\n"/>
+              <entry key="_component_initialization.template" value="private void initComponents() {\n\t// Component initialization  //GEN-BEGIN:initComponents\n\t// End of component initialization  //GEN-END:initComponents\n}\n"/>
+              <entry key="_header.template" value="${package_declaration}\n\n/**\n * @author ${user}\n * Date: ${date}\n */\n"/>
+              <entry key="_variables_declaration.template" value="// Variables declaration  //GEN-BEGIN:variables\n// End of variables declaration  //GEN-END:variables\n"/>
+              <entry key="java.awt.Dialog.template" value="import java.awt.Dialog;\nimport java.awt.Frame;\n\n${modifiers}class ${class_name} ${extends_declaration} {\n\t${constructor_modifiers}${class_name}(Frame owner) {\n\t\tsuper(owner);\n\t\tinitComponents();\n\t}\n\n\t${constructor_modifiers}${class_name}(Dialog owner) {\n\t\tsuper(owner);\n\t\tinitComponents();\n\t}\n\n\t${variables_declaration}\n\n\t${component_initialization}\n\t\n}\n"/>
+              <entry key="javax.swing.AbstractAction.template" value="import java.awt.event.ActionEvent;\n\n${modifiers}class ${class_name} ${extends_declaration} {\n\t${constructor_modifiers}${class_name}() {\n\t\t// Action initialization  //GEN-BEGIN:initComponents\n\t\t// End of action initialization  //GEN-END:initComponents\n\t}\n\n\tpublic void actionPerformed(ActionEvent e) {\n\t\t// TODO add your code here\n\t}\n}\n"/>
+            </map>
+          </node>
+        </node>
+      </node>
+    </node>
+  </root>
+</preferences>

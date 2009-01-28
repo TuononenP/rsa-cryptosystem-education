@@ -103,3 +103,12 @@ org.eclipse.jface.text.BadLocationException
 	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:75)
 	at org.eclipse.jdt.internal.ui.text.JavaReconciler.process(JavaReconciler.java:373)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:204)
+!SESSION 2009-01-27 21:21:16.590 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fi_FI
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\Users\Pepe\rsa-cryptosystem-education\CODE
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-01-27 21:21:17.352
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
