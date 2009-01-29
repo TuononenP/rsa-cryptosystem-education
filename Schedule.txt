@@ -13,6 +13,7 @@
 25.1. 8h	Padding scheme: blocks of three. Alphabet to number and vice versa class.
 26.1. 8h	Actual Powerpoint presentation for the class of school colleagues. Designing GUI and poster. GUI programming.
 27.1. 5h	GUI design and programming. Final touches to the poster. Registered for the ICT Showroom 2009 competition.
+28.1. 6h	Started documentation, UML-diagrams, designing two types of padding schemes.
 
 -------------------
-OVERALL: 57h
+OVERALL: 63h

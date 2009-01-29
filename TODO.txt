@@ -4,18 +4,18 @@ GENERAL:
 --------------------
 DONE Meeting a customer - due 19.1.
 DONE Write list of customer demands.
-Diagram with Visio which shows how the message is travelling from A to B and when/how encryption/decryption is done. - due 24.1.
+DONE Diagram which shows how the message is travelling from A to B and when/how encryption/decryption is done. - due 24.1.
 DONE Powerpoint presentation - due 25.1.
-Poster - due 30.1.
-Sign up for the Showroom competition for student projects. - due 31.1.
+DONE Poster - due 30.1.
+DONE Sign up for the Showroom competition for student projects. - due 31.1.
 UML diagrams (class, use-case, acticity)
 
 
 GUI:
 --------------------
-GUI layout
+DONE GUI layout
 GUI element diagram
-Screenshot of the GUI
+DONE Screenshot of the GUI
 
 CODE:
 --------------------
