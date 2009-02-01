@@ -14,6 +14,8 @@
 26.1. 8h	Actual Powerpoint presentation for the class of school colleagues. Designing GUI and poster. GUI programming.
 27.1. 5h	GUI design and programming. Final touches to the poster. Registered for the ICT Showroom 2009 competition.
 28.1. 6h	Started documentation, UML-diagrams, designing two types of padding schemes.
+30.1. 3h	Documentation, key save/load classes, two types of padding schemes.
+01.2. 8h	key save/load classes.
 
 -------------------
-OVERALL: 63h
+OVERALL: 74 h
