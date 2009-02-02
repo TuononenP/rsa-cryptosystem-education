@@ -21,14 +21,9 @@ public class PaddingType2 {
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		char[] table = msg.toCharArray();
 		for (int j=0,i = 0; i < table.length;j++, i = i+2) {
-			System.out.println(numbers);
-			System.out.println(j+" "+i);
 			numbers.add(j,(alphaNum.getNum(String.valueOf(table[i])))*100);
-			System.out.println(numbers);
 			if (i+1<table.length){
 				numbers.set(j, (numbers.get(j)+(alphaNum.getNum(String.valueOf(table[i+1])))));
-				System.out.println(j+" "+i);
-				System.out.println(numbers);
 			} 
 
 		}

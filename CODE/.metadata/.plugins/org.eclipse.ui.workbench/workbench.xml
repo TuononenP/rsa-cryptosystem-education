@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="8" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="92" y="2">
 <fastViewData fastViewLocation="1024"/>
@@ -36,13 +36,14 @@
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSA_main.java" partName="RSA_main.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/RSA_main.java" title="RSA_main.java" tooltip="rsa-education/src/RSA_main.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSA_main.java" partName="RSA_main.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/RSA_main.java" title="RSA_main.java" tooltip="rsa-education/src/RSA_main.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/RSA_main.java"/>
-<editorState selectionLength="0" selectionOffset="233"/>
+<editorState selectionLength="0" selectionOffset="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Miller_Rabin_primality_test.java" partName="Miller_Rabin_primality_test.java" path="C:/Users/Pepe/rsa-cryptosystem-education/CODE/rsa-education/src/Miller_Rabin_primality_test.java" title="Miller_Rabin_primality_test.java" tooltip="rsa-education/src/Miller_Rabin_primality_test.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/Miller_Rabin_primality_test.java"/>
@@ -54,23 +55,27 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PowerOfTwo.java" partName="PowerOfTwo.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/PowerOfTwo.java" title="PowerOfTwo.java" tooltip="rsa-education/src/PowerOfTwo.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/PowerOfTwo.java"/>
-<editorState selectionLength="23" selectionOffset="168"/>
+<editorState selectionLength="0" selectionOffset="743"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestPowerOfTwo.java" partName="TestPowerOfTwo.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/TestPowerOfTwo.java" title="TestPowerOfTwo.java" tooltip="rsa-education/src/TestPowerOfTwo.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/TestPowerOfTwo.java"/>
-<editorState selectionLength="0" selectionOffset="106"/>
+<editorState selectionLength="0" selectionOffset="239"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PaddingType1.java" partName="PaddingType1.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/PaddingType1.java" title="PaddingType1.java" tooltip="rsa-education/src/PaddingType1.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/PaddingType1.java"/>
-<editorState selectionLength="545" selectionOffset="1146"/>
+<editorState selectionLength="0" selectionOffset="1689"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PaddingType2.java" partName="PaddingType2.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/PaddingType2.java" title="PaddingType2.java" tooltip="rsa-education/src/PaddingType2.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PaddingType2.java" partName="PaddingType2.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/PaddingType2.java" title="PaddingType2.java" tooltip="rsa-education/src/PaddingType2.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/PaddingType2.java"/>
-<editorState selectionLength="0" selectionOffset="1666"/>
+<editorState selectionLength="0" selectionOffset="711"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlphabetNum.java" partName="AlphabetNum.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/AlphabetNum.java" title="AlphabetNum.java" tooltip="rsa-education/src/AlphabetNum.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/AlphabetNum.java"/>
 <editorState selectionLength="0" selectionOffset="400"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DividedPower.java" partName="DividedPower.java" path="C:/Users/Jukolli/salaus/CODE/rsa-education/src/DividedPower.java" title="DividedPower.java" tooltip="rsa-education/src/DividedPower.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/rsa-education/src/DividedPower.java"/>
+<editorState selectionLength="0" selectionOffset="664"/>
 </editor>
 </editors>
 <views>
@@ -81,13 +86,16 @@
 <category IMemento.internal.id="Warnings (1 item)"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="304"/>
+<columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" isWindowWorkingSet="true" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -117,9 +125,6 @@
 </xmlDefinedFilters>
 </customFilters>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
@@ -237,160 +242,160 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/PaddingType1.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/TestPowerOfTwo.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/PowerOfTwo.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/PaddingType2.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/AlphabetNum.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/GUI.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/rsa-education/src/DividedPower.java"/>
 </editors>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="1700" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="AlphabetNum.java" index="2">
+<item historyLabel="DividedPower.java" index="3">
 <position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="1700" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="AlphabetNum.java" index="2">
-<position info="not_deleted" x="1357" y="0"/>
-</item>
-<item historyLabel="AlphabetNum.java" index="2">
-<position info="not_deleted" x="400" y="0"/>
-</item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="1700" y="0"/>
-</item>
-<item historyLabel="PaddingType2.java" index="1">
+<item historyLabel="DividedPower.java" index="3">
 <position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="960" y="182"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1316" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="1403" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="AlphabetNum.java" index="2">
-<position info="not_deleted" x="400" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1316" y="0"/>
+<item historyLabel="PaddingType2.java" index="2">
+<position info="not_deleted" x="711" y="0"/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="257" y="0"/>
+<item historyLabel="DividedPower.java" index="3">
+<position/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1316" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="257" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="60" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="0" y="28"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="741" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="28" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="0" y="28"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="735" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="28" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1196" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="262" y="337"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1196" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="432" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1196" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="148" y="49"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1196" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="878" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="741" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="525" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="604" y="272"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1194" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="AlphabetNum.java" index="2">
-<position info="not_deleted" x="400" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="604" y="272"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1194" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position/>
 </item>
-<item historyLabel="AlphabetNum.java" index="2">
-<position info="not_deleted" x="400" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="672" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1194" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="697" y="0"/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="905" y="0"/>
+<item historyLabel="PaddingType2.java" index="2">
+<position info="not_deleted" x="711" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1194" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType1.java" index="0">
-<position info="not_deleted" x="1146" y="545"/>
+<item historyLabel="PaddingType2.java" index="2">
+<position info="not_deleted" x="711" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1194" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="GUI.java" index="3">
-<position info="not_deleted" x="78" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="743" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1361" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="647" y="0"/>
+<item historyLabel="PowerOfTwo.java" index="1">
+<position info="not_deleted" x="743" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="698" y="0"/>
+<item historyLabel="DividedPower.java" index="3">
+<position/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="887" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="595" y="0"/>
+<item historyLabel="DividedPower.java" index="3">
+<position info="not_deleted" x="580" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="437" y="0"/>
+<item historyLabel="DividedPower.java" index="3">
+<position info="not_deleted" x="669" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="436" y="0"/>
+<item historyLabel="DividedPower.java" index="3">
+<position info="not_deleted" x="664" y="0"/>
 </item>
-<item historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="842" y="0"/>
+<item historyLabel="DividedPower.java" index="3">
+<position info="not_deleted" x="662" y="0"/>
 </item>
-<item active="true" historyLabel="PaddingType2.java" index="1">
-<position info="not_deleted" x="1607" y="0"/>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
+</item>
+<item historyLabel="DividedPower.java" index="3">
+<position info="not_deleted" x="664" y="0"/>
+</item>
+<item historyLabel="TestPowerOfTwo.java" index="0">
+<position info="not_deleted" x="239" y="0"/>
+</item>
+<item active="true" historyLabel="DividedPower.java" index="3">
+<position info="not_deleted" x="664" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -398,12 +403,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1b0c08"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -411,11 +410,13 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DividedPower.java" tooltip="rsa-education/src/DividedPower.java">
+<persistable path="/rsa-education/src/DividedPower.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AlphabetNum.java" tooltip="rsa-education/src/AlphabetNum.java">
 <persistable path="/rsa-education/src/AlphabetNum.java"/>
 </file>

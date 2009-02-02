@@ -1,0 +1,33 @@
+import java.math.BigInteger;
+
+/**
+ * 
+ */
+
+/**
+ * This is for power dividing
+ * @author Jukka Tuominen
+ *
+ */
+public class DividedPower extends PowerOfTwo {
+
+	public DividedPower(){
+		
+	}
+	
+	public StringBuilder powerDivison(BigInteger prime){
+		StringBuilder pwr = new StringBuilder();
+		BigInteger tulos, stop = BigInteger.ZERO;
+		
+		tulos=calculate(BigInteger.valueOf(prime));
+		return pwr;
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
