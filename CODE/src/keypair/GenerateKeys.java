@@ -6,8 +6,8 @@ public class GenerateKeys {
 
     private BigInteger p, q, n, phi, e, d;  
     private int bitsize;  
-    GnuRsaPublicKey publicKey;
-    GnuRsaPrivateKey privateKey;
+    RsaPublicKey publicKey;
+    RsaPrivateKey privateKey;
 	
     public GenerateKeys(int bitsize) {
     	this.bitsize = bitsize;
@@ -54,19 +54,19 @@ public class GenerateKeys {
         d = e.modInverse(phi);
         
         //Save keys
-        publicKey = new GnuRsaPublicKey(n, e);
-        privateKey = new GnuRsaPrivateKey(p, q, e, d);
+        publicKey = new RsaPublicKey(n, e);
+        privateKey = new RsaPrivateKey(p, q, e, d);
         
         //Destroy p & q for security reasons
         p = null;
         q = null;
     }
     
-    public GnuRsaPublicKey getPublicKey() {
+    public RsaPublicKey getPublicKey() {
     	return publicKey;
     }
     
-    public GnuRsaPrivateKey getPrivateKey() {
+    public RsaPrivateKey getPrivateKey() {
     	return privateKey;
     }
     

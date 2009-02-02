@@ -16,7 +16,7 @@ public class StoreKeyPair {
 	 * @param pubK
 	 * @param privK
 	 */
-	public StoreKeyPair(GnuRsaPublicKey pubK, GnuRsaPrivateKey privK) {
+	public StoreKeyPair(RsaPublicKey pubK, RsaPrivateKey privK) {
 		keyPair = new KeyPair(pubK, privK);
 	}
 	
@@ -31,7 +31,7 @@ public class StoreKeyPair {
 		return keyPair;
 	}
 	
-	public void setKeyPair(GnuRsaPublicKey pubK, GnuRsaPrivateKey privK) {
+	public void setKeyPair(RsaPublicKey pubK, RsaPrivateKey privK) {
 		keyPair = new KeyPair(pubK, privK);
 	}
 	

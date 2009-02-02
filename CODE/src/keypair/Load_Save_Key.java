@@ -83,14 +83,14 @@ public class Load_Save_Key {
 	
 	public static void main(String[] args) {
 		GenerateKeys gen = new GenerateKeys(512); //generates keys
-		GnuRsaPublicKey publicKey = gen.getPublicKey();
+		RsaPublicKey publicKey = gen.getPublicKey();
 		
 		Load_Save_Key open = new Load_Save_Key();
 		File file = new File("c:\\PubKey.txt");
 		Encode_Decode encDec = new Encode_Decode();
 		
 		byte[] encoded = encDec.encPublicKey(publicKey);
-		GnuRsaPublicKey pubK = encDec.decPublicKey(encoded);
+		RsaPublicKey pubK = encDec.decPublicKey(encoded);
 		System.out.println("N after encoding and decoding: ");
 		BigInteger A = pubK.getN();
 		System.out.println("N: " +A);

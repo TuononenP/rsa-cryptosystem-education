@@ -103,11 +103,11 @@ public int getFormatID() {
  * one.
  */
 public byte[] encodePublicKey(PublicKey key) {
-   if (!(key instanceof GnuRsaPublicKey)) {
+   if (!(key instanceof RsaPublicKey)) {
       throw new IllegalArgumentException("key");
    }
 
-   GnuRsaPublicKey rsaKey = (GnuRsaPublicKey) key;
+   RsaPublicKey rsaKey = (RsaPublicKey) key;
    ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
    // magic
@@ -172,7 +172,7 @@ public PublicKey decodePublicKey(byte[] k) {
    i += l;
    BigInteger e = new BigInteger(1, buffer);
 
-   return new GnuRsaPublicKey(n, e);
+   return new RsaPublicKey(n, e);
 }
 
 /**
@@ -210,11 +210,11 @@ public PublicKey decodePublicKey(byte[] k) {
  * @return the <i>Raw</i> format encoding of the designated key.
  */
 public byte[] encodePrivateKey(PrivateKey key) {
-   if (!(key instanceof GnuRsaPrivateKey)) {
+   if (!(key instanceof RsaPrivateKey)) {
       throw new IllegalArgumentException("key");
    }
 
-   GnuRsaPrivateKey rsaKey = (GnuRsaPrivateKey) key;
+   RsaPrivateKey rsaKey = (RsaPrivateKey) key;
    ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
    // magic
@@ -311,6 +311,6 @@ public PrivateKey decodePrivateKey(byte[] k) {
    i += l;
    BigInteger d = new BigInteger(1, buffer);
 
-   return new GnuRsaPrivateKey(p, q, e, d);
+   return new RsaPrivateKey(p, q, e, d);
 }
 }

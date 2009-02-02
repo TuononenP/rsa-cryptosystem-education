@@ -17,8 +17,8 @@ public class Open_Save {
 	Encode_Decode encDec;
 	Open_Save OS;
 	Load_Save_Key loadSave;
-	GnuRsaPublicKey pubKey;
-	GnuRsaPrivateKey privKey;
+	RsaPublicKey pubKey;
+	RsaPrivateKey privKey;
 	File file;
 	JFrame frame;
 	byte[] encoded;
@@ -84,7 +84,7 @@ public class Open_Save {
 	 * Saves public key in encoded format to the file.
 	 * @param publicKey Public key to be saved.
 	 */
-	public void savePublicKey(GnuRsaPublicKey publicKey) {
+	public void savePublicKey(RsaPublicKey publicKey) {
 		//Encode public key to a byte array
 		encDec = new Encode_Decode();
 		encoded = encDec.encPublicKey(publicKey);
@@ -102,7 +102,7 @@ public class Open_Save {
 	 * Saves private key in encoded format to the file.
 	 * @param privateKey Private key to be saved.
 	 */
-	public void savePrivateKey(GnuRsaPrivateKey privateKey) {
+	public void savePrivateKey(RsaPrivateKey privateKey) {
 		//Encode private key to a byte array
 		encDec = new Encode_Decode();
 		encoded = encDec.encPrivateKey(privateKey);
@@ -122,7 +122,7 @@ public class Open_Save {
 	 * 
 	 * @return Public key instance.
 	 */
-	public GnuRsaPublicKey loadPublicKey() {
+	public RsaPublicKey loadPublicKey() {
 		//Select the file to open
 		OS = new Open_Save();
 		file = OS.loadKey();
@@ -149,7 +149,7 @@ public class Open_Save {
 	 * 
 	 * @return Private key instance.
 	 */
-	public GnuRsaPrivateKey loadPrivateKey() {
+	public RsaPrivateKey loadPrivateKey() {
 		//Select the file to open
 		OS = new Open_Save();
 		file = OS.loadKey();
@@ -173,7 +173,7 @@ public class Open_Save {
 	public static void main(String[] args) {
 		//Generate keys
 		GenerateKeys gen = new GenerateKeys(512); //generates keys
-		GnuRsaPublicKey publicKey = gen.getPublicKey();
+		RsaPublicKey publicKey = gen.getPublicKey();
 		
 		Open_Save OS = new Open_Save();
 		OS.savePublicKey(publicKey);

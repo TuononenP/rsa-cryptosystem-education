@@ -13,7 +13,7 @@ public class Encode_Decode {
 	 * @param publicKey Public key to be encoded. 		
 	 * @return enc Byte array.
 	 */
-	public byte[] encPublicKey(GnuRsaPublicKey publicKey) {
+	public byte[] encPublicKey(RsaPublicKey publicKey) {
 		byte[] enc = publicKey.getEncoded(IKeyPairCodec.RAW_FORMAT);
 		return enc;
 	}
@@ -23,7 +23,7 @@ public class Encode_Decode {
 	 * @param privateKey Private key to be encoded.
 	 * @return enc Byte array.
 	 */
-	public byte[] encPrivateKey(GnuRsaPrivateKey privateKey) {
+	public byte[] encPrivateKey(RsaPrivateKey privateKey) {
 		byte[] enc = privateKey.getEncoded(IKeyPairCodec.RAW_FORMAT);
 		return enc;
 	}
@@ -33,8 +33,8 @@ public class Encode_Decode {
 	 * @param enc Encoded byte array to be decoded to public key.
 	 * @return pubK Public key instance.
 	 */
-	public GnuRsaPublicKey decPublicKey(byte[] enc) {
-		GnuRsaPublicKey pubK = GnuRsaPublicKey.valueOf(enc);
+	public RsaPublicKey decPublicKey(byte[] enc) {
+		RsaPublicKey pubK = RsaPublicKey.valueOf(enc);
 		return pubK;
 	}
 	
@@ -43,8 +43,8 @@ public class Encode_Decode {
 	 * @param enc Encoded byte array to be decoded to private key.
 	 * @return privK Private key instance.
 	 */
-	public GnuRsaPrivateKey decPrivateKey(byte[] enc) {
-		GnuRsaPrivateKey privK = GnuRsaPrivateKey.valueOf(enc);
+	public RsaPrivateKey decPrivateKey(byte[] enc) {
+		RsaPrivateKey privK = RsaPrivateKey.valueOf(enc);
 		return privK;
 	}
 	

@@ -12,8 +12,8 @@ import keypair.*;
  */
 public class Rsa_main {  
       
-    private GnuRsaPublicKey publicKey;
-    private GnuRsaPrivateKey privateKey;
+    private RsaPublicKey publicKey;
+    private RsaPrivateKey privateKey;
 //    private KeyPair keyPair;
       
     /**
@@ -27,11 +27,11 @@ public class Rsa_main {
 //    	keyPair = storeKeys.getKeyPair();
     }  
     
-    public GnuRsaPublicKey getPublicKey() {
+    public RsaPublicKey getPublicKey() {
     	return publicKey;
     }
     
-    public GnuRsaPrivateKey getPrivateKey() {
+    public RsaPrivateKey getPrivateKey() {
     	return privateKey;
     }
       
