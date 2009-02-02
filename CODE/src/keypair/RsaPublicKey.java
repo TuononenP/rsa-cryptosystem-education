@@ -60,7 +60,7 @@ import java.security.interfaces.RSAPublicKey;
 *
 * @version $Revision: 1.3 $
 */
-public class RsaPublicKey extends GnuRsaKey implements PublicKey, RSAPublicKey {
+public class RsaPublicKey extends RsaKey implements PublicKey, RSAPublicKey {
 
 // Constants and variables
 // -------------------------------------------------------------------------

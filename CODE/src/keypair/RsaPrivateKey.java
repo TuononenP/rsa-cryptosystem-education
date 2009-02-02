@@ -61,7 +61,7 @@ import java.security.interfaces.RSAPrivateKey;
 *
 * @version $Revision: 1.3 $
 */
-public class RsaPrivateKey extends GnuRsaKey
+public class RsaPrivateKey extends RsaKey
 implements PrivateKey, RSAPrivateCrtKey {
 
 // Constants and variables
