@@ -1,3 +1,5 @@
+package padding_schemes;
+
 import java.util.HashMap;
 
 /**
