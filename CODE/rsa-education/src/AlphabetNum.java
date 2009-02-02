@@ -8,6 +8,9 @@ import java.util.HashMap;
  * 
  * @author Petri Tuononen
  * @since 25.1.2009
+ * 
+ * added getStringNum for more flexibility
+ * @author Jukka Tuominen
  */
 public class AlphabetNum {
 
@@ -51,5 +54,12 @@ public class AlphabetNum {
 	public String getLetter(int num) {
 		return alphabet[num];
 	}
-	
+	/**
+	 * Return an order number as String for a given letter.
+	 * @param letter
+	 * @return String
+	 */
+	public String getStringNum(String letter){
+		return alphaNum.get(letter).toString();
+	}
 }
