@@ -17,7 +17,7 @@ public class PaddingType1 {
 
 	}
 
-	public Integer[] padded(String msg){
+	public Integer[] enCode(String msg){
 		msg=msg.toUpperCase();
 		msg=msg.replace(" ", "X");
 		System.out.println(msg);
@@ -27,6 +27,14 @@ public class PaddingType1 {
 			numbers[j]=alphaNum.getNum(String.valueOf(table[j]));
 		}
 		return numbers;
+	}
+	
+	public String deCode(Integer[] msg){
+		String unpadded = null;
+		for (int i = 0; i < msg.length; i++) {
+			unpadded=unpadded+alphaNum.getLetter(msg[i]);
+		}
+		return unpadded;
 	}
 
 	public BigInteger[] encrypt(String[] message, BigInteger d, BigInteger n){
@@ -47,8 +55,8 @@ public class PaddingType1 {
 		String message = "help";
 		Integer[] testi = new Integer[message.length()];
 		System.out.println(message);
-		testi = koe.padded(message);
-		System.out.print("Type1 padded text: ");
+		testi = koe.enCode(message);
+		System.out.print("Type1 encoded text: ");
 		for (int i = 0; i < testi.length; i++) {
 			System.out.print(testi[i]+" ");
 		}
@@ -58,12 +66,12 @@ public class PaddingType1 {
 			padded[i] = testi[i].toString();
 		}
 		System.out.println("\n");
-		System.out.print("Cryptotext: ");
+		System.out.print("Encrypted text: ");
 		BigInteger[] crypto = new BigInteger[padded.length];
 		crypto=(koe.encrypt(padded,BigInteger.valueOf(29),BigInteger.valueOf(91)));
-		
 		for (BigInteger integer : crypto){
 			System.out.print(integer+" ");
 		}
+		
 	}
 }
