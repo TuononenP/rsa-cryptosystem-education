@@ -1,6 +1,6 @@
 package padding_schemes;
 import java.math.BigInteger;
-
+import keypair.Encrypt_Decrypt;
 /**
  * Padding type 1 for RSA cryptography
  * @author Jukka Tuominen
@@ -28,29 +28,22 @@ public class PaddingType1 {
 		}
 		return numbers;
 	}
-	
+
 	public String deCode(Integer[] msg){
-		String unpadded = null;
+		String unpadded = "";
 		for (int i = 0; i < msg.length; i++) {
 			unpadded=unpadded+alphaNum.getLetter(msg[i]);
 		}
 		return unpadded;
 	}
 
-	public BigInteger[] encrypt(String[] message, BigInteger d, BigInteger n){
-		BigInteger[] encrypted = new BigInteger[message.length];
-		for (int i = 0; i < message.length; i++) {
-			encrypted[i]=(new BigInteger(message[i])).modPow(d, n);
-		}
 
-		return encrypted;
-	}
 	/**
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		Encrypt_Decrypt c = new Encrypt_Decrypt();
 		PaddingType1 koe = new PaddingType1();
 		String message = "help";
 		Integer[] testi = new Integer[message.length()];
@@ -61,17 +54,32 @@ public class PaddingType1 {
 			System.out.print(testi[i]+" ");
 		}
 		String[] padded = new String[testi.length];
-		
+
 		for (int i = 0; i < testi.length; i++) {
 			padded[i] = testi[i].toString();
 		}
-		System.out.println("\n");
+		System.out.println();
 		System.out.print("Encrypted text: ");
 		BigInteger[] crypto = new BigInteger[padded.length];
-		crypto=(koe.encrypt(padded,BigInteger.valueOf(29),BigInteger.valueOf(91)));
+
+		for (int i = 0; i < crypto.length; i++) {
+			crypto[i]=(c.encrypt(testi[i],BigInteger.valueOf(29),BigInteger.valueOf(91)));
+		}
+
 		for (BigInteger integer : crypto){
 			System.out.print(integer+" ");
 		}
-		
+		System.out.println();
+		System.out.print("Decrypted text:");
+		for (int i = 0; i < crypto.length; i++) {
+			testi[i]=c.decrypt(crypto[i], BigInteger.valueOf(29), BigInteger.valueOf(91));
+		}
+		for (Integer integer : testi) {
+			System.out.print(integer+" ");
+		}
+		System.out.println();
+		System.out.print("Type1 decoded text:");
+		message=koe.deCode(testi);
+		System.out.println(message);
 	}
 }

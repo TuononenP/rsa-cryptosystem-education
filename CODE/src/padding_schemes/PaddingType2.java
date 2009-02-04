@@ -1,7 +1,9 @@
 package padding_schemes;
 import java.math.BigInteger;	
 import java.util.ArrayList;
+import keypair.Encrypt_Decrypt;
 /**
+ *  Padding type 2 for rsa cryptography
  *  @author Jukka Tuominen
  */
 public class PaddingType2 {
@@ -42,35 +44,30 @@ public class PaddingType2 {
 	 * @return String decoded message
 	 */
 	public String deCode(ArrayList<Integer> msg){
-		String decoded = null;
+		String decoded = "";
 		Integer help, apu = null;
 		for (int i = 0; i < msg.size(); i++) {
 		help=(msg.get(i));
 		apu = help/100;
 		decoded=decoded+alphaNum.getLetter(apu);
-		decoded=decoded+alphaNum.getLetter(help-apu);
+		decoded=decoded+alphaNum.getLetter(help-(apu*100));
 		}
 		return decoded;
 	}
 
-	public BigInteger[] encrypt(String[] message, BigInteger d, BigInteger n){
-		BigInteger[] encrypted = new BigInteger[message.length];
-		for (int i = 0; i < message.length; i++) {
-			encrypted[i]=(new BigInteger(message[i])).modPow(d, n);
-		}
-
-		return encrypted;
-	}
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Encrypt_Decrypt c = new Encrypt_Decrypt();
 		PaddingType2 koe = new PaddingType2();
 		String message = "help";
 		ArrayList<Integer> testi = null;
 		System.out.println(message);
 		testi = koe.enCode(message);
 		System.out.print("Type2 encoded text: ");
-		System.out.println(testi);
+		System.out.print(testi);
 
 		String[] padded = new String[testi.size()];
 
@@ -81,11 +78,23 @@ public class PaddingType2 {
 		System.out.println();
 		System.out.print("Encrypted text: ");
 		BigInteger[] crypto = new BigInteger[padded.length];
-		crypto=(koe.encrypt(padded,BigInteger.valueOf(113),BigInteger.valueOf(3893)));
-
+		for (int i = 0; i < crypto.length; i++) {
+			crypto[i]=(c.encrypt(testi.get(i),BigInteger.valueOf(113),BigInteger.valueOf(3893)));
+		}
+		
 		for (BigInteger integer : crypto){
 			System.out.print(integer+" ");
 		}
+		System.out.println();
+		System.out.print("Decrypted text:");
+		testi.clear();
+		for (int i = 0; i < crypto.length; i++) {
+			testi.add(c.decrypt(crypto[i], BigInteger.valueOf(1937), BigInteger.valueOf(3893)));
+		}
+		System.out.println(testi);
+		System.out.print("Type2 decoded text:");
+		String d=koe.deCode(testi);
+		System.out.println(d);
 	}
-
+	
 }
