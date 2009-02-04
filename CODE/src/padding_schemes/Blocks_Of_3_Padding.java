@@ -1,5 +1,4 @@
 package padding_schemes;
-
 /**
  * Padding scheme for cryptography.
  * Divide text into blocks of 3 letters.
