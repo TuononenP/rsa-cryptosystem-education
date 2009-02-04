@@ -14,8 +14,12 @@ public class PaddingType2 {
 
 	}
 
-
-	public ArrayList<Integer> padded(String msg){
+	/**
+	 * Encodes message with padding type 2
+	 * @param msg 
+	 * @return ArrayList<Integer> containing encoded message
+	 */
+	public ArrayList<Integer> enCode(String msg){
 		msg=msg.toUpperCase();
 		msg=msg.replace(" ", "X");
 		System.out.println(msg);
@@ -30,6 +34,23 @@ public class PaddingType2 {
 		}
 
 		return numbers;
+	}
+	
+	/**
+	 * Decodes message with padding type 2
+	 * @param msg ArrayList<Integer>
+	 * @return String decoded message
+	 */
+	public String deCode(ArrayList<Integer> msg){
+		String decoded = null;
+		Integer help, apu = null;
+		for (int i = 0; i < msg.size(); i++) {
+		help=(msg.get(i));
+		apu = help/100;
+		decoded=decoded+alphaNum.getLetter(apu);
+		decoded=decoded+alphaNum.getLetter(help-apu);
+		}
+		return decoded;
 	}
 
 	public BigInteger[] encrypt(String[] message, BigInteger d, BigInteger n){
@@ -47,8 +68,8 @@ public class PaddingType2 {
 		String message = "help";
 		ArrayList<Integer> testi = null;
 		System.out.println(message);
-		testi = koe.padded(message);
-		System.out.print("Type2 padded text: ");
+		testi = koe.enCode(message);
+		System.out.print("Type2 encoded text: ");
 		System.out.println(testi);
 
 		String[] padded = new String[testi.size()];
@@ -57,8 +78,8 @@ public class PaddingType2 {
 			padded[i] = testi.get(i).toString();
 		}
 		
-		System.out.println("\n");
-		System.out.print("Cryptotext: ");
+		System.out.println();
+		System.out.print("Encrypted text: ");
 		BigInteger[] crypto = new BigInteger[padded.length];
 		crypto=(koe.encrypt(padded,BigInteger.valueOf(113),BigInteger.valueOf(3893)));
 
