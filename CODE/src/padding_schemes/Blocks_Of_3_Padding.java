@@ -13,6 +13,7 @@ import java.math.BigDecimal;
  */
 public class Blocks_Of_3_Padding {
 
+	//variable declarations and initializations
 	private AlphabetNum alphaNum = new AlphabetNum();
 	private final int BASE = 26;
 	private final String pow_zero = "\u00B0";
@@ -89,38 +90,38 @@ public class Blocks_Of_3_Padding {
 	}
 	
 	/**
-	 * Return number of three letter blocks in a table.
-	 * @param table
-	 * @return
+	 * Returns the amount of three letter blocks in a table.
+	 * @param table String table to check.
+	 * @return amount of three letter blocks in a table.
 	 */
 	public int numOf3LetterBlocks(String[] table) {
-		int num = 0;
+		int amount = 0;
 		String word;
 		for (int i=0; i < table.length; i++) {
 			word = table[i];
-			num += word.length()/3;
+			amount += word.length()/3;
 		}
-		return num;
+		return amount;
 	}
 	
 	/**
-	 * Converts 3 letter string to a encoded number.
+	 * Encodes three letter text block to a number.
 	 * Let A=0, B=1,...,Z=25
 	 * 2st letter*BASE^2 + 2nd letter*BASE^1 + 3rd letter*BASE^0
 	 * @param text	 Three letter string.
-	 * @return
+	 * @return Number of encoded text.
 	 */
 	public int encode(String text) {
 		int num = (int) (alphaNum.getNum(text.substring(0, 1))*Math.pow(BASE, 2)) +
-		(int) (alphaNum.getNum(text.substring(1, 2))*Math.pow(BASE, 1)) +
-		(int) (alphaNum.getNum(text.substring(2, 3))*Math.pow(BASE, 0));
+				  (int) (alphaNum.getNum(text.substring(1, 2))*Math.pow(BASE, 1)) +
+				  (int) (alphaNum.getNum(text.substring(2, 3))*Math.pow(BASE, 0));
 		return num;
 	}
 	
 	/**
 	 * Return a formula as a text.
 	 * @param text	Three letter string.
-	 * @return
+	 * @return Mathematical formula.
 	 */
 	public String getFormula(String text) {
 		String formula;
@@ -129,6 +130,11 @@ public class Blocks_Of_3_Padding {
 		return formula;
 	}
 	
+	/**
+	 * Store products that represents each character of three letter text block. 
+	 * 
+	 * @param text Three letter text block.
+	 */
 	public void setProductNumbers(String text) {
 		products[0] = alphaNum.getNum(String.valueOf(text.charAt(0)));
 		products[1] = alphaNum.getNum(String.valueOf(text.charAt(1)));
@@ -139,16 +145,16 @@ public class Blocks_Of_3_Padding {
 	 * Return full formula as a text.
 	 * e.g. ATT = 0*26^2 + 19*26^1 + 19*26^0 = 513
 	 * @param text	Three letter string.
-	 * @return
+	 * @return Whole mathematical formula.
 	 */
 	public String getFullFormula(String text) {
 		return text+" = "+getFormula(text)+" = "+encode(text);
 	}
 	
 	/**
-	 * Print 3 letter text.
+	 * Prints text in three letter blocks.
 	 * e.g. ATTACK AT SEVEN --> ATT ACK XAT XSE VEN
-	 * @param message
+	 * @param message Text in three letter blocks.
 	 */
 	public void printBlockText(String message) {
 		Blocks_Of_3_Padding padding = new Blocks_Of_3_Padding();
@@ -172,6 +178,12 @@ public class Blocks_Of_3_Padding {
 	    return nro;
 	}
 	
+	/**
+	 * Decodes a number back to three letter text block.
+	 * 
+	 * @param encoded Text block encoded to number.
+	 * @return three letter text block.
+	 */
 	public String decode(int encoded) {
 		sB = new StringBuilder();
 		//divide encoded num with base number
@@ -211,6 +223,12 @@ public class Blocks_Of_3_Padding {
 		return decoded;
 	}
 	
+	/**
+	 * Decodes a number back to three letter text block.
+	 * Prints whole mathematical formulas of each and every step.
+	 * 
+	 * @param encoded Text block encoded to number.
+	 */
 	public void decode_print(int encoded) {
 		sB = new StringBuilder();
 		//divide encoded num with base number
@@ -290,6 +308,10 @@ public class Blocks_Of_3_Padding {
 		decode_print(encoded);
 	}
 	
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Blocks_Of_3_Padding pg = new Blocks_Of_3_Padding();
 		
