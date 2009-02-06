@@ -18,6 +18,7 @@
 01.2. 8h	Key save/load classes.
 02.2. 6h	Key save/load classes. Two types of padding schemes. Customer meeting.
 04.2. 6h	Three types of padding schemes. Documentation.
+06.2. 4h	Padding schemes, documentation.
 
 -------------------
-OVERALL: 86 h
+OVERALL: 90 h
