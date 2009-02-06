@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 
 /**
  * Padding scheme for cryptography.
- * Divide text into blocks of 3 letters.
+ * Divides text into blocks of 3 letters.
+ * Encodes text block to number.
+ * Decodes number back to text block.
  * 
  * @author Petri Tuononen
  * @since 25.1.2009
@@ -18,7 +20,7 @@ public class Blocks_Of_3_Padding {
 	private final String pow_two = "\u00B2";
 	private final double BASE_double = Double.parseDouble(Integer.toString(BASE)); 
 	private int[] products = new int[3];
-	private StringBuilder sB = new StringBuilder();
+	private StringBuilder sB;
 	String decoded = null;
 	int firstProduct = 0, secondProduct = 0, lastProduct = 0;
 	double dPart, dPart2, division, temp;
@@ -159,30 +161,30 @@ public class Blocks_Of_3_Padding {
 	}
 	
 	/**
-	 * Rounds a number upwards to a closest 
+	 * Rounds a number upwards to closest integer.
 	 * @param nro Number to round.
-	 * @return
+	 * @return Rounded number.
 	 */
-	public double roundDouble(double nro) {
-	    int decimalPlace = 1;
+	public double roundDouble(double nro, int desPlace) {
 	    BigDecimal bd = new BigDecimal(nro);
-	    bd = bd.setScale(decimalPlace,BigDecimal.ROUND_UP);
+	    bd = bd.setScale(desPlace,BigDecimal.ROUND_UP);
 	    nro = bd.doubleValue();
 	    return nro;
 	}
 	
 	public String decode(int encoded) {
+		sB = new StringBuilder();
 		//divide encoded num with base number
 		division = encoded/BASE_double;
 		//check if the result is < 26
 		if (division < BASE_double) { //two products
-			//divide front and desimal part of double
-			secondProduct = (int) division; //front part
+			//separate integer and desimal part of double
+			secondProduct = (int) division; //integer part
 			dPart = division-secondProduct; //desimal part
-			lastProduct = (int) roundDouble(BASE*dPart);
+			lastProduct = (int) roundDouble(BASE*dPart, 1);
 		}
 		else { //three products
-			//result of division is >26 so another division has to be done
+			//result after the first division is >26 so another division has to be done
 			division = division/BASE_double;
 			/*
 			 * Now after second division the result should be <26.
@@ -194,7 +196,7 @@ public class Blocks_Of_3_Padding {
 				temp = dPart*26;
 				secondProduct = (int) temp;
 				dPart2 = temp - secondProduct;
-				lastProduct = (int) roundDouble(BASE*dPart2);
+				lastProduct = (int) roundDouble(BASE*dPart2, 1);
 			}
 		}
 	    //save products to table
@@ -210,40 +212,50 @@ public class Blocks_Of_3_Padding {
 	}
 	
 	public void decode_print(int encoded) {
+		sB = new StringBuilder();
 		//divide encoded num with base number
 		division = encoded/BASE_double;
 		//check if the result is < 26
-		if (division < BASE_double) { //two products
-			//divide front and desimal part of double
-			secondProduct = (int) division; //front part
+		if (division < BASE) { //two products
+			//separate integer and desimal part of double
+			secondProduct = (int) division; //integer part
 			dPart = division-secondProduct; //desimal part
-			lastProduct = (int) roundDouble(BASE*dPart);
+			lastProduct = (int) roundDouble(BASE*dPart, 1);
 			System.out.println((int)encoded+" = ("+(int)encoded+"/"+BASE+")*"+BASE);
 			System.out.println((int)encoded+" = "+division+"*"+BASE);
 			System.out.println((int)encoded+" = "+secondProduct+"*"+BASE+" + "+dPart+"*"+BASE);
 			System.out.println((int)encoded+" = "+secondProduct+"*"+BASE+" + "+lastProduct+"*"+BASE+pow_zero);
 		}
 		else { //three products
-			//result of division is >26 so another division has to be done
+			//result after the first division is >26 so another division has to be done
+			System.out.println(encoded+" = ("+encoded+"/"+BASE+")*"+BASE);
+//			System.out.println(encoded+" = "+division+"*"+BASE);
+			System.out.println(encoded+" = "+roundDouble(division, 3)+"*"+BASE);
+//			System.out.println(encoded+" = ("+division+"/"+BASE+")*"+BASE+pow_two);
+			System.out.println(encoded+" = ("+roundDouble(division, 3)+"/"+BASE+")*"+BASE+pow_two);
 			division = division/BASE_double;
 			/*
 			 * Now after second division the result should be <26.
 			 * Text block 'ZZZ' has the biggest number when encoded (17575) and [17575/(26*26)] < 26.
 			 */
-			System.out.println("\nDEBUG:");
 			if (division < BASE) { //to be 100% sure that the division result is <26
+//				System.out.println(encoded+" = "+division+"*"+BASE+pow_two);
+				System.out.println(encoded+" = "+roundDouble(division, 3)+"*"+BASE+pow_two);
 				firstProduct = (int) division; //we get first product
-				System.out.println("first product: "+firstProduct);
 				dPart = division-firstProduct; //desimal part
-				System.out.println(dPart);
+//				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+dPart+"*"+BASE+pow_two);
+				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+roundDouble(dPart, 3)+"*"+BASE+pow_two);
+//				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + ("+dPart+"*"+BASE+")*"+BASE);
+				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + ("+roundDouble(dPart, 3)+"*"+BASE+")*"+BASE);
 				temp = dPart*26;
-				System.out.println(temp);
+//				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+temp+"*"+BASE);
+				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+roundDouble(temp, 3)+"*"+BASE);
 				secondProduct = (int) temp;
-				System.out.println("second product: "+secondProduct);
 				dPart2 = temp - secondProduct;
-				System.out.println(dPart2);
-				lastProduct = (int) roundDouble(BASE*dPart2);
-				System.out.println(lastProduct);
+//				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+secondProduct+"*"+BASE+" + "+dPart2+"*"+BASE);
+				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+secondProduct+"*"+BASE+" + "+roundDouble(dPart2, 3)+"*"+BASE);
+				lastProduct = (int) roundDouble(BASE*dPart2, 1);
+				System.out.println(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+secondProduct+"*"+BASE+" + "+lastProduct+"*"+BASE+pow_zero);
 			}
 		}
 	    //save products to table
@@ -251,11 +263,11 @@ public class Blocks_Of_3_Padding {
 	    products[1] = secondProduct;
 	    products[2] = lastProduct;
 		//print result
-		System.out.println("Products: ["+products[0]+", "+products[1]+" ,"+products[2]+"]");
-		//print 0=A
+		System.out.println("Products: ["+products[0]+", "+products[1]+", "+products[2]+"]");
+		//print number to alphabet counterparts
 		System.out.println(products[0]+"="+alphaNum.getLetter(products[0])+", "
-				+products[1]+"="+alphaNum.getLetter(products[1])+", "
-				+products[2]+"="+alphaNum.getLetter(products[2]));
+						  +products[1]+"="+alphaNum.getLetter(products[1])+", "
+						  +products[2]+"="+alphaNum.getLetter(products[2]));
 		
 		for (int i=0; i < products.length; i++) { 
 			sB.append(alphaNum.getLetter(products[i])); //append letters
@@ -264,10 +276,28 @@ public class Blocks_Of_3_Padding {
 		System.out.println("Result: "+decoded);
 	}
 	
+	//prints encode & decode functions
+	public void testMethods(String block) {
+		System.out.println("Encode: ");
+		setProductNumbers(block);
+		System.out.println(alphaNum.getLetter(products[0])+"="+products[0]
+		             +", "+alphaNum.getLetter(products[1])+"="+products[1]
+		             +", "+alphaNum.getLetter(products[2])+"="+products[2]);
+		System.out.println(getFullFormula(block));
+		System.out.println("");
+		int encoded = encode(block);
+		System.out.println("Decode: ");
+		decode_print(encoded);
+	}
+	
 	public static void main(String[] args) {
 		Blocks_Of_3_Padding pg = new Blocks_Of_3_Padding();
 		
-		//TEST DECODE METHOD
+		pg.testMethods("ATT");
+		System.out.println("");
+		pg.testMethods("XSE");
+		
+		//Tests decode method
 //		System.out.println("///////////////////////////////////");
 //		System.out.println(pg.decode(513));
 //		System.out.println(pg.decode(62));
@@ -275,102 +305,6 @@ public class Blocks_Of_3_Padding {
 //		System.out.println(pg.decode(16020));
 //		System.out.println(pg.decode(14313));
 //		System.out.println("///////////////////////////////////");
-		//TEST END
-
-		System.out.println("Encode: ");
-		pg.setProductNumbers("ATT");
-		System.out.println(pg.alphaNum.getLetter(pg.products[0])+"="+pg.products[0]+", "+pg.alphaNum.getLetter(pg.products[1])+"="+pg.products[1]+", "+pg.alphaNum.getLetter(pg.products[2])+"="+pg.products[2]);
-		System.out.println(pg.getFullFormula("ATT"));
-		System.out.println("");
-		
-		//TEST DECODE_PRINT METHOD
-		System.out.println("Decode: ");
-		pg.decode_print(513);
-		//TEST END
-		
-//		AlphabetNum aN = new AlphabetNum();
-//		double BASE_double = Double.parseDouble(Integer.toString(pg.BASE)); 
-//		int BASE = pg.BASE;
-		
-//		String message = "The purpose of this message is to test a method";
-//		System.out.println(message);
-//		pg.printBlockText(message);
-//		System.out.println("\n");
-//		String example = "ATTACK AT SEVEN";
-//		System.out.println(example);
-//		pg.printBlockText(example);
-//		System.out.println("\n");
-//		System.out.println(pg.getFullFormula("ATT"));
-//		System.out.println(pg.getFullFormula("ACK"));
-//		System.out.println(pg.getFullFormula("XAT"));
-//		System.out.println(pg.getFullFormula("XSE"));
-//		System.out.println(pg.getFullFormula("VEN"));
-		
-		//Reverse padding test
-//		String block = "XSE";
-//		double encoded = Double.parseDouble(Integer.toString(pg.textBlockToNum(block))); //number to reverse into a String
-//		System.out.println(encoded);
-		
-/*
-		StringBuilder sB = new StringBuilder();
-		String decoded = null;
-		
-		//variables
-		int firstProduct = 0, secondProduct = 0, lastProduct = 0;
-		double dPart;
-		int[] products = new int[3];
-		
-		//1st phase - divide var with 26 aka base number
-		double division = encoded/BASE_double;
-		System.out.println(division);
-		//2nd phase - check if the result is < 26
-		if (division < BASE_double) { //two products
-			//divide front and desimal part of double
-			secondProduct = (int) division; //front part
-			dPart = division-secondProduct; //desimal part
-			lastProduct = (int) pg.roundDouble(BASE*dPart);
-			System.out.println((int)encoded+" = "+secondProduct+"*"+BASE+" + "+dPart+"*"+BASE); //first line
-		    System.out.println((int)encoded+" = "+secondProduct+"*"+BASE+" + "+lastProduct); //second line
-		    //save products to table
-		    products[0] = firstProduct;
-		    products[1] = secondProduct;
-		    products[2] = lastProduct;
-		}
-		else { //three products
-			//result of division is >26 so another division has to be done
-			division = division/BASE_double;
-			/*
-			 * Now after second division the result should be <26.
-			 * Text block 'ZZZ' has the biggest number when encoded (17575) and [17575/(26*26)] < 26.
-			 */
-/*
-			System.out.println("\nDEBUG:");
-			if (division < BASE) { //to be 100% sure that the division result is <26
-				firstProduct = (int) division; //we get first product
-				System.out.println("first product: "+firstProduct);
-				dPart = division-firstProduct; //desimal part
-				System.out.println(dPart);
-				double temp = dPart*26;
-				System.out.println(temp);
-				secondProduct = (int) temp;
-				System.out.println("second product: "+secondProduct);
-				double dPart2 = temp - secondProduct;
-				System.out.println(dPart2);
-				lastProduct = (int) pg.roundDouble(BASE*dPart2);
-				System.out.println(lastProduct);
-			    //save products to table
-			    products[0] = firstProduct;
-			    products[1] = secondProduct;
-			    products[2] = lastProduct;
-			}
-		}
-		//print result
-		System.out.println("Products: ["+products[0]+", "+products[1]+" ,"+products[2]+"]");
-		for (int i=0; i < products.length; i++) { 
-			sB.append(aN.getLetter(products[i])); //append letters
-		}
-		decoded = sB.toString();
-		System.out.println("Result: "+decoded);
-*/
+		//Test end
 	}
 }
