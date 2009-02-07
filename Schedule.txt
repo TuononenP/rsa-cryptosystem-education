@@ -19,6 +19,7 @@
 02.2. 6h	Key save/load classes. Two types of padding schemes. Customer meeting.
 04.2. 6h	Three types of padding schemes. Documentation.
 06.2. 4h	Padding schemes, documentation.
+07.2. 5h	Major GUI tweaking. Added listeners, font size selection, repositioned buttons, frame&panel size modif. and other fine tuning.
 
 -------------------
-OVERALL: 90 h
+OVERALL: 95 h
