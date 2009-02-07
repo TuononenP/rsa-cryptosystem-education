@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
 
-
 /*
  * Sat Feb 07 23:09:55 EET 2009
  */
@@ -157,7 +156,7 @@ public class Gui extends JFrame {
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridBagLayout());
 		((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {10, 581, 10};
-		((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {10, 0, 10, 0, 10, 64, 10, 0, 10, 0, 10, 242, 5, 0, 0, 0};
+		((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {10, 0, 10, 0, 10, 64, 10, 0, 10, 0, 10, 232, 5, 0, 0, 0};
 		((GridBagLayout)contentPane.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0E-4};
 
 		//======== menuBar ========
@@ -630,7 +629,7 @@ public class Gui extends JFrame {
 			panel5.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "RSA execution"));
 			panel5.setLayout(new GridBagLayout());
 			((GridBagLayout)panel5.getLayout()).columnWidths = new int[] {10, 0, 5, 0};
-			((GridBagLayout)panel5.getLayout()).rowHeights = new int[] {210, 5, 0};
+			((GridBagLayout)panel5.getLayout()).rowHeights = new int[] {200, 5, 0};
 			((GridBagLayout)panel5.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel5.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
 
@@ -701,8 +700,10 @@ public class Gui extends JFrame {
 		contentPane.add(panel6, new GridBagConstraints(1, 13, 1, 1, 0.0, 0.0,
 			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 			new Insets(0, 0, 0, 0), 0, 0));
-		setSize(800, 765);
+		setSize(750, 775);
 		setLocationRelativeTo(null);
+		toFront();
+		setVisible(true);
 
 		//---- buttonGroup2 ----
 		ButtonGroup buttonGroup2 = new ButtonGroup();
@@ -837,17 +838,7 @@ public class Gui extends JFrame {
 	}
 	
 	public static void createGUI() {
-		Gui gui = new Gui();
-		JFrame frame = new JFrame("RSA Education Cryptosystem");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true); 
-        frame.toFront();
-        frame.setSize(800, 765);
-        frame.setLocationRelativeTo(null);
-        Container pane = new Container();
-        pane = gui.getContentPane();
-        frame.setContentPane(pane);
-        frame.setVisible(true);
+		new Gui();
 	}
 	
     public static void main(String[] args) {
