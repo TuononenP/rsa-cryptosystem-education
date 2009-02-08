@@ -20,7 +20,7 @@
 04.02. 6h	Three types of padding schemes. Documentation.
 06.02. 4h	Padding schemes, documentation.
 07.02. 5h	Major GUI tweaking. Added listeners, font size selection, repositioned buttons, frame & panel size modif. and other fine tuning.
-08.02. 8h	GUI functionality: create keys, clear keys, save & load keys, save & load execution.
+08.02. 8h	GUI functionality: create keys, clear keys, save & load keys, save & load execution, font size selection.
 
 -------------------
 OVERALL: 103 h
