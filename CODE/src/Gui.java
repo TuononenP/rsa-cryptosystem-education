@@ -87,9 +87,10 @@ public class Gui extends JFrame {
 	private JComboBox comboBox1;
 	private JButton button8;
 	
-	private Open_Save openSave;
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
+	private Open_Save openSave;
+	private Load_Save_Exec loadSaveExec;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 			"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
 	//End of variables declaration  //GEN-END:variables
@@ -861,11 +862,13 @@ public class Gui extends JFrame {
 	}
 
 	private void saveExecutionButtonActionPerformed(ActionEvent e) {
-
+		loadSaveExec = new Load_Save_Exec(this, textArea1);
+		loadSaveExec.saveExecToFile();
 	}
 
 	private void loadExecutionButtonActionPerformed(ActionEvent e) {
-
+		loadSaveExec = new Load_Save_Exec(this, textArea1);
+		loadSaveExec.loadExecFromFile();
 	}
 
 	private void fontSizeComboBoxActionPerformed(ActionEvent e) {
