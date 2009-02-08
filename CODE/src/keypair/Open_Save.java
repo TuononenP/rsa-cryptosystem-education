@@ -35,6 +35,7 @@ public class Open_Save {
 	 * Default constructor.
 	 */
 	public Open_Save() {
+		frame = createFrame();
 	}
 	
 	/**
@@ -43,7 +44,7 @@ public class Open_Save {
 	 */
 	public JFrame createFrame() {
 		JFrame frame = new JFrame();
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     	frame.setVisible(true); 
     	frame.toFront();
     	frame.setSize(500, 500);
@@ -60,7 +61,7 @@ public class Open_Save {
 	private File loadKey() {
 		//Show load dialog.
 		final JFileChooser fc = new JFileChooser();
-		fc.showOpenDialog(createFrame());
+		fc.showOpenDialog(frame);
 		//Get user selected file.
 		file = fc.getSelectedFile();
 		return file;
@@ -74,7 +75,7 @@ public class Open_Save {
 	private File saveKey() {
 		//Show save dialog.
 		final JFileChooser fc = new JFileChooser();
-		fc.showSaveDialog(createFrame());
+		fc.showSaveDialog(frame);
 		//Get user selected file.
 		file = fc.getSelectedFile();
 		return file;
@@ -90,8 +91,7 @@ public class Open_Save {
 		encoded = encDec.encPublicKey(publicKey);
 		
 		//Select the file where to save
-		OS = new Open_Save();
-		file = OS.saveKey();
+		file = saveKey();
 		
 		//Save encoded byte array to a file
 		loadSave = new Load_Save_Key();
@@ -108,8 +108,7 @@ public class Open_Save {
 		encoded = encDec.encPrivateKey(privateKey);
 		
 		//Select the file where to save
-		OS = new Open_Save();
-		file = OS.saveKey();
+		file = saveKey();
 		
 		//Save encoded byte array to a file
 		loadSave = new Load_Save_Key();
@@ -124,8 +123,7 @@ public class Open_Save {
 	 */
 	public RsaPublicKey loadPublicKey() {
 		//Select the file to open
-		OS = new Open_Save();
-		file = OS.loadKey();
+		file = loadKey();
 		
 		//Load encoded bytes from the file
 		loadSave = new Load_Save_Key();
@@ -151,8 +149,7 @@ public class Open_Save {
 	 */
 	public RsaPrivateKey loadPrivateKey() {
 		//Select the file to open
-		OS = new Open_Save();
-		file = OS.loadKey();
+		file = loadKey();
 		
 		//Load encoded bytes from the file
 		loadSave = new Load_Save_Key();

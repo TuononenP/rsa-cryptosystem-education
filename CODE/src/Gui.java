@@ -1,8 +1,11 @@
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
+import keypair.*;
 
 /*
  * Sat Feb 07 23:09:55 EET 2009
@@ -62,6 +65,7 @@ public class Gui extends JFrame {
 	private JButton button2;
 	private JButton button9;
 	private JButton button1;
+	private JButton button11;
 	private JButton button7;
 	private JButton button10;
 	private JPanel panel2;
@@ -82,6 +86,12 @@ public class Gui extends JFrame {
 	private JButton button6;
 	private JComboBox comboBox1;
 	private JButton button8;
+	
+	private Open_Save openSave;
+	private RsaPublicKey publicKey;
+	private RsaPrivateKey privateKey;
+	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
+			"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
 	//End of variables declaration  //GEN-END:variables
 
 	private void initComponents() {
@@ -129,6 +139,7 @@ public class Gui extends JFrame {
 		button2 = new JButton();
 		button9 = new JButton();
 		button1 = new JButton();
+		button11 = new JButton();
 		button7 = new JButton();
 		button10 = new JButton();
 		panel2 = new JPanel();
@@ -147,7 +158,7 @@ public class Gui extends JFrame {
 		panel6 = new JPanel();
 		button5 = new JButton();
 		button6 = new JButton();
-		comboBox1 = new JComboBox();
+		comboBox1 = new JComboBox(textSize);
 		button8 = new JButton();
 
 		//======== this ========
@@ -486,10 +497,26 @@ public class Gui extends JFrame {
 
 			//---- button1 ----
 			button1.setText("Create keys");
-			panel1.add(button1, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
+			button1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					createKeysButtonActionPerformed(e);
+				}
+			});
+			panel1.add(button1, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
 
+			//---- button11 ----
+			button11.setText("Clear keys");
+			button11.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					clearKeysButtonActionPerformed(e);
+				}
+			});
+			panel1.add(button11, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 5), 0, 0));
+			
 			//---- button7 ----
 			button7.setText("Private key");
 			button7.addActionListener(new ActionListener() {
@@ -648,7 +675,7 @@ public class Gui extends JFrame {
 		//======== panel6 ========
 		{
 			panel6.setLayout(new GridBagLayout());
-			((GridBagLayout)panel6.getLayout()).columnWidths = new int[] {0, 0, 113, 93, 100, 0};
+			((GridBagLayout)panel6.getLayout()).columnWidths = new int[] {0, 0, 155, 119, 100, 0};
 			((GridBagLayout)panel6.getLayout()).rowHeights = new int[] {0, 0};
 			((GridBagLayout)panel6.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0, 0.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel6.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
@@ -786,19 +813,31 @@ public class Gui extends JFrame {
 	}
 
 	private void savePublicKeyButtonActionPerformed(ActionEvent e) {
-
+		openSave = new Open_Save(this);
+		openSave.savePublicKey(publicKey);
 	}
 
 	private void loadPublicKeyButtonActionPerformed(ActionEvent e) {
-
+		clearKeyTextFields();
+		openSave = new Open_Save(this);
+		publicKey = openSave.loadPublicKey();
+		textField3.setText(privateKey.getE().toString());
+		textField4.setText(publicKey.getN().toString());
 	}
 
 	private void savePrivateKeyButtonActionPerformed(ActionEvent e) {
-
+		openSave = new Open_Save(this);
+		openSave.savePrivateKey(privateKey);
 	}
 
 	private void loadPrivateKeyButtonActionPerformed(ActionEvent e) {
-
+		openSave = new Open_Save(this);
+		privateKey = openSave.loadPrivateKey();
+		textField1.setText(privateKey.getPrimeP().toString());
+		textField2.setText(privateKey.getPrimeQ().toString());
+		textField3.setText(privateKey.getE().toString());
+		textField4.setText(privateKey.getN().toString());
+		textField5.setText(privateKey.getPrivateExponent().toString());
 	}
 
 	private void padding1CheckBoxStateChanged(ChangeEvent e) {
@@ -835,6 +874,34 @@ public class Gui extends JFrame {
 
 	private void fullScreenButtonActionPerformed(ActionEvent e) {
 
+	}
+	
+	private void createKeysButtonActionPerformed(ActionEvent e) {
+		//Generate keys
+		GenerateKeys genKeys = new GenerateKeys(50);
+		//Store key instances
+		publicKey = genKeys.getPublicKey();
+		privateKey = genKeys.getPrivateKey();
+		//Write textfields
+		textField1.setText(privateKey.getPrimeP().toString());
+		textField2.setText(privateKey.getPrimeQ().toString());
+		textField3.setText(privateKey.getE().toString());
+		textField4.setText(publicKey.getN().toString());
+		textField5.setText(privateKey.getPrivateExponent().toString());
+	}
+	
+	private void clearKeysButtonActionPerformed(ActionEvent e) {
+		//Clear p, q, e, n, d textfields
+		clearKeyTextFields();
+	}
+	
+	public void clearKeyTextFields() {
+		//Clear p, q, e, n, d textfields
+		textField1.setText("");
+		textField2.setText("");
+		textField3.setText("");
+		textField4.setText("");
+		textField5.setText("");
 	}
 	
 	public static void createGUI() {
