@@ -709,6 +709,7 @@ public class Gui extends JFrame {
 					fontSizeComboBoxActionPerformed(e);
 				}
 			});
+			comboBox1.setSelectedItem("Font size 12 pt");
 			panel6.add(comboBox1, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
@@ -872,7 +873,21 @@ public class Gui extends JFrame {
 	}
 
 	private void fontSizeComboBoxActionPerformed(ActionEvent e) {
-
+		if (comboBox1.getSelectedItem() == "Font size 12 pt") {
+			textArea1.setFont(new Font("Arial", Font.PLAIN, 12));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 14 pt") {
+			textArea1.setFont(new Font("Arial", Font.PLAIN, 14));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 16 pt") {
+			textArea1.setFont(new Font("Arial", Font.PLAIN, 16));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 18 pt") {
+			textArea1.setFont(new Font("Arial", Font.PLAIN, 18));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 20 pt") {
+			textArea1.setFont(new Font("Arial", Font.PLAIN, 20));
+		}
 	}
 
 	private void fullScreenButtonActionPerformed(ActionEvent e) {
