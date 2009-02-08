@@ -90,9 +90,10 @@ public class Gui extends JFrame {
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
+	private FullScreen fullScreen;
 	private Load_Save_Exec loadSaveExec;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
-			"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
+					"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
 	//End of variables declaration  //GEN-END:variables
 
 	private void initComponents() {
@@ -746,6 +747,8 @@ public class Gui extends JFrame {
 		//End of component initialization  //GEN-END:initComponents
 	}
 	
+	//Action events
+	
 	private void teachRadioItemButtonStateChanged(ChangeEvent e) {
 
 	}
@@ -755,23 +758,23 @@ public class Gui extends JFrame {
 	}
 
 	private void createKeysMenuItemActionPerformed(ActionEvent e) {
-
+		createKeys(50);
 	}
 
 	private void savePublicKeyMenuItemActionPerformed(ActionEvent e) {
-
+		savePublicKey();
 	}
 
 	private void savePrivateKeyMenuItemActionPerformed(ActionEvent e) {
-
+		savePrivateKey();
 	}
 
 	private void loadPublicKeyMenuItemActionPerformed(ActionEvent e) {
-
+		loadPublicKey();
 	}
 
 	private void loadPrivateKeyMenuItemActionPerformed(ActionEvent e) {
-
+		loadPrivateKey();
 	}
 
 	private void padding1MenuItemStateChanged(ChangeEvent e) {
@@ -787,15 +790,15 @@ public class Gui extends JFrame {
 	}
 
 	private void saveExecutionMenuItemActionPerformed(ActionEvent e) {
-
+		saveExecution();
 	}
 
 	private void loadExecutionMenuItemActionPerformed(ActionEvent e) {
-
+		loadExecution();
 	}
 
 	private void fullScreenMenuItemActionPerformed(ActionEvent e) {
-
+		showExecFullScreen();
 	}
 
 	private void showHelpMenuItemActionPerformed(ActionEvent e) {
@@ -815,31 +818,19 @@ public class Gui extends JFrame {
 	}
 
 	private void savePublicKeyButtonActionPerformed(ActionEvent e) {
-		openSave = new Open_Save(this);
-		openSave.savePublicKey(publicKey);
+		savePublicKey();
 	}
 
 	private void loadPublicKeyButtonActionPerformed(ActionEvent e) {
-		clearKeyTextFields();
-		openSave = new Open_Save(this);
-		publicKey = openSave.loadPublicKey();
-		textField3.setText(privateKey.getE().toString());
-		textField4.setText(publicKey.getN().toString());
+		loadPublicKey();
 	}
 
 	private void savePrivateKeyButtonActionPerformed(ActionEvent e) {
-		openSave = new Open_Save(this);
-		openSave.savePrivateKey(privateKey);
+		savePrivateKey();
 	}
 
 	private void loadPrivateKeyButtonActionPerformed(ActionEvent e) {
-		openSave = new Open_Save(this);
-		privateKey = openSave.loadPrivateKey();
-		textField1.setText(privateKey.getPrimeP().toString());
-		textField2.setText(privateKey.getPrimeQ().toString());
-		textField3.setText(privateKey.getE().toString());
-		textField4.setText(privateKey.getN().toString());
-		textField5.setText(privateKey.getPrivateExponent().toString());
+		loadPrivateKey();
 	}
 
 	private void padding1CheckBoxStateChanged(ChangeEvent e) {
@@ -863,13 +854,11 @@ public class Gui extends JFrame {
 	}
 
 	private void saveExecutionButtonActionPerformed(ActionEvent e) {
-		loadSaveExec = new Load_Save_Exec(this, textArea1);
-		loadSaveExec.saveExecToFile();
+		saveExecution();
 	}
 
 	private void loadExecutionButtonActionPerformed(ActionEvent e) {
-		loadSaveExec = new Load_Save_Exec(this, textArea1);
-		loadSaveExec.loadExecFromFile();
+		loadExecution();
 	}
 
 	private void fontSizeComboBoxActionPerformed(ActionEvent e) {
@@ -891,12 +880,33 @@ public class Gui extends JFrame {
 	}
 
 	private void fullScreenButtonActionPerformed(ActionEvent e) {
-
+		showExecFullScreen();
 	}
 	
 	private void createKeysButtonActionPerformed(ActionEvent e) {
+		createKeys(50);
+	}
+	
+	private void clearKeysButtonActionPerformed(ActionEvent e) {
+		//Clear p, q, e, n, d textfields
+		clearKeyTextFields();
+	}
+	//End of action events
+	
+	//Methods used in actions.
+	
+	public void clearKeyTextFields() {
+		//Clear p, q, e, n, d textfields
+		textField1.setText("");
+		textField2.setText("");
+		textField3.setText("");
+		textField4.setText("");
+		textField5.setText("");
+	}
+	
+	public void createKeys(int bitsize) {
 		//Generate keys
-		GenerateKeys genKeys = new GenerateKeys(50);
+		GenerateKeys genKeys = new GenerateKeys(bitsize);
 		//Store key instances
 		publicKey = genKeys.getPublicKey();
 		privateKey = genKeys.getPrivateKey();
@@ -908,29 +918,55 @@ public class Gui extends JFrame {
 		textField5.setText(privateKey.getPrivateExponent().toString());
 	}
 	
-	private void clearKeysButtonActionPerformed(ActionEvent e) {
-		//Clear p, q, e, n, d textfields
+	public void savePublicKey() {
+		openSave = new Open_Save(this);
+		openSave.savePublicKey(publicKey);
+	}
+	
+	public void loadPublicKey() {
 		clearKeyTextFields();
+		openSave = new Open_Save(this);
+		publicKey = openSave.loadPublicKey();
+		textField3.setText(privateKey.getE().toString());
+		textField4.setText(publicKey.getN().toString());
 	}
 	
-	public void clearKeyTextFields() {
-		//Clear p, q, e, n, d textfields
-		textField1.setText("");
-		textField2.setText("");
-		textField3.setText("");
-		textField4.setText("");
-		textField5.setText("");
+	public void savePrivateKey() {
+		openSave = new Open_Save(this);
+		openSave.savePrivateKey(privateKey);
 	}
 	
-	public static void createGUI() {
-		new Gui();
+	public void loadPrivateKey() {
+		openSave = new Open_Save(this);
+		privateKey = openSave.loadPrivateKey();
+		textField1.setText(privateKey.getPrimeP().toString());
+		textField2.setText(privateKey.getPrimeQ().toString());
+		textField3.setText(privateKey.getE().toString());
+		textField4.setText(privateKey.getN().toString());
+		textField5.setText(privateKey.getPrivateExponent().toString());
 	}
 	
-    public static void main(String[] args) {
+	public void saveExecution() {
+		loadSaveExec = new Load_Save_Exec(this, textArea1);
+		loadSaveExec.saveExecToFile();
+	}
+	
+	public void loadExecution() {
+		loadSaveExec = new Load_Save_Exec(this, textArea1);
+		loadSaveExec.loadExecFromFile();
+	}
+	
+	public void showExecFullScreen() {
+		fullScreen = new FullScreen(textArea1);
+	}
+	
+	//End of methods used in actions.
+
+	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() { 
         	public void run() {
         		JFrame.setDefaultLookAndFeelDecorated(false);
-        		createGUI();
+        		new Gui();
             }
         });
     }
