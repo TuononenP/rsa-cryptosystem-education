@@ -1,13 +1,12 @@
 package padding_schemes;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
+
 
 public class Formula extends DividedPower{
 	
 	private BigInteger number;
 	private BigInteger exponent;
-	//private String[] exp;
 	/**
 	 * Constructor
 	 * @param num number
@@ -64,10 +63,17 @@ public class Formula extends DividedPower{
 	 */
 	public StringBuilder getAddition(){
 		StringBuilder s = new StringBuilder();
-		ArrayList<BigInteger> num = new ArrayList<BigInteger>();
-		while (num.compareTo(BigInteger.valueOf(2))>0){
-			num.add(calculate(number)) ;
-			System.out.println(num);
+		
+		String[] p =powerDivison(exponent).toString().split("\\+");
+		
+		
+		for (int i = 0; i < p.length; i++) {
+			s.append(number.toString());
+			s.append("^");
+			s.append(p[i]);
+			if (i<p.length-1){
+				s.append("+");
+				}
 		}
 		
 	return s;
@@ -82,6 +88,7 @@ public class Formula extends DividedPower{
 		System.out.print(f.getFormula()+"=");
 		System.out.println(f.getExpDiv());
 		System.out.println(f.getAddition());
+
 		
 	}
 
