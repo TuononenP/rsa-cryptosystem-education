@@ -1,7 +1,6 @@
 package keypair;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -35,6 +34,7 @@ public class Open_Save {
 	 * Default constructor.
 	 */
 	public Open_Save() {
+		frame = createFrame();
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class Open_Save {
 	 */
 	public JFrame createFrame() {
 		JFrame frame = new JFrame();
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     	frame.setVisible(true); 
     	frame.toFront();
     	frame.setSize(500, 500);
@@ -57,10 +57,10 @@ public class Open_Save {
 	 * File to load.
 	 * @return file File to load.
 	 */
-	private File loadKey() {
+	public File chooseFileToLoad() {
 		//Show load dialog.
 		final JFileChooser fc = new JFileChooser();
-		fc.showOpenDialog(createFrame());
+		fc.showOpenDialog(frame);
 		//Get user selected file.
 		file = fc.getSelectedFile();
 		return file;
@@ -71,12 +71,35 @@ public class Open_Save {
 	 * File to save.
 	 * @return file File to save.
 	 */
-	private File saveKey() {
+//	public File chooseFileToSave() {
+//		//Show save dialog.
+//		final JFileChooser fc = new JFileChooser();
+//		fc.showSaveDialog(frame);
+//		//Get user selected file.
+//		file = fc.getSelectedFile();
+//		return file;
+//	}
+	public File chooseFileToSave() {
 		//Show save dialog.
 		final JFileChooser fc = new JFileChooser();
-		fc.showSaveDialog(createFrame());
-		//Get user selected file.
-		file = fc.getSelectedFile();
+		int ans = fc.showSaveDialog(frame);
+		switch (ans) { 
+			case JFileChooser.APPROVE_OPTION : 
+				if (fc.getSelectedFile() != null) { // A file was selected
+					file = fc.getSelectedFile();
+				}
+				else { // No file selected 
+					System.out.println("No file was selected");
+				}
+				break ; 
+			case JFileChooser.CANCEL_OPTION : // Selection canceled
+				System.out.println("User canceled");
+				break ; 
+			case JFileChooser.ERROR_OPTION : 
+				// An error has occurred 
+				System.out.println("An erros occured");
+				break ; 
+			} 
 		return file;
 	}
 	
@@ -90,8 +113,7 @@ public class Open_Save {
 		encoded = encDec.encPublicKey(publicKey);
 		
 		//Select the file where to save
-		OS = new Open_Save();
-		file = OS.saveKey();
+		file = chooseFileToSave();
 		
 		//Save encoded byte array to a file
 		loadSave = new Load_Save_Key();
@@ -108,8 +130,7 @@ public class Open_Save {
 		encoded = encDec.encPrivateKey(privateKey);
 		
 		//Select the file where to save
-		OS = new Open_Save();
-		file = OS.saveKey();
+		file = chooseFileToSave();
 		
 		//Save encoded byte array to a file
 		loadSave = new Load_Save_Key();
@@ -124,17 +145,11 @@ public class Open_Save {
 	 */
 	public RsaPublicKey loadPublicKey() {
 		//Select the file to open
-		OS = new Open_Save();
-		file = OS.loadKey();
+		file = chooseFileToLoad();
 		
 		//Load encoded bytes from the file
 		loadSave = new Load_Save_Key();
-		try {
-			encoded = loadSave.loadKeyFromFile(file);
-		} catch (IOException e) {
-			System.out.println("Error in reading file.");
-			e.printStackTrace();
-		}
+		encoded = loadSave.loadKeyFromFile(file);
 		
 		//Decode to key instance
 		encDec = new Encode_Decode();
@@ -151,17 +166,11 @@ public class Open_Save {
 	 */
 	public RsaPrivateKey loadPrivateKey() {
 		//Select the file to open
-		OS = new Open_Save();
-		file = OS.loadKey();
+		file = chooseFileToLoad();
 		
 		//Load encoded bytes from the file
 		loadSave = new Load_Save_Key();
-		try {
-			encoded = loadSave.loadKeyFromFile(file);
-		} catch (IOException e) {
-			System.out.println("Error in reading file.");
-			e.printStackTrace();
-		}
+		encoded = loadSave.loadKeyFromFile(file);
 		
 		//Decode to key instance
 		encDec = new Encode_Decode();

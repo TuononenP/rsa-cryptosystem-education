@@ -15,9 +15,15 @@ public class Load_Save_Key {
      * @param file Source file to be read.
      * @return byte[] byte array of the encoded key.
      */
-    public byte[] loadKeyFromFile(File file) throws IOException {
+    public byte[] loadKeyFromFile(File file) {
 
-        InputStream inputS = new FileInputStream(file);
+        InputStream inputS = null;
+		try {
+			inputS = new FileInputStream(file);
+		} catch (FileNotFoundException e) {
+			System.out.println("File "+file.getName()+" not found.");
+			e.printStackTrace();
+		}
 
         //Size of the file.
         long length = file.length();
@@ -27,7 +33,7 @@ public class Load_Save_Key {
          * Before converting to an int type, check that file is not larger than Integer.MAX_VALUE;
          */
         if (length > Integer.MAX_VALUE) {
-            System.out.println("File is too large to process");
+            System.out.println("File "+file.getName()+" is too large to process");
             return null;
         }
 
@@ -37,18 +43,23 @@ public class Load_Save_Key {
         //Read in the bytes.
         int offset = 0;
         int numRead = 0;
-        while ( (offset < bytes.length)
-                &&
-                ( (numRead=inputS.read(bytes, offset, bytes.length-offset)) >= 0) ) {
+        try {
+			while ( (offset < bytes.length)
+			        &&
+			        ( (numRead=inputS.read(bytes, offset, bytes.length-offset)) >= 0) ) {
 
-            offset += numRead;
-        }
-        //Ensure all the bytes have been read in.
-        if (offset < bytes.length) {
-            throw new IOException("Could not completely read file " + file.getName());
-        }
-        inputS.close();
-        return bytes;
+			    offset += numRead;
+			}
+			//Ensure all the bytes have been read in.
+	        if (offset < bytes.length) {
+	            throw new IOException("Could not completely read file " + file.getName());
+	        }
+	        inputS.close();
+		} catch (IOException e) {
+			System.out.println("Error in reading file "+ file.getName());
+			e.printStackTrace();
+		}
+		return bytes;
     }
 	
 	/**
@@ -61,13 +72,14 @@ public class Load_Save_Key {
 		try {
 			out = new FileOutputStream(file);
 		} catch (FileNotFoundException e) {
+			System.out.println("File "+file.getName()+" not found.");
 			e.printStackTrace();
 		}
 		try {
 			out.write(enc);
 			out.close();	
 		} catch (IOException e) {
-			System.out.println("Error in reading file.");
+			System.out.println("Error in reading file "+file.getName());
 			e.printStackTrace();
 		}
 	}
@@ -96,11 +108,7 @@ public class Load_Save_Key {
 		System.out.println("N: " +A);
 		
 		open.saveKeyToFile(encoded, file); //save to a file
-		try {
-			encoded = open.loadKeyFromFile(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		encoded = open.loadKeyFromFile(file);
 		pubK = encDec.decPublicKey(encoded); //decode byte array to form a public key
 		System.out.println("N from file key: ");
 		BigInteger B = pubK.getN();
