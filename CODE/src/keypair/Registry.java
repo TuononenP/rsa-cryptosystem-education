@@ -51,18 +51,19 @@ package keypair;
  */
 public interface Registry {
 
-   // Asymmetric keypair generators............................................
+	// Asymmetric keypair generators............................................
+	String RSA_KPG =  "rsa";
+	
+	// Format IDs used to identify how we externalise asymmetric keys ..........
+	String RAW_ENCODING = "gnu.crypto.raw.format";
+	int RAW_ENCODING_ID = 1;
 
-   // Format IDs used to identify how we externalise asymmetric keys ..........
-   String RAW_ENCODING = "gnu.crypto.raw.format";
-   int RAW_ENCODING_ID = 1;
-
-   // Magic bytes we generate/expect in externalised asymmetric keys ..........
-   // the four bytes represent G (0x47) for GNU, 1 (0x01) for Raw format,
-   // D (0x44) for DSS, R (0x52) for RSA, H (0x48) for Diffie-Hellman, or S
-   // (0x53) for SRP-6, and finally P (0x50) for Public, p (0x70) for private,
-   // or S (0x53) for signature.
-   byte[] MAGIC_RAW_RSA_PUBLIC_KEY =    new byte[] {0x47, RAW_ENCODING_ID, 0x52, 0x50};
-   byte[] MAGIC_RAW_RSA_PRIVATE_KEY =   new byte[] {0x47, RAW_ENCODING_ID, 0x52, 0x70};
-   byte[] MAGIC_RAW_RSA_PSS_SIGNATURE = new byte[] {0x47, RAW_ENCODING_ID, 0x52, 0x53};
+	// Magic bytes we generate/expect in externalised asymmetric keys ..........
+	// the four bytes represent G (0x47) for GNU, 1 (0x01) for Raw format,
+	// D (0x44) for DSS, R (0x52) for RSA, H (0x48) for Diffie-Hellman, or S
+	// (0x53) for SRP-6, and finally P (0x50) for Public, p (0x70) for private,
+	// or S (0x53) for signature.
+	byte[] MAGIC_RAW_RSA_PUBLIC_KEY =    new byte[] {0x47, RAW_ENCODING_ID, 0x52, 0x50};
+	byte[] MAGIC_RAW_RSA_PRIVATE_KEY =   new byte[] {0x47, RAW_ENCODING_ID, 0x52, 0x70};
+	byte[] MAGIC_RAW_RSA_PSS_SIGNATURE = new byte[] {0x47, RAW_ENCODING_ID, 0x52, 0x53};
 }
