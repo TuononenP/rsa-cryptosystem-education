@@ -242,6 +242,7 @@ public class Gui extends JFrame {
 					menu1.add(radioButton4);
 				}
 				menu.add(menu1);
+				menuBar.add(menu);
 
 				//======== menu2 ========
 				{
@@ -399,14 +400,13 @@ public class Gui extends JFrame {
 				}
 				menu.add(menu5);
 			}
-			menuBar.add(menu);
 		}
 		setJMenuBar(menuBar);
 
 		//======== panel1 ========
 		{ 
-			Color panelColor = new Color(90, 147, 195);
-			panel1 = new GradientPanel(panelColor, new GridBagLayout());
+//			Color panelColor = new Color(90, 147, 195);
+			panel1 = new GradientPanel(Color.GRAY, new GridBagLayout());
 			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 5, 0};
 			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {12, 0, 0, 0, 0, 0, 5, 0};
 			((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0E-4};
