@@ -24,7 +24,7 @@ public class PaddingType2 {
 	public ArrayList<Integer> enCode(String msg){
 		msg=msg.toUpperCase();
 		msg=msg.replace(" ", "X");
-		System.out.println(msg);
+		//System.out.println(msg);
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		char[] table = msg.toCharArray();
 		for (int j=0,i = 0; i < table.length;j++, i = i+2) {
