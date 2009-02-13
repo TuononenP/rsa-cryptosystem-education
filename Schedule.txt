@@ -22,6 +22,7 @@
 07.02. 5h	Major GUI tweaking. Added listeners, font size selection, repositioned buttons, frame & panel size modif. and other fine tuning.
 08.02. 10h	GUI functionality: create keys, clear keys, save & load keys, save & load execution, font size selection. Full screen exec frame.
 11.02. 6h	GUI tweaking, help frame, padding schemes, documentation.
+13.02. 6h	Padding schemes, documentation. GUI tweaking.
 
 -------------------
-OVERALL: 111 h
+OVERALL: 117 h
