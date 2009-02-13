@@ -76,10 +76,10 @@ public class Gui extends JFrame {
 	private JButton button13;
 
 //	private JPanel panel1;
-	private JPanel panel2;
+//	private JPanel panel2;
 	private JPanel panel3;
-	private JPanel panel4;
-	private JPanel panel5;
+//	private JPanel panel4;
+//	private JPanel panel5;
 	private JPanel panel6;
 	private JPanel panel7;
 
@@ -116,6 +116,11 @@ public class Gui extends JFrame {
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 					"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
 	GradientPanel panel1;
+	GradientPanel panel2;
+	GradientPanel panel4;
+	GradientPanel panel5;
+	
+	Color panelColor;
 	//End of variables declaration  //GEN-END:variables
 
 	private void initComponents() {
@@ -169,10 +174,10 @@ public class Gui extends JFrame {
 		button13 = new JButton();
 		
 //		panel1 = new JPanel();
-		panel2 = new JPanel();
+//		panel2 = new JPanel();
 		panel3 = new JPanel();
-		panel4 = new JPanel();
-		panel5 = new JPanel();
+//		panel4 = new JPanel();
+//		panel5 = new JPanel();
 		panel6 = new JPanel();
 		panel7 = new JPanel();
 		
@@ -200,6 +205,9 @@ public class Gui extends JFrame {
 		scrollPane2 = new JScrollPane();
 		
 		comboBox1 = new JComboBox(textSize);
+		
+//		panelColor = new Color(117, 154, 178);
+		panelColor = Color.LIGHT_GRAY;
 
 		//======== this ========
 		setTitle("RSA Education Cryptosystem");
@@ -405,15 +413,16 @@ public class Gui extends JFrame {
 
 		//======== panel1 ========
 		{ 
-//			Color panelColor = new Color(90, 147, 195);
-			panel1 = new GradientPanel(Color.GRAY, new GridBagLayout());
-			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 5, 0};
+			panel1 = new GradientPanel(panelColor, new GridBagLayout());
+			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 20, 0};
 			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {12, 0, 0, 0, 0, 0, 5, 0};
 			((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+
 			panel1.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Key creation"));
 			
-//			panel1.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Key creation"));
+//			Color panelColor = new Color(90, 147, 195);
+//			panel1.setBorder(new TitledBorder(new LineBorder(panelColor, 1, true), "Key creation"));
 //			panel1.setLayout(new GridBagLayout());
 //			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 5, 0};
 //			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {12, 0, 0, 0, 0, 0, 5, 0};
@@ -478,6 +487,7 @@ public class Gui extends JFrame {
 
 			//---- label9 ----
 			label9.setText("Please wait... generating keys");
+			label9.setVisible(false); //not visible when key generation is not in progress.
 			panel1.add(label9, new GridBagConstraints(3, 3, 2, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
@@ -575,12 +585,14 @@ public class Gui extends JFrame {
 
 		//======== panel2 ========
 		{
-			panel2.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Message to encrypt/decrypt"));
-			panel2.setLayout(new GridBagLayout());
+			panel2 = new GradientPanel(panelColor, new GridBagLayout());
+//			panel2.setLayout(new GridBagLayout());
 			((GridBagLayout)panel2.getLayout()).columnWidths = new int[] {10, 435, 5, 0};
 			((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {71, 5, 0};
 			((GridBagLayout)panel2.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
+			
+			panel2.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Message to encrypt/decrypt"));
 
 			//======== scrollPane2 ========
 			{
@@ -634,8 +646,9 @@ public class Gui extends JFrame {
 
 		//======== panel4 ========
 		{
+			panel4 = new GradientPanel(panelColor, new GridBagLayout());
 			panel4.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Padding scheme"));
-			panel4.setLayout(new GridBagLayout());
+//			panel4.setLayout(new GridBagLayout());
 			((GridBagLayout)panel4.getLayout()).columnWidths = new int[] {80, 81, 80, 0};
 			((GridBagLayout)panel4.getLayout()).rowHeights = new int[] {0, 0};
 			((GridBagLayout)panel4.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
@@ -643,6 +656,7 @@ public class Gui extends JFrame {
 
 			//---- checkBox1 ----
 			checkBox1.setText("One letter");
+			checkBox1.setOpaque(false);
 			checkBox1.setSelected(true);
 			checkBox1.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent e) {
@@ -655,6 +669,7 @@ public class Gui extends JFrame {
 
 			//---- checkBox2 ----
 			checkBox2.setText("Two letters");
+			checkBox2.setOpaque(false);
 			checkBox2.setSelected(true);
 			checkBox2.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent e) {
@@ -667,6 +682,7 @@ public class Gui extends JFrame {
 
 			//---- checkBox3 ----
 			checkBox3.setText("Three letters");
+			checkBox3.setOpaque(false);
 			checkBox3.setSelected(true);
 			checkBox3.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent e) {
@@ -683,12 +699,14 @@ public class Gui extends JFrame {
 		
 		//======== panel5 ========
 		{
-			panel5.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "RSA execution"));
-			panel5.setLayout(new GridBagLayout());
+			panel5 = new GradientPanel(panelColor, new GridBagLayout());
+//			panel5.setLayout(new GridBagLayout());
 			((GridBagLayout)panel5.getLayout()).columnWidths = new int[] {10, 0, 5, 0};
 			((GridBagLayout)panel5.getLayout()).rowHeights = new int[] {210, 0, 0};
 			((GridBagLayout)panel5.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel5.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
+			
+			panel5.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "RSA execution"));
 
 			//======== scrollPane1 ========
 			{
@@ -846,7 +864,7 @@ public class Gui extends JFrame {
 	}
 
 	private void createKeysMenuItemActionPerformed(ActionEvent e) {
-		createKeys(50);
+		createKeys();
 	}
 
 	private void savePublicKeyMenuItemActionPerformed(ActionEvent e) {
@@ -890,7 +908,7 @@ public class Gui extends JFrame {
 	}
 
 	private void showHelpMenuItemActionPerformed(ActionEvent e) {
-
+		new Help();
 	}
 
 	private void aboutMenuItemActionPerformed(ActionEvent e) {
@@ -972,7 +990,7 @@ public class Gui extends JFrame {
 	}
 	
 	private void createKeysButtonActionPerformed(ActionEvent e) {
-		createKeys(50);
+		createKeys();
 	}
 	
 	private void clearKeysButtonActionPerformed(ActionEvent e) {
@@ -1002,18 +1020,41 @@ public class Gui extends JFrame {
 		textField5.setText("");
 	}
 	
-	public void createKeys(int bitsize) {
+	public void createKeys() {
 		//Generate keys
-		GenerateKeys genKeys = new GenerateKeys(bitsize);
-		//Store key instances
-		publicKey = genKeys.getPublicKey();
-		privateKey = genKeys.getPrivateKey();
-		//Write textfields
-		textField1.setText(privateKey.getPrimeP().toString());
-		textField2.setText(privateKey.getPrimeQ().toString());
-		textField3.setText(privateKey.getE().toString());
-		textField4.setText(publicKey.getN().toString());
-		textField5.setText(privateKey.getPrivateExponent().toString());
+		boolean correctBitSize = false;
+		if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
+			System.out.println("Prime bit size must be larger than 5.");
+		}
+		else if (textField6.getText().equals("")) { //bit size field is empty.
+			System.out.println("You didn't define prime bit size.");
+		}
+		else { //bit size is ok.
+			label9.setVisible(true);
+			
+//			GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+//			correctBitSize = true;
+			//Store key instances
+//	        SwingUtilities.invokeLater(new Runnable() { 
+//	        	public void run() {
+//	        		JFrame.setDefaultLookAndFeelDecorated(false);
+	    			GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+	    			publicKey = genKeys.getPublicKey();
+	    			privateKey = genKeys.getPrivateKey();
+	    			
+//	            }
+//	        });
+	        correctBitSize = true;
+//			publicKey = genKeys.getPublicKey();
+//			privateKey = genKeys.getPrivateKey();
+			//Write textfields
+			textField1.setText(privateKey.getPrimeP().toString());
+			textField2.setText(privateKey.getPrimeQ().toString());
+			textField3.setText(privateKey.getE().toString());
+			textField4.setText(publicKey.getN().toString());
+			textField5.setText(privateKey.getPrivateExponent().toString());
+			label9.setVisible(false);
+		}	
 	}
 	
 	public void savePublicKey() {
