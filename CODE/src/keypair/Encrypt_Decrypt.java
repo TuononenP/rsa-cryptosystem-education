@@ -2,6 +2,13 @@ package keypair;
 
 import java.math.BigInteger;
 
+/**
+ * RSA cryptosystem.
+ * Encrypts/decrypts one number at a time. 
+ * 
+ * @author Petri Tuononen
+ * @since 1.2.2009
+ */
 public class Encrypt_Decrypt {
 
     /**

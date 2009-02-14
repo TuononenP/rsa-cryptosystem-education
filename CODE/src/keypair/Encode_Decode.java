@@ -2,6 +2,7 @@ package keypair;
 
 /**
  * Encode/decode public/private keys.
+ * Used when keys are saved to a file/loaded from a file.
  * 
  * @author Petri Tuononen
  * @since 1.2.2009
