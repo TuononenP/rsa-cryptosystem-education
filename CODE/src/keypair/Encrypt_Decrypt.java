@@ -12,9 +12,9 @@ import java.math.BigInteger;
 public class Encrypt_Decrypt {
 
     /**
-     * Encrypts one letter that is already encoded to a number.
+     * Encrypts one encoded int.
      * 
-     * @param encoded One letter of message encoded to a number.
+     * @param encoded One encoded int.
      * @param e Public exponent.
      * @param n Modulus.
      * @return BigInteger Encrypted BigInteger.
@@ -26,15 +26,15 @@ public class Encrypt_Decrypt {
     }  
     
     /**
-     * Decrypts one BigInteger (that represents one letter) to int. 
+     * Decrypts one BigInteger. 
      * 
-     * @param encrypted Encrypted number.
+     * @param encrypted Encrypted BigInteger.
      * @param d Private exponent.
      * @param n	Modulus.
-     * @return int Decrypted int.
+     * @return BigInteger Decrypted BigInteger.
      */
-    public int decrypt(BigInteger encrypted, BigInteger d, BigInteger n) {  
+    public BigInteger decrypt(BigInteger encrypted, BigInteger d, BigInteger n) {  
     	BigInteger m = encrypted.modPow(d, n); //decrypted
-    	return Integer.parseInt(m.toString());
+    	return m;
     }  
 }

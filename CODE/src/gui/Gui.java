@@ -1022,7 +1022,6 @@ public class Gui extends JFrame {
 	
 	public void createKeys() {
 		//Generate keys
-		boolean correctBitSize = false;
 		if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
 			System.out.println("Prime bit size must be larger than 5.");
 		}
@@ -1031,22 +1030,9 @@ public class Gui extends JFrame {
 		}
 		else { //bit size is ok.
 			label9.setVisible(true);
-			
-//			GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
-//			correctBitSize = true;
-			//Store key instances
-//	        SwingUtilities.invokeLater(new Runnable() { 
-//	        	public void run() {
-//	        		JFrame.setDefaultLookAndFeelDecorated(false);
-	    			GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
-	    			publicKey = genKeys.getPublicKey();
-	    			privateKey = genKeys.getPrivateKey();
-	    			
-//	            }
-//	        });
-	        correctBitSize = true;
-//			publicKey = genKeys.getPublicKey();
-//			privateKey = genKeys.getPrivateKey();
+	    	GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+	    	publicKey = genKeys.getPublicKey();
+	    	privateKey = genKeys.getPrivateKey();
 			//Write textfields
 			textField1.setText(privateKey.getPrimeP().toString());
 			textField2.setText(privateKey.getPrimeQ().toString());
@@ -1096,7 +1082,7 @@ public class Gui extends JFrame {
 	}
 	
 	public void showExecFullScreen() {
-		FullScreen fullScreen = new FullScreen(textArea1);
+		new FullScreen(textArea1);
 	}
 	
 	//End of methods used in actions.
