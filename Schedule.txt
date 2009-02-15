@@ -23,6 +23,7 @@
 08.02. 10h	GUI functionality: create keys, clear keys, save & load keys, save & load execution, font size selection. Full screen exec frame.
 11.02. 6h	GUI tweaking, help frame, padding schemes, documentation.
 13.02. 6h	Padding schemes, documentation. GUI tweaking.
+15.02. 6h	Blocks of three padding scheme - major update.
 
 -------------------
-OVERALL: 117 h
+OVERALL: 123 h
