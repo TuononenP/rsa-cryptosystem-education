@@ -5,10 +5,13 @@ import gui_logics.Load_Save_Exec;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.math.BigInteger;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
+import padding_schemes.*;
 
 import keypair.*;
 
@@ -112,15 +115,16 @@ public class Gui extends JFrame {
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
 	private Load_Save_Exec loadSaveExec;
-	ClipboardCopy clipboard;
+	private ClipboardCopy clipboard;
+	private Blocks_Of_3_Padding padding3;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 					"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
-	GradientPanel panel1;
-	GradientPanel panel2;
-	GradientPanel panel4;
-	GradientPanel panel5;
+	private GradientPanel panel1;
+	private GradientPanel panel2;
+	private GradientPanel panel4;
+	private GradientPanel panel5;
 	
-	Color panelColor;
+	private Color panelColor;
 	//End of variables declaration  //GEN-END:variables
 
 	private void initComponents() {
@@ -658,11 +662,6 @@ public class Gui extends JFrame {
 			checkBox1.setText("One letter");
 			checkBox1.setOpaque(false);
 			checkBox1.setSelected(true);
-			checkBox1.addChangeListener(new ChangeListener() {
-				public void stateChanged(ChangeEvent e) {
-					padding1CheckBoxStateChanged(e);
-				}
-			});
 			panel4.add(checkBox1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
@@ -671,11 +670,6 @@ public class Gui extends JFrame {
 			checkBox2.setText("Two letters");
 			checkBox2.setOpaque(false);
 			checkBox2.setSelected(true);
-			checkBox2.addChangeListener(new ChangeListener() {
-				public void stateChanged(ChangeEvent e) {
-					padding2CheckBoxStateChanged(e);
-				}
-			});
 			panel4.add(checkBox2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
@@ -684,11 +678,6 @@ public class Gui extends JFrame {
 			checkBox3.setText("Three letters");
 			checkBox3.setOpaque(false);
 			checkBox3.setSelected(true);
-			checkBox3.addChangeListener(new ChangeListener() {
-				public void stateChanged(ChangeEvent e) {
-					padding3CheckBoxStateChanged(e);
-				}
-			});
 			panel4.add(checkBox3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 0), 0, 0));
@@ -939,24 +928,12 @@ public class Gui extends JFrame {
 		loadPrivateKey();
 	}
 
-	private void padding1CheckBoxStateChanged(ChangeEvent e) {
-
-	}
-
-	private void padding2CheckBoxStateChanged(ChangeEvent e) {
-
-	}
-
-	private void padding3CheckBoxStateChanged(ChangeEvent e) {
-
-	}
-
 	private void encryptButtonActionPerformed(ActionEvent e) {
-
+		encrypt();
 	}
 
 	private void decryptButtonActionPerformed(ActionEvent e) {
-
+		decrypt();
 	}
 
 	private void saveExecutionButtonActionPerformed(ActionEvent e) {
@@ -1083,6 +1060,32 @@ public class Gui extends JFrame {
 	
 	public void showExecFullScreen() {
 		new FullScreen(textArea1);
+	}
+	
+	public void encrypt() {
+		//if blocks of three letters padding scheme checkbox is selected
+		if (checkBox3.isSelected()) {
+			//get plaintext from textarea
+			String plaintext = textArea2.getText().toUpperCase();
+			//if something is written into the message textarea and public key is generated.
+			if (!plaintext.isEmpty() && !(publicKey == null)) {
+				padding3 = new Blocks_Of_3_Padding();
+				textArea1.setText(padding3.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+			}
+		}
+	}
+	
+	public void decrypt() {
+		//if blocks of three letters padding scheme checkbox is selected
+		if (checkBox3.isSelected()) {
+			//get encrypted text from textarea
+			String encrypted = textArea2.getText();
+			//if something is written into the message textarea and private key is generated.
+			if (!encrypted.isEmpty() && !(privateKey == null)) {
+				padding3 = new Blocks_Of_3_Padding();
+				textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+			}
+		}
 	}
 	
 	//End of methods used in actions.
