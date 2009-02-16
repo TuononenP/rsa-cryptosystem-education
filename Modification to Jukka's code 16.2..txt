@@ -1,0 +1,18 @@
+Modifications to Jukka's code (16.2.2009 ~21.00):
+
+CalculationPhase
+-very fine modifications like s.append(number.toString()); --> s.append(number); because no need to convert to string (it's automagical)
+-couple loops for(int i=0; i < strTable.length; i++) --> for(String i : strTable)  looks nicer & easier to read
+
+Formula
+-s.append(number.toString()); --> s.append(number); because no need to convert to string (it's automagical)
+
+Testing
+-Decrypted text now works. Changed method name to decryptToInt.
+
+PaddingType1 & PaddingType2
+-Changed method name to decryptToInt in Encrypt_Decrypt so had to change method name in these classes too.
+-couple loops for(int i=0; i < strTable.length; i++) --> for(String i : strTable)  looks nicer & easier to read
+
+
+Note: All tested and works. Backups also available.

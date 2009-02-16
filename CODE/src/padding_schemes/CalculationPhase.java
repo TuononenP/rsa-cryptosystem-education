@@ -45,7 +45,7 @@ public class CalculationPhase extends DividedPower {
 	 */
 	public StringBuilder getFormula() {
 		StringBuilder s = new StringBuilder();
-		s.append(number.toString());
+		s.append(number);
 		//s.append("^");
 		s.append(sc.superScript(exponent.toString()));
 		return s;
@@ -58,15 +58,14 @@ public class CalculationPhase extends DividedPower {
 	 */
 	public StringBuilder getExpDiv() {
 		StringBuilder s = new StringBuilder();
-		s.append(number.toString());
+		s.append(number);
 		//s.append("^");
 		String[] a = powerDivison(exponent).toString().split("");
-		for (int i = 1; i < a.length; i++) {
-			s.append(sc.superScript(a[i]));
+		for (String i : a) {
+			s.append(sc.superScript(i));
 		}
 		//s.append(powerDivison(exponent));
 		return s;
-
 	}
 
 	/**
@@ -178,7 +177,7 @@ public class CalculationPhase extends DividedPower {
 		JTextArea j = new JTextArea();
 		j.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		j.setText(f.getAll(new BigInteger("91")).toString());
-		FullScreen screen = new FullScreen(j);
+		new FullScreen(j);
 
 
 	}

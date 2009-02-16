@@ -16,9 +16,6 @@ public class Testing {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		
 		//SymbolicCalculation f = new SymbolicCalculation(BigInteger.valueOf(63), new BigInteger("29"));
 		JTextArea j = new JTextArea();
 		StringBuilder s = new StringBuilder();
@@ -51,7 +48,7 @@ public class Testing {
 		s.append(f.getAll(new BigInteger("3893")));
 		s.append("\n\n");
 		}
-		s.append("Encryped text: ");
+		s.append("Encrypted text: ");
 		
 		BigInteger[] crypto = new BigInteger[padded.length];
 		for (int i = 0; i < crypto.length; i++) {
@@ -71,7 +68,7 @@ public class Testing {
 		s.append("Decrypted text: ");
 		testi.clear();
 		for (int i = 0; i < crypto.length; i++) {
-			testi.add(c.decrypt(crypto[i], BigInteger.valueOf(1937), BigInteger.valueOf(3893)));
+			testi.add(c.decryptToInt(crypto[i], BigInteger.valueOf(1937), BigInteger.valueOf(3893)));
 			s.append(crypto[i]+" ");
 		}
 		
@@ -84,7 +81,7 @@ public class Testing {
 		//--------------------setting FullScreen--------------------
 		j.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		j.setText(s.toString());
-		FullScreen screen = new FullScreen(j);
+		new FullScreen(j);
 	}
 
 }

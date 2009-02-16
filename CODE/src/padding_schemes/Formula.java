@@ -39,9 +39,9 @@ public class Formula extends DividedPower{
 	 */
 	public StringBuilder getFormula(){
 		StringBuilder s = new StringBuilder();
-		s.append(number.toString());
+		s.append(number);
 		s.append("^");
-		s.append(exponent.toString());
+		s.append(exponent);
 		return s;
 	}
 	/**
@@ -50,7 +50,7 @@ public class Formula extends DividedPower{
 	 */
 	public StringBuilder getExpDiv(){
 		StringBuilder s = new StringBuilder();
-		s.append(number.toString());
+		s.append(number);
 		s.append("^");
 		s.append(powerDivison(exponent));
 		return s;
@@ -63,10 +63,7 @@ public class Formula extends DividedPower{
 	 */
 	public StringBuilder getAddition(){
 		StringBuilder s = new StringBuilder();
-		
 		String[] p =powerDivison(exponent).toString().split("\\+");
-		
-		
 		for (int i = 0; i < p.length; i++) {
 			s.append(number.toString());
 			s.append("^");
@@ -75,7 +72,6 @@ public class Formula extends DividedPower{
 				s.append("+");
 				}
 		}
-		
 	return s;
 	}
 	/**
@@ -88,8 +84,6 @@ public class Formula extends DividedPower{
 		System.out.print(f.getFormula()+"=");
 		System.out.println(f.getExpDiv());
 		System.out.println(f.getAddition());
-
-		
 	}
 
 }

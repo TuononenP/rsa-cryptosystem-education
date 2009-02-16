@@ -47,19 +47,15 @@ public class PaddingType2 {
 		String decoded = "";
 		Integer help, apu = null;
 		for (int i = 0; i < msg.size(); i++) {
-		help=(msg.get(i));
-		apu = help/100;
-		decoded=decoded+alphaNum.getLetter(apu);
-		decoded=decoded+alphaNum.getLetter(help-(apu*100));
+			help=(msg.get(i));
+			apu = help/100;
+			decoded=decoded+alphaNum.getLetter(apu);
+			decoded=decoded+alphaNum.getLetter(help-(apu*100));
 		}
 		return decoded;
 	}
 
-	
-	
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Encrypt_Decrypt c = new Encrypt_Decrypt();
 		PaddingType2 koe = new PaddingType2();
 		String message = "help";
@@ -89,7 +85,7 @@ public class PaddingType2 {
 		System.out.print("Decrypted text:");
 		testi.clear();
 		for (int i = 0; i < crypto.length; i++) {
-			testi.add(c.decrypt(crypto[i], BigInteger.valueOf(1937), BigInteger.valueOf(3893)));
+			testi.add(c.decryptToInt(crypto[i], BigInteger.valueOf(1937), BigInteger.valueOf(3893)));
 		}
 		System.out.println(testi);
 		System.out.print("Type2 decoded text:");

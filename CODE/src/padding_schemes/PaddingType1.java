@@ -31,8 +31,8 @@ public class PaddingType1 {
 
 	public String deCode(Integer[] msg){
 		String unpadded = "";
-		for (int i = 0; i < msg.length; i++) {
-			unpadded=unpadded+alphaNum.getLetter(msg[i]);
+		for (int i : msg) {
+			unpadded=unpadded+alphaNum.getLetter(i);
 		}
 		return unpadded;
 	}
@@ -50,8 +50,8 @@ public class PaddingType1 {
 		System.out.println(message);
 		testi = koe.enCode(message);
 		System.out.print("Type1 encoded text: ");
-		for (int i = 0; i < testi.length; i++) {
-			System.out.print(testi[i]+" ");
+		for (int i : testi) {
+			System.out.print(i+" ");
 		}
 		String[] padded = new String[testi.length];
 
@@ -72,7 +72,7 @@ public class PaddingType1 {
 		System.out.println();
 		System.out.print("Decrypted text:");
 		for (int i = 0; i < crypto.length; i++) {
-			testi[i]=c.decrypt(crypto[i], BigInteger.valueOf(29), BigInteger.valueOf(91));
+			testi[i]=c.decryptToInt(crypto[i], BigInteger.valueOf(29), BigInteger.valueOf(91));
 		}
 		for (Integer integer : testi) {
 			System.out.print(integer+" ");
