@@ -37,4 +37,9 @@ public class Encrypt_Decrypt {
     	BigInteger m = encrypted.modPow(d, n); //decrypted
     	return m;
     }  
+    
+    public int decryptToInt(BigInteger encrypted, BigInteger d, BigInteger n) {  
+    	BigInteger m = encrypted.modPow(d, n); //decrypted
+    	return m.intValue();
+    } 
 }
