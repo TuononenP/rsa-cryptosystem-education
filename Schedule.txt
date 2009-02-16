@@ -24,6 +24,7 @@
 11.02. 6h	GUI tweaking, help frame, padding schemes, documentation.
 13.02. 6h	Padding schemes, documentation. GUI tweaking.
 15.02. 6h	Blocks of three padding scheme - major update.
+16.02. 6h	Blocks of three padding scheme & Gui - major update.
 
 -------------------
-OVERALL: 123 h
+OVERALL: 129 h
