@@ -1,26 +1,19 @@
 package gui;
 
-import gui_logics.ClipboardCopy;
-import gui_logics.Load_Save_Exec;
+import gui_logics.*;
+import padding_schemes.*;
+import keypair.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.math.BigInteger;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
 
-import padding_schemes.*;
-
-import keypair.*;
-
-/*
- * Sat Feb 07 23:09:55 EET 2009
- */
-
 /**
  * @author Petri Tuononen
+ * @since 7.2.2009
  */
 public class Gui extends JFrame {
 	
@@ -29,7 +22,7 @@ public class Gui extends JFrame {
 		initComponents();
 	}
 
-	//Variables declaration  //GEN-BEGIN:variables
+	//Variables declaration
 	private JMenuBar menuBar;
 	
 	private JMenu menu;
@@ -94,7 +87,6 @@ public class Gui extends JFrame {
 	private JLabel label6;
 	private JLabel label7;
 	private JLabel label8;
-	private JLabel label9;
 	
 	private JTextField textField1;
 	private JTextField textField2;
@@ -114,8 +106,6 @@ public class Gui extends JFrame {
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
-	private Load_Save_Exec loadSaveExec;
-	private ClipboardCopy clipboard;
 	private Blocks_Of_3_Padding padding3;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 					"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
@@ -125,10 +115,10 @@ public class Gui extends JFrame {
 	private GradientPanel panel5;
 	
 	private Color panelColor;
-	//End of variables declaration  //GEN-END:variables
+	//End of variables declaration
 
 	private void initComponents() {
-		//Component initialization  //GEN-BEGIN:initComponents
+		//Component initialization
 		menuBar = new JMenuBar();
 		
 		menu = new JMenu();
@@ -193,7 +183,6 @@ public class Gui extends JFrame {
 		label6 = new JLabel();
 		label7 = new JLabel();
 		label8 = new JLabel();
-		label9 = new JLabel();
 		
 		textField1 = new JTextField();
 		textField2 = new JTextField();
@@ -213,7 +202,7 @@ public class Gui extends JFrame {
 //		panelColor = new Color(117, 154, 178);
 		panelColor = Color.LIGHT_GRAY;
 
-		//======== this ========
+		//======== container ========
 		setTitle("RSA Education Cryptosystem");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -486,13 +475,6 @@ public class Gui extends JFrame {
 				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
 				new Insets(0, 0, 5, 5), 0, 0));
 			panel1.add(textField3, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
-
-			//---- label9 ----
-			label9.setText("Please wait... generating keys");
-			label9.setVisible(false); //not visible when key generation is not in progress.
-			panel1.add(label9, new GridBagConstraints(3, 3, 2, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
 
@@ -839,7 +821,7 @@ public class Gui extends JFrame {
 		ButtonGroup buttonGroup1 = new ButtonGroup();
 		buttonGroup1.add(radioButton1);
 		buttonGroup1.add(radioButton2);
-		//End of component initialization  //GEN-END:initComponents
+		//End of component initialization
 	}
 	
 	//Action events
@@ -981,13 +963,12 @@ public class Gui extends JFrame {
 	}
 
 	private void copyToClipboardButtonActionPerformed(ActionEvent e) {
-		clipboard = new ClipboardCopy();
-		clipboard.copyToClipboard(textArea1.getText());
+		new ClipboardCopy().copyToClipboard(textArea1.getText());
 	}
 	//End of action events
 	
 	//Methods used in actions.
-	
+
 	public void clearKeyTextFields() {
 		//Clear p, q, e, n, d textfields
 		textField1.setText("");
@@ -1006,17 +987,17 @@ public class Gui extends JFrame {
 			System.out.println("You didn't define prime bit size.");
 		}
 		else { //bit size is ok.
-			label9.setVisible(true);
+			setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	    	GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
 	    	publicKey = genKeys.getPublicKey();
 	    	privateKey = genKeys.getPrivateKey();
+	    	setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 			//Write textfields
 			textField1.setText(privateKey.getPrimeP().toString());
 			textField2.setText(privateKey.getPrimeQ().toString());
 			textField3.setText(privateKey.getE().toString());
 			textField4.setText(publicKey.getN().toString());
 			textField5.setText(privateKey.getPrivateExponent().toString());
-			label9.setVisible(false);
 		}	
 	}
 	
@@ -1049,13 +1030,11 @@ public class Gui extends JFrame {
 	}
 	
 	public void saveExecution() {
-		loadSaveExec = new Load_Save_Exec(this, textArea1);
-		loadSaveExec.saveExecToFile();
+		new Load_Save_Exec(this, textArea1).saveExecToFile();
 	}
 	
 	public void loadExecution() {
-		loadSaveExec = new Load_Save_Exec(this, textArea1);
-		loadSaveExec.loadExecFromFile();
+		new Load_Save_Exec(this, textArea1).loadExecFromFile();
 	}
 	
 	public void showExecFullScreen() {
