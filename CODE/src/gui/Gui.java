@@ -12,6 +12,9 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 
 /**
+ * Graphical User Interface for
+ * the RSA Education Cryptosystem.
+ * 
  * @author Petri Tuononen
  * @since 7.2.2009
  */
@@ -102,7 +105,7 @@ public class Gui extends JFrame {
 	private JScrollPane scrollPane2;
 
 	private JComboBox comboBox1;
-
+	
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
@@ -586,6 +589,7 @@ public class Gui extends JFrame {
 				//---- textArea2 ----
 				textArea2.setLineWrap(true);
 				textArea2.setWrapStyleWord(true);
+				createPopupMenu(textArea2);
 				scrollPane2.setViewportView(textArea2);
 			}
 			panel2.add(scrollPane2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
@@ -683,6 +687,9 @@ public class Gui extends JFrame {
 			{
 				scrollPane1.setViewportView(textArea1);
 			}
+			
+			createPopupMenu(textArea1);
+			
 			panel5.add(scrollPane1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
@@ -824,7 +831,65 @@ public class Gui extends JFrame {
 		//End of component initialization
 	}
 	
-	//Action events
+	/**
+	 * Creates a popup menu and defines what happens if
+	 * menu items are pressed.
+	 * 
+	 * @param textArea	Textarea where popup menu comes up.
+	 */
+	public void createPopupMenu(final JTextArea textArea) {
+		JMenuItem menuItem;
+
+		//Create the popup menu.
+		JPopupMenu popup = new JPopupMenu();
+		menuItem = new JMenuItem("Copy");
+		
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ClipboardCopyPaste().copy(textArea.getSelectedText());
+			}
+		});
+		popup.add(menuItem);
+		menuItem = new JMenuItem("Paste");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(textArea.getText() + new ClipboardCopyPaste().paste());
+			}
+		});
+		popup.add(menuItem);
+
+		//Add listener to the text area so the popup menu can come up.
+		MouseListener popupListener = new PopupListener(popup);
+		textArea.addMouseListener(popupListener);
+	}
+
+	/**
+	 * Listener for the JPopupMenu.
+	 * Shows popup in the right place.
+	 */
+	class PopupListener extends MouseAdapter {
+		JPopupMenu popup;
+
+		PopupListener(JPopupMenu popupMenu) {
+			popup = popupMenu;
+		}
+
+		public void mousePressed(MouseEvent e) {
+			maybeShowPopup(e);
+		}
+
+		public void mouseReleased(MouseEvent e) {
+			maybeShowPopup(e);
+		}
+
+		private void maybeShowPopup(MouseEvent e) {
+			if (e.isPopupTrigger()) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		}
+	}
+	
+	//Events handlers
 	
 	private void teachRadioItemButtonStateChanged(ChangeEvent e) {
 
@@ -963,12 +1028,15 @@ public class Gui extends JFrame {
 	}
 
 	private void copyToClipboardButtonActionPerformed(ActionEvent e) {
-		new ClipboardCopy().copyToClipboard(textArea1.getText());
+		new ClipboardCopyPaste().copy(textArea1.getText());
 	}
 	//End of action events
 	
 	//Methods used in actions.
 
+	/**
+	 * Clears textfields with key info.
+	 */
 	public void clearKeyTextFields() {
 		//Clear p, q, e, n, d textfields
 		textField1.setText("");
@@ -978,6 +1046,9 @@ public class Gui extends JFrame {
 		textField5.setText("");
 	}
 	
+	/**
+	 * Generates keys and places them in to the right fields.
+	 */
 	public void createKeys() {
 		//Generate keys
 		if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
@@ -1001,11 +1072,17 @@ public class Gui extends JFrame {
 		}	
 	}
 	
+	/**
+	 * Saves a public key to a file.
+	 */
 	public void savePublicKey() {
 		openSave = new Open_Save(this);
 		openSave.savePublicKey(publicKey);
 	}
 	
+	/**
+	 * Loads a public key from a file.
+	 */
 	public void loadPublicKey() {
 		clearKeyTextFields();
 		openSave = new Open_Save(this);
@@ -1014,11 +1091,17 @@ public class Gui extends JFrame {
 		textField4.setText(publicKey.getN().toString());
 	}
 	
+	/**
+	 * Saves a private key to a file.
+	 */
 	public void savePrivateKey() {
 		openSave = new Open_Save(this);
 		openSave.savePrivateKey(privateKey);
 	}
 	
+	/**
+	 * Loads a private key from a file.
+	 */
 	public void loadPrivateKey() {
 		openSave = new Open_Save(this);
 		privateKey = openSave.loadPrivateKey();
@@ -1029,18 +1112,30 @@ public class Gui extends JFrame {
 		textField5.setText(privateKey.getPrivateExponent().toString());
 	}
 	
+	/**
+	 * Saves execution textarea contents to a file.
+	 */
 	public void saveExecution() {
 		new Load_Save_Exec(this, textArea1).saveExecToFile();
 	}
 	
+	/**
+	 * Loads content to the execution textarea from a file.
+	 */
 	public void loadExecution() {
 		new Load_Save_Exec(this, textArea1).loadExecFromFile();
 	}
 	
+	/**
+	 * Show execution content in a full screen frame. 
+	 */
 	public void showExecFullScreen() {
 		new FullScreen(textArea1);
 	}
 	
+	/**
+	 * Encrypts the text written in 'Message to encrypt/decrypt' textarea.
+	 */
 	public void encrypt() {
 		//if blocks of three letters padding scheme checkbox is selected
 		if (checkBox3.isSelected()) {
@@ -1054,6 +1149,9 @@ public class Gui extends JFrame {
 		}
 	}
 	
+	/**
+	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
+	 */
 	public void decrypt() {
 		//if blocks of three letters padding scheme checkbox is selected
 		if (checkBox3.isSelected()) {
@@ -1067,8 +1165,11 @@ public class Gui extends JFrame {
 		}
 	}
 	
-	//End of methods used in actions.
+	//End of event handlers.
 	
+	/**
+	 * Executes Gui in a thread.
+	 */
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() { 
         	public void run() {

@@ -26,6 +26,7 @@
 15.02. 6h	Blocks of three padding scheme - major update.
 16.02. 6h	Blocks of three padding scheme & Gui - major update.
 17.02. 2h	Gui tweaking.
+18.02. 3h	Copy/paste right click menu for Gui's two text areas.	
 
 -------------------
-OVERALL: 131 h
+OVERALL: 134 h
