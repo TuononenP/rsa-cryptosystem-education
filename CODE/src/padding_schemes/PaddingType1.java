@@ -16,7 +16,14 @@ public class PaddingType1 {
 	public PaddingType1(){
 
 	}
+	//------------------enCode-------------------------
 
+
+	/**
+	 * Returns enCoded message
+	 * @param msg String
+	 * @return numbers Integer[]
+	 */
 	public Integer[] enCode(String msg){
 		msg=msg.toUpperCase();
 		msg=msg.replace(" ", "X");
@@ -29,15 +36,30 @@ public class PaddingType1 {
 		return numbers;
 	}
 
+
+	//------------deCode----------------------------------
+
+
+
+
+
+
+
+	/**
+	 * Returns decoded message
+	 * @param msg Interger[]
+	 * @return String 
+	 */
 	public String deCode(Integer[] msg){
 		String unpadded = "";
-		for (int i : msg) {
-			unpadded=unpadded+alphaNum.getLetter(i);
+		for (int i = 0; i < msg.length; i++) {
+			unpadded=unpadded+alphaNum.getLetter(msg[i]);
 		}
+		unpadded = unpadded.replaceFirst("X", " ");
 		return unpadded;
 	}
 
-
+	//------------------------main for testing----------------------
 	/**
 	 * 
 	 * @param args
@@ -45,13 +67,13 @@ public class PaddingType1 {
 	public static void main(String[] args) {
 		Encrypt_Decrypt c = new Encrypt_Decrypt();
 		PaddingType1 koe = new PaddingType1();
-		String message = "help";
+		String message = "help help";
 		Integer[] testi = new Integer[message.length()];
 		System.out.println(message);
 		testi = koe.enCode(message);
 		System.out.print("Type1 encoded text: ");
-		for (int i : testi) {
-			System.out.print(i+" ");
+		for (int i = 0; i < testi.length; i++) {
+			System.out.print(testi[i]+" ");
 		}
 		String[] padded = new String[testi.length];
 

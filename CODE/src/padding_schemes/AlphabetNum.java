@@ -63,4 +63,17 @@ public class AlphabetNum {
 	public String getStringNum(String letter){
 		return alphaNum.get(letter).toString();
 	}
+	/**
+	 * Returns String containing letters with numbers
+	 * @return String 
+	 */
+	public  String getNumbers(){
+		String s ="";
+		for (int i=0; i<26; i++) {
+			s=s+i+"=";
+			s=s+getLetter(i);
+			s=s+" ; ";
+		}
+		return s;
+	}
 }
