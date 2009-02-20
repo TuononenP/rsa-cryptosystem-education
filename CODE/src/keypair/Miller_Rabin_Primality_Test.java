@@ -93,7 +93,17 @@ public class Miller_Rabin_Primality_Test {
      * @return		Boolean
      */
     public boolean isPrime(BigInteger x) {
-    	return miller_rabin(x);
+    	if (x.intValue() == 1) {
+    		return false;
+    	}
+    	//check 1000 first primes
+		if (new TestPrimality().isFoundFromTable(x)) {
+			return true;
+		}
+		//check using miller rabin algorithm
+		else {
+			return miller_rabin(x);
+		}
     }
     
     /**

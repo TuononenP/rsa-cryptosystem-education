@@ -26,7 +26,7 @@ public class GenerateKeys {
     	do {
         	p = primeTest.genPrime(bitsize);
         	q = primeTest.genPrime(bitsize);
-    	} while (testPrimeAffinity(p, q));
+    	} while (testPrimeAffinity(p, q)); //if p is equal to q
     	
         //Calculate modulo  
         n = p.multiply(q);  
@@ -39,12 +39,9 @@ public class GenerateKeys {
           
 //        //Compute the exponent necessary for encryption (part of public key)  
 //        e = primeTest.genPrime(bitsize/2);  
-//        while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0 ) {  
-//            e.add(BigInteger.ONE);  
-//        }  
         
         //Fast method to get e
-        e = new BigInteger("3");
+        e = new BigInteger("65537");
         
         while(phi.gcd(e).intValue() > 1) {
         	e = e.add(new BigInteger("2"));

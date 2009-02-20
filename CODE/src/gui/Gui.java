@@ -6,6 +6,7 @@ import keypair.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.math.BigInteger;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -29,36 +30,18 @@ public class Gui extends JFrame {
 	private JMenuBar menuBar;
 	
 	private JMenu menu;
-	private JMenu menu1;
 	private JMenu menu2;
-	private JMenu menu3;
-	private JMenu menu4;
-	private JMenu menu5;
-	private JMenu menu6;
-	private JMenu menu7;
 	
 	private JMenuItem menuItem1;
 	private JMenuItem menuItem2;
 	private JMenuItem menuItem3;
-	private JMenuItem menuItem4;
-	private JMenuItem menuItem5;
-	private JMenuItem menuItem6;
-	private JMenuItem menuItem7;
-	private JMenuItem menuItem8;
-	private JMenuItem menuItem9;
-	private JMenuItem menuItem10;
 	
 	private JRadioButton radioButton1;
 	private JRadioButton radioButton2;
-	private JRadioButton radioButton3;
-	private JRadioButton radioButton4;
 	
 	private JCheckBox checkBox1;
 	private JCheckBox checkBox2;
 	private JCheckBox checkBox3;
-	private JCheckBox checkBox4;
-	private JCheckBox checkBox5;
-	private JCheckBox checkBox6;
 	
 	private JButton button1;
 	private JButton button2;
@@ -106,6 +89,8 @@ public class Gui extends JFrame {
 
 	private JComboBox comboBox1;
 	
+	ButtonGroup buttonGroup1;
+	
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
@@ -125,36 +110,18 @@ public class Gui extends JFrame {
 		menuBar = new JMenuBar();
 		
 		menu = new JMenu();
-		menu1 = new JMenu();
 		menu2 = new JMenu();
-		menu3 = new JMenu();
-		menu4 = new JMenu();
-		menu5 = new JMenu();
-		menu6 = new JMenu();
-		menu7 = new JMenu();
 		
 		menuItem1 = new JMenuItem();
 		menuItem2 = new JMenuItem();
 		menuItem3 = new JMenuItem();
-		menuItem4 = new JMenuItem();
-		menuItem5 = new JMenuItem();
-		menuItem6 = new JMenuItem();
-		menuItem7 = new JMenuItem();
-		menuItem8 = new JMenuItem();
-		menuItem9 = new JMenuItem();
-		menuItem10 = new JMenuItem();
 		
 		radioButton1 = new JRadioButton();
 		radioButton2 = new JRadioButton();
-		radioButton3 = new JRadioButton();
-		radioButton4 = new JRadioButton();
 		
 		checkBox1 = new JCheckBox();
 		checkBox2 = new JCheckBox();
 		checkBox3 = new JCheckBox();
-		checkBox4 = new JCheckBox();
-		checkBox5 = new JCheckBox();
-		checkBox6 = new JCheckBox();
 		
 		button1 = new JButton();
 		button2 = new JButton();
@@ -202,6 +169,8 @@ public class Gui extends JFrame {
 		
 		comboBox1 = new JComboBox(textSize);
 		
+		buttonGroup1 = new ButtonGroup();
+		
 //		panelColor = new Color(117, 154, 178);
 		panelColor = Color.LIGHT_GRAY;
 
@@ -222,30 +191,16 @@ public class Gui extends JFrame {
 			//======== menu ========
 			{
 				menu.setText("File");
-
-				//======== menu1 ========
-				{
-					menu1.setText("Mode");
-
-					//---- radioButton3 ----
-					radioButton3.setText("Teach");
-					radioButton3.addChangeListener(new ChangeListener() {
-						public void stateChanged(ChangeEvent e) {
-							teachRadioItemButtonStateChanged(e);
-						}
-					});
-					menu1.add(radioButton3);
-
-					//---- radioButton4 ----
-					radioButton4.setText("Secure");
-					radioButton4.addChangeListener(new ChangeListener() {
-						public void stateChanged(ChangeEvent e) {
-							secureRadioItemButtonStateChanged(e);
-						}
-					});
-					menu1.add(radioButton4);
-				}
-				menu.add(menu1);
+				
+				//---- menuItem3 ----
+				menuItem3.setText("Quit");
+				menuItem3.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						quitMenuItemActionPerformed(e);
+					}
+				});
+				menu.add(menuItem3);
+				
 				menuBar.add(menu);
 
 				//======== menu2 ========
@@ -271,138 +226,6 @@ public class Gui extends JFrame {
 					menu2.add(menuItem2);
 				}
 				menuBar.add(menu2);
-				
-				//======== menu3 ========
-				{
-					menu3.setText("Key creation");
-
-					//---- menuItem3 ----
-					menuItem3.setText("Create keys");
-					menuItem3.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							createKeysMenuItemActionPerformed(e);
-						}
-					});
-					menu3.add(menuItem3);
-
-					//======== menu6 ========
-					{
-						menu6.setText("Save keys");
-
-						//---- menuItem4 ----
-						menuItem4.setText("Public key");
-						menuItem4.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								savePublicKeyMenuItemActionPerformed(e);
-							}
-						});
-						menu6.add(menuItem4);
-
-						//---- menuItem5 ----
-						menuItem5.setText("Private key");
-						menuItem5.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								savePrivateKeyMenuItemActionPerformed(e);
-							}
-						});
-						menu6.add(menuItem5);
-					}
-					menu3.add(menu6);
-
-					//======== menu7 ========
-					{
-						menu7.setText("Load keys");
-
-						//---- menuItem6 ----
-						menuItem6.setText("Public key");
-						menuItem6.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								loadPublicKeyMenuItemActionPerformed(e);
-							}
-						});
-						menu7.add(menuItem6);
-
-						//---- menuItem7 ----
-						menuItem7.setText("Private key");
-						menuItem7.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								loadPrivateKeyMenuItemActionPerformed(e);
-							}
-						});
-						menu7.add(menuItem7);
-					}
-					menu3.add(menu7);
-				}
-				menu.add(menu3);
-
-				//======== menu4 ========
-				{
-					menu4.setText("Paddings schemes");
-
-					//---- checkBox4 ----
-					checkBox4.setText("One letter");
-					checkBox4.setPreferredSize(new Dimension(95, 23));
-					checkBox4.addChangeListener(new ChangeListener() {
-						public void stateChanged(ChangeEvent e) {
-							padding1MenuItemStateChanged(e);
-						}
-					});
-					menu4.add(checkBox4);
-
-					//---- checkBox5 ----
-					checkBox5.setText("Two letters");
-					checkBox5.setPreferredSize(new Dimension(95, 23));
-					checkBox5.addChangeListener(new ChangeListener() {
-						public void stateChanged(ChangeEvent e) {
-							padding2MenuItemStateChange(e);
-						}
-					});
-					menu4.add(checkBox5);
-
-					//---- checkBox6 ----
-					checkBox6.setText("Three letters");
-					checkBox6.setPreferredSize(new Dimension(95, 23));
-					checkBox6.addChangeListener(new ChangeListener() {
-						public void stateChanged(ChangeEvent e) {
-							padding3MenuItemStateChange(e);
-						}
-					});
-					menu4.add(checkBox6);
-				}
-				menu.add(menu4);
-
-				//======== menu5 ========
-				{
-					menu5.setText("Execution");
-
-					//---- menuItem8 ----
-					menuItem8.setText("Save");
-					menuItem8.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							saveExecutionMenuItemActionPerformed(e);
-						}
-					});
-					menu5.add(menuItem8);
-
-					//---- menuItem9 ----
-					menuItem9.setText("Load");
-					menuItem9.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							loadExecutionMenuItemActionPerformed(e);
-						}
-					});
-					menu5.add(menuItem9);
-
-					//---- menuItem10 ----
-					menuItem10.setText("Full screen");
-					menuItem10.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							fullScreenMenuItemActionPerformed(e);
-						}
-					});
-					menu5.add(menuItem10);
-				}
-				menu.add(menu5);
 			}
 		}
 		setJMenuBar(menuBar);
@@ -493,19 +316,20 @@ public class Gui extends JFrame {
 				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
 				new Insets(0, 0, 5, 5), 0, 0));
 
-			//---- button1 ----
-			button1.setText("Create keys");
-			button1.addActionListener(new ActionListener() {
+			//---- button11 ----
+			button11.setText("Clear keys");
+			button11.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					createKeysButtonActionPerformed(e);
+					clearKeysButtonActionPerformed(e);
 				}
 			});
-			panel1.add(button1, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+			panel1.add(button11, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label8 ----
 			label8.setText("Prime bitsize");
+			label8.setVisible(false);
 			panel1.add(label8, new GridBagConstraints(3, 4, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
 				new Insets(0, 0, 5, 5), 0, 0));
@@ -532,20 +356,22 @@ public class Gui extends JFrame {
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
 
-			//---- button11 ----
-			button11.setText("Clear keys");
-			button11.addActionListener(new ActionListener() {
+			//---- button1 ----
+			button1.setText("Create keys");
+			button1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					clearKeysButtonActionPerformed(e);
+					createKeysButtonActionPerformed(e);
 				}
 			});
-			panel1.add(button11, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
+			panel1.add(button1, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
 			panel1.add(textField6, new GridBagConstraints(3, 5, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 5, 5), 0, 0));
-
+			
+			textField6.setVisible(false);
+			
 			//---- button7 ----
 			button7.setText("Private key");
 			button7.addActionListener(new ActionListener() {
@@ -790,9 +616,10 @@ public class Gui extends JFrame {
 			//---- radioButton1 ----
 			radioButton1.setText("Teach mode");
 			radioButton1.setSelected(true);
-			radioButton1.addChangeListener(new ChangeListener() {
-				public void stateChanged(ChangeEvent e) {
-					teachModeRadioButtonStateChanged(e);
+			radioButton1.setActionCommand("Teach mode");
+			radioButton1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					teachModeRadioButtonActionPerformed(e);
 				}
 			});
 			panel7.add(radioButton1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -801,9 +628,10 @@ public class Gui extends JFrame {
 
 			//---- radioButton2 ----
 			radioButton2.setText("Secure mode");
-			radioButton2.addChangeListener(new ChangeListener() {
-				public void stateChanged(ChangeEvent e) {
-					secureModeRadioButtonStateChanged(e);
+			radioButton2.setActionCommand("Secure mode");
+			radioButton2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					secureModeRadioButtonActionPerformed(e);
 				}
 			});
 			panel7.add(radioButton2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
@@ -819,13 +647,7 @@ public class Gui extends JFrame {
 		toFront();
 		setVisible(true);
 
-		//---- buttonGroup2 ----
-		ButtonGroup buttonGroup2 = new ButtonGroup();
-		buttonGroup2.add(radioButton3);
-		buttonGroup2.add(radioButton4);
-
 		//---- buttonGroup1 ----
-		ButtonGroup buttonGroup1 = new ButtonGroup();
 		buttonGroup1.add(radioButton1);
 		buttonGroup1.add(radioButton2);
 		//End of component initialization
@@ -889,73 +711,49 @@ public class Gui extends JFrame {
 		}
 	}
 	
-	//Events handlers
+	//Event handlers
 	
-	private void teachRadioItemButtonStateChanged(ChangeEvent e) {
-
+	private void teachModeRadioButtonActionPerformed(ActionEvent e) {
+		textField6.setVisible(false);
+		label8.setVisible(false);
+		button11.setVisible(true);
+		textField1.setVisible(true);
+		textField2.setVisible(true);
+		textField3.setVisible(true);
+		label1.setVisible(true);
+		label2.setVisible(true);
+		label3.setVisible(true);
+		label4.setVisible(true);
+		label5.setVisible(true);
+		textField4.setVisible(true);
+		textField5.setVisible(true);
 	}
 
-	private void secureRadioItemButtonStateChanged(ChangeEvent e) {
-
+	private void secureModeRadioButtonActionPerformed(ActionEvent e) {
+		textField6.setVisible(true);
+		label8.setVisible(true);
+		button11.setVisible(false);
+		textField1.setVisible(false);
+		textField2.setVisible(false);
+		textField3.setVisible(false);
+		label1.setVisible(false);
+		label2.setVisible(false);
+		label3.setVisible(false);
+		label4.setVisible(false);
+		label5.setVisible(false);
+		textField4.setVisible(false);
+		textField5.setVisible(false);
 	}
 
-	private void createKeysMenuItemActionPerformed(ActionEvent e) {
-		createKeys();
-	}
-
-	private void savePublicKeyMenuItemActionPerformed(ActionEvent e) {
-		savePublicKey();
-	}
-
-	private void savePrivateKeyMenuItemActionPerformed(ActionEvent e) {
-		savePrivateKey();
-	}
-
-	private void loadPublicKeyMenuItemActionPerformed(ActionEvent e) {
-		loadPublicKey();
-	}
-
-	private void loadPrivateKeyMenuItemActionPerformed(ActionEvent e) {
-		loadPrivateKey();
-	}
-
-	private void padding1MenuItemStateChanged(ChangeEvent e) {
-
-	}
-
-	private void padding2MenuItemStateChange(ChangeEvent e) {
-
-	}
-
-	private void padding3MenuItemStateChange(ChangeEvent e) {
-
-	}
-
-	private void saveExecutionMenuItemActionPerformed(ActionEvent e) {
-		saveExecution();
-	}
-
-	private void loadExecutionMenuItemActionPerformed(ActionEvent e) {
-		loadExecution();
-	}
-
-	private void fullScreenMenuItemActionPerformed(ActionEvent e) {
-		showExecFullScreen();
+	private void quitMenuItemActionPerformed(ActionEvent e) {
+		dispose();
 	}
 
 	private void showHelpMenuItemActionPerformed(ActionEvent e) {
-		new Help();
+		new Help().toFront();
 	}
 
 	private void aboutMenuItemActionPerformed(ActionEvent e) {
-
-	}
-
-	private void teachModeRadioButtonStateChanged(ChangeEvent e) {
-
-	}
-
-	private void secureModeRadioButtonStateChanged(ChangeEvent e) {
 
 	}
 
@@ -1047,29 +845,56 @@ public class Gui extends JFrame {
 	}
 	
 	/**
-	 * Generates keys and places them in to the right fields.
+	 * Generates keys.
 	 */
 	public void createKeys() {
-		//Generate keys
-		if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
-			System.out.println("Prime bit size must be larger than 5.");
-		}
-		else if (textField6.getText().equals("")) { //bit size field is empty.
-			System.out.println("You didn't define prime bit size.");
-		}
-		else { //bit size is ok.
-			setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-	    	GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
-	    	publicKey = genKeys.getPublicKey();
-	    	privateKey = genKeys.getPrivateKey();
-	    	setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		//teach mode
+		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+			//get user input
+			BigInteger p = new BigInteger(textField1.getText());
+			BigInteger q = new BigInteger(textField2.getText());
+			BigInteger e = new BigInteger(textField3.getText());
+			
+			GenerateUserKeys genKeys = new GenerateUserKeys();
+			
+			//test that p, q and e are suitable
+			if (genKeys.testInputEligibility(p, q, e)) { //input ok
+				
+			}
+			else { //bad input
+				genKeys.showInputError(this, p, q, e);
+			}
+			
+			//Generate keys and places them in to the correct fields.
+//			setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+			
+//		    publicKey = genKeys.getPublicKey();
+//		    privateKey = genKeys.getPrivateKey();
+//		    setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			
 			//Write textfields
-			textField1.setText(privateKey.getPrimeP().toString());
-			textField2.setText(privateKey.getPrimeQ().toString());
-			textField3.setText(privateKey.getE().toString());
-			textField4.setText(publicKey.getN().toString());
-			textField5.setText(privateKey.getPrivateExponent().toString());
-		}	
+//			textField1.setText(privateKey.getPrimeP().toString());
+//			textField2.setText(privateKey.getPrimeQ().toString());
+//			textField3.setText(privateKey.getE().toString());
+//			textField4.setText(publicKey.getN().toString());
+//			textField5.setText(privateKey.getPrivateExponent().toString());
+		}
+		//secure mode
+		else if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+			if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
+				System.out.println("Prime bit size must be larger than 5.");
+			}
+			else if (textField6.getText().equals("")) { //bit size field is empty.
+				System.out.println("You didn't define prime bit size.");
+			}
+			else { //bit size is ok.
+				setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		    	GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+		    	publicKey = genKeys.getPublicKey();
+		    	privateKey = genKeys.getPrivateKey();
+		    	setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			}
+		}
 	}
 	
 	/**
