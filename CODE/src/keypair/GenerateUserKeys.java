@@ -12,6 +12,9 @@ import javax.swing.*;
  */
 public class GenerateUserKeys {
 
+    private RsaPublicKey publicKey;
+    private RsaPrivateKey privateKey;
+    
 	/**
 	 * Test user input for prime p & q and public exponent e.
 	 * 
@@ -78,5 +81,45 @@ public class GenerateUserKeys {
 				    JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	/**
+	 * Create public and private keys.
+	 * Doesn't check if parameters are suitable.
+	 * It is done by testInputEligibility() method.
+	 * 
+	 * @param p	Prime p.
+	 * @param q	Prime q.
+	 * @param e	Public exponent.
+	 */
+	public void createKeys(BigInteger p, BigInteger q, BigInteger e) {
+		//Calculate the Euler's function.
+		BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));  
+		
+		//Compute private exponent  
+		BigInteger d = e.modInverse(phi);
+        
+        //Calculate modulo  
+        BigInteger n = p.multiply(q);  
+        
+        //Create keys
+        publicKey = new RsaPublicKey(n, e);
+        privateKey = new RsaPrivateKey(p, q, e, d);
+	}
+	
+    /**
+     * Returns a public key instance.
+     * @return publicKey.
+     */
+    public RsaPublicKey getPublicKey() {
+    	return publicKey;
+    }
+    
+    /**
+     * Returns a private key instance.
+     * @return privateKey.
+     */
+    public RsaPrivateKey getPrivateKey() {
+    	return privateKey;
+    }
 	
 }

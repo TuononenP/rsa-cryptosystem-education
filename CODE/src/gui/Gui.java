@@ -10,7 +10,6 @@ import java.math.BigInteger;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import javax.swing.event.*;
 
 /**
  * Graphical User Interface for
@@ -89,7 +88,7 @@ public class Gui extends JFrame {
 
 	private JComboBox comboBox1;
 	
-	ButtonGroup buttonGroup1;
+	private ButtonGroup buttonGroup1;
 	
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
@@ -659,7 +658,7 @@ public class Gui extends JFrame {
 	 * 
 	 * @param textArea	Textarea where popup menu comes up.
 	 */
-	public void createPopupMenu(final JTextArea textArea) {
+	private void createPopupMenu(final JTextArea textArea) {
 		JMenuItem menuItem;
 
 		//Create the popup menu.
@@ -713,129 +712,166 @@ public class Gui extends JFrame {
 	
 	//Event handlers
 	
+	/**
+	 * Teach mode radiobutton pressed.
+	 */
 	private void teachModeRadioButtonActionPerformed(ActionEvent e) {
-		textField6.setVisible(false);
-		label8.setVisible(false);
-		button11.setVisible(true);
-		textField1.setVisible(true);
-		textField2.setVisible(true);
-		textField3.setVisible(true);
-		label1.setVisible(true);
-		label2.setVisible(true);
-		label3.setVisible(true);
-		label4.setVisible(true);
-		label5.setVisible(true);
-		textField4.setVisible(true);
-		textField5.setVisible(true);
+		teachModeButtonPressed();
 	}
 
+	/**
+	 * Secure mode radiobutton pressed.
+	 * @param e
+	 */
 	private void secureModeRadioButtonActionPerformed(ActionEvent e) {
-		textField6.setVisible(true);
-		label8.setVisible(true);
-		button11.setVisible(false);
-		textField1.setVisible(false);
-		textField2.setVisible(false);
-		textField3.setVisible(false);
-		label1.setVisible(false);
-		label2.setVisible(false);
-		label3.setVisible(false);
-		label4.setVisible(false);
-		label5.setVisible(false);
-		textField4.setVisible(false);
-		textField5.setVisible(false);
+		secureModeButtonPressed();
 	}
 
+	/**
+	 * 'Quit' File menu item pressed.
+	 * @param e
+	 */
 	private void quitMenuItemActionPerformed(ActionEvent e) {
 		dispose();
 	}
 
+	/**
+	 * 'Show help' menu item pressed.
+	 * @param e
+	 */
 	private void showHelpMenuItemActionPerformed(ActionEvent e) {
 		new Help().toFront();
 	}
 
+	/**
+	 * 'About' menu item pressed.
+	 * @param e
+	 */
 	private void aboutMenuItemActionPerformed(ActionEvent e) {
 
 	}
 
+	/**
+	 * 'Save public key' button pressed.
+	 * @param e
+	 */
 	private void savePublicKeyButtonActionPerformed(ActionEvent e) {
 		savePublicKey();
 	}
 
+	/**
+	 * 'Load public key' button pressed.
+	 * @param e
+	 */
 	private void loadPublicKeyButtonActionPerformed(ActionEvent e) {
 		loadPublicKey();
 	}
 
+	/**
+	 * 'Save private key' button pressed.
+	 * @param e
+	 */
 	private void savePrivateKeyButtonActionPerformed(ActionEvent e) {
 		savePrivateKey();
 	}
 
+	/**
+	 * 'Load private key' button pressed.
+	 * @param e
+	 */
 	private void loadPrivateKeyButtonActionPerformed(ActionEvent e) {
 		loadPrivateKey();
 	}
 
+	/**
+	 * 'Encrypt' button pressed.
+	 * @param e
+	 */
 	private void encryptButtonActionPerformed(ActionEvent e) {
 		encrypt();
 	}
 
+	/**
+	 * 'Decrypt' button pressed.
+	 * @param e
+	 */
 	private void decryptButtonActionPerformed(ActionEvent e) {
 		decrypt();
 	}
 
+	/**
+	 * 'Save to file' button pressed.
+	 * @param e
+	 */
 	private void saveExecutionButtonActionPerformed(ActionEvent e) {
 		saveExecution();
 	}
 
+	/**
+	 * 'Load from file' button pressed.
+	 * @param e
+	 */
 	private void loadExecutionButtonActionPerformed(ActionEvent e) {
 		loadExecution();
 	}
-
+	
+	/**
+	 * Font selected from font size combo box.
+	 * @param e
+	 */
 	private void fontSizeComboBoxActionPerformed(ActionEvent e) {
-		if (comboBox1.getSelectedItem() == "Font size 12 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 12));
-		}
-		else if (comboBox1.getSelectedItem() == "Font size 14 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 14));
-		}
-		else if (comboBox1.getSelectedItem() == "Font size 16 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 16));
-		}
-		else if (comboBox1.getSelectedItem() == "Font size 18 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 18));
-		}
-		else if (comboBox1.getSelectedItem() == "Font size 20 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 20));
-		}
+		fontSizeChange();
 	}
 
+	/**
+	 * 'Full screen' button pressed.
+	 * @param e
+	 */
 	private void fullScreenButtonActionPerformed(ActionEvent e) {
 		showExecFullScreen();
 	}
 	
+	/**
+	 * 'Create keys' button pressed.
+	 * @param e
+	 */
 	private void createKeysButtonActionPerformed(ActionEvent e) {
 		createKeys();
 	}
 	
+	/**
+	 * 'Clear keys' button pressed.
+	 * @param e
+	 */
 	private void clearKeysButtonActionPerformed(ActionEvent e) {
 		//Clear p, q, e, n, d textfields
 		clearKeyTextFields();
 	}
 	
+	/**
+	 * 'Clear' button pressed.
+	 * @param e
+	 */
 	private void ClearExecButtonActionPerformed(ActionEvent e) {
 		//Clear execution textarea
 		textArea1.setText("");
 	}
 
+	/**
+	 * 'Copy to clipboard' button pressed.
+	 * @param e
+	 */
 	private void copyToClipboardButtonActionPerformed(ActionEvent e) {
 		new ClipboardCopyPaste().copy(textArea1.getText());
 	}
-	//End of action events
+	//End of event handlers.
 	
-	//Methods used in actions.
+	//Methods used in event handlers.
 
 	/**
-	 * Clears textfields with key info.
+	 * Clears textfields containing key info.
 	 */
-	public void clearKeyTextFields() {
+	private void clearKeyTextFields() {
 		//Clear p, q, e, n, d textfields
 		textField1.setText("");
 		textField2.setText("");
@@ -847,7 +883,7 @@ public class Gui extends JFrame {
 	/**
 	 * Generates keys.
 	 */
-	public void createKeys() {
+	private void createKeys() {
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
 			//get user input
@@ -859,25 +895,21 @@ public class Gui extends JFrame {
 			
 			//test that p, q and e are suitable
 			if (genKeys.testInputEligibility(p, q, e)) { //input ok
+				//generate keys
+				setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+				genKeys.createKeys(p, q, e);
+				setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				//store keys
+				publicKey = genKeys.getPublicKey();
+				privateKey = genKeys.getPrivateKey();
 				
+				//write to textfields
+				textField4.setText(publicKey.getN().toString());
+				textField5.setText(privateKey.getPrivateExponent().toString());
 			}
 			else { //bad input
 				genKeys.showInputError(this, p, q, e);
 			}
-			
-			//Generate keys and places them in to the correct fields.
-//			setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-			
-//		    publicKey = genKeys.getPublicKey();
-//		    privateKey = genKeys.getPrivateKey();
-//		    setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-			
-			//Write textfields
-//			textField1.setText(privateKey.getPrimeP().toString());
-//			textField2.setText(privateKey.getPrimeQ().toString());
-//			textField3.setText(privateKey.getE().toString());
-//			textField4.setText(publicKey.getN().toString());
-//			textField5.setText(privateKey.getPrivateExponent().toString());
 		}
 		//secure mode
 		else if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
@@ -900,7 +932,7 @@ public class Gui extends JFrame {
 	/**
 	 * Saves a public key to a file.
 	 */
-	public void savePublicKey() {
+	private void savePublicKey() {
 		openSave = new Open_Save(this);
 		openSave.savePublicKey(publicKey);
 	}
@@ -908,7 +940,7 @@ public class Gui extends JFrame {
 	/**
 	 * Loads a public key from a file.
 	 */
-	public void loadPublicKey() {
+	private void loadPublicKey() {
 		clearKeyTextFields();
 		openSave = new Open_Save(this);
 		publicKey = openSave.loadPublicKey();
@@ -919,7 +951,7 @@ public class Gui extends JFrame {
 	/**
 	 * Saves a private key to a file.
 	 */
-	public void savePrivateKey() {
+	private void savePrivateKey() {
 		openSave = new Open_Save(this);
 		openSave.savePrivateKey(privateKey);
 	}
@@ -927,7 +959,7 @@ public class Gui extends JFrame {
 	/**
 	 * Loads a private key from a file.
 	 */
-	public void loadPrivateKey() {
+	private void loadPrivateKey() {
 		openSave = new Open_Save(this);
 		privateKey = openSave.loadPrivateKey();
 		textField1.setText(privateKey.getPrimeP().toString());
@@ -940,28 +972,28 @@ public class Gui extends JFrame {
 	/**
 	 * Saves execution textarea contents to a file.
 	 */
-	public void saveExecution() {
+	private void saveExecution() {
 		new Load_Save_Exec(this, textArea1).saveExecToFile();
 	}
 	
 	/**
 	 * Loads content to the execution textarea from a file.
 	 */
-	public void loadExecution() {
+	private void loadExecution() {
 		new Load_Save_Exec(this, textArea1).loadExecFromFile();
 	}
 	
 	/**
 	 * Show execution content in a full screen frame. 
 	 */
-	public void showExecFullScreen() {
+	private void showExecFullScreen() {
 		new FullScreen(textArea1);
 	}
 	
 	/**
 	 * Encrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
-	public void encrypt() {
+	private void encrypt() {
 		//if blocks of three letters padding scheme checkbox is selected
 		if (checkBox3.isSelected()) {
 			//get plaintext from textarea
@@ -977,7 +1009,7 @@ public class Gui extends JFrame {
 	/**
 	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
-	public void decrypt() {
+	private void decrypt() {
 		//if blocks of three letters padding scheme checkbox is selected
 		if (checkBox3.isSelected()) {
 			//get encrypted text from textarea
@@ -990,7 +1022,71 @@ public class Gui extends JFrame {
 		}
 	}
 	
-	//End of event handlers.
+	/**
+	 * Changes execution textarea's font size.
+	 */
+	private void fontSizeChange() {
+		if (comboBox1.getSelectedItem() == "Font size 12 pt") {
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 14 pt") {
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 16 pt") {
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 16));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 18 pt") {
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
+		}
+		else if (comboBox1.getSelectedItem() == "Font size 20 pt") {
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		}
+	}
+	
+	/**
+	 * Secure mode button action.
+	 * Bit size textfield is made visible and
+	 * some textfields used by teach mode
+	 * are made invisible.
+	 */
+	private void secureModeButtonPressed() {
+		textField6.setVisible(true);
+		label8.setVisible(true);
+		button11.setVisible(false);
+		textField1.setVisible(false);
+		textField2.setVisible(false);
+		textField3.setVisible(false);
+		label1.setVisible(false);
+		label2.setVisible(false);
+		label3.setVisible(false);
+		label4.setVisible(false);
+		label5.setVisible(false);
+		textField4.setVisible(false);
+		textField5.setVisible(false);
+	}
+	
+	/**
+	 * Teach mode button action.
+	 * Bit size textfield is made invisible
+	 * and key textfields visible.
+	 */
+	private void teachModeButtonPressed() {
+		textField6.setVisible(false);
+		label8.setVisible(false);
+		button11.setVisible(true);
+		textField1.setVisible(true);
+		textField2.setVisible(true);
+		textField3.setVisible(true);
+		label1.setVisible(true);
+		label2.setVisible(true);
+		label3.setVisible(true);
+		label4.setVisible(true);
+		label5.setVisible(true);
+		textField4.setVisible(true);
+		textField5.setVisible(true);
+	}
+	
+	//End of methods used in event handlers.
 	
 	/**
 	 * Executes Gui in a thread.

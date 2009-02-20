@@ -6,16 +6,21 @@ public class GenerateKeys {
 
     private BigInteger p, q, n, phi, e, d;  
     private int bitsize;  
-    RsaPublicKey publicKey;
-    RsaPrivateKey privateKey;
+    private RsaPublicKey publicKey;
+    private RsaPrivateKey privateKey;
 	
+    /**
+     * Constructor.
+     * 
+     * @param bitsize
+     */
     public GenerateKeys(int bitsize) {
     	this.bitsize = bitsize;
     	createKeys();
     }
     
     /** 
-     * Create public and private keys.
+     * Creates public and private keys.
      */  
     private void createKeys() {
     	Miller_Rabin_Primality_Test primeTest = new Miller_Rabin_Primality_Test();
@@ -50,19 +55,31 @@ public class GenerateKeys {
         //Compute private exponent  
         d = e.modInverse(phi);
         
-        //Save keys
+        //Create keys
         publicKey = new RsaPublicKey(n, e);
         privateKey = new RsaPrivateKey(p, q, e, d);
         
-        //Destroy p & q for security reasons
+        //Erase variables for security reasons
         p = null;
         q = null;
+        n = null;
+        d = null;
+        phi = null;
+        e = null;
     }
     
+    /**
+     * Returns a public key instance.
+     * @return publicKey.
+     */
     public RsaPublicKey getPublicKey() {
     	return publicKey;
     }
     
+    /**
+     * Returns a private key instance.
+     * @return privateKey.
+     */
     public RsaPrivateKey getPrivateKey() {
     	return privateKey;
     }
