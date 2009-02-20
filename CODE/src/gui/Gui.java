@@ -178,7 +178,7 @@ public class Gui extends JFrame {
 		setTitle("RSA Education Cryptosystem");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setIconImage(new ImageIcon("C:\\Tiedostovarasto\\AMK\\Olio-ohjelmoinnin projektity\u00f6 - RSA\\Logo\\Ikoni3.jpg").getImage());
+		setIconImage(new ImageIcon("images/icon.jpg").getImage());
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridBagLayout());
 		((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {10, 581, 10};
