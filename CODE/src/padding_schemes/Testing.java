@@ -16,22 +16,28 @@ public class Testing {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//SymbolicCalculation f = new SymbolicCalculation(BigInteger.valueOf(63), new BigInteger("29"));
+		// TODO Auto-generated method stub
+		
+		
+		//
 		JTextArea j = new JTextArea();
 		StringBuilder s = new StringBuilder();
-		
+		AlphabetNum alpha = new AlphabetNum();
 		Encrypt_Decrypt c = new Encrypt_Decrypt();
 		PaddingType2 koe = new PaddingType2();
-		String message = "HELP";
+		String message = "HELPPI apua apua apua";
 		ArrayList<Integer> testi = null;
 		
 		//---------------encoding----------------------------
-		//System.out.println(message);
+		//
 		s.append(message+"\n");
 		testi = koe.enCode(message);
-		//System.out.print("Type2 encoded text: ");
+		//
+		
+		s.append(alpha.getNumbers());
+		s.append("\n");
 		s.append("Type2 encoded text: ");
-//		System.out.print(testi);
+//		
 		s.append(testi.toString()+"\n");
 		
 		String[] padded = new String[testi.size()];
@@ -43,12 +49,12 @@ public class Testing {
 		//-----------------encrypting---------------------------------
 		s.append("Encrypting: \n");
 		for (int i = 0; i < padded.length; i++) {
-			//s.append();
+			//
 			CalculationPhase f = new CalculationPhase(new BigInteger(padded[i]), new BigInteger("113"));
 		s.append(f.getAll(new BigInteger("3893")));
 		s.append("\n\n");
 		}
-		s.append("Encrypted text: ");
+		s.append("Encryped text: ");
 		
 		BigInteger[] crypto = new BigInteger[padded.length];
 		for (int i = 0; i < crypto.length; i++) {
@@ -69,11 +75,13 @@ public class Testing {
 		testi.clear();
 		for (int i = 0; i < crypto.length; i++) {
 			testi.add(c.decryptToInt(crypto[i], BigInteger.valueOf(1937), BigInteger.valueOf(3893)));
-			s.append(crypto[i]+" ");
+			
 		}
-		
+		s.append(testi+" ");
 		
 		//---------------------decoding--------------------------
+		
+		s.append("\n"+alpha.getNumbers());
 		
 		s.append("\n\n Decoded text: ");
 		s.append(koe.deCode(testi)+"\n");
@@ -81,7 +89,7 @@ public class Testing {
 		//--------------------setting FullScreen--------------------
 		j.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		j.setText(s.toString());
-		new FullScreen(j);
+		FullScreen screen = new FullScreen(j);
 	}
 
 }

@@ -15,15 +15,20 @@ public class PaddingType2 {
 	public PaddingType2(){
 
 	}
-
+	//---------------------------enCode----------------------------
+	
+	
 	/**
 	 * Encodes message with padding type 2
 	 * @param msg 
 	 * @return ArrayList<Integer> containing encoded message
 	 */
 	public ArrayList<Integer> enCode(String msg){
-		msg=msg.toUpperCase();
-		msg=msg.replace(" ", "X");
+		if (msg.length()%2!=0) { // if %2!=0 add x to get %2=0
+			msg=msg+"x";
+		}
+		msg=msg.toUpperCase(); // to big letters
+		msg=msg.replace(" ", "X"); // replace all white spaces with X
 		//System.out.println(msg);
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		char[] table = msg.toCharArray();
@@ -31,12 +36,14 @@ public class PaddingType2 {
 			numbers.add(j,(alphaNum.getNum(String.valueOf(table[i])))*100);
 			if (i+1<table.length){
 				numbers.set(j, (numbers.get(j)+(alphaNum.getNum(String.valueOf(table[i+1])))));
-			} 
+			} 	
 
 		}
 
 		return numbers;
 	}
+
+	//-------------------deCode--------------------------
 	
 	/**
 	 * Decodes message with padding type 2
@@ -47,18 +54,49 @@ public class PaddingType2 {
 		String decoded = "";
 		Integer help, apu = null;
 		for (int i = 0; i < msg.size(); i++) {
-			help=(msg.get(i));
-			apu = help/100;
-			decoded=decoded+alphaNum.getLetter(apu);
-			decoded=decoded+alphaNum.getLetter(help-(apu*100));
+		help=(msg.get(i));
+		apu = help/100;
+		decoded=decoded+alphaNum.getLetter(apu);
+		decoded=decoded+alphaNum.getLetter(help-(apu*100));
 		}
+		decoded=decoded.replaceAll("X", " ");
 		return decoded;
 	}
+	
+//----------------getLetters----------------------------------------
+	
+	
+/**
+ * Returns String containing letters
+ * with numbers
+ * @param msg ArrayList<Integer> 
+ * @return s String
+ */
+	public String getLetters(ArrayList<Integer> msg){
+		String s="";
+		Integer help, apu = null;
+		for (Integer integer : msg) {
+			help = integer;
+			apu=help/100;
+			s=s+apu.toString()+"=";
+			s=s+alphaNum.getLetter(apu);
+			s=s+" ; ";
+			s=s+(help-(apu*100))+"=";
+			s=s+alphaNum.getLetter(help-(apu*100));
+			s=s+" ; ";
+		}
+		return s;
+		
+	}
+
+	
+//------------------------main for testing----------------------------	
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		Encrypt_Decrypt c = new Encrypt_Decrypt();
 		PaddingType2 koe = new PaddingType2();
-		String message = "help";
+		String message = "help helppi";
 		ArrayList<Integer> testi = null;
 		System.out.println(message);
 		testi = koe.enCode(message);

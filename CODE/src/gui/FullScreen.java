@@ -153,19 +153,19 @@ public class FullScreen extends JFrame {
 
 	private void fontSizeComboBoxActionPerformed(ActionEvent e) {
 		if (comboBox1.getSelectedItem() == "Font size 12 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 12));
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
 		}
 		else if (comboBox1.getSelectedItem() == "Font size 14 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 14));
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		}
 		else if (comboBox1.getSelectedItem() == "Font size 16 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 16));
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 16));
 		}
 		else if (comboBox1.getSelectedItem() == "Font size 20 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 20));
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
 		}
 		else if (comboBox1.getSelectedItem() == "Font size 30 pt") {
-			textArea1.setFont(new Font("Arial", Font.PLAIN, 30));
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 30));
 		}
 	}
 
