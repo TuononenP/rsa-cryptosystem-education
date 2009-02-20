@@ -6,22 +6,22 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
-/*
- * Sun Feb 08 21:11:50 EET 2009
- */
-
 /**
  * @author Petri Tuononen
+ * @since 2.2.2009
  */
 public class FullScreen extends JFrame {
 	
+	/**
+	 * Constructor.
+	 * @param textArea
+	 */
 	public FullScreen(JTextArea textArea) {
 		initComponents();
 		textArea1.setText(textArea.getText());
 	}
 
-	//Variables declaration  //GEN-BEGIN:variables
+	//Variables declaration
 	private JPanel panel1;
 	private JScrollPane scrollPane1;
 	private JTextArea textArea1;
@@ -33,10 +33,12 @@ public class FullScreen extends JFrame {
 	private Load_Save_Exec loadSaveExec;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 					"Font size 16 pt", "Font size 20 pt", "Font size 30 pt"};
-	//End of variables declaration  //GEN-END:variables
-
+	//End of variables declaration
+	
+	/**
+	 * Initializes components.
+	 */
 	private void initComponents() {
-		//Component initialization  //GEN-BEGIN:initComponents
 		panel1 = new JPanel();
 		scrollPane1 = new JScrollPane();
 		textArea1 = new JTextArea();
@@ -46,7 +48,7 @@ public class FullScreen extends JFrame {
 		button1 = new JButton();
 		comboBox1 = new JComboBox(textSize);
 
-		//======== this ========
+		//======== container ========
 		setTitle("RSA Education Cryptosystem");
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridBagLayout());
@@ -78,7 +80,7 @@ public class FullScreen extends JFrame {
 			((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
 
 			//---- button2 ----
-			button2.setText("Save execution");
+			button2.setText("Save to file");
 			button2.setPreferredSize(new Dimension(125, 25));
 			button2.setMaximumSize(new Dimension(125, 25));
 			button2.setMinimumSize(new Dimension(125, 25));
@@ -92,7 +94,7 @@ public class FullScreen extends JFrame {
 				new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- button3 ----
-			button3.setText("Load execution");
+			button3.setText("Load from file");
 			button3.setPreferredSize(new Dimension(125, 25));
 			button3.setMaximumSize(new Dimension(125, 25));
 			button3.setMinimumSize(new Dimension(125, 25));
@@ -138,19 +140,30 @@ public class FullScreen extends JFrame {
 		setLocationRelativeTo(null);
 		toFront();
 		setVisible(true);
-		//End of component initialization  //GEN-END:initComponents
 	}
 	
+	/**
+	 * 'Save to file' button pressed.
+	 * @param e
+	 */
 	private void saveExecutionButtonActionPerformed(ActionEvent e) {
 		loadSaveExec = new Load_Save_Exec(this, textArea1);
 		loadSaveExec.saveExecToFile();
 	}
 
+	/**
+	 * 'Load from file' button pressed.
+	 * @param e
+	 */
 	private void loadExecutionButtonActionPerformed(ActionEvent e) {
 		loadSaveExec = new Load_Save_Exec(this, textArea1);
 		loadSaveExec.loadExecFromFile();
 	}
 
+	/**
+	 * Font size changed.
+	 * @param e
+	 */
 	private void fontSizeComboBoxActionPerformed(ActionEvent e) {
 		if (comboBox1.getSelectedItem() == "Font size 12 pt") {
 			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
@@ -169,14 +182,26 @@ public class FullScreen extends JFrame {
 		}
 	}
 
+	/**
+	 * 'Close' button pressed.
+	 * @param e
+	 */
 	private void closeButtonActionPerformed(ActionEvent e) {
 		this.dispose();
 	}
 	
+	/**
+	 * Updates textarea.
+	 * @param textArea
+	 */
 	public void updateTextArea(JTextArea textArea) {
 		textArea1.setText(textArea.getText());
 	}
 
+	/**
+	 * 
+	 * @param args
+	 */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() { 
         	public void run() {
