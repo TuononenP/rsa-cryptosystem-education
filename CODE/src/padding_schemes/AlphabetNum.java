@@ -55,6 +55,7 @@ public class AlphabetNum {
 	public String getLetter(int num) {
 		return alphabet[num];
 	}
+	
 	/**
 	 * Return an order number as String for a given letter.
 	 * @param letter
@@ -63,17 +64,44 @@ public class AlphabetNum {
 	public String getStringNum(String letter){
 		return alphaNum.get(letter).toString();
 	}
+	
 	/**
 	 * Returns String containing letters with numbers
 	 * @return String 
 	 */
-	public  String getNumbers(){
+	public String getNumbers(){
 		String s ="";
 		for (int i=0; i<26; i++) {
 			s=s+i+"=";
 			s=s+getLetter(i);
-			s=s+" ; ";
+			if (i!=25) {
+				s=s+" ; ";	
+			}
+			if (i==10 || i==20) {
+				s = s+"\n";
+			}
 		}
 		return s;
 	}
+	
+	/**
+	 * Converts a full string of numbers to letters.
+	 * Can be used to convert encrypted numbers to 
+	 * cryptotext.
+	 * @return String
+	 */
+	public String stringOfNumbersToLetters(String numbers) {
+		StringBuilder sB = new StringBuilder();
+		for (int i=0; i<numbers.length(); i++) {
+			char c = numbers.charAt(i);
+			if (numbers.charAt(i)!= ' ') { //not white space
+				sB.append(getLetter(Character.getNumericValue(c)));
+			}
+			else { //white space
+				sB.append(" ");
+			}
+		}
+		return sB.toString();
+	}
+		
 }
