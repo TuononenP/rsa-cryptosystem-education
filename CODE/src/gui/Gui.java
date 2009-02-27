@@ -93,6 +93,8 @@ public class Gui extends JFrame {
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
+	private PaddingType1 padding1;
+	private PaddingType2 padding2;
 	private Blocks_Of_3_Padding padding3;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 					"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
@@ -1006,6 +1008,30 @@ public class Gui extends JFrame {
 	private void encrypt() {
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+			// if padding type1 checkbox is selected
+			if(checkBox1.isSelected()){
+				// get plaintext from textarea
+				String plaintext = textArea2.getText().toUpperCase();
+				// if something is written into the message textarea and public key is generated.
+				if (!plaintext.isEmpty() && !(publicKey == null)) {
+					padding1 = new PaddingType1();
+					String s=padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+					textArea1.setText(s);
+					textArea1.setCaretPosition(0);
+				}
+			}
+			//if padding type2 checkbox is selected
+			if(checkBox2.isSelected()){
+				// get plaintext from textarea
+				String plaintext = textArea2.getText().toUpperCase();
+				// if something is written into the message textarea and public key is generated.
+				if (!plaintext.isEmpty() && !(publicKey == null)) {
+					padding2 = new PaddingType2();
+					String s=padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+					textArea1.setText(s);
+					textArea1.setCaretPosition(0);
+				}
+			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
 				//get plaintext from textarea
@@ -1020,6 +1046,30 @@ public class Gui extends JFrame {
 		}
 		//secure mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+			// if padding type1 checkbox is selected
+			if(checkBox1.isSelected()){
+				// get plaintext from textarea
+				String plaintext = textArea2.getText().toUpperCase();
+				// if something is written into the message textarea and public key is generated.
+				if (!plaintext.isEmpty() && !(publicKey == null)) {
+					padding1 = new PaddingType1();
+					String s=padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+					textArea1.setText(s);
+					textArea1.setCaretPosition(0);
+				}
+			}
+			//if padding type2 checkbox is selected
+			if(checkBox2.isSelected()){
+				// get plaintext from textarea
+				String plaintext = textArea2.getText().toUpperCase();
+				// if something is written into the message textarea and public key is generated.
+				if (!plaintext.isEmpty() && !(publicKey == null)) {
+					padding2 = new PaddingType2();
+					String s=padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+					textArea1.setText(s);
+					textArea1.setCaretPosition(0);
+				}
+			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
 				//get plaintext from textarea
@@ -1040,6 +1090,28 @@ public class Gui extends JFrame {
 	private void decrypt() {
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+			// if padding scheme1 checkbox is selected
+			if (checkBox1.isSelected()){
+				// get encrypted text from textarea
+				String encrypted = textArea2.getText();
+				//if something is written into the message textarea and private key is generated.
+				if (!encrypted.isEmpty() && !(privateKey == null)) {
+					PaddingType1 padding1 = new PaddingType1();
+					String s = padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+					textArea1.setText(s);
+				}
+			}
+			// if padding scheme2 checkbox is selected
+			if (checkBox2.isSelected()){
+				// get encrypted text from textarea
+				String encrypted = textArea2.getText();
+				//if something is written into the message textarea and private key is generated.
+				if (!encrypted.isEmpty() && !(privateKey == null)) {
+					PaddingType2 padding2 = new PaddingType2();
+					String s = padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+					textArea1.setText(s);
+				}
+			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
 				//get encrypted text from textarea
@@ -1053,6 +1125,28 @@ public class Gui extends JFrame {
 		}
 		//secure mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+			// if padding scheme1 checkbox is selected
+			if (checkBox1.isSelected()){
+				// get encrypted text from textarea
+				String encrypted = textArea2.getText();
+				//if something is written into the message textarea and private key is generated.
+				if (!encrypted.isEmpty() && !(privateKey == null)) {
+					PaddingType1 padding1 = new PaddingType1();
+					String s = padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+					textArea1.setText(s);
+				}
+			}
+			// if padding scheme2 checkbox is selected
+			if (checkBox2.isSelected()){
+				// get encrypted text from textarea
+				String encrypted = textArea2.getText();
+				//if something is written into the message textarea and private key is generated.
+				if (!encrypted.isEmpty() && !(privateKey == null)) {
+					PaddingType2 padding2 = new PaddingType2();
+					String s = padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+					textArea1.setText(s);
+				}
+			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
 				//get encrypted text from textarea
