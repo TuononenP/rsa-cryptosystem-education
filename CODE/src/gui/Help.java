@@ -9,30 +9,35 @@ import java.io.IOException;
 import javax.swing.*;
 
 /**
+ * Help window. Contents are loaded from a html file.
+ * 
  * @author Petri Tuononen
  * @since 11.02.2009
  */
 public class Help extends JFrame {
 	
+	/**
+	 * Constructor.
+	 */
 	public Help() {
 		initComponents();
 	}
 
-	//Variables declaration  //GEN-BEGIN:variables
+	//Variables declaration
 	private JScrollPane scrollPane1;
 	private JEditorPane editorPane1;
 	private JButton button1;
-	private String fileName = "help.html"; 
-	private String notFoundText = "Help file not found";
-	//End of variables declaration  //GEN-END:variables
+	private String fileName = "./Help.html"; 
 
+	/**
+	 * Initializes graphical user interface components.
+	 */
 	private void initComponents() {
-		//Component initialization  //GEN-BEGIN:initComponents
 		scrollPane1 = new JScrollPane();
 		editorPane1 = new JEditorPane();
 		button1 = new JButton();
 
-		//======== this ========
+		//======== container ========
 		setVisible(true);
 		setTitle("Help - RSA Education Cryptosystem");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,7 +61,7 @@ public class Help extends JFrame {
 				editorPane1.setPage(url);
 				
 			} catch (IOException e) {
-				editorPane1.setText(notFoundText);
+				editorPane1.setText("Help file not found");
 			}
 		}
 		contentPane.add(scrollPane1, new GridBagConstraints(1, 1, 2, 1, 0.0, 0.0,
@@ -76,13 +81,20 @@ public class Help extends JFrame {
 		
 		setSize(900, 650);
 		setLocationRelativeTo(null);
-		//End of component initialization  //GEN-END:initComponents
 	}
 	
+	/**
+	 * Closes frame.
+	 * @param e
+	 */
 	private void closeButtonActionPerformed(ActionEvent e) {
 		this.dispose();
 	}
 
+	/**
+	 * 
+	 * @param args
+	 */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() { 
         	public void run() {

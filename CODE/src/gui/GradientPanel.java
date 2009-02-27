@@ -6,16 +6,26 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
+ * Paints a panel with gradient color.
  * 
  * @author Daniele @ koders.com /open source
  * Edited: Petri Tuononen
  */
 public class GradientPanel extends JPanel {
 
+	/**
+	 * Constructor.
+	 * @param background
+	 */
     public GradientPanel(Color background) {
         setBackground(background);
     }
 
+    /**
+     * Constructor.
+     * @param background
+     * @param lm
+     */
     public GradientPanel(Color background, LayoutManager lm) {
         super(lm);
         setBackground(background);
@@ -41,7 +51,10 @@ public class GradientPanel extends JPanel {
     	g2.setPaint(new GradientPaint(0, 0, getBackground(), 0, getHeight(), control));
     }
 
-    
+    /**
+     * Test method.
+     * @param args
+     */
     public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setSize(600, 600);

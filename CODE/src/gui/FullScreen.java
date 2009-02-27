@@ -67,6 +67,7 @@ public class FullScreen extends JFrame {
 			{
 				scrollPane1.setViewportView(textArea1);
 			}
+			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 16));
 			panel1.add(scrollPane1);
 		}
 		contentPane.add(panel1, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
@@ -117,6 +118,7 @@ public class FullScreen extends JFrame {
 					fontSizeComboBoxActionPerformed(e);
 				}
 			});
+			comboBox1.setSelectedIndex(2);
 			panel2.add(comboBox1, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 5), 0, 0));
@@ -138,7 +140,13 @@ public class FullScreen extends JFrame {
 		contentPane.add(panel2, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
 			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 			new Insets(0, 0, 5, 5), 0, 0));
-		setSize(900, 650);
+		
+		//Get display's maximum width and height.
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        int width = ge.getMaximumWindowBounds().width; 
+        int height = ge.getMaximumWindowBounds().height;     
+        setSize(width, height);
+//		setSize(900, 650); //option size
 		setLocationRelativeTo(null);
 		toFront();
 		setVisible(true);

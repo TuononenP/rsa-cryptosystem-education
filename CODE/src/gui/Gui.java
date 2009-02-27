@@ -213,6 +213,8 @@ public class Gui extends JFrame {
 							showHelpMenuItemActionPerformed(e);
 						}
 					});
+					//shortcut for help F11
+					menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F11, 0));
 					menu2.add(menuItem1);
 
 					//---- menuItem2 ----
@@ -748,7 +750,15 @@ public class Gui extends JFrame {
 	 * @param e
 	 */
 	private void aboutMenuItemActionPerformed(ActionEvent e) {
-
+		JOptionPane.showMessageDialog(this,
+			    "Authors: Petri Tuononen, Jukka Tuominen, Jani Kirsi.\n" +
+			    "Date: 27.02.2009\n" +
+			    "Version: 1.0\n" +
+			    "Info: This software is a part of OOP course work at Turku University of Applied Sciences.\n" +
+			    "GPL lisence: This software can be used, modified and redistibuted freely.\n" +
+			    "No warranties of any kind.\n" +
+			    "Feedback: petri.tuononen@students.turkuamk.fi", "About",
+			    JOptionPane.PLAIN_MESSAGE);
 	}
 
 	/**
@@ -1123,7 +1133,7 @@ public class Gui extends JFrame {
 	//End of methods used in event handlers.
 	
 	/**
-	 * Executes Gui in a thread.
+	 * Executes GUI in a thread.
 	 */
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() { 
