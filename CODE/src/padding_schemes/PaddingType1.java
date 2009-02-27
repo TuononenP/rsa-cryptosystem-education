@@ -27,7 +27,7 @@ public class PaddingType1 {
 	public Integer[] enCode(String msg){
 		msg=msg.toUpperCase();
 		msg=msg.replace(" ", "X");
-		System.out.println(msg);
+		
 		Integer[] numbers = new Integer[msg.length()];
 		char[] table = msg.toCharArray();
 		for (int j = 0; j < table.length; j++) {
@@ -39,15 +39,9 @@ public class PaddingType1 {
 
 	//------------deCode----------------------------------
 
-
-
-
-
-
-
 	/**
 	 * Returns decoded message
-	 * @param msg Interger[]
+	 * @param msg Integer[]
 	 * @return String 
 	 */
 	public String deCode(Integer[] msg){
@@ -59,6 +53,90 @@ public class PaddingType1 {
 		return unpadded;
 	}
 
+	/**
+	 * Returns all phases of encoding and encrypting
+	 * in a String
+	 * @param msg String messge to be encrypted
+	 * @param exp BigInteger exponend
+	 * @param mod BigInteger modulo
+	 * @return String 
+	 */
+	public String getEnCrypted(String msg, BigInteger exp, BigInteger mod){
+		StringBuilder s = new StringBuilder();
+		AlphabetNum alpha = new AlphabetNum();
+		Encrypt_Decrypt encrypter = new Encrypt_Decrypt();
+		
+		//--------------------- enCoding-------------------------
+		
+		Integer[] numberMessage = enCode(msg);
+		s.append(msg+"\n\n");
+		s.append(alpha.getNumbers()+"\n\n");
+		s.append("Type 1 encoded text:\n");
+		for (Integer integer : numberMessage) {
+			s.append(integer.toString()+" ");
+		}
+		
+		//------------------------enCrypting-----------------------
+		
+		s.append("\n\nEncrypting:\n");
+		for (int i = 0; i < numberMessage.length; i++) {
+		CalculationPhase phase = new CalculationPhase(new BigInteger(numberMessage[i].toString()), exp);
+		s.append(phase.getAll(mod));
+		s.append("\n\n");
+		}
+		s.append("Encryped: \n");
+		BigInteger[] enCrypted = new BigInteger[numberMessage.length];
+		for (int i = 0; i < enCrypted.length; i++) {
+			enCrypted[i]=(encrypter.encrypt(numberMessage[i],exp,mod));
+			s.append(enCrypted[i]+" ");
+		}
+		return s.toString();
+	}
+	
+	
+	/**
+	 * Returns all phases of decrypting and decoding
+	 * in a String
+	 * @param msg String 
+	 * @param exp BigInteger
+	 * @param mod BigInteger
+	 * @return String
+	 */
+	public String getDeCrypted(String msg, BigInteger exp, BigInteger mod){
+		StringBuilder s = new StringBuilder();
+		AlphabetNum alpha = new AlphabetNum();
+		Encrypt_Decrypt decrypter = new Encrypt_Decrypt();
+		String[] stringMessage = msg.split(" "); // Message in String[]
+		
+		//----------------------deCrypting--------------------------
+		
+		BigInteger[] numberMessage = new BigInteger[stringMessage.length];
+		
+		for (int i = 0; i < numberMessage.length; i++) {
+			numberMessage[i]=new BigInteger(stringMessage[i]);   // message to BigInteger[]	
+		}
+		s.append("Encrypted message: \n");
+		s.append(msg);
+		s.append("\n\nDecrypting: \n");
+		for (int i = 0; i < numberMessage.length; i++) {
+			CalculationPhase phase = new CalculationPhase(numberMessage[i],exp);
+			s.append(phase.getAll(mod));
+			s.append("\n\n");
+		}
+		s.append("Decrypted: \n");
+	    Integer[] integerMessage = new Integer[numberMessage.length];
+		for (int i = 0; i < numberMessage.length; i++) {
+			integerMessage[i]=(decrypter.decryptToInt(numberMessage[i], exp, mod));
+			s.append(integerMessage[i]+" ");
+		}
+		
+		//-----------------------enCoding-------------------------------
+		
+		s.append("\n\n"+alpha.getNumbers());
+		s.append("\n\nDecoded text: ");
+		s.append(deCode(integerMessage)+"\n");
+		return s.toString();
+	}
 	//------------------------main for testing----------------------
 	/**
 	 * 
@@ -92,7 +170,7 @@ public class PaddingType1 {
 			System.out.print(integer+" ");
 		}
 		System.out.println();
-		System.out.print("Decrypted text:");
+		System.out.print("Decrypted:");
 		for (int i = 0; i < crypto.length; i++) {
 			testi[i]=c.decryptToInt(crypto[i], BigInteger.valueOf(29), BigInteger.valueOf(91));
 		}
