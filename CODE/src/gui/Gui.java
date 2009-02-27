@@ -674,7 +674,7 @@ public class Gui extends JFrame {
 		menuItem = new JMenuItem("Paste");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText(textArea.getText() + new ClipboardCopyPaste().paste());
+				textArea.setText(new ClipboardCopyPaste().paste());
 			}
 		});
 		popup.add(menuItem);
@@ -994,14 +994,32 @@ public class Gui extends JFrame {
 	 * Encrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
 	private void encrypt() {
-		//if blocks of three letters padding scheme checkbox is selected
-		if (checkBox3.isSelected()) {
-			//get plaintext from textarea
-			String plaintext = textArea2.getText().toUpperCase();
-			//if something is written into the message textarea and public key is generated.
-			if (!plaintext.isEmpty() && !(publicKey == null)) {
-				padding3 = new Blocks_Of_3_Padding();
-				textArea1.setText(padding3.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+		//teach mode
+		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+			//if blocks of three letters padding scheme checkbox is selected
+			if (checkBox3.isSelected()) {
+				//get plaintext from textarea
+				String plaintext = textArea2.getText().toUpperCase();
+				//if something is written into the message textarea and public key is generated.
+				if (!plaintext.isEmpty() && !(publicKey == null)) {
+					padding3 = new Blocks_Of_3_Padding();
+					textArea1.setText(padding3.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+					textArea1.setCaretPosition(0);
+				}
+			}
+		}
+		//secure mode
+		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+			//if blocks of three letters padding scheme checkbox is selected
+			if (checkBox3.isSelected()) {
+				//get plaintext from textarea
+				String plaintext = textArea2.getText().toUpperCase();
+				//if something is written into the message textarea and public key is generated.
+				if (!plaintext.isEmpty() && !(publicKey == null)) {
+					padding3 = new Blocks_Of_3_Padding();
+					textArea1.setText(padding3.getEncodeAndEncrypt_secure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+					textArea1.setCaretPosition(0);
+				}
 			}
 		}
 	}
@@ -1010,14 +1028,30 @@ public class Gui extends JFrame {
 	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
 	private void decrypt() {
-		//if blocks of three letters padding scheme checkbox is selected
-		if (checkBox3.isSelected()) {
-			//get encrypted text from textarea
-			String encrypted = textArea2.getText();
-			//if something is written into the message textarea and private key is generated.
-			if (!encrypted.isEmpty() && !(privateKey == null)) {
-				padding3 = new Blocks_Of_3_Padding();
-				textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+		//teach mode
+		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+			//if blocks of three letters padding scheme checkbox is selected
+			if (checkBox3.isSelected()) {
+				//get encrypted text from textarea
+				String encrypted = textArea2.getText();
+				//if something is written into the message textarea and private key is generated.
+				if (!encrypted.isEmpty() && !(privateKey == null)) {
+					padding3 = new Blocks_Of_3_Padding();
+					textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+				}
+			}
+		}
+		//secure mode
+		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+			//if blocks of three letters padding scheme checkbox is selected
+			if (checkBox3.isSelected()) {
+				//get encrypted text from textarea
+				String encrypted = textArea2.getText();
+				//if something is written into the message textarea and private key is generated.
+				if (!encrypted.isEmpty() && !(privateKey == null)) {
+					padding3 = new Blocks_Of_3_Padding();
+					textArea1.setText(padding3.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+				}
 			}
 		}
 	}

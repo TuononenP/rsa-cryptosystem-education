@@ -28,6 +28,9 @@
 17.02. 2h	GUI tweaking.
 18.02. 3h	Copy/paste right click menu for Gui's two text areas.	
 20.02. 7h	New primality test, major GUI update and user input suitability test. Key generation: teach & secure mode.
+23.02. 3h	Padding schemes, documentation, testing.
+25.02. 3h	Padding schemes, documentation, testing.
+27.02. 6h	Padding schemes, documentation, testing.
 
 -------------------
-OVERALL: 141 h
+OVERALL: 153 h

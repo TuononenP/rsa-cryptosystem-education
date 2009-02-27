@@ -66,7 +66,8 @@ public class AlphabetNum {
 	}
 	
 	/**
-	 * Returns String containing letters with numbers
+	 * Returns String containing letters with numbers.
+	 * A=0, B=1
 	 * @return String 
 	 */
 	public String getNumbers(){
@@ -75,7 +76,27 @@ public class AlphabetNum {
 			s=s+i+"=";
 			s=s+getLetter(i);
 			if (i!=25) {
-				s=s+" ; ";	
+				s=s+", ";	
+			}
+			if (i==10 || i==20) {
+				s = s+"\n";
+			}
+		}
+		return s;
+	}
+	
+	/**
+	 * Returns String containing numbers with letters.
+	 * 0=A, 1=B etc.
+	 * @return String 
+	 */
+	public String getLetters(){
+		String s ="";
+		for (int i=0; i<26; i++) {
+			s=s+getLetter(i)+"=";
+			s=s+i;
+			if (i!=25) {
+				s=s+", ";	
 			}
 			if (i==10 || i==20) {
 				s = s+"\n";
@@ -86,8 +107,7 @@ public class AlphabetNum {
 	
 	/**
 	 * Converts a full string of numbers to letters.
-	 * Can be used to convert encrypted numbers to 
-	 * cryptotext.
+	 * Can be used to convert encrypted numbers to cryptotext.
 	 * @return String
 	 */
 	public String stringOfNumbersToLetters(String numbers) {
@@ -102,6 +122,39 @@ public class AlphabetNum {
 			}
 		}
 		return sB.toString();
+	}
+	
+	/**
+	 * Convers a full string of letters to numbers.
+	 * Can be used to convert cryptotext to encrypted numbers.
+	 * @param letters
+	 * @return
+	 */
+	public String stringOfLettersToNumbers(String letters) {
+		StringBuilder sB = new StringBuilder();
+		for (int i=0; i<letters.length(); i++) {
+			char c = letters.charAt(i);
+			if (letters.charAt(i)!= ' ') { //not white space
+				sB.append(getNum(Character.toString(c)));
+			}
+			else { //white space
+				sB.append(" ");
+			}
+		}
+		return sB.toString();
+	}
+	
+	public static void main(String[] args) {
+		String numbers = "0123 314 32 4354 36443 574354 835 394";
+		System.out.println(numbers);
+		String letters = new AlphabetNum().stringOfNumbersToLetters(numbers);
+		System.out.println(letters);
+		System.out.println(new AlphabetNum().stringOfLettersToNumbers(letters));
+		System.out.println("\n");
+		System.out.println(new AlphabetNum().getNumbers());
+		System.out.println("\n");
+		System.out.println(new AlphabetNum().getLetters());
+		System.out.println("\n");
 	}
 		
 }

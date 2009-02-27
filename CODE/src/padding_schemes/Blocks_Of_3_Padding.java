@@ -1,9 +1,14 @@
 package padding_schemes;
 
+import gui.FullScreen;
+
+import java.awt.Font;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.swing.JTextArea;
 
 import keypair.*;
 
@@ -16,9 +21,12 @@ import keypair.*;
  * Restructures text blocks to plaintext.
  * Returns full encoding/decoding formulas.
  * Returns full encoding+encrypting formulas from plaintext.
- * Returns full decrypting+decoding formulas from encrypted text.
- * Secure method to allow encode+encrypt to return only encrypted text. 
+ * Returns full decrypting+decoding formulas from cryptotext.
+ * Secure method to allow encode+encrypt to return only cryptotext. 
  * Secure method to allow decrypt+decode to return only plaintext. 
+ * 
+ * NOTE: Maximum value of a group (ZZZ) is 25*26^2 + 25*26^1 + 25*26^0 = 17575(=26^3-1)
+ * 		 so a modulus n greater than this value is required.
  * 
  * @author Petri Tuononen
  * @since 25.1.2009
@@ -31,6 +39,9 @@ public class Blocks_Of_3_Padding {
 	private final String pow_zero = "\u00B0";
 	private final String pow_one = "\u00B9";
 	private final String pow_two = "\u00B2";
+	private final String times = "\u00d7";
+	private final String line = "--------------------------" +
+								"--------------------------";
 	private final double BASE_double = Double.parseDouble(Integer.toString(BASE)); 
 	private int[] products = new int[3];
 	private int firstProduct = 0, secondProduct = 0, lastProduct = 0;
@@ -87,7 +98,6 @@ public class Blocks_Of_3_Padding {
 	
 	/**
 	 * Converts blocks of three letters to plaintext.
-	 * 
 	 * @param blocks Three letter blocks in a String array.
 	 * @return	Plaintext.
 	 */
@@ -120,20 +130,19 @@ public class Blocks_Of_3_Padding {
 	}
 	
 	/**
-	 * Return a formula as a text.
+	 * Returns a formula as a text.
 	 * @param text	Three letter string.
 	 * @return Mathematical formula.
 	 */
 	private String getEncodeFormula(String text) {
 		String formula;
 		setProductNumbers(text);
-		formula = products[0]+"*"+BASE+pow_two+" + "+products[1]+"*"+BASE+pow_one+" + "+products[2]+"*"+BASE+pow_zero;
+		formula = products[0]+times+BASE+pow_two+" + "+products[1]+times+BASE+pow_one+" + "+products[2]+times+BASE+pow_zero;
 		return formula;
 	}
 	
 	/**
 	 * Store products that represents each character of three letter text block. 
-	 * 
 	 * @param text Three letter text block.
 	 */
 	private void setProductNumbers(String text) {
@@ -143,7 +152,7 @@ public class Blocks_Of_3_Padding {
 	}
 	
 	/**
-	 * Return full formula as a text.
+	 * Returns full formula as a text.
 	 * e.g. ATT = 0*26^2 + 19*26^1 + 19*26^0 = 513
 	 * @param text	Three letter string.
 	 * @return Whole mathematical formula.
@@ -215,6 +224,7 @@ public class Blocks_Of_3_Padding {
 	 * Returns whole mathematical formulas of each and every step.
 	 * 
 	 * @param encoded Text block encoded to number.
+	 * @return decoding formula.
 	 */
 	private String getDecodecBlockFormula(int encoded) {
 		StringBuilder sB = new StringBuilder();
@@ -227,34 +237,34 @@ public class Blocks_Of_3_Padding {
 			secondProduct = (int) division; //integer part
 			dPart = division-secondProduct; //desimal part
 			lastProduct = (int) roundDouble(BASE*dPart, 1);
-			sB.append((int)encoded+" = ("+(int)encoded+"/"+BASE+")*"+BASE+"\n");
-			sB.append((int)encoded+" = "+division+"*"+BASE+"\n");
-			sB.append((int)encoded+" = "+secondProduct+"*"+BASE+" + "+dPart+"*"+BASE+"\n");
-			sB.append((int)encoded+" = "+secondProduct+"*"+BASE+" + "+lastProduct+"*"+BASE+pow_zero+"\n");
+			sB.append((int)encoded+" = ("+(int)encoded+"/"+BASE+")"+times+BASE+"\n");
+			sB.append((int)encoded+" = "+division+times+BASE+"\n");
+			sB.append((int)encoded+" = "+secondProduct+times+BASE+" + "+dPart+times+BASE+"\n");
+			sB.append((int)encoded+" = "+secondProduct+times+BASE+" + "+lastProduct+times+BASE+pow_zero+"\n");
 		}
 		else { //three products
 			//result after the first division is >26 so another division has to be done
-			sB.append(encoded+" = ("+encoded+"/"+BASE+")*"+BASE+"\n");
-			sB.append(encoded+" = "+roundDouble(division, 3)+"*"+BASE+"\n");
-			sB.append(encoded+" = ("+roundDouble(division, 3)+"/"+BASE+")*"+BASE+pow_two+"\n");
+			sB.append(encoded+" = ("+encoded+"/"+BASE+")"+times+BASE+"\n");
+			sB.append(encoded+" = "+roundDouble(division, 3)+times+BASE+"\n");
+			sB.append(encoded+" = ("+roundDouble(division, 3)+"/"+BASE+")"+times+BASE+pow_two+"\n");
 			division = division/BASE_double;
 			/*
 			 * Now after second division the result should be <26.
 			 * Text block 'ZZZ' has the biggest number when encoded (17575) and [17575/(26*26)] < 26.
 			 */
 			if (division < BASE) { //to be 100% sure that the division result is <26
-				sB.append(encoded+" = "+roundDouble(division, 3)+"*"+BASE+pow_two+"\n");
+				sB.append(encoded+" = "+roundDouble(division, 3)+times+BASE+pow_two+"\n");
 				firstProduct = (int) division; //we get first product
 				dPart = division-firstProduct; //desimal part
-				sB.append(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+roundDouble(dPart, 3)+"*"+BASE+pow_two+"\n");
-				sB.append(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + ("+roundDouble(dPart, 3)+"*"+BASE+")*"+BASE+"\n");
+				sB.append(encoded+" = "+firstProduct+times+BASE+pow_two+" + "+roundDouble(dPart, 3)+times+BASE+pow_two+"\n");
+				sB.append(encoded+" = "+firstProduct+times+BASE+pow_two+" + ("+roundDouble(dPart, 3)+times+BASE+")"+times+BASE+"\n");
 				temp = dPart*26;
-				sB.append(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+roundDouble(temp, 3)+"*"+BASE+"\n");
+				sB.append(encoded+" = "+firstProduct+times+BASE+pow_two+" + "+roundDouble(temp, 3)+times+BASE+"\n");
 				secondProduct = (int) temp;
 				dPart2 = temp - secondProduct;
-				sB.append(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+secondProduct+"*"+BASE+" + "+roundDouble(dPart2, 3)+"*"+BASE+"\n");
+				sB.append(encoded+" = "+firstProduct+times+BASE+pow_two+" + "+secondProduct+times+BASE+" + "+roundDouble(dPart2, 3)+times+BASE+"\n");
 				lastProduct = (int) roundDouble(BASE*dPart2, 1);
-				sB.append(encoded+" = "+firstProduct+"*"+BASE+pow_two+" + "+secondProduct+"*"+BASE+" + "+lastProduct+"*"+BASE+pow_zero+"\n");
+				sB.append(encoded+" = "+firstProduct+times+BASE+pow_two+" + "+secondProduct+times+BASE+" + "+lastProduct+times+BASE+pow_zero+"\n");
 			}
 		}
 	    //save products to arrays
@@ -276,7 +286,7 @@ public class Blocks_Of_3_Padding {
 	
 	/**
 	 * Returns a full encoding part from one three letter block.
-	 * @param block
+	 * @param block three letter text block.
 	 */
 	private String getEncodedBlock(String block) {
 		StringBuilder sB = new StringBuilder();
@@ -288,11 +298,16 @@ public class Blocks_Of_3_Padding {
 		return sB.toString();
 	}
 	
+	/**
+	 * Returns encoding formula of each block of three letters.
+	 * @param blocks String array of blocks of three letters.
+	 * @return encoding formula of each block of three letters.
+	 */
 	private String getEncodeFormulas(String[] blocks) {
 		StringBuilder sB = new StringBuilder();
 		//encode every block of three
 		sB.append("Encode: \n");
-		sB.append("------------------------------------\n");
+		sB.append(line+"\n");
 		//encode every block of three
 		for (String s : blocks) {
 			sB.append(getEncodedBlock(s));
@@ -307,7 +322,7 @@ public class Blocks_Of_3_Padding {
 	private String getDecodeFormulas(String decoded) {
 		StringBuilder sB = new StringBuilder();
 		sB.append("Decode: \n");
-		sB.append("------------------------------------\n");
+		sB.append(line+"\n");
 		/*
 		 * 'String decoded' is numbers with spaces
 		 * Numbers are split into string array cells.
@@ -437,23 +452,39 @@ public class Blocks_Of_3_Padding {
 	 * @param plaintext	Plaintext message to be encoded and encrypted.
 	 * @param e Public exponent.
 	 * @param n Modulus.
+	 * @return cryptotext
 	 */
 	public String getEncodeAndEncryptBlocksOfThree(String plaintext, BigInteger e, BigInteger n) {
 		StringBuilder sB = new StringBuilder();
+		plaintext = plaintext.toUpperCase();
+		
 		//Encoding part
 		//----------------
 		sB.append(plaintext+"\n");
+		
 		//convert plaintext to blocks of three letters
 		String[] blocks = plaintextToBlocks(plaintext);
+		
 		//print blocks of three letters
 		sB.append(printArray(blocks)+"\n");
+		
 		//print encoding formula from every block
 		sB.append(getEncodeFormulas(blocks));
 		sB.append("Encoded: ");
+		
 		//encode blocks
 		int[] encoded = encodeBlocks(blocks);
+		
 		//print encoded numbers consecutively
-		sB.append(getEncodedConsecutively(encoded));
+		sB.append(getEncodedConsecutively(encoded)+"\n");
+		
+		//print encrypting formulas
+		sB.append("Encrypt: \n");
+		sB.append(line+"\n");
+		for (int i: encoded) {
+			sB.append(new CalculationPhase(BigInteger.valueOf(i), e).getAll(n));
+			sB.append("\n\n");
+		}
 		
 		//Encrypting part
 		//----------------
@@ -461,15 +492,25 @@ public class Blocks_Of_3_Padding {
 		//encrypt blocks to arraylist
 		arrayL = encryptBlocksOfThree(encoded, e, n);
 		sB.append("Encrypted: ");
+		
 		//print arraylist contents consecutively.
 		Iterator<BigInteger> iter = arrayL.iterator();
+		StringBuilder encNumbers = new StringBuilder();
 		while (iter.hasNext()) {
 			BigInteger encrypted = iter.next();
 			sB.append(encrypted + " ");
+			encNumbers.append(encrypted.toString() + " ");
 		}
-		return sB.toString();
+		
+		//print 0=A, 1=B,..., 25=Z 
+		sB.append("\n\n"+alphaNum.getNumbers()+"\n\n");
+		
+		//print cryptotext
+		sB.append("Cryptotext: ");
+		sB.append(alphaNum.stringOfNumbersToLetters(encNumbers.toString()));
+		return sB.toString().trim();
 	}
-
+	
 	/**
 	 * Returns decrypting and decoding formulas.
 	 * Decrypts using RSA cryptosystem.
@@ -477,13 +518,38 @@ public class Blocks_Of_3_Padding {
 	 * @param encryptedText Encrypted text.
 	 * @param d Private exponent.
 	 * @param n Modulus.
+	 * @return decrypted text
 	 */
-	public String getDecryptAndDecodeBlocksOfThree(String encryptedText, BigInteger d, BigInteger n) {
+	public String getDecryptAndDecodeBlocksOfThree(String cryptotext, BigInteger d, BigInteger n) {
 		StringBuilder sB = new StringBuilder();
 		StringBuilder sB2 = new StringBuilder();
+
+		//print cryptotext
+		sB.append("Cryptotext: "+cryptotext+"\n\n");
+		
+		//print A=0, B=1,..., Z=25
+		sB.append(alphaNum.getLetters()+"\n\n");
+		
+		//convert alphabets to numbers
+		String encryptedText = alphaNum.stringOfLettersToNumbers(cryptotext);
+		
 		//Decrypting part
 		//----------------
-		sB.append("Encrypted: "+encryptedText+"\n");
+		sB.append("Encrypted: "+encryptedText+"\n\n");
+		
+		sB.append("Decrypt: \n");
+		sB.append(line+"\n");
+		
+		//print decrypting formulas
+		//String to BigInteger ArrayList
+		ArrayList<BigInteger> encryptedAL = stringToBiArrayList(encryptedText);
+		Iterator<BigInteger> iter = encryptedAL.iterator();
+		while (iter.hasNext()) {
+			sB.append(new CalculationPhase(iter.next(), d).getAll(n));
+			sB.append("\n\n");
+		}
+
+		//print decrypted numbers
 		ArrayList<BigInteger> encrypted = stringToBiArrayList(encryptedText);
 		BigInteger[] decryptedArray = decryptBlocksOfThree(encrypted, d, n);
 		for (BigInteger bi : decryptedArray){
@@ -496,17 +562,20 @@ public class Blocks_Of_3_Padding {
 		//----------------
 		//print decoding formulas from every encoded number
 		sB.append(getDecodeFormulas(decrypted));
+		
 		//get decoding result
 		String decoded = getDecodedFullPhrase(decrypted);
 		sB.append("Decoded: \n");
 		sB.append(decoded+"\n");
+		
 		//remove white spaces
 		String decoded_no_ws = decoded.replace(" ", "");
 		sB.append(decoded_no_ws+"\n");
+		
 		//remove x letters
 		String decoded_final = decoded_no_ws.replaceAll("X", " ");
-		sB.append(decoded_final+"\n");
-		return sB.toString();
+		sB.append(decoded_final);
+		return sB.toString().trim();
 	}
 	
 	/**
@@ -517,14 +586,17 @@ public class Blocks_Of_3_Padding {
 	 * @param plaintext
 	 * @param e Public exponent.
 	 * @param n Modulus.
+	 * @return cryptotext
 	 */
 	public String getEncodeAndEncrypt_secure(String plaintext, BigInteger e, BigInteger n) {
 		StringBuilder sB = new StringBuilder();
+		plaintext = plaintext.toUpperCase();
 		Iterator<BigInteger> iter = encryptBlocksOfThree(encodeFullPhrase(plaintext), e, n).iterator();
 		while (iter.hasNext()) {
 			sB.append(iter.next()+" ");
 		}
-		return sB.toString();
+		//return cryptotext
+		return alphaNum.stringOfNumbersToLetters(sB.toString()).trim();
 	}
 	
 	/**
@@ -535,15 +607,18 @@ public class Blocks_Of_3_Padding {
 	 * @param encrypted Encrypted text.
 	 * @param d Private exponent.
 	 * @param n Modulus.
+	 * @return decrypted text
 	 */
-	public String getDecryptAndDecode_secure(String encrypted, BigInteger d, BigInteger n) {
+	public String getDecryptAndDecode_secure(String cryptotext, BigInteger d, BigInteger n) {
 		StringBuilder sB = new StringBuilder();
 		StringBuilder sB2 = new StringBuilder();
+		//convert alphabets to numbers
+		String encrypted = alphaNum.stringOfLettersToNumbers(cryptotext);
 		for (BigInteger bi : decryptBlocksOfThree(stringToBiArrayList(encrypted), d, n)){
 			sB2.append(bi+" ");
 		}
 		sB.append(blocksToPlaintext(getDecodedFullPhrase(sB2.toString()).split(" "))+"\n");
-		return sB.toString();
+		return sB.toString().trim();
 	}
 	
 	/**
@@ -582,9 +657,9 @@ public class Blocks_Of_3_Padding {
 	public static void main(String[] args) {
 		Blocks_Of_3_Padding pg = new Blocks_Of_3_Padding();
 		//generate keys
-		GenerateKeys genKeys = new GenerateKeys(100);
-		RsaPublicKey publicKey = genKeys.getPublicKey();
-		RsaPrivateKey privateKey = genKeys.getPrivateKey();
+//		GenerateKeys genKeys = new GenerateKeys(10);
+//		RsaPublicKey publicKey = genKeys.getPublicKey();
+//		RsaPrivateKey privateKey = genKeys.getPrivateKey();
 
 		//Load public key from a file
 //		Load_Save_Key open = new Load_Save_Key();
@@ -599,37 +674,91 @@ public class Blocks_Of_3_Padding {
 //		RsaPrivateKey privateKey = encDec.decPrivateKey(encoded2);
 		
 		//Tests
-		String plaintext = "ATTACK AT SEVEN";
-		System.out.println("Plaintext: "+plaintext);
-		System.out.println("Blocks: "+pg.getBlocktext(plaintext)); //OK
-		String[] blocks = pg.plaintextToBlocks(plaintext); //OK
-		System.out.println("Encode formula of ATT");
-		System.out.println(pg.getEncodeFormula("ATT")); //OK
-		System.out.println("\nFull Encode formula of ATT");
-		System.out.println(pg.getFullEncodeFormula("ATT")); //OK
-		System.out.println("\nDecode 513");
-		System.out.println(pg.decode(513)); //OK
-		System.out.println("\nDecoded block formula of 513");
-		System.out.println(pg.getDecodecBlockFormula(513)); //OK
-		System.out.println("\nEncoded block ATT");
-		System.out.println(pg.getEncodedBlock("ATT")); //OK
-		System.out.println("Encode Formulas of all blocks");
-		System.out.println(pg.getEncodeFormulas(blocks)); //OK
-		System.out.println("Decode formulas of 513 & 62");
-		System.out.println(pg.getDecodeFormulas("513 62")); //OK
-		int[] encBlocks = pg.encodeBlocks(blocks); //OK
-		System.out.println("Prints encoded blocks");
-		System.out.println(pg.getEncodedConsecutively(encBlocks)); //OK
-		System.out.println("Decodes 513 & 62");
-		System.out.println(pg.getDecodedFullPhrase("513 62")); //OK
-		System.out.println("\nEncodes and encrypts all");
-		System.out.println(pg.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus())); //OK
-		String encrypted = pg.getEncodeAndEncrypt_secure(plaintext, publicKey.getE(), publicKey.getN()); //OK
-		System.out.println("\nDecrypts and decodes all");
-		System.out.println(pg.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus())); //OK
-		System.out.println("\nSecure encrypt & encode");
-		System.out.println(pg.getEncodeAndEncrypt_secure(plaintext, publicKey.getE(), publicKey.getN())); //OK
-		System.out.println("\nSecure decrypt and decode");
-		System.out.println(pg.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus())); //OK
+//		String plaintext = "ATTACK AT SEVEN";
+//		System.out.println("Plaintext: "+plaintext);
+//		System.out.println("Blocks: "+pg.getBlocktext(plaintext)); //OK
+//		String[] blocks = pg.plaintextToBlocks(plaintext); //OK
+//		System.out.println("Encode formula of ATT");
+//		System.out.println(pg.getEncodeFormula("ATT")); //OK
+//		System.out.println("\nFull Encode formula of ATT");
+//		System.out.println(pg.getFullEncodeFormula("ATT")); //OK
+//		System.out.println("\nDecode 513");
+//		System.out.println(pg.decode(513)); //OK
+//		System.out.println("\nDecoded block formula of 513");
+//		System.out.println(pg.getDecodecBlockFormula(513)); //OK
+//		System.out.println("\nEncoded block ATT");
+//		System.out.println(pg.getEncodedBlock("ATT")); //OK
+//		System.out.println("Encode Formulas of all blocks");
+//		System.out.println(pg.getEncodeFormulas(blocks)); //OK
+//		System.out.println("Decode formulas of 513 & 62");
+//		System.out.println(pg.getDecodeFormulas("513 62")); //OK
+//		int[] encBlocks = pg.encodeBlocks(blocks); //OK
+//		System.out.println("Prints encoded blocks");
+//		System.out.println(pg.getEncodedConsecutively(encBlocks)); //OK
+//		System.out.println("Decodes 513 & 62");
+//		System.out.println(pg.getDecodedFullPhrase("513 62")); //OK
+//		System.out.println("\nEncodes and encrypts all");
+		
+//		System.out.println(pg.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus())); //OK
+//		String encrypted = pg.getEncodeAndEncrypt_secure(plaintext, publicKey.getE(), publicKey.getN()); //OK
+//		System.out.println("\nDecrypts and decodes all");
+//		System.out.println(pg.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus())); //OK
+//		System.out.println("\nSecure encrypt & encode");
+//		System.out.println(pg.getEncodeAndEncrypt_secure(plaintext, publicKey.getE(), publicKey.getN())); //OK
+//		System.out.println("\nSecure decrypt and decode");
+//		System.out.println(pg.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus())); //OK
+		
+		//with own e, n and d
+//		BigInteger  e = new BigInteger("7");
+//		BigInteger  n = new BigInteger("247");
+//		BigInteger  d = new BigInteger("31");
+//
+//		System.out.println(pg.getEncodeAndEncryptBlocksOfThree(plaintext, e, n)); //OK
+//		String encrypted = pg.getEncodeAndEncrypt_secure(plaintext, e, n); //OK
+//		System.out.println("\nDecrypts and decodes all");
+//		System.out.println(pg.getDecryptAndDecodeBlocksOfThree(encrypted, d, n)); //OK
+//		System.out.println("\nSecure encrypt & encode");
+//		System.out.println(pg.getEncodeAndEncrypt_secure(plaintext, e, n)); //OK
+//		System.out.println("\nSecure decrypt and decode");
+//		System.out.println(pg.getDecryptAndDecode_secure(encrypted, d, n)); //OK
+		
+		//create public key
+		BigInteger primeP = new BigInteger("137");
+		BigInteger primeQ = new BigInteger("131");
+		BigInteger exponentE = new BigInteger("3");
+		BigInteger modulus = primeP.multiply(primeQ);
+		RsaPublicKey pubKey2 = new RsaPublicKey(modulus, exponentE);
+		
+		//create private key
+		BigInteger exponentD = new BigInteger("11787");
+		RsaPrivateKey privKey2 = new RsaPrivateKey(primeP, primeQ, exponentE, exponentD);
+		
+		GenerateUserKeys gen = new GenerateUserKeys();
+		gen.createKeys(primeP, primeQ, exponentE);
+		RsaPublicKey pubKey3 = gen.getPublicKey();
+		RsaPrivateKey privKey3 = gen.getPrivateKey();
+		
+//		String encrypted = pg.getEncodeAndEncrypt_secure("ATTACK AT SEVEN", exponentE, modulus);
+//		String encryptPrint = pg.getEncodeAndEncryptBlocksOfThree("Attack at seven", exponentE, modulus); 
+//		String decryptPrint = pg.getDecryptAndDecodeBlocksOfThree(encrypted, exponentD, modulus);
+		
+		System.out.println("pubKey e "+pubKey3.getE());
+		System.out.println("pubKey modulus "+pubKey3.getModulus());
+		System.out.println("privKey d "+privKey3.getPrivateExponent());
+		System.out.println("privKey modulus "+privKey3.getModulus());
+		System.out.println("\n\n");
+		String encryptSecure = pg.getEncodeAndEncrypt_secure("attack at seven", pubKey3.getE(), pubKey3.getModulus());
+		String decryptSecure = pg.getDecryptAndDecode_secure(encryptSecure, privKey3.getPrivateExponent(), privKey3.getModulus());
+		System.out.println("cryptotext: "+encryptSecure);
+		System.out.println("decrypted: "+decryptSecure);
+		
+		String encryptPrint = pg.getEncodeAndEncryptBlocksOfThree("Attack at seven", pubKey3.getE(), pubKey3.getModulus()); 
+		String decryptPrint = pg.getDecryptAndDecodeBlocksOfThree(encryptSecure, privKey3.getPrivateExponent(), privKey3.getModulus());
+		
+		String fullPrint = encryptPrint +"\n\n\n"+ decryptPrint;
+		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		textArea.setText(fullPrint.toString());
+		new FullScreen(textArea);
 	}
 }

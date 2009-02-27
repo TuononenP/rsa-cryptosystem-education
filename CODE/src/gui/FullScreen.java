@@ -19,6 +19,7 @@ public class FullScreen extends JFrame {
 	public FullScreen(JTextArea textArea) {
 		initComponents();
 		textArea1.setText(textArea.getText());
+		textArea1.setCaretPosition(0);
 	}
 
 	//Variables declaration
@@ -50,6 +51,7 @@ public class FullScreen extends JFrame {
 
 		//======== container ========
 		setTitle("RSA Education Cryptosystem");
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridBagLayout());
 		((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {15, 849, 10, 0};
