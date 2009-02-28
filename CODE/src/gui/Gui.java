@@ -1014,10 +1014,15 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
-					padding1 = new PaddingType1();
-					String s=padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
-					textArea1.setText(s);
-					textArea1.setCaretPosition(0);
+					// check that n > 25. This is requirement for padding type 1
+					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
+						padding1 = new PaddingType1();
+						String s=padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+						textArea1.setText(s);
+						textArea1.setCaretPosition(0);
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter requires n > 25", "input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			//if padding type2 checkbox is selected
@@ -1058,10 +1063,15 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
-					padding1 = new PaddingType1();
-					String s=padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
-					textArea1.setText(s);
-					textArea1.setCaretPosition(0);
+					// check that n > 25. This is requirement for padding type 1
+					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
+						padding1 = new PaddingType1();
+						String s=padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+						textArea1.setText(s);
+						textArea1.setCaretPosition(0);
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter requires n > 25", "input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			//if padding type2 checkbox is selected
@@ -1108,9 +1118,14 @@ public class Gui extends JFrame {
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
-					PaddingType1 padding1 = new PaddingType1();
-					String s = padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
-					textArea1.setText(s);
+					// check that n > 25. This is requirement for padding type 1
+					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
+						PaddingType1 padding1 = new PaddingType1();
+						String s = padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+						textArea1.setText(s);
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter requires n > 25", "input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			// if padding scheme2 checkbox is selected
@@ -1128,7 +1143,6 @@ public class Gui extends JFrame {
 						JOptionPane.showMessageDialog(this, "Two letters requires n > 2525", "input error", JOptionPane.ERROR_MESSAGE);
 					}
 				} 
-
 			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
@@ -1149,9 +1163,14 @@ public class Gui extends JFrame {
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
-					PaddingType1 padding1 = new PaddingType1();
-					String s = padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
-					textArea1.setText(s);
+					// check that n > 25. This is requirement for padding type 1
+					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
+						PaddingType1 padding1 = new PaddingType1();
+						String s = padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+						textArea1.setText(s);
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter requires n > 25", "input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			// if padding scheme2 checkbox is selected
