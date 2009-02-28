@@ -19,7 +19,7 @@ import javax.swing.border.*;
  * @since 7.2.2009
  */
 public class Gui extends JFrame {
-	
+
 	//Constructor
 	public Gui() {
 		initComponents();
@@ -27,21 +27,21 @@ public class Gui extends JFrame {
 
 	//Variables declaration
 	private JMenuBar menuBar;
-	
+
 	private JMenu menu;
 	private JMenu menu2;
-	
+
 	private JMenuItem menuItem1;
 	private JMenuItem menuItem2;
 	private JMenuItem menuItem3;
-	
+
 	private JRadioButton radioButton1;
 	private JRadioButton radioButton2;
-	
+
 	private JCheckBox checkBox1;
 	private JCheckBox checkBox2;
 	private JCheckBox checkBox3;
-	
+
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
@@ -56,11 +56,11 @@ public class Gui extends JFrame {
 	private JButton button12;
 	private JButton button13;
 
-//	private JPanel panel1;
-//	private JPanel panel2;
+	//	private JPanel panel1;
+	//	private JPanel panel2;
 	private JPanel panel3;
-//	private JPanel panel4;
-//	private JPanel panel5;
+	//	private JPanel panel4;
+	//	private JPanel panel5;
 	private JPanel panel6;
 	private JPanel panel7;
 
@@ -72,7 +72,7 @@ public class Gui extends JFrame {
 	private JLabel label6;
 	private JLabel label7;
 	private JLabel label8;
-	
+
 	private JTextField textField1;
 	private JTextField textField2;
 	private JTextField textField3;
@@ -87,9 +87,9 @@ public class Gui extends JFrame {
 	private JScrollPane scrollPane2;
 
 	private JComboBox comboBox1;
-	
+
 	private ButtonGroup buttonGroup1;
-	
+
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
 	private Open_Save openSave;
@@ -97,33 +97,33 @@ public class Gui extends JFrame {
 	private PaddingType2 padding2;
 	private Blocks_Of_3_Padding padding3;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
-					"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
+			"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
 	private GradientPanel panel1;
 	private GradientPanel panel2;
 	private GradientPanel panel4;
 	private GradientPanel panel5;
-	
+
 	private Color panelColor;
 	//End of variables declaration
 
 	private void initComponents() {
 		//Component initialization
 		menuBar = new JMenuBar();
-		
+
 		menu = new JMenu();
 		menu2 = new JMenu();
-		
+
 		menuItem1 = new JMenuItem();
 		menuItem2 = new JMenuItem();
 		menuItem3 = new JMenuItem();
-		
+
 		radioButton1 = new JRadioButton();
 		radioButton2 = new JRadioButton();
-		
+
 		checkBox1 = new JCheckBox();
 		checkBox2 = new JCheckBox();
 		checkBox3 = new JCheckBox();
-		
+
 		button1 = new JButton();
 		button2 = new JButton();
 		button3 = new JButton();
@@ -137,15 +137,15 @@ public class Gui extends JFrame {
 		button11 = new JButton();
 		button12 = new JButton();
 		button13 = new JButton();
-		
-//		panel1 = new JPanel();
-//		panel2 = new JPanel();
+
+		//		panel1 = new JPanel();
+		//		panel2 = new JPanel();
 		panel3 = new JPanel();
-//		panel4 = new JPanel();
-//		panel5 = new JPanel();
+		//		panel4 = new JPanel();
+		//		panel5 = new JPanel();
 		panel6 = new JPanel();
 		panel7 = new JPanel();
-		
+
 		label1 = new JLabel();
 		label2 = new JLabel();
 		label3 = new JLabel();
@@ -154,25 +154,25 @@ public class Gui extends JFrame {
 		label6 = new JLabel();
 		label7 = new JLabel();
 		label8 = new JLabel();
-		
+
 		textField1 = new JTextField();
 		textField2 = new JTextField();
 		textField3 = new JTextField();
 		textField4 = new JTextField();
 		textField5 = new JTextField();
 		textField6 = new JTextField();
-		
+
 		textArea1 = new JTextArea();
 		textArea2 = new JTextArea();
-		
+
 		scrollPane1 = new JScrollPane();
 		scrollPane2 = new JScrollPane();
-		
+
 		comboBox1 = new JComboBox(textSize);
-		
+
 		buttonGroup1 = new ButtonGroup();
-		
-//		panelColor = new Color(117, 154, 178);
+
+		//		panelColor = new Color(117, 154, 178);
 		panelColor = Color.LIGHT_GRAY;
 
 		//======== container ========
@@ -185,14 +185,14 @@ public class Gui extends JFrame {
 		((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {10, 581, 10};
 		((GridBagLayout)contentPane.getLayout()).rowHeights = new int[] {3, 0, 10, 0, 10, 64, 10, 0, 10, 0, 10, 242, 5, 0, 0, 0};
 		((GridBagLayout)contentPane.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0E-4};
-		
+
 		//======== menuBar ========
 		{
 
 			//======== menu ========
 			{
 				menu.setText("File");
-				
+
 				//---- menuItem3 ----
 				menuItem3.setText("Quit");
 				menuItem3.addActionListener(new ActionListener() {
@@ -201,7 +201,7 @@ public class Gui extends JFrame {
 					}
 				});
 				menu.add(menuItem3);
-				
+
 				menuBar.add(menu);
 
 				//======== menu2 ========
@@ -242,82 +242,82 @@ public class Gui extends JFrame {
 			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
 			panel1.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Key creation"));
-			
-//			Color panelColor = new Color(90, 147, 195);
-//			panel1.setBorder(new TitledBorder(new LineBorder(panelColor, 1, true), "Key creation"));
-//			panel1.setLayout(new GridBagLayout());
-//			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 5, 0};
-//			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {12, 0, 0, 0, 0, 0, 5, 0};
-//			((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0E-4};
-//			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+
+			//			Color panelColor = new Color(90, 147, 195);
+			//			panel1.setBorder(new TitledBorder(new LineBorder(panelColor, 1, true), "Key creation"));
+			//			panel1.setLayout(new GridBagLayout());
+			//			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 5, 0};
+			//			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {12, 0, 0, 0, 0, 0, 5, 0};
+			//			((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0E-4};
+			//			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
 			//---- label1 ----
 			label1.setText("p");
 			label1.setHorizontalAlignment(SwingConstants.CENTER);
 			panel1.add(label1, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 5, 5), 0, 0));
 			panel1.add(textField1, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label4 ----
 			label4.setText("n");
 			label4.setHorizontalAlignment(SwingConstants.CENTER);
 			panel1.add(label4, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- textField4 ----
 			textField4.setEditable(false);
 			panel1.add(textField4, new GridBagConstraints(3, 1, 4, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label2 ----
 			label2.setText("q");
 			label2.setHorizontalAlignment(SwingConstants.CENTER);
 			panel1.add(label2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 5, 5), 0, 0));
 			panel1.add(textField2, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label5 ----
 			label5.setText("d");
 			label5.setHorizontalAlignment(SwingConstants.CENTER);
 			panel1.add(label5, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- textField5 ----
 			textField5.setEditable(false);
 			panel1.add(textField5, new GridBagConstraints(3, 2, 4, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label3 ----
 			label3.setText("e");
 			label3.setHorizontalAlignment(SwingConstants.CENTER);
 			panel1.add(label3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 5, 5), 0, 0));
 			panel1.add(textField3, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label6 ----
 			label6.setText("Save");
 			panel1.add(label6, new GridBagConstraints(5, 3, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label7 ----
 			label7.setText("Load");
 			panel1.add(label7, new GridBagConstraints(6, 3, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- button11 ----
 			button11.setText("Clear keys");
@@ -327,15 +327,15 @@ public class Gui extends JFrame {
 				}
 			});
 			panel1.add(button11, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- label8 ----
 			label8.setText("Prime bitsize");
 			label8.setVisible(false);
 			panel1.add(label8, new GridBagConstraints(3, 4, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- button2 ----
 			button2.setText("Public key");
@@ -345,8 +345,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel1.add(button2, new GridBagConstraints(5, 4, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- button9 ----
 			button9.setText("Public key");
@@ -356,8 +356,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel1.add(button9, new GridBagConstraints(6, 4, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- button1 ----
 			button1.setText("Create keys");
@@ -367,14 +367,14 @@ public class Gui extends JFrame {
 				}
 			});
 			panel1.add(button1, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 			panel1.add(textField6, new GridBagConstraints(3, 5, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
-			
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
+
 			textField6.setVisible(false);
-			
+
 			//---- button7 ----
 			button7.setText("Private key");
 			button7.addActionListener(new ActionListener() {
@@ -383,8 +383,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel1.add(button7, new GridBagConstraints(5, 5, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- button10 ----
 			button10.setText("Private key");
@@ -394,22 +394,22 @@ public class Gui extends JFrame {
 				}
 			});
 			panel1.add(button10, new GridBagConstraints(6, 5, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 		}
 		contentPane.add(panel1, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-			new Insets(0, 0, 0, 0), 0, 0));
+				GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+				new Insets(0, 0, 0, 0), 0, 0));
 
 		//======== panel2 ========
 		{
 			panel2 = new GradientPanel(panelColor, new GridBagLayout());
-//			panel2.setLayout(new GridBagLayout());
+			//			panel2.setLayout(new GridBagLayout());
 			((GridBagLayout)panel2.getLayout()).columnWidths = new int[] {10, 435, 5, 0};
 			((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {71, 5, 0};
 			((GridBagLayout)panel2.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
-			
+
 			panel2.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Message to encrypt/decrypt"));
 
 			//======== scrollPane2 ========
@@ -422,12 +422,12 @@ public class Gui extends JFrame {
 				scrollPane2.setViewportView(textArea2);
 			}
 			panel2.add(scrollPane2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 		}
 		contentPane.add(panel2, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-			new Insets(0, 0, 0, 0), 0, 0));
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
 
 		//======== panel3 ========
 		{
@@ -445,8 +445,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel3.add(button3, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- button4 ----
 			button4.setText("Decrypt");
@@ -456,18 +456,18 @@ public class Gui extends JFrame {
 				}
 			});
 			panel3.add(button4, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 		}
 		contentPane.add(panel3, new GridBagConstraints(1, 9, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-			new Insets(0, 0, 0, 0), 0, 0));
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
 
 		//======== panel4 ========
 		{
 			panel4 = new GradientPanel(panelColor, new GridBagLayout());
 			panel4.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Padding scheme"));
-//			panel4.setLayout(new GridBagLayout());
+			//			panel4.setLayout(new GridBagLayout());
 			((GridBagLayout)panel4.getLayout()).columnWidths = new int[] {80, 81, 80, 0};
 			((GridBagLayout)panel4.getLayout()).rowHeights = new int[] {0, 0};
 			((GridBagLayout)panel4.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
@@ -478,54 +478,54 @@ public class Gui extends JFrame {
 			checkBox1.setOpaque(false);
 			checkBox1.setSelected(true);
 			panel4.add(checkBox1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- checkBox2 ----
 			checkBox2.setText("Two letters");
 			checkBox2.setOpaque(false);
 			checkBox2.setSelected(true);
 			panel4.add(checkBox2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- checkBox3 ----
 			checkBox3.setText("Three letters");
 			checkBox3.setOpaque(false);
 			checkBox3.setSelected(true);
 			panel4.add(checkBox3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 0), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 0), 0, 0));
 		}
 		contentPane.add(panel4, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-			new Insets(0, 0, 0, 0), 0, 0));
-		
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
+
 		//======== panel5 ========
 		{
 			panel5 = new GradientPanel(panelColor, new GridBagLayout());
-//			panel5.setLayout(new GridBagLayout());
+			//			panel5.setLayout(new GridBagLayout());
 			((GridBagLayout)panel5.getLayout()).columnWidths = new int[] {10, 0, 5, 0};
 			((GridBagLayout)panel5.getLayout()).rowHeights = new int[] {210, 0, 0};
 			((GridBagLayout)panel5.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel5.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
-			
+
 			panel5.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "RSA execution"));
 
 			//======== scrollPane1 ========
 			{
 				scrollPane1.setViewportView(textArea1);
 			}
-			
+
 			createPopupMenu(textArea1);
-			
+
 			panel5.add(scrollPane1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 5, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
 		}
 		contentPane.add(panel5, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-			new Insets(0, 0, 0, 0), 0, 0));
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
 
 
 		//======== panel6 ========
@@ -544,8 +544,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel6.add(button5, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- button6 ----
 			button6.setText("Load from file");
@@ -555,8 +555,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel6.add(button6, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- button12 ----
 			button12.setText("Clear");
@@ -566,8 +566,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel6.add(button12, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- button13 ----
 			button13.setText("Copy to clipboard");
@@ -577,8 +577,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel6.add(button13, new GridBagConstraints(4, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- comboBox1 ----
 			comboBox1.addActionListener(new ActionListener() {
@@ -587,8 +587,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel6.add(comboBox1, new GridBagConstraints(6, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- button8 ----
 			button8.setText("Full screen");
@@ -601,13 +601,13 @@ public class Gui extends JFrame {
 				}
 			});
 			panel6.add(button8, new GridBagConstraints(7, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.EAST, GridBagConstraints.VERTICAL,
-				new Insets(0, 0, 0, 0), 0, 0));
+					GridBagConstraints.EAST, GridBagConstraints.VERTICAL,
+					new Insets(0, 0, 0, 0), 0, 0));
 		}
 		contentPane.add(panel6, new GridBagConstraints(1, 13, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-			new Insets(0, 0, 0, 0), 0, 0));
-		
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
+
 		//======== panel7 ========
 		{
 			panel7.setLayout(new GridBagLayout());
@@ -626,8 +626,8 @@ public class Gui extends JFrame {
 				}
 			});
 			panel7.add(radioButton1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 
 			//---- radioButton2 ----
 			radioButton2.setText("Secure mode");
@@ -638,12 +638,12 @@ public class Gui extends JFrame {
 				}
 			});
 			panel7.add(radioButton2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 5), 0, 0));
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
 		}
 		contentPane.add(panel7, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-			GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-			new Insets(0, 0, 0, 0), 0, 0));
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
 
 		setSize(750, 775);
 		setLocationRelativeTo(null);
@@ -655,7 +655,7 @@ public class Gui extends JFrame {
 		buttonGroup1.add(radioButton2);
 		//End of component initialization
 	}
-	
+
 	/**
 	 * Creates a popup menu and defines what happens if
 	 * menu items are pressed.
@@ -668,7 +668,7 @@ public class Gui extends JFrame {
 		//Create the popup menu.
 		JPopupMenu popup = new JPopupMenu();
 		menuItem = new JMenuItem("Copy");
-		
+
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ClipboardCopyPaste().copy(textArea.getSelectedText());
@@ -713,9 +713,9 @@ public class Gui extends JFrame {
 			}
 		}
 	}
-	
+
 	//Event handlers
-	
+
 	/**
 	 * Teach mode radiobutton pressed.
 	 */
@@ -753,14 +753,14 @@ public class Gui extends JFrame {
 	 */
 	private void aboutMenuItemActionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(this,
-			    "Authors: Petri Tuononen, Jukka Tuominen, Jani Kirsi.\n" +
-			    "Date: 27.02.2009\n" +
-			    "Version: 1.0\n" +
-			    "Info: This software is a part of OOP course work at Turku University of Applied Sciences.\n" +
-			    "GPL lisence: This software can be used, modified and redistibuted freely.\n" +
-			    "No warranties of any kind.\n" +
-			    "Feedback: petri.tuononen@students.turkuamk.fi", "About",
-			    JOptionPane.PLAIN_MESSAGE);
+				"Authors: Petri Tuononen, Jukka Tuominen, Jani Kirsi.\n" +
+				"Date: 27.02.2009\n" +
+				"Version: 1.0\n" +
+				"Info: This software is a part of OOP course work at Turku University of Applied Sciences.\n" +
+				"GPL lisence: This software can be used, modified and redistibuted freely.\n" +
+				"No warranties of any kind.\n" +
+				"Feedback: petri.tuononen@students.turkuamk.fi", "About",
+				JOptionPane.PLAIN_MESSAGE);
 	}
 
 	/**
@@ -826,7 +826,7 @@ public class Gui extends JFrame {
 	private void loadExecutionButtonActionPerformed(ActionEvent e) {
 		loadExecution();
 	}
-	
+
 	/**
 	 * Font selected from font size combo box.
 	 * @param e
@@ -842,7 +842,7 @@ public class Gui extends JFrame {
 	private void fullScreenButtonActionPerformed(ActionEvent e) {
 		showExecFullScreen();
 	}
-	
+
 	/**
 	 * 'Create keys' button pressed.
 	 * @param e
@@ -850,7 +850,7 @@ public class Gui extends JFrame {
 	private void createKeysButtonActionPerformed(ActionEvent e) {
 		createKeys();
 	}
-	
+
 	/**
 	 * 'Clear keys' button pressed.
 	 * @param e
@@ -859,7 +859,7 @@ public class Gui extends JFrame {
 		//Clear p, q, e, n, d textfields
 		clearKeyTextFields();
 	}
-	
+
 	/**
 	 * 'Clear' button pressed.
 	 * @param e
@@ -877,7 +877,7 @@ public class Gui extends JFrame {
 		new ClipboardCopyPaste().copy(textArea1.getText());
 	}
 	//End of event handlers.
-	
+
 	//Methods used in event handlers.
 
 	/**
@@ -891,7 +891,7 @@ public class Gui extends JFrame {
 		textField4.setText("");
 		textField5.setText("");
 	}
-	
+
 	/**
 	 * Generates keys.
 	 */
@@ -902,9 +902,9 @@ public class Gui extends JFrame {
 			BigInteger p = new BigInteger(textField1.getText());
 			BigInteger q = new BigInteger(textField2.getText());
 			BigInteger e = new BigInteger(textField3.getText());
-			
+
 			GenerateUserKeys genKeys = new GenerateUserKeys();
-			
+
 			//test that p, q and e are suitable
 			if (genKeys.testInputEligibility(p, q, e)) { //input ok
 				//generate keys
@@ -914,7 +914,7 @@ public class Gui extends JFrame {
 				//store keys
 				publicKey = genKeys.getPublicKey();
 				privateKey = genKeys.getPrivateKey();
-				
+
 				//write to textfields
 				textField4.setText(publicKey.getN().toString());
 				textField5.setText(privateKey.getPrivateExponent().toString());
@@ -933,14 +933,14 @@ public class Gui extends JFrame {
 			}
 			else { //bit size is ok.
 				setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		    	GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
-		    	publicKey = genKeys.getPublicKey();
-		    	privateKey = genKeys.getPrivateKey();
-		    	setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+				publicKey = genKeys.getPublicKey();
+				privateKey = genKeys.getPrivateKey();
+				setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 			}
 		}
 	}
-	
+
 	/**
 	 * Saves a public key to a file.
 	 */
@@ -948,7 +948,7 @@ public class Gui extends JFrame {
 		openSave = new Open_Save(this);
 		openSave.savePublicKey(publicKey);
 	}
-	
+
 	/**
 	 * Loads a public key from a file.
 	 */
@@ -959,7 +959,7 @@ public class Gui extends JFrame {
 		textField3.setText(privateKey.getE().toString());
 		textField4.setText(publicKey.getN().toString());
 	}
-	
+
 	/**
 	 * Saves a private key to a file.
 	 */
@@ -967,7 +967,7 @@ public class Gui extends JFrame {
 		openSave = new Open_Save(this);
 		openSave.savePrivateKey(privateKey);
 	}
-	
+
 	/**
 	 * Loads a private key from a file.
 	 */
@@ -980,28 +980,28 @@ public class Gui extends JFrame {
 		textField4.setText(privateKey.getN().toString());
 		textField5.setText(privateKey.getPrivateExponent().toString());
 	}
-	
+
 	/**
 	 * Saves execution textarea contents to a file.
 	 */
 	private void saveExecution() {
 		new Load_Save_Exec(this, textArea1).saveExecToFile();
 	}
-	
+
 	/**
 	 * Loads content to the execution textarea from a file.
 	 */
 	private void loadExecution() {
 		new Load_Save_Exec(this, textArea1).loadExecFromFile();
 	}
-	
+
 	/**
 	 * Show execution content in a full screen frame. 
 	 */
 	private void showExecFullScreen() {
 		new FullScreen(textArea1);
 	}
-	
+
 	/**
 	 * Encrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
@@ -1026,10 +1026,16 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
-					padding2 = new PaddingType2();
-					String s=padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
-					textArea1.setText(s);
-					textArea1.setCaretPosition(0);
+					// check that n > 2525. This is requirement for padding type 2
+					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
+						padding2 = new PaddingType2();
+						String s=padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+						textArea1.setText(s);
+						textArea1.setCaretPosition(0);
+					}else {
+						JOptionPane.showMessageDialog(this, "Two letters requires n > 2525", "input error", JOptionPane.ERROR_MESSAGE);
+					}
+
 				}
 			}
 			//if blocks of three letters padding scheme checkbox is selected
@@ -1064,10 +1070,15 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
-					padding2 = new PaddingType2();
-					String s=padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
-					textArea1.setText(s);
-					textArea1.setCaretPosition(0);
+					// check that n > 2525. This is requirement for padding type 2
+					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
+						padding2 = new PaddingType2();
+						String s=padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus());
+						textArea1.setText(s);
+						textArea1.setCaretPosition(0);
+					}else {
+						JOptionPane.showMessageDialog(this, "Two letters requires n > 2525", "input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			//if blocks of three letters padding scheme checkbox is selected
@@ -1076,6 +1087,7 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				//if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
+
 					padding3 = new Blocks_Of_3_Padding();
 					textArea1.setText(padding3.getEncodeAndEncrypt_secure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
 					textArea1.setCaretPosition(0);
@@ -1083,7 +1095,7 @@ public class Gui extends JFrame {
 			}
 		}
 	}
-	
+
 	/**
 	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
@@ -1107,10 +1119,16 @@ public class Gui extends JFrame {
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
-					PaddingType2 padding2 = new PaddingType2();
-					String s = padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
-					textArea1.setText(s);
-				}
+					// check that n > 2525. This is requirement for padding type 2
+					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
+						PaddingType2 padding2 = new PaddingType2();
+						String s = padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+						textArea1.setText(s);
+					}else {
+						JOptionPane.showMessageDialog(this, "Two letters requires n > 2525", "input error", JOptionPane.ERROR_MESSAGE);
+					}
+				} 
+
 			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
@@ -1142,10 +1160,16 @@ public class Gui extends JFrame {
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
-					PaddingType2 padding2 = new PaddingType2();
-					String s = padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
-					textArea1.setText(s);
-				}
+					// check that n > 2525. This is requirement for padding type 2
+					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
+						PaddingType2 padding2 = new PaddingType2();
+						String s = padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus());
+						textArea1.setText(s);
+					}else {
+						JOptionPane.showMessageDialog(this, "Two letters requires n > 2525", "input error", JOptionPane.ERROR_MESSAGE);
+					}
+				} 
+
 			}
 			//if blocks of three letters padding scheme checkbox is selected
 			if (checkBox3.isSelected()) {
@@ -1159,7 +1183,7 @@ public class Gui extends JFrame {
 			}
 		}
 	}
-	
+
 	/**
 	 * Changes execution textarea's font size.
 	 */
@@ -1180,7 +1204,7 @@ public class Gui extends JFrame {
 			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
 		}
 	}
-	
+
 	/**
 	 * Secure mode button action.
 	 * Bit size textfield is made visible and
@@ -1202,7 +1226,7 @@ public class Gui extends JFrame {
 		textField4.setVisible(false);
 		textField5.setVisible(false);
 	}
-	
+
 	/**
 	 * Teach mode button action.
 	 * Bit size textfield is made invisible
@@ -1223,19 +1247,19 @@ public class Gui extends JFrame {
 		textField4.setVisible(true);
 		textField5.setVisible(true);
 	}
-	
+
 	//End of methods used in event handlers.
-	
+
 	/**
 	 * Executes GUI in a thread.
 	 */
 	public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() { 
-        	public void run() {
-        		JFrame.setDefaultLookAndFeelDecorated(false);
-        		new Gui();
-            }
-        });
-    }
+		SwingUtilities.invokeLater(new Runnable() { 
+			public void run() {
+				JFrame.setDefaultLookAndFeelDecorated(false);
+				new Gui();
+			}
+		});
+	}
 
 }
