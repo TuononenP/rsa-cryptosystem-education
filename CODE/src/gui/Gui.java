@@ -1018,8 +1018,13 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
-					textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
-					textArea1.setCaretPosition(0);
+					// check that n > 25. This is requirement for padding type 1
+					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
+						textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+						textArea1.setCaretPosition(0);
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			//if padding type2 checkbox is selected
@@ -1061,8 +1066,13 @@ public class Gui extends JFrame {
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
-					textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
-					textArea1.setCaretPosition(0);
+					// check that n > 25. This is requirement for padding type 1
+					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
+						textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+						textArea1.setCaretPosition(0);
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			//if padding type2 checkbox is selected
@@ -1110,7 +1120,12 @@ public class Gui extends JFrame {
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
-					textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+					// check that n > 25. This is requirement for padding type 1
+					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
+						textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			// if padding scheme2 checkbox is selected
@@ -1151,7 +1166,12 @@ public class Gui extends JFrame {
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
-					textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+					// check that n > 25. This is requirement for padding type 1
+					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
+						textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+					}else {
+						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 			// if padding scheme2 checkbox is selected
