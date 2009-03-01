@@ -49,7 +49,7 @@ public class PaddingType1 {
 		for (int i = 0; i < msg.length; i++) {
 			unpadded=unpadded+alphaNum.getLetter(msg[i]);
 		}
-		unpadded = unpadded.replaceFirst("X", " ");
+		unpadded = unpadded.replaceAll("X", " ");
 		return unpadded;
 	}
 
@@ -70,7 +70,7 @@ public class PaddingType1 {
 		
 		Integer[] numberMessage = enCode(msg);
 		s.append(msg+"\n\n");
-		s.append(alpha.getNumbers()+"\n\n");
+		s.append(alpha.getLetters()+"\n\n");
 		s.append("Type 1 encoded text:\n");
 		for (Integer integer : numberMessage) {
 			s.append(integer.toString()+" ");
@@ -84,11 +84,19 @@ public class PaddingType1 {
 		s.append(phase.getAll(mod));
 		s.append("\n\n");
 		}
-		s.append("Encryped: \n");
+		s.append("Encrypted: \n");
 		BigInteger[] enCrypted = new BigInteger[numberMessage.length];
+		String[] enCryptedLetters = new String[enCrypted.length];
 		for (int i = 0; i < enCrypted.length; i++) {
 			enCrypted[i]=(encrypter.encrypt(numberMessage[i],exp,mod));
+			enCryptedLetters[i]=alpha.stringOfNumbersToLetters(enCrypted[i].toString());
 			s.append(enCrypted[i]+" ");
+		}
+		//-------------------------to cryptotext----------------------
+		
+		s.append("\n\nCryptotext: \n");
+		for (String string : enCryptedLetters) {
+			s.append(string+" ");
 		}
 		return s.toString();
 	}
@@ -106,6 +114,11 @@ public class PaddingType1 {
 		StringBuilder s = new StringBuilder();
 		AlphabetNum alpha = new AlphabetNum();
 		Encrypt_Decrypt decrypter = new Encrypt_Decrypt();
+		//--------------------cryptotext to numbers------------------
+		
+		s.append("Cryptotext: \n");
+		s.append(msg+"\n\n");
+		msg=alpha.stringOfLettersToNumbers(msg);
 		String[] stringMessage = msg.split(" "); // Message in String[]
 		
 		//----------------------deCrypting--------------------------
@@ -134,7 +147,8 @@ public class PaddingType1 {
 		
 		s.append("\n\n"+alpha.getNumbers());
 		s.append("\n\nDecoded text: ");
-		s.append(deCode(integerMessage)+"\n");
+		String unCoded=(deCode(integerMessage));
+		s.append(unCoded+"\n");
 		return s.toString();
 	}
 	//------------------------main for testing----------------------

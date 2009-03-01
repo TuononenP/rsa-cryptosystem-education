@@ -494,14 +494,14 @@ public class Gui extends JFrame {
 					new Insets(0, 0, 0, 5), 0, 0));
 			
 			//---- radioButton4 ----
-			radioButton4.setText("One letter");
+			radioButton4.setText("Two letters");
 			radioButton4.setOpaque(false);
 			panel4.add(radioButton4, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 5), 0, 0));
 			
 			//---- radioButton5 ----
-			radioButton5.setText("One letter");
+			radioButton5.setText("Three letters");
 			radioButton5.setOpaque(false);
 			panel4.add(radioButton5, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -1031,8 +1031,13 @@ public class Gui extends JFrame {
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
 					// check that n > 25. This is requirement for padding type 1
 					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
-						textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// check that input contains only allowed letters and catch all errors
+						try{
+							textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch (Exception e){
+							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1046,8 +1051,13 @@ public class Gui extends JFrame {
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
-						textArea1.setText(padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// check that input contains only allowed letters and catch all errors
+						try{
+							textArea1.setText(padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Two letters padding scheme requires n > 2525", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1061,8 +1071,13 @@ public class Gui extends JFrame {
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (publicKey.getN().compareTo(new BigInteger("17575"))>0){
-						textArea1.setText(padding3.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// check that input contains only allowed letters and catch all errors
+						try{
+							textArea1.setText(padding3.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch (Exception e){
+							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Three letters padding scheme letters requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1079,8 +1094,13 @@ public class Gui extends JFrame {
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
 					// check that n > 25. This is requirement for padding type 1
 					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
-						textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// check that input contains only allowed letters and catch all errors
+						try{ 
+							textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch (Exception e){
+							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1094,8 +1114,13 @@ public class Gui extends JFrame {
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
+						// check that input contains only allowed letters and catch all errors
+						try{
 						textArea1.setText(padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch (Exception e){
+							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Two letters padding scheme requires n > 2525", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1109,8 +1134,13 @@ public class Gui extends JFrame {
 				if (!plaintext.isEmpty() && !(publicKey == null)) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (publicKey.getN().compareTo(new BigInteger("17575"))>0){
+						// check that input contains only allowed letters and catch all errors
+						try{
 						textArea1.setText(padding3.getEncodeAndEncrypt_secure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch (Exception e){
+							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Three letters padding scheme letters requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1118,6 +1148,7 @@ public class Gui extends JFrame {
 			}
 		}
 	}
+
 
 	/**
 	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
@@ -1163,12 +1194,12 @@ public class Gui extends JFrame {
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
 						textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 					}else {
-						JOptionPane.showMessageDialog(this, "Three letters padding scheme letters requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(this, "Three letters padding scheme requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
 		}
-		
+
 		//secure mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
 			// if padding scheme1 checkbox is selected
@@ -1209,12 +1240,13 @@ public class Gui extends JFrame {
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
 						textArea1.setText(padding3.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 					}else {
-						JOptionPane.showMessageDialog(this, "Three letters padding scheme letters requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(this, "Three letters padding scheme requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
 		}
 	}
+
 
 	/**
 	 * Changes execution textarea's font size.
