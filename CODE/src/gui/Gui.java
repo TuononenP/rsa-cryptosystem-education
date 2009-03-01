@@ -37,10 +37,13 @@ public class Gui extends JFrame {
 
 	private JRadioButton radioButton1;
 	private JRadioButton radioButton2;
+	private JRadioButton radioButton3;
+	private JRadioButton radioButton4;
+	private JRadioButton radioButton5;
 
-	private JCheckBox checkBox1;
-	private JCheckBox checkBox2;
-	private JCheckBox checkBox3;
+//	private JCheckBox checkBox1;
+//	private JCheckBox checkBox2;
+//	private JCheckBox checkBox3;
 
 	private JButton button1;
 	private JButton button2;
@@ -89,6 +92,7 @@ public class Gui extends JFrame {
 	private JComboBox comboBox1;
 
 	private ButtonGroup buttonGroup1;
+	private ButtonGroup buttonGroup2;
 
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
@@ -119,10 +123,13 @@ public class Gui extends JFrame {
 
 		radioButton1 = new JRadioButton();
 		radioButton2 = new JRadioButton();
+		radioButton3 = new JRadioButton();
+		radioButton4 = new JRadioButton();
+		radioButton5 = new JRadioButton();
 
-		checkBox1 = new JCheckBox();
-		checkBox2 = new JCheckBox();
-		checkBox3 = new JCheckBox();
+//		checkBox1 = new JCheckBox();
+//		checkBox2 = new JCheckBox();
+//		checkBox3 = new JCheckBox();
 
 		button1 = new JButton();
 		button2 = new JButton();
@@ -171,6 +178,7 @@ public class Gui extends JFrame {
 		comboBox1 = new JComboBox(textSize);
 
 		buttonGroup1 = new ButtonGroup();
+		buttonGroup2 = new ButtonGroup();
 		
 		padding1 = new PaddingType1();
 		padding2 = new PaddingType2();
@@ -477,27 +485,24 @@ public class Gui extends JFrame {
 			((GridBagLayout)panel4.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
 			((GridBagLayout)panel4.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
 
-			//---- checkBox1 ----
-			checkBox1.setText("One letter");
-			checkBox1.setOpaque(false);
-			checkBox1.setSelected(true);
-			panel4.add(checkBox1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+			//---- radioButton3 ----
+			radioButton3.setText("One letter");
+			radioButton3.setOpaque(false);
+			panel4.add(radioButton3, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 5), 0, 0));
-
-			//---- checkBox2 ----
-			checkBox2.setText("Two letters");
-			checkBox2.setOpaque(false);
-			checkBox2.setSelected(true);
-			panel4.add(checkBox2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+			
+			//---- radioButton4 ----
+			radioButton4.setText("One letter");
+			radioButton4.setOpaque(false);
+			panel4.add(radioButton4, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 5), 0, 0));
-
-			//---- checkBox3 ----
-			checkBox3.setText("Three letters");
-			checkBox3.setOpaque(false);
-			checkBox3.setSelected(true);
-			panel4.add(checkBox3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+			
+			//---- radioButton5 ----
+			radioButton5.setText("One letter");
+			radioButton5.setOpaque(false);
+			panel4.add(radioButton5, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 0), 0, 0));
 		}
@@ -657,6 +662,11 @@ public class Gui extends JFrame {
 		//---- buttonGroup1 ----
 		buttonGroup1.add(radioButton1);
 		buttonGroup1.add(radioButton2);
+		
+		//---- buttonGroup2 ----
+		buttonGroup2.add(radioButton3);
+		buttonGroup2.add(radioButton4);
+		buttonGroup2.add(radioButton5);
 		//End of component initialization
 	}
 
@@ -1013,7 +1023,7 @@ public class Gui extends JFrame {
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
 			// if padding type1 checkbox is selected
-			if(checkBox1.isSelected()){
+			if(radioButton3.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
@@ -1028,7 +1038,7 @@ public class Gui extends JFrame {
 				}
 			}
 			//if padding type2 checkbox is selected
-			if(checkBox2.isSelected()){
+			if(radioButton4.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
@@ -1043,7 +1053,7 @@ public class Gui extends JFrame {
 				}
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (checkBox3.isSelected()) {
+			if (radioButton5.isSelected()) {
 				//get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				//if something is written into the message textarea and public key is generated.
@@ -1061,7 +1071,7 @@ public class Gui extends JFrame {
 		//secure mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
 			// if padding type1 checkbox is selected
-			if(checkBox1.isSelected()){
+			if(radioButton3.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
@@ -1076,7 +1086,7 @@ public class Gui extends JFrame {
 				}
 			}
 			//if padding type2 checkbox is selected
-			if(checkBox2.isSelected()){
+			if(radioButton4.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
@@ -1091,7 +1101,7 @@ public class Gui extends JFrame {
 				}
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (checkBox3.isSelected()) {
+			if (radioButton5.isSelected()) {
 				//get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				//if something is written into the message textarea and public key is generated.
@@ -1115,7 +1125,7 @@ public class Gui extends JFrame {
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
 			// if padding scheme1 checkbox is selected
-			if (checkBox1.isSelected()){
+			if (radioButton3.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
@@ -1129,7 +1139,7 @@ public class Gui extends JFrame {
 				}
 			}
 			// if padding scheme2 checkbox is selected
-			if (checkBox2.isSelected()){
+			if (radioButton4.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
@@ -1143,7 +1153,7 @@ public class Gui extends JFrame {
 				} 
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (checkBox3.isSelected()) {
+			if (radioButton5.isSelected()) {
 				//get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
@@ -1161,7 +1171,7 @@ public class Gui extends JFrame {
 		//secure mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
 			// if padding scheme1 checkbox is selected
-			if (checkBox1.isSelected()){
+			if (radioButton3.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
@@ -1175,7 +1185,7 @@ public class Gui extends JFrame {
 				}
 			}
 			// if padding scheme2 checkbox is selected
-			if (checkBox2.isSelected()){
+			if (radioButton4.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
@@ -1189,7 +1199,7 @@ public class Gui extends JFrame {
 				} 
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (checkBox3.isSelected()) {
+			if (radioButton5.isSelected()) {
 				//get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
