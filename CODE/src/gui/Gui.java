@@ -488,6 +488,7 @@ public class Gui extends JFrame {
 			//---- radioButton3 ----
 			radioButton3.setText("One letter");
 			radioButton3.setOpaque(false);
+			radioButton3.setSelected(true);
 			panel4.add(radioButton3, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 5), 0, 0));
