@@ -1160,8 +1160,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 25. This is requirement for padding type 1
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
 						textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1175,8 +1180,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
 						textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Two letters padding scheme requires n > 2525", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1190,8 +1200,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
 						textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Three letters padding scheme requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1209,8 +1224,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 25. This is requirement for padding type 1
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
 						textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1224,8 +1244,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
 						textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Two letters padding scheme requires n > 2525", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1239,8 +1264,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
 						textArea1.setText(padding3.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 						textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Three letters padding scheme requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
