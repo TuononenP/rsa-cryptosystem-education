@@ -124,11 +124,24 @@ public class Open_Save {
 		//Select the file where to save
 		file = chooseFileToSave();
 		
-		if (file==null) {
-			//file not found
-			JOptionPane.showMessageDialog(frame, "Public key couldn't be saved (file location not found).",
-					"Public key saving error", JOptionPane.ERROR_MESSAGE);
-		}else {
+		//file found
+		if (file!=null) {
+			//get file extension
+			String[] splits = file.getName().split("\\.");
+			String extension = splits[splits.length-1];
+			
+			//extension is not .pub
+			if (!extension.equals("pub")) {
+				//new file name
+				String newFileName = file.getName() +".pub";
+				//new file path
+				int length = (int)file.getPath().length() - (int)file.getName().length();
+				String newFilePath =  file.getPath().substring(0, length)+newFileName;
+				
+				//create new file with correct extension
+				file = new File(newFilePath);
+			}
+			
 			//Save encoded byte array to a file
 			loadSave = new Load_Save_Key();
 			loadSave.saveKeyToFile(encoded, file);
@@ -147,11 +160,24 @@ public class Open_Save {
 		//Select the file where to save
 		file = chooseFileToSave();
 		
-		if (file==null) {
-			//file not found
-			JOptionPane.showMessageDialog(frame, "Private key couldn't be saved (file location not found).",
-					"Private key saving error", JOptionPane.ERROR_MESSAGE);
-		}else {
+		//file found
+		if (file!=null) {
+			//get file extension
+			String[] splits = file.getName().split("\\.");
+			String extension = splits[splits.length-1];
+			
+			//extension is not .priv
+			if (!extension.equals("priv")) {
+				//new file name
+				String newFileName = file.getName() +".priv";
+				//new file path
+				int length = (int)file.getPath().length() - (int)file.getName().length();
+				String newFilePath =  file.getPath().substring(0, length)+newFileName;
+				
+				//create new file with correct extension
+				file = new File(newFilePath);
+			}
+			
 			//Save encoded byte array to a file
 			loadSave = new Load_Save_Key();
 			loadSave.saveKeyToFile(encoded, file);
@@ -171,8 +197,6 @@ public class Open_Save {
 		if (file==null) {
 			//file not found
 			pubKey = null;
-			JOptionPane.showMessageDialog(frame, "Public key couldn't be loaded (file location not found).",
-					"Public key loading error", JOptionPane.ERROR_MESSAGE);
 		}else {
 			//Load encoded bytes from the file
 			loadSave = new Load_Save_Key();
@@ -198,8 +222,6 @@ public class Open_Save {
 		if (file==null) {
 			//file not found
 			privKey = null;
-			JOptionPane.showMessageDialog(frame, "Private key couldn't be loaded (file location not found).",
-					"Private key loading error", JOptionPane.ERROR_MESSAGE);
 		}else {
 			//Load encoded bytes from the file
 			loadSave = new Load_Save_Key();
@@ -210,18 +232,6 @@ public class Open_Save {
 			privKey = encDec.decPrivateKey(encoded);
 		}
 		return privKey;
-	}
-	
-	public static void main(String[] args) {
-		//Generate keys
-//		GenerateKeys gen = new GenerateKeys(100); //generates keys
-//		RsaPublicKey publicKey = gen.getPublicKey();
-		
-		Open_Save OS = new Open_Save();
-//		OS.savePublicKey(publicKey);
-		
-//		RsaPublicKey publicKey = OS.loadPublicKey();
-		File file = OS.chooseFileToLoad();
 	}
 	
 }
