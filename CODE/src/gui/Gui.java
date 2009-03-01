@@ -956,27 +956,39 @@ public class Gui extends JFrame {
 	 * Saves a public key to a file.
 	 */
 	private void savePublicKey() {
-		openSave = new Open_Save(this);
-		openSave.savePublicKey(publicKey);
+		if (privateKey!=null) {
+			openSave = new Open_Save(this);
+			openSave.savePublicKey(publicKey);
+		}else {
+			JOptionPane.showMessageDialog(this, "Public key is not created.", "Public key save error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	/**
 	 * Loads a public key from a file.
 	 */
 	private void loadPublicKey() {
-		clearKeyTextFields();
 		openSave = new Open_Save(this);
-		publicKey = openSave.loadPublicKey();
-		textField3.setText(privateKey.getE().toString());
-		textField4.setText(publicKey.getN().toString());
+		RsaPublicKey pubKey = openSave.loadPublicKey();
+		
+		if (pubKey != null) {
+			clearKeyTextFields();
+			publicKey = pubKey;
+			textField3.setText(publicKey.getE().toString());
+			textField4.setText(publicKey.getN().toString());
+		}
 	}
 
 	/**
 	 * Saves a private key to a file.
 	 */
 	private void savePrivateKey() {
-		openSave = new Open_Save(this);
-		openSave.savePrivateKey(privateKey);
+		if (privateKey!=null) {
+			openSave = new Open_Save(this);
+			openSave.savePrivateKey(privateKey);
+		}else {
+			JOptionPane.showMessageDialog(this, "Private key is not created.", "Private key save error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	/**
@@ -984,12 +996,16 @@ public class Gui extends JFrame {
 	 */
 	private void loadPrivateKey() {
 		openSave = new Open_Save(this);
-		privateKey = openSave.loadPrivateKey();
-		textField1.setText(privateKey.getPrimeP().toString());
-		textField2.setText(privateKey.getPrimeQ().toString());
-		textField3.setText(privateKey.getE().toString());
-		textField4.setText(privateKey.getN().toString());
-		textField5.setText(privateKey.getPrivateExponent().toString());
+		RsaPrivateKey privKey = openSave.loadPrivateKey();
+		
+		if (privKey != null) {
+			privateKey = privKey;
+			textField1.setText(privateKey.getPrimeP().toString());
+			textField2.setText(privateKey.getPrimeQ().toString());
+			textField3.setText(privateKey.getE().toString());
+			textField4.setText(privateKey.getN().toString());
+			textField5.setText(privateKey.getPrivateExponent().toString());
+		}
 	}
 
 	/**
@@ -1160,8 +1176,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 25. This is requirement for padding type 1
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
-						textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
+							textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1175,8 +1196,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
-						textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
+							textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Two letters padding scheme requires n > 2525", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1190,8 +1216,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
-						textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
+							textArea1.setText(padding3.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Three letters padding scheme requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1209,8 +1240,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 25. This is requirement for padding type 1
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
-						textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
+							textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "One letter padding scheme requires n > 25", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1224,8 +1260,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
-						textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
+							textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Two letters padding scheme requires n > 2525", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -1239,8 +1280,13 @@ public class Gui extends JFrame {
 				if (!encrypted.isEmpty() && !(privateKey == null)) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
-						textArea1.setText(padding3.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
-						textArea1.setCaretPosition(0);
+						// catch exceptions (exception comes if textarea contains illeagal letters
+						try{
+							textArea1.setText(padding3.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setCaretPosition(0);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
 						JOptionPane.showMessageDialog(this, "Three letters padding scheme requires n > 17575", "Input error", JOptionPane.ERROR_MESSAGE);
 					}
