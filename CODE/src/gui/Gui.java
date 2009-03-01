@@ -55,11 +55,7 @@ public class Gui extends JFrame {
 	private JButton button12;
 	private JButton button13;
 
-	//	private JPanel panel1;
-	//	private JPanel panel2;
 	private JPanel panel3;
-	//	private JPanel panel4;
-	//	private JPanel panel5;
 	private JPanel panel6;
 	private JPanel panel7;
 
@@ -123,10 +119,6 @@ public class Gui extends JFrame {
 		radioButton4 = new JRadioButton();
 		radioButton5 = new JRadioButton();
 
-//		checkBox1 = new JCheckBox();
-//		checkBox2 = new JCheckBox();
-//		checkBox3 = new JCheckBox();
-
 		button1 = new JButton();
 		button2 = new JButton();
 		button3 = new JButton();
@@ -141,11 +133,7 @@ public class Gui extends JFrame {
 		button12 = new JButton();
 		button13 = new JButton();
 
-		//		panel1 = new JPanel();
-		//		panel2 = new JPanel();
 		panel3 = new JPanel();
-		//		panel4 = new JPanel();
-		//		panel5 = new JPanel();
 		panel6 = new JPanel();
 		panel7 = new JPanel();
 
@@ -180,7 +168,7 @@ public class Gui extends JFrame {
 		padding2 = new PaddingType2();
 		padding3 = new Blocks_Of_3_Padding();
 
-		//		panelColor = new Color(117, 154, 178);
+//		panelColor = new Color(117, 154, 178);
 		panelColor = Color.LIGHT_GRAY;
 
 		//======== container ========
@@ -250,14 +238,6 @@ public class Gui extends JFrame {
 			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
 			panel1.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Key creation"));
-
-			//			Color panelColor = new Color(90, 147, 195);
-			//			panel1.setBorder(new TitledBorder(new LineBorder(panelColor, 1, true), "Key creation"));
-			//			panel1.setLayout(new GridBagLayout());
-			//			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {25, 162, 32, 105, 110, 105, 105, 5, 0};
-			//			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {12, 0, 0, 0, 0, 0, 5, 0};
-			//			((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0E-4};
-			//			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
 			//---- label1 ----
 			label1.setText("p");
@@ -334,7 +314,7 @@ public class Gui extends JFrame {
 					clearKeysButtonActionPerformed(e);
 				}
 			});
-			panel1.add(button11, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+			panel1.add(button11, new GridBagConstraints(4, 5, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 5, 5), 0, 0));
 
@@ -412,7 +392,6 @@ public class Gui extends JFrame {
 		//======== panel2 ========
 		{
 			panel2 = new GradientPanel(panelColor, new GridBagLayout());
-			//			panel2.setLayout(new GridBagLayout());
 			((GridBagLayout)panel2.getLayout()).columnWidths = new int[] {10, 435, 5, 0};
 			((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {71, 5, 0};
 			((GridBagLayout)panel2.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
@@ -475,7 +454,6 @@ public class Gui extends JFrame {
 		{
 			panel4 = new GradientPanel(panelColor, new GridBagLayout());
 			panel4.setBorder(new TitledBorder(new LineBorder(Color.gray, 1, true), "Padding scheme"));
-			//			panel4.setLayout(new GridBagLayout());
 			((GridBagLayout)panel4.getLayout()).columnWidths = new int[] {80, 81, 80, 0};
 			((GridBagLayout)panel4.getLayout()).rowHeights = new int[] {0, 0};
 			((GridBagLayout)panel4.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
@@ -510,7 +488,6 @@ public class Gui extends JFrame {
 		//======== panel5 ========
 		{
 			panel5 = new GradientPanel(panelColor, new GridBagLayout());
-			//			panel5.setLayout(new GridBagLayout());
 			((GridBagLayout)panel5.getLayout()).columnWidths = new int[] {10, 0, 5, 0};
 			((GridBagLayout)panel5.getLayout()).rowHeights = new int[] {210, 0, 0};
 			((GridBagLayout)panel5.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
@@ -763,15 +740,7 @@ public class Gui extends JFrame {
 	 * @param e
 	 */
 	private void aboutMenuItemActionPerformed(ActionEvent e) {
-		JOptionPane.showMessageDialog(this,
-				"Authors: Petri Tuononen, Jukka Tuominen, Jani Kirsi.\n" +
-				"Date: 27.02.2009\n" +
-				"Version: 1.0\n" +
-				"Info: This software is a part of OOP course work at Turku University of Applied Sciences.\n" +
-				"GPL lisence: This software can be used, modified and redistibuted freely.\n" +
-				"No warranties of any kind.\n" +
-				"Feedback: petri.tuononen@students.turkuamk.fi", "About",
-				JOptionPane.PLAIN_MESSAGE);
+		showAbout();
 	}
 
 	/**
@@ -988,8 +957,17 @@ public class Gui extends JFrame {
 		if (pubKey != null) {
 			clearKeyTextFields();
 			publicKey = pubKey;
-			textField3.setText(publicKey.getE().toString());
-			textField4.setText(publicKey.getN().toString());
+			privateKey = null;
+			if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+				//public key fields
+				textField3.setText(publicKey.getE().toString());
+				textField4.setText(publicKey.getN().toString());
+				
+				//private key fields
+				textField1.setText("");
+				textField2.setText("");
+				textField5.setText("");
+			}
 		}
 	}
 
@@ -1014,11 +992,13 @@ public class Gui extends JFrame {
 			//create private & public keys and write values to textfields
 			privateKey = openSave.loadPrivateKey();
 			publicKey = new RsaPublicKey(privateKey.getN(), privateKey.getE());
-			textField1.setText(privateKey.getPrimeP().toString());
-			textField2.setText(privateKey.getPrimeQ().toString());
-			textField3.setText(privateKey.getE().toString());
-			textField4.setText(privateKey.getN().toString());
-			textField5.setText(privateKey.getPrivateExponent().toString());
+			if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
+				textField1.setText(privateKey.getPrimeP().toString());
+				textField2.setText(privateKey.getPrimeQ().toString());
+				textField3.setText(privateKey.getE().toString());
+				textField4.setText(privateKey.getN().toString());
+				textField5.setText(privateKey.getPrivateExponent().toString());
+			}
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(this, "Private key couldn't be loaded.", "Private key load error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -1348,7 +1328,6 @@ public class Gui extends JFrame {
 	private void secureModeButtonPressed() {
 		textField6.setVisible(true);
 		label8.setVisible(true);
-		button11.setVisible(false);
 		textField1.setVisible(false);
 		textField2.setVisible(false);
 		textField3.setVisible(false);
@@ -1369,7 +1348,6 @@ public class Gui extends JFrame {
 	private void teachModeButtonPressed() {
 		textField6.setVisible(false);
 		label8.setVisible(false);
-		button11.setVisible(true);
 		textField1.setVisible(true);
 		textField2.setVisible(true);
 		textField3.setVisible(true);
@@ -1380,6 +1358,21 @@ public class Gui extends JFrame {
 		label5.setVisible(true);
 		textField4.setVisible(true);
 		textField5.setVisible(true);
+	}
+	
+	/**
+	 * Shows about screen.
+	 */
+	private void showAbout() {
+		JOptionPane.showMessageDialog(this,
+				"Authors: Petri Tuononen, Jukka Tuominen, Jani Kirsi.\n" +
+				"Date: 27.02.2009\n" +
+				"Version: 1.0\n" +
+				"Info: This software is a part of OOP course work at Turku University of Applied Sciences.\n" +
+				"GPL lisence: This software can be used, modified and redistibuted freely.\n" +
+				"No warranties of any kind.\n" +
+				"Feedback: petri.tuononen@students.turkuamk.fi", "About",
+				JOptionPane.PLAIN_MESSAGE);
 	}
 
 	//End of methods used in event handlers.
