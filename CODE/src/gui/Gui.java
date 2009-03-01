@@ -956,7 +956,7 @@ public class Gui extends JFrame {
 	 * Saves a public key to a file.
 	 */
 	private void savePublicKey() {
-		if (privateKey!=null) {
+		if (publicKey!=null) {
 			openSave = new Open_Save(this);
 			openSave.savePublicKey(publicKey);
 		}else {

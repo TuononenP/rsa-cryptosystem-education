@@ -34,28 +34,6 @@ public class Open_Save {
 	}
 	
 	/**
-	 * Default constructor.
-	 */
-	public Open_Save() {
-		frame = createFrame();
-	}
-	
-	/**
-	 * Creates a frame.
-	 * @return frame
-	 */
-	public JFrame createFrame() {
-		JFrame frame = new JFrame();
-    	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	frame.setVisible(true); 
-    	frame.toFront();
-    	frame.setSize(500, 500);
-    	frame.setLocationRelativeTo(null);
-    	frame.setVisible(true);
-    	return frame;
-	}
-
-	/**
 	 * Returns the user selected file.
 	 * File to load.
 	 * @return file File to load.
