@@ -4,6 +4,9 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import gui_logics.*;
 
 /**
  * Save/load public/private key to/from the file.
@@ -58,46 +61,52 @@ public class Open_Save {
 	 * @return file File to load.
 	 */
 	public File chooseFileToLoad() {
+		//file filter
+		RsaKeyFileFilter filter = new RsaKeyFileFilter();
+		
 		//Show load dialog.
 		final JFileChooser fc = new JFileChooser();
-		fc.showOpenDialog(frame);
-		//Get user selected file.
-		file = fc.getSelectedFile();
-		return file;
-	}
-	
-	/**
-	 * Returns the user selected file.
-	 * File to save.
-	 * @return file File to save.
-	 */
-//	public File chooseFileToSave() {
-//		//Show save dialog.
-//		final JFileChooser fc = new JFileChooser();
-//		fc.showSaveDialog(frame);
-//		//Get user selected file.
-//		file = fc.getSelectedFile();
-//		return file;
-//	}
-	public File chooseFileToSave() {
-		//Show save dialog.
-		final JFileChooser fc = new JFileChooser();
-		int ans = fc.showSaveDialog(frame);
-		switch (ans) { 
+		fc.setFileFilter(filter);
+		int result = fc.showOpenDialog(frame);
+		switch (result) {
 			case JFileChooser.APPROVE_OPTION : 
 				if (fc.getSelectedFile() != null) { // A file was selected
 					file = fc.getSelectedFile();
 				}
 				else { // No file selected 
-					System.out.println("No file was selected");
+					JOptionPane.showMessageDialog(frame, "No file was selected", "File selection info", JOptionPane.INFORMATION_MESSAGE);
 				}
 				break ; 
 			case JFileChooser.CANCEL_OPTION : // Selection canceled
-				System.out.println("User canceled");
 				break ; 
-			case JFileChooser.ERROR_OPTION : 
-				// An error has occurred 
-				System.out.println("An erros occured");
+			case JFileChooser.ERROR_OPTION : // An error has occurred 
+				JOptionPane.showMessageDialog(frame, "An error occured while selecting a file to load", "File selection error", JOptionPane.ERROR_MESSAGE);
+				break ; 
+		}
+		return file;
+	}
+	
+	/**
+	 * Returns the user selected file.
+	 * @return file File to save.
+	 */
+	public File chooseFileToSave() {
+		//Show save dialog.
+		final JFileChooser fc = new JFileChooser();
+		int result = fc.showSaveDialog(frame);
+		switch (result) { 
+			case JFileChooser.APPROVE_OPTION : 
+				if (fc.getSelectedFile() != null) { // A file was selected
+					file = fc.getSelectedFile();
+				}
+				else { // No file selected 
+					JOptionPane.showMessageDialog(frame, "No file was selected", "File selection info", JOptionPane.INFORMATION_MESSAGE);
+				}
+				break ; 
+			case JFileChooser.CANCEL_OPTION : // Selection canceled
+				break ; 
+			case JFileChooser.ERROR_OPTION : // An error has occurred 
+				JOptionPane.showMessageDialog(frame, "An error occured while selecting a file to save", "File selection error", JOptionPane.ERROR_MESSAGE);
 				break ; 
 			} 
 		return file;
@@ -115,9 +124,15 @@ public class Open_Save {
 		//Select the file where to save
 		file = chooseFileToSave();
 		
-		//Save encoded byte array to a file
-		loadSave = new Load_Save_Key();
-		loadSave.saveKeyToFile(encoded, file);
+		if (file==null) {
+			//file not found
+			JOptionPane.showMessageDialog(frame, "Public key couldn't be saved (file location not found).",
+					"Public key saving error", JOptionPane.ERROR_MESSAGE);
+		}else {
+			//Save encoded byte array to a file
+			loadSave = new Load_Save_Key();
+			loadSave.saveKeyToFile(encoded, file);
+		}
 	}
 	
 	/**
@@ -132,9 +147,15 @@ public class Open_Save {
 		//Select the file where to save
 		file = chooseFileToSave();
 		
-		//Save encoded byte array to a file
-		loadSave = new Load_Save_Key();
-		loadSave.saveKeyToFile(encoded, file);
+		if (file==null) {
+			//file not found
+			JOptionPane.showMessageDialog(frame, "Private key couldn't be saved (file location not found).",
+					"Private key saving error", JOptionPane.ERROR_MESSAGE);
+		}else {
+			//Save encoded byte array to a file
+			loadSave = new Load_Save_Key();
+			loadSave.saveKeyToFile(encoded, file);
+		}
 	}
 	
 	/**
@@ -147,14 +168,20 @@ public class Open_Save {
 		//Select the file to open
 		file = chooseFileToLoad();
 		
-		//Load encoded bytes from the file
-		loadSave = new Load_Save_Key();
-		encoded = loadSave.loadKeyFromFile(file);
-		
-		//Decode to key instance
-		encDec = new Encode_Decode();
-		pubKey = encDec.decPublicKey(encoded);
-		
+		if (file==null) {
+			//file not found
+			pubKey = null;
+			JOptionPane.showMessageDialog(frame, "Public key couldn't be loaded (file location not found).",
+					"Public key loading error", JOptionPane.ERROR_MESSAGE);
+		}else {
+			//Load encoded bytes from the file
+			loadSave = new Load_Save_Key();
+			encoded = loadSave.loadKeyFromFile(file);
+			
+			//Decode to key instance
+			encDec = new Encode_Decode();
+			pubKey = encDec.decPublicKey(encoded);
+		}
 		return pubKey;
 	}
 	
@@ -168,24 +195,33 @@ public class Open_Save {
 		//Select the file to open
 		file = chooseFileToLoad();
 		
-		//Load encoded bytes from the file
-		loadSave = new Load_Save_Key();
-		encoded = loadSave.loadKeyFromFile(file);
-		
-		//Decode to key instance
-		encDec = new Encode_Decode();
-		privKey = encDec.decPrivateKey(encoded);
-		
+		if (file==null) {
+			//file not found
+			privKey = null;
+			JOptionPane.showMessageDialog(frame, "Private key couldn't be loaded (file location not found).",
+					"Private key loading error", JOptionPane.ERROR_MESSAGE);
+		}else {
+			//Load encoded bytes from the file
+			loadSave = new Load_Save_Key();
+			encoded = loadSave.loadKeyFromFile(file);
+			
+			//Decode to key instance
+			encDec = new Encode_Decode();
+			privKey = encDec.decPrivateKey(encoded);
+		}
 		return privKey;
 	}
 	
 	public static void main(String[] args) {
 		//Generate keys
-		GenerateKeys gen = new GenerateKeys(512); //generates keys
-		RsaPublicKey publicKey = gen.getPublicKey();
+//		GenerateKeys gen = new GenerateKeys(100); //generates keys
+//		RsaPublicKey publicKey = gen.getPublicKey();
 		
 		Open_Save OS = new Open_Save();
-		OS.savePublicKey(publicKey);
+//		OS.savePublicKey(publicKey);
+		
+//		RsaPublicKey publicKey = OS.loadPublicKey();
+		File file = OS.chooseFileToLoad();
 	}
 	
 }
