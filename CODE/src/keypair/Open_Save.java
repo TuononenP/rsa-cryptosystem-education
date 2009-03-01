@@ -39,12 +39,9 @@ public class Open_Save {
 	 * @return file File to load.
 	 */
 	public File chooseFileToLoad() {
-		//file filter
-		RsaKeyFileFilter filter = new RsaKeyFileFilter();
-		
 		//Show load dialog.
 		final JFileChooser fc = new JFileChooser();
-		fc.setFileFilter(filter);
+		fc.setFileFilter(new RsaKeyFileFilter());
 		int result = fc.showOpenDialog(frame);
 		switch (result) {
 			case JFileChooser.APPROVE_OPTION : 
@@ -71,6 +68,7 @@ public class Open_Save {
 	public File chooseFileToSave() {
 		//Show save dialog.
 		final JFileChooser fc = new JFileChooser();
+		fc.setFileFilter(new RsaKeyFileFilter());
 		int result = fc.showSaveDialog(frame);
 		switch (result) { 
 			case JFileChooser.APPROVE_OPTION : 

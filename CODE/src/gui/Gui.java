@@ -869,6 +869,9 @@ public class Gui extends JFrame {
 	private void clearKeysButtonActionPerformed(ActionEvent e) {
 		//Clear p, q, e, n, d textfields
 		clearKeyTextFields();
+		//delete keys
+		publicKey = null;
+		privateKey = null;
 	}
 
 	/**
@@ -909,46 +912,53 @@ public class Gui extends JFrame {
 	private void createKeys() {
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
-			//get user input
-			BigInteger p = new BigInteger(textField1.getText());
-			BigInteger q = new BigInteger(textField2.getText());
-			BigInteger e = new BigInteger(textField3.getText());
+			try {
+				//get user input
+				BigInteger p = new BigInteger(textField1.getText());
+				BigInteger q = new BigInteger(textField2.getText());
+				BigInteger e = new BigInteger(textField3.getText());
 
-			GenerateUserKeys genKeys = new GenerateUserKeys();
+				GenerateUserKeys genKeys = new GenerateUserKeys();
 
-			//test that p, q and e are suitable
-			if (genKeys.testInputEligibility(p, q, e)) { //input ok
-				//generate keys
-				setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				genKeys.createKeys(p, q, e);
-				setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-				//store keys
-				publicKey = genKeys.getPublicKey();
-				privateKey = genKeys.getPrivateKey();
+				//test that p, q and e are suitable
+				if (genKeys.testInputEligibility(p, q, e)) { //input ok
+					//generate keys
+					setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+					genKeys.createKeys(p, q, e);
+					setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+					//store keys
+					publicKey = genKeys.getPublicKey();
+					privateKey = genKeys.getPrivateKey();
 
-				//write to textfields
-				textField4.setText(publicKey.getN().toString());
-				textField5.setText(privateKey.getPrivateExponent().toString());
-			}
-			else { //bad input
-				genKeys.showInputError(this, p, q, e);
+					//write to textfields
+					textField4.setText(publicKey.getN().toString());
+					textField5.setText(privateKey.getPrivateExponent().toString());
+				}
+				else { //bad input
+					genKeys.showInputError(this, p, q, e);
+				}
+			}catch(Exception e) {
+				JOptionPane.showMessageDialog(this, "Key creation error.", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		//secure mode
 		else if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
-			if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
-				System.out.println("Prime bit size must be larger than 5.");
+			//bitsize field is empty
+			if (textField6.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "Bitsize field is empty.", "Bitsize error", JOptionPane.ERROR_MESSAGE);
+			}else {
+				if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
+					JOptionPane.showMessageDialog(this, "Prime bitsize must be larger than 5.", "Bitsize error", JOptionPane.ERROR_MESSAGE);
+				}
+				else { //bit size is ok.
+					setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+					GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+					publicKey = genKeys.getPublicKey();
+					privateKey = genKeys.getPrivateKey();
+					setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				}
 			}
-			else if (textField6.getText().equals("")) { //bit size field is empty.
-				System.out.println("You didn't define prime bit size.");
-			}
-			else { //bit size is ok.
-				setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
-				publicKey = genKeys.getPublicKey();
-				privateKey = genKeys.getPrivateKey();
-				setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-			}
+
 		}
 	}
 
@@ -969,8 +979,12 @@ public class Gui extends JFrame {
 	 */
 	private void loadPublicKey() {
 		openSave = new Open_Save(this);
-		RsaPublicKey pubKey = openSave.loadPublicKey();
-		
+		RsaPublicKey pubKey = null;
+		try {
+			pubKey = openSave.loadPublicKey();
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(this, "Public key couldn't be loaded.", "Public key load error", JOptionPane.ERROR_MESSAGE);
+		}
 		if (pubKey != null) {
 			clearKeyTextFields();
 			publicKey = pubKey;
@@ -996,15 +1010,17 @@ public class Gui extends JFrame {
 	 */
 	private void loadPrivateKey() {
 		openSave = new Open_Save(this);
-		RsaPrivateKey privKey = openSave.loadPrivateKey();
-		
-		if (privKey != null) {
-			privateKey = privKey;
+		try {
+			//create private & public keys and write values to textfields
+			privateKey = openSave.loadPrivateKey();
+			publicKey = new RsaPublicKey(privateKey.getN(), privateKey.getE());
 			textField1.setText(privateKey.getPrimeP().toString());
 			textField2.setText(privateKey.getPrimeQ().toString());
 			textField3.setText(privateKey.getE().toString());
 			textField4.setText(privateKey.getN().toString());
 			textField5.setText(privateKey.getPrivateExponent().toString());
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(this, "Private key couldn't be loaded.", "Private key load error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -1033,6 +1049,9 @@ public class Gui extends JFrame {
 	 * Encrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
 	private void encrypt() {
+		if (publicKey == null) {
+			JOptionPane.showMessageDialog(this, "Public key not created", "Public key error", JOptionPane.ERROR_MESSAGE);
+		}
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
 			// if padding type1 checkbox is selected
@@ -1040,7 +1059,7 @@ public class Gui extends JFrame {
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
-				if (!plaintext.isEmpty() && !(publicKey == null)) {
+				if (!plaintext.isEmpty() && publicKey != null) {
 					// check that n > 25. This is requirement for padding type 1
 					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
 						// check that input contains only allowed letters and catch all errors
@@ -1056,11 +1075,11 @@ public class Gui extends JFrame {
 				}
 			}
 			//if padding type2 checkbox is selected
-			if(radioButton4.isSelected()){
+			else if(radioButton4.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
-				if (!plaintext.isEmpty() && !(publicKey == null)) {
+				if (!plaintext.isEmpty() && publicKey != null) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
 						// check that input contains only allowed letters and catch all errors
@@ -1076,11 +1095,11 @@ public class Gui extends JFrame {
 				}
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (radioButton5.isSelected()) {
+			else if (radioButton5.isSelected()) {
 				//get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				//if something is written into the message textarea and public key is generated.
-				if (!plaintext.isEmpty() && !(publicKey == null)) {
+				if (!plaintext.isEmpty() && publicKey != null) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (publicKey.getN().compareTo(new BigInteger("17575"))>0){
 						// check that input contains only allowed letters and catch all errors
@@ -1097,13 +1116,13 @@ public class Gui extends JFrame {
 			}
 		}
 		//secure mode
-		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+		else if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
 			// if padding type1 checkbox is selected
 			if(radioButton3.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
-				if (!plaintext.isEmpty() && !(publicKey == null)) {
+				if (!plaintext.isEmpty() && publicKey != null) {
 					// check that n > 25. This is requirement for padding type 1
 					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
 						// check that input contains only allowed letters and catch all errors
@@ -1119,11 +1138,11 @@ public class Gui extends JFrame {
 				}
 			}
 			//if padding type2 checkbox is selected
-			if(radioButton4.isSelected()){
+			else if(radioButton4.isSelected()){
 				// get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				// if something is written into the message textarea and public key is generated.
-				if (!plaintext.isEmpty() && !(publicKey == null)) {
+				if (!plaintext.isEmpty() && publicKey != null) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
 						// check that input contains only allowed letters and catch all errors
@@ -1139,11 +1158,11 @@ public class Gui extends JFrame {
 				}
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (radioButton5.isSelected()) {
+			else if (radioButton5.isSelected()) {
 				//get plaintext from textarea
 				String plaintext = textArea2.getText().toUpperCase();
 				//if something is written into the message textarea and public key is generated.
-				if (!plaintext.isEmpty() && !(publicKey == null)) {
+				if (!plaintext.isEmpty() && publicKey != null) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (publicKey.getN().compareTo(new BigInteger("17575"))>0){
 						// check that input contains only allowed letters and catch all errors
@@ -1166,6 +1185,9 @@ public class Gui extends JFrame {
 	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
 	 */
 	private void decrypt() {
+		if (privateKey == null) {
+			JOptionPane.showMessageDialog(this, "Private key not created", "Private key error", JOptionPane.ERROR_MESSAGE);
+		}
 		//teach mode
 		if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
 			// if padding scheme1 checkbox is selected
@@ -1173,7 +1195,7 @@ public class Gui extends JFrame {
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
-				if (!encrypted.isEmpty() && !(privateKey == null)) {
+				if (!encrypted.isEmpty() && privateKey != null) {
 					// check that n > 25. This is requirement for padding type 1
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
@@ -1189,11 +1211,11 @@ public class Gui extends JFrame {
 				}
 			}
 			// if padding scheme2 checkbox is selected
-			if (radioButton4.isSelected()){
+			else if (radioButton4.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
-				if (!encrypted.isEmpty() && !(privateKey == null)) {
+				if (!encrypted.isEmpty() && privateKey != null) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
@@ -1209,11 +1231,11 @@ public class Gui extends JFrame {
 				} 
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (radioButton5.isSelected()) {
+			else if (radioButton5.isSelected()) {
 				//get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
-				if (!encrypted.isEmpty() && !(privateKey == null)) {
+				if (!encrypted.isEmpty() && privateKey != null) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
@@ -1231,13 +1253,13 @@ public class Gui extends JFrame {
 		}
 
 		//secure mode
-		if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
+		else if (buttonGroup1.getSelection().getActionCommand().equals("Secure mode")) {
 			// if padding scheme1 checkbox is selected
 			if (radioButton3.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
-				if (!encrypted.isEmpty() && !(privateKey == null)) {
+				if (!encrypted.isEmpty() && privateKey != null) {
 					// check that n > 25. This is requirement for padding type 1
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
@@ -1253,11 +1275,11 @@ public class Gui extends JFrame {
 				}
 			}
 			// if padding scheme2 checkbox is selected
-			if (radioButton4.isSelected()){
+			else if (radioButton4.isSelected()){
 				// get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
-				if (!encrypted.isEmpty() && !(privateKey == null)) {
+				if (!encrypted.isEmpty() && privateKey != null) {
 					// check that n > 2525. This is requirement for padding type 2
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
@@ -1273,11 +1295,11 @@ public class Gui extends JFrame {
 				} 
 			}
 			//if blocks of three letters padding scheme checkbox is selected
-			if (radioButton5.isSelected()) {
+			else if (radioButton5.isSelected()) {
 				//get encrypted text from textarea
 				String encrypted = textArea2.getText();
 				//if something is written into the message textarea and private key is generated.
-				if (!encrypted.isEmpty() && !(privateKey == null)) {
+				if (!encrypted.isEmpty() && privateKey != null) {
 					// check that n > 17575. This is requirement for padding type 3
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
