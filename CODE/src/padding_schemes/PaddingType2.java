@@ -105,8 +105,8 @@ public class PaddingType2 {
 		
 		ArrayList<Integer> numberMessage = enCode(msg);
 		s.append(msg+"\n\n");
-		s.append(alpha.getNumbers()+"\n\n");
-		s.append("Type 1 encoded text:\n");
+		s.append(alpha.getLetters()+"\n\n");
+		s.append("Type 2 encoded text:\n");
 		for (Integer integer : numberMessage) {
 			s.append(integer.toString()+" ");
 		}
@@ -128,6 +128,7 @@ public class PaddingType2 {
 			cryptotext[i]=alpha.stringOfNumbersToLetters(enCrypted[i].toString());
 			s.append(enCrypted[i]+" ");
 		}
+		s.append("\n\n"+alpha.getNumbers());
 		s.append("\n\nCryptotext:\n");
 		for (String string : cryptotext) {
 			s.append(string+" ");
@@ -146,8 +147,10 @@ public class PaddingType2 {
 		StringBuilder s = new StringBuilder();
 		AlphabetNum alpha = new AlphabetNum();
 		Encrypt_Decrypt decrypter = new Encrypt_Decrypt();
+		
 		s.append("Cryptotext:\n");
 		s.append(msg+"\n\n");
+		s.append(alpha.getLetters()+"\n\n");
 		
 		//-----------cryptotext to numbers----------------------------
 		
@@ -176,7 +179,7 @@ public class PaddingType2 {
 			s.append(integerMessage.get(i)+" ");
 		}
 		
-		//-----------------------enCoding-------------------------------
+		//-----------------------deCoding-------------------------------
 		
 		s.append("\n\n"+alpha.getNumbers());
 		s.append("\n\nDecoded text: ");
