@@ -94,6 +94,7 @@ public class PaddingType1 {
 		}
 		//-------------------------to cryptotext----------------------
 		
+		s.append("\n\n"+alpha.getNumbers());
 		s.append("\n\nCryptotext: \n");
 		for (String string : enCryptedLetters) {
 			s.append(string+" ");
@@ -118,6 +119,7 @@ public class PaddingType1 {
 		
 		s.append("Cryptotext: \n");
 		s.append(msg+"\n\n");
+		s.append(alpha.getLetters()+"\n\n");
 		msg=alpha.stringOfLettersToNumbers(msg);
 		String[] stringMessage = msg.split(" "); // Message in String[]
 		
