@@ -649,32 +649,6 @@ public class Gui extends JFrame {
 		//End of component initialization
 	}
 
-//	/**
-//	 * Listener for the JPopupMenu.
-//	 * Shows popup in the right place.
-//	 */
-//	class PopupListener extends MouseAdapter {
-//		JPopupMenu popup;
-//
-//		PopupListener(JPopupMenu popupMenu) {
-//			popup = popupMenu;
-//		}
-//
-//		public void mousePressed(MouseEvent e) {
-//			maybeShowPopup(e);
-//		}
-//
-//		public void mouseReleased(MouseEvent e) {
-//			maybeShowPopup(e);
-//		}
-//
-//		private void maybeShowPopup(MouseEvent e) {
-//			if (e.isPopupTrigger()) {
-//				popup.show(e.getComponent(), e.getX(), e.getY());
-//			}
-//		}
-//	}
-
 	//Event handlers
 
 	/**
@@ -889,18 +863,23 @@ public class Gui extends JFrame {
 			if (textField6.getText().equals("")) {
 				JOptionPane.showMessageDialog(this, "Bitsize field is empty.", "Bitsize error", JOptionPane.ERROR_MESSAGE);
 			}else {
-				if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
-					JOptionPane.showMessageDialog(this, "Prime bitsize must be larger than 5.", "Bitsize error", JOptionPane.ERROR_MESSAGE);
+				int value = 0;
+				if (Integer.parseInt(textField6.getText()) > 2048) {
+					//value=0 OK, value=2 CANCEL
+					value = JOptionPane.showConfirmDialog(this, "Are you sure you want to create primes largen than 2048 bits? It will take some time.", "Large bitsize warning", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
-				else { //bit size is ok.
-					setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-					GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
-					publicKey = genKeys.getPublicKey();
-					privateKey = genKeys.getPrivateKey();
-					setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				if (value==0) {
+					if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
+						JOptionPane.showMessageDialog(this, "Prime bitsize must be larger than 5.", "Bitsize error", JOptionPane.ERROR_MESSAGE);
+					}else { //bit size is ok.
+						setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+						GenerateKeys genKeys = new GenerateKeys(Integer.parseInt(textField6.getText()));
+						publicKey = genKeys.getPublicKey();
+						privateKey = genKeys.getPrivateKey();
+						setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+					}
 				}
 			}
-
 		}
 	}
 
@@ -1302,6 +1281,7 @@ public class Gui extends JFrame {
 	 * are made invisible.
 	 */
 	private void secureModeButtonPressed() {
+		textArea1.setText("");
 		textField6.setVisible(true);
 		label8.setVisible(true);
 		textField1.setVisible(false);
@@ -1322,6 +1302,7 @@ public class Gui extends JFrame {
 	 * and key textfields visible.
 	 */
 	private void teachModeButtonPressed() {
+		textArea1.setText("");
 		textField6.setVisible(false);
 		label8.setVisible(false);
 		textField1.setVisible(true);
