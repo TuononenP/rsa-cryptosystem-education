@@ -1,24 +1,20 @@
 package padding_schemes;
 import java.math.BigInteger;
 import keypair.EncryptDecrypt;
+import keypair.GenerateUserKeys;
+import keypair.RsaPrivateKey;
+import keypair.RsaPublicKey;
+
 /**
  * Padding type 1 for RSA cryptography
  * @author Jukka Tuominen
  * 
  */
-
 public class PaddingType1 {
 
 	private AlphabetNum alphaNum = new AlphabetNum();
-	/**
-	 * Constructor
-	 */
-	public PaddingType1(){
 
-	}
 	//------------------enCode-------------------------
-
-
 	/**
 	 * Returns enCoded message
 	 * @param msg String
@@ -36,9 +32,7 @@ public class PaddingType1 {
 		return numbers;
 	}
 
-
 	//------------deCode----------------------------------
-
 	/**
 	 * Returns decoded message
 	 * @param msg Integer[]
@@ -102,7 +96,6 @@ public class PaddingType1 {
 		return s.toString();
 	}
 	
-	
 	/**
 	 * Returns all phases of decrypting and decoding
 	 * in a String
@@ -145,7 +138,7 @@ public class PaddingType1 {
 			s.append(integerMessage[i]+" ");
 		}
 		
-		//-----------------------enCoding-------------------------------
+		//-----------------------deCoding-------------------------------
 		
 		s.append("\n\n"+alpha.getNumbers());
 		s.append("\n\nDecoded text: ");
@@ -153,14 +146,78 @@ public class PaddingType1 {
 		s.append(unCoded+"\n");
 		return s.toString();
 	}
+	
+	/**
+	 * Encodes and encrypts a message and returns cryptotext as a String.
+	 * 
+	 * @param msg String messge to be encrypted
+	 * @param exp BigInteger exponend
+	 * @param mod BigInteger modulo
+	 * @return String 
+	 */
+	public String getEnCryptedSecure(String msg, BigInteger exp, BigInteger mod){
+		StringBuilder sB = new StringBuilder();
+		AlphabetNum alpha = new AlphabetNum();
+		EncryptDecrypt encrypter = new EncryptDecrypt();
+		
+		//--------------------- enCoding-------------------------
+		Integer[] numberMessage = enCode(msg);
+		
+		//------------------------enCrypting-----------------------
+		BigInteger[] enCrypted = new BigInteger[numberMessage.length];
+		String[] enCryptedLetters = new String[enCrypted.length];
+		for (int i = 0; i < enCrypted.length; i++) {
+			enCrypted[i]=(encrypter.encrypt(numberMessage[i],exp,mod));
+			enCryptedLetters[i]=alpha.stringOfNumbersToLetters(enCrypted[i].toString());
+		}
+		
+		//-------------------------to cryptotext----------------------
+		for (String string : enCryptedLetters) {
+			sB.append(string+" ");
+		}
+		return sB.toString().trim();
+	}
+	
+	/**
+	 * Decrypts and decodes cryptotext to a plaintext.
+	 * 
+	 * @param msg String 
+	 * @param exp BigInteger
+	 * @param mod BigInteger
+	 * @return String
+	 */
+	public String getDeCryptedSecure(String msg, BigInteger exp, BigInteger mod){
+		AlphabetNum alpha = new AlphabetNum();
+		EncryptDecrypt decrypter = new EncryptDecrypt();
+		
+		//--------------------cryptotext to numbers------------------
+		msg=alpha.stringOfLettersToNumbers(msg);
+		String[] stringMessage = msg.split(" "); // Message in String[]
+		
+		//----------------------deCrypting--------------------------
+		BigInteger[] numberMessage = new BigInteger[stringMessage.length];
+		for (int i = 0; i < numberMessage.length; i++) {
+			numberMessage[i]=new BigInteger(stringMessage[i]);   // message to BigInteger[]	
+		}
+	    Integer[] integerMessage = new Integer[numberMessage.length];
+		for (int i = 0; i < numberMessage.length; i++) {
+			integerMessage[i]=(decrypter.decryptToInt(numberMessage[i], exp, mod));
+		}
+		
+		//-----------------------deCoding-------------------------------
+		String deCoded=(deCode(integerMessage));
+		return deCoded;
+	}
+	
 	//------------------------main for testing----------------------
 	/**
-	 * 
+	 * Main. For testing purposes only.
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		EncryptDecrypt c = new EncryptDecrypt();
+//		EncryptDecrypt c = new EncryptDecrypt();
 		PaddingType1 koe = new PaddingType1();
+		/*
 		String message = "help help";
 		Integer[] testi = new Integer[message.length()];
 		System.out.println(message);
@@ -197,5 +254,16 @@ public class PaddingType1 {
 		System.out.print("Type1 decoded text:");
 		message=koe.deCode(testi);
 		System.out.println(message);
+		*/
+		
+		GenerateUserKeys genKeys = new GenerateUserKeys();
+		genKeys.createKeys(new BigInteger("131"), new BigInteger("137"), new BigInteger("3"));
+		RsaPublicKey publicKey = genKeys.getPublicKey();
+		RsaPrivateKey privateKey = genKeys.getPrivateKey();
+		String cryptotext = koe.getEnCryptedSecure("salaisuus", publicKey.getE(), publicKey.getModulus());
+		System.out.println(cryptotext);
+		
+		String decrypted = koe.getDeCryptedSecure(cryptotext, privateKey.getPrivateExponent(), privateKey.getModulus());
+		System.out.println(decrypted);
 	}
 }

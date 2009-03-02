@@ -1113,7 +1113,7 @@ public class Gui extends JFrame {
 					if (publicKey.getN().compareTo(new BigInteger("25"))>0){
 						// check that input contains only allowed letters and catch all errors
 						try{ 
-							textArea1.setText(padding1.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+							textArea1.setText(padding1.getEnCryptedSecure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
 							textArea1.setCaretPosition(0);
 						}catch (Exception e){
 							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
@@ -1250,7 +1250,7 @@ public class Gui extends JFrame {
 					if (privateKey.getN().compareTo(new BigInteger("25"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
 						try{
-							textArea1.setText(padding1.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setText(padding1.getDeCryptedSecure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 							textArea1.setCaretPosition(0);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
