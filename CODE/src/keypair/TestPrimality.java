@@ -131,7 +131,7 @@ public class TestPrimality {
 	/**
 	 * Checks primality by first checking the prime table and then by calculating.
 	 * @param x
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isPrime(BigInteger x) {
 		if (isFoundFromTable(x)) {

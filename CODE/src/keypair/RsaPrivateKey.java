@@ -129,7 +129,7 @@ public RsaPrivateKey(final BigInteger p, final BigInteger q,
 /**
  * <p>A class method that takes the output of the <code>encodePrivateKey()</code>
  * method of an RSA keypair codec object (an instance implementing
- * {@link gnu.crypto.key.IKeyPairCodec} for RSA keys, and re-constructs an
+ * {@link IKeyPairCodec} for RSA keys, and re-constructs an
  * instance of this object.</p>
  *
  * @param k the contents of a previously encoded instance of this object.
@@ -203,7 +203,7 @@ public BigInteger getPublicExponent() {
  * @return the byte sequence encoding this key according to the designated
  * format.
  * @throws IllegalArgumentException if the format is not supported.
- * @see gnu.crypto.key.rsa.RsaKeyPairRawCodec
+ * @see RsaKeyPairRawCodec
  */
 public byte[] getEncoded(final int format) {
    final byte[] result;

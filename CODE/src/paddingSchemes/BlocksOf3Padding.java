@@ -96,7 +96,7 @@ public class BlocksOf3Padding {
 	/**
 	 * Returns text in three letter blocks.
 	 * e.g. ATTACK AT SEVEN --> ATT ACK XAT XSE VEN
-	 * @param message Text in three letter blocks.
+	 * @param plaintext Text in three letter blocks.
 	 */
 	public String getBlocktext(String plaintext) {
 		StringBuilder sB = new StringBuilder();
@@ -526,7 +526,7 @@ public class BlocksOf3Padding {
 	 * Returns decrypting and decoding formulas.
 	 * Decrypts using RSA cryptosystem.
 	 * 
-	 * @param encryptedText Encrypted text.
+	 * @param cryptotext Cryptotext.
 	 * @param d Private exponent.
 	 * @param n Modulus.
 	 * @return decrypted text
@@ -615,7 +615,7 @@ public class BlocksOf3Padding {
 	 * Returns only decoded text.
 	 * Decrypts using RSA cryptosystem.
 	 * 
-	 * @param encrypted Encrypted text.
+	 * @param cryptotext Cryptotext.
 	 * @param d Private exponent.
 	 * @param n Modulus.
 	 * @return decrypted text

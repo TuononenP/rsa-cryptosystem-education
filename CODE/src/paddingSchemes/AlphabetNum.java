@@ -144,7 +144,7 @@ public class AlphabetNum {
 	 * Convers a full string of letters to numbers.
 	 * Can be used to convert cryptotext to encrypted numbers.
 	 * @param letters
-	 * @return
+	 * @return String
 	 */
 	public String stringOfLettersToNumbers(String letters) {
 		StringBuilder sB = new StringBuilder();

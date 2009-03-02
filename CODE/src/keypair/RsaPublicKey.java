@@ -92,7 +92,7 @@ public RsaPublicKey(final BigInteger n, final BigInteger e) {
 /**
  * <p>A class method that takes the output of the <code>encodePublicKey()</code>
  * method of an RSA keypair codec object (an instance implementing
- * {@link gnu.crypto.key.IKeyPairCodec} for RSA keys, and re-constructs an
+ * {@link IKeyPairCodec} for RSA keys, and re-constructs an
  * instance of this object.</p>
  *
  * @param k the contents of a previously encoded instance of this object.
