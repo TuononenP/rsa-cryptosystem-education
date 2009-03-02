@@ -4,7 +4,10 @@ import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.*;
 import java.awt.Toolkit;
+
+import javax.swing.*;
 
 /**
  * Copies a string to clipboard.
@@ -45,6 +48,64 @@ public final class ClipboardCopyPaste implements ClipboardOwner {
 			s = data.toString();
 		}
 		return s;
+	}
+	
+	/**
+	 * Creates a popup menu and defines what happens if
+	 * menu items are pressed.
+	 * 
+	 * @param textArea	Textarea where popup menu comes up.
+	 */
+	public void createPopupMenu(final JTextArea textArea) {
+		JMenuItem menuItem;
+
+		//Create the popup menu.
+		JPopupMenu popup = new JPopupMenu();
+		menuItem = new JMenuItem("Copy");
+
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ClipboardCopyPaste().copy(textArea.getSelectedText());
+			}
+		});
+		popup.add(menuItem);
+		menuItem = new JMenuItem("Paste");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(new ClipboardCopyPaste().paste());
+			}
+		});
+		popup.add(menuItem);
+
+		//Add listener to the text area so the popup menu can come up.
+		MouseListener popupListener = new PopupListener(popup);
+		textArea.addMouseListener(popupListener);
+	}
+
+	/**
+	 * Listener for the JPopupMenu.
+	 * Shows popup in the right place.
+	 */
+	class PopupListener extends MouseAdapter {
+		JPopupMenu popup;
+
+		PopupListener(JPopupMenu popupMenu) {
+			popup = popupMenu;
+		}
+
+		public void mousePressed(MouseEvent e) {
+			maybeShowPopup(e);
+		}
+
+		public void mouseReleased(MouseEvent e) {
+			maybeShowPopup(e);
+		}
+
+		private void maybeShowPopup(MouseEvent e) {
+			if (e.isPopupTrigger()) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		}
 	}
 
 } 

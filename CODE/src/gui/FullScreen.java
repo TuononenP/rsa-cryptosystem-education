@@ -1,5 +1,6 @@
 package gui;
 
+import gui_logics.ClipboardCopyPaste;
 import gui_logics.LoadSaveExec;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ import javax.swing.*;
 public class FullScreen extends JFrame {
 	
 	private static final long serialVersionUID = -556243637750407246L;
+	ClipboardCopyPaste clipboard = new ClipboardCopyPaste();
 
 	/**
 	 * Constructor.
@@ -70,6 +72,7 @@ public class FullScreen extends JFrame {
 				scrollPane1.setViewportView(textArea1);
 			}
 			textArea1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 16));
+			clipboard.createPopupMenu(textArea1);
 			panel1.add(scrollPane1);
 		}
 		contentPane.add(panel1, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,

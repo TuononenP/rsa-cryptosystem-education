@@ -94,6 +94,7 @@ public class Gui extends JFrame {
 	private PaddingType1 padding1;
 	private PaddingType2 padding2;
 	private Blocks_Of_3_Padding padding3;
+	private ClipboardCopyPaste clipboard;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 			"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
 	private GradientPanel panel1;
@@ -169,6 +170,8 @@ public class Gui extends JFrame {
 		padding1 = new PaddingType1();
 		padding2 = new PaddingType2();
 		padding3 = new Blocks_Of_3_Padding();
+		
+		clipboard = new ClipboardCopyPaste();
 
 //		panelColor = new Color(117, 154, 178);
 		panelColor = Color.LIGHT_GRAY;
@@ -407,7 +410,7 @@ public class Gui extends JFrame {
 				//---- textArea2 ----
 				textArea2.setLineWrap(true);
 				textArea2.setWrapStyleWord(true);
-				createPopupMenu(textArea2);
+				clipboard.createPopupMenu(textArea2);
 				scrollPane2.setViewportView(textArea2);
 			}
 			panel2.add(scrollPane2, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
@@ -502,7 +505,7 @@ public class Gui extends JFrame {
 				scrollPane1.setViewportView(textArea1);
 			}
 
-			createPopupMenu(textArea1);
+			clipboard.createPopupMenu(textArea1);
 
 			panel5.add(scrollPane1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -646,63 +649,31 @@ public class Gui extends JFrame {
 		//End of component initialization
 	}
 
-	/**
-	 * Creates a popup menu and defines what happens if
-	 * menu items are pressed.
-	 * 
-	 * @param textArea	Textarea where popup menu comes up.
-	 */
-	private void createPopupMenu(final JTextArea textArea) {
-		JMenuItem menuItem;
-
-		//Create the popup menu.
-		JPopupMenu popup = new JPopupMenu();
-		menuItem = new JMenuItem("Copy");
-
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new ClipboardCopyPaste().copy(textArea.getSelectedText());
-			}
-		});
-		popup.add(menuItem);
-		menuItem = new JMenuItem("Paste");
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textArea.setText(new ClipboardCopyPaste().paste());
-			}
-		});
-		popup.add(menuItem);
-
-		//Add listener to the text area so the popup menu can come up.
-		MouseListener popupListener = new PopupListener(popup);
-		textArea.addMouseListener(popupListener);
-	}
-
-	/**
-	 * Listener for the JPopupMenu.
-	 * Shows popup in the right place.
-	 */
-	class PopupListener extends MouseAdapter {
-		JPopupMenu popup;
-
-		PopupListener(JPopupMenu popupMenu) {
-			popup = popupMenu;
-		}
-
-		public void mousePressed(MouseEvent e) {
-			maybeShowPopup(e);
-		}
-
-		public void mouseReleased(MouseEvent e) {
-			maybeShowPopup(e);
-		}
-
-		private void maybeShowPopup(MouseEvent e) {
-			if (e.isPopupTrigger()) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		}
-	}
+//	/**
+//	 * Listener for the JPopupMenu.
+//	 * Shows popup in the right place.
+//	 */
+//	class PopupListener extends MouseAdapter {
+//		JPopupMenu popup;
+//
+//		PopupListener(JPopupMenu popupMenu) {
+//			popup = popupMenu;
+//		}
+//
+//		public void mousePressed(MouseEvent e) {
+//			maybeShowPopup(e);
+//		}
+//
+//		public void mouseReleased(MouseEvent e) {
+//			maybeShowPopup(e);
+//		}
+//
+//		private void maybeShowPopup(MouseEvent e) {
+//			if (e.isPopupTrigger()) {
+//				popup.show(e.getComponent(), e.getX(), e.getY());
+//			}
+//		}
+//	}
 
 	//Event handlers
 
@@ -1133,7 +1104,7 @@ public class Gui extends JFrame {
 					if (publicKey.getN().compareTo(new BigInteger("2525"))>0){
 						// check that input contains only allowed letters and catch all errors
 						try{
-						textArea1.setText(padding2.getEnCrypted(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+						textArea1.setText(padding2.getEnCryptedSecure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
 						textArea1.setCaretPosition(0);
 						}catch (Exception e){
 							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
@@ -1165,7 +1136,6 @@ public class Gui extends JFrame {
 			}
 		}
 	}
-
 
 	/**
 	 * Decrypts the text written in 'Message to encrypt/decrypt' textarea.
@@ -1270,7 +1240,7 @@ public class Gui extends JFrame {
 					if (privateKey.getN().compareTo(new BigInteger("2525"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
 						try{
-							textArea1.setText(padding2.getDeCrypted(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setText(padding2.getDeCryptedSecure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 							textArea1.setCaretPosition(0);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);
