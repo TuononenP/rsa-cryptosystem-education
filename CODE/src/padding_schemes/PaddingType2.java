@@ -18,22 +18,16 @@ package padding_schemes;
 import java.math.BigInteger;	
 import java.util.ArrayList;
 import keypair.EncryptDecrypt;
+
 /**
  *  Padding type 2 for rsa cryptography
  *  @author Jukka Tuominen
  */
 public class PaddingType2 {
+	
 	private AlphabetNum alphaNum = new AlphabetNum();
-	/**
-	 * 
-	 * @Constructor
-	 */
-	public PaddingType2(){
-
-	}
+	
 	//---------------------------enCode----------------------------
-	
-	
 	/**
 	 * Encodes message with padding type 2
 	 * @param msg String
@@ -53,14 +47,11 @@ public class PaddingType2 {
 			if (i+1<table.length){
 				numbers.set(j, (numbers.get(j)+(alphaNum.getNum(String.valueOf(table[i+1])))));
 			} 	
-
 		}
-
 		return numbers;
 	}
 
 	//-------------------deCode--------------------------
-	
 	/**
 	 * Decodes message with padding type 2
 	 * @param msg ArrayList<Integer>
@@ -80,8 +71,6 @@ public class PaddingType2 {
 	}
 	
 //----------------getLetters----------------------------------------
-	
-	
 /**
  * Returns String containing letters
  * with numbers.
@@ -112,13 +101,11 @@ public class PaddingType2 {
 	 * @return String containing phases
 	 */
 	public String getEnCrypted(String msg, BigInteger exp, BigInteger mod){
-		
 		StringBuilder s = new StringBuilder();
 		AlphabetNum alpha = new AlphabetNum();
 		EncryptDecrypt encrypter = new EncryptDecrypt();
 		
 		//--------------------- enCoding-------------------------
-		
 		ArrayList<Integer> numberMessage = enCode(msg);
 		s.append(msg+"\n\n");
 		s.append(alpha.getLetters()+"\n\n");
@@ -128,7 +115,6 @@ public class PaddingType2 {
 		}
 		
 		//------------------------enCrypting-----------------------
-		
 		s.append("\n\nEncrypting:\n");
 		for (int i = 0; i < numberMessage.size(); i++) {
 		CalculationPhase phase = new CalculationPhase(new BigInteger(numberMessage.get(i).toString()), exp);
@@ -169,12 +155,10 @@ public class PaddingType2 {
 		s.append(alpha.getLetters()+"\n\n");
 		
 		//-----------cryptotext to numbers----------------------------
-		
 		msg=alpha.stringOfLettersToNumbers(msg);
 		String[] stringMessage = msg.split(" "); // Message in String[]
 		
 		//----------------------deCrypting--------------------------
-		
 		BigInteger[] numberMessage = new BigInteger[stringMessage.length];
 		
 		for (int i = 0; i < numberMessage.length; i++) {
@@ -196,13 +180,11 @@ public class PaddingType2 {
 		}
 		
 		//-----------------------deCoding-------------------------------
-		
 		s.append("\n\n"+alpha.getNumbers());
 		s.append("\n\nDecoded text: ");
 		s.append(deCode(integerMessage)+"\n");
 		return s.toString();
 	}	
-	
 	
 	/**
 	 * Returns encrypted message. 
@@ -212,47 +194,25 @@ public class PaddingType2 {
 	 * @return String containing phases
 	 */
 	public String getEnCryptedSecure(String msg, BigInteger exp, BigInteger mod){
-		
 		StringBuilder s = new StringBuilder();
 		AlphabetNum alpha = new AlphabetNum();
 		EncryptDecrypt encrypter = new EncryptDecrypt();
 		
 		//--------------------- enCoding-------------------------
-		
 		ArrayList<Integer> numberMessage = enCode(msg);
-		/*s.append(msg+"\n\n");
-		s.append(alpha.getLetters()+"\n\n");
-		s.append("Type 2 encoded text:\n");*/
-//		for (Integer integer : numberMessage) {
-//			s.append(integer.toString()+" ");
-//		}
 		
 		//------------------------enCrypting-----------------------
-		
-		/*s.append("\n\nEncrypting:\n");
-		for (int i = 0; i < numberMessage.size(); i++) {
-		CalculationPhase phase = new CalculationPhase(new BigInteger(numberMessage.get(i).toString()), exp);
-		s.append(phase.getAll(mod));
-		s.append("\n\n");
-		}
-		s.append("Encryped: \n");*/
-		
 		BigInteger[] enCrypted = new BigInteger[numberMessage.size()];
 		String[] cryptotext = new String[numberMessage.size()];
 		for (int i = 0; i < enCrypted.length; i++) {
 			enCrypted[i]=(encrypter.encrypt(numberMessage.get(i),exp,mod));
 			cryptotext[i]=alpha.stringOfNumbersToLetters(enCrypted[i].toString());
-			//s.append(enCrypted[i]+" ");
 		}
-		//s.append("\n\n"+alpha.getNumbers());
-		//s.append("\n\nCryptotext:\n");
 		for (String string : cryptotext) {
 			s.append(string+" ");
 		}
 		return s.toString().trim();
 	}
-	
-	
 	
 	/**
 	 * Returns decoded message
@@ -266,46 +226,27 @@ public class PaddingType2 {
 		AlphabetNum alpha = new AlphabetNum();
 		EncryptDecrypt decrypter = new EncryptDecrypt();
 		
-		/*s.append("Cryptotext:\n");
-		s.append(msg+"\n\n");
-		s.append(alpha.getLetters()+"\n\n");*/
-		
 		//-----------cryptotext to numbers----------------------------
-		
 		msg=alpha.stringOfLettersToNumbers(msg);
 		String[] stringMessage = msg.split(" "); // Message in String[]
 		
 		//----------------------deCrypting--------------------------
-		
 		BigInteger[] numberMessage = new BigInteger[stringMessage.length];
 		
 		for (int i = 0; i < numberMessage.length; i++) {
 			numberMessage[i]=new BigInteger(stringMessage[i]);   // message to BigInteger[]	
 		}
-		/*s.append("Encrypted message: \n");
-		s.append(msg);
-		s.append("\n\nDecrypting: \n");
-		for (int i = 0; i < numberMessage.length; i++) {
-			CalculationPhase phase = new CalculationPhase(numberMessage[i],exp);
-			s.append(phase.getAll(mod));
-			s.append("\n\n");
-		}*/
-		//s.append("Decrypted: \n");
 	    ArrayList<Integer> integerMessage = new ArrayList<Integer>();
 		for (int i = 0; i < numberMessage.length; i++) {
 			integerMessage.add(i, decrypter.decryptToInt(numberMessage[i], exp, mod));
-			//s.append(integerMessage.get(i)+" ");
 		}
 		
 		//-----------------------deCoding-------------------------------
-		
-		/*s.append("\n\n"+alpha.getNumbers());
-		s.append("\n\nDecoded text: ");*/
 		s.append(deCode(integerMessage));
 		return s.toString().trim();
 	}	
+	
 //------------------------main for testing----------------------------	
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		EncryptDecrypt c = new EncryptDecrypt();

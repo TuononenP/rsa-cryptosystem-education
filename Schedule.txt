@@ -33,6 +33,7 @@
 27.02. 7h	Padding schemes, documentation, testing. Wrote help and about.
 28.02. 4h	Padding schemes.
 01.03. 10h	Padding schemes, key save/load, GUI tweaking, testing, exceptions.
+02.03. 4h	Padding Schemes, Copy/paste, GUI tweaking, GPL lisence, testing.
 
 -------------------
-OVERALL: 168 h
+OVERALL: 172 h
