@@ -20,6 +20,8 @@ import javax.swing.border.*;
  */
 public class Gui extends JFrame {
 
+	private static final long serialVersionUID = -2015036022929739032L;
+
 	//Constructor
 	public Gui() {
 		initComponents();
@@ -88,7 +90,7 @@ public class Gui extends JFrame {
 
 	private RsaPublicKey publicKey;
 	private RsaPrivateKey privateKey;
-	private Open_Save openSave;
+	private OpenSave openSave;
 	private PaddingType1 padding1;
 	private PaddingType2 padding2;
 	private Blocks_Of_3_Padding padding3;
@@ -936,7 +938,7 @@ public class Gui extends JFrame {
 	 */
 	private void savePublicKey() {
 		if (publicKey!=null) {
-			openSave = new Open_Save(this);
+			openSave = new OpenSave(this);
 			openSave.savePublicKey(publicKey);
 		}else {
 			JOptionPane.showMessageDialog(this, "Public key is not created.", "Public key save error", JOptionPane.ERROR_MESSAGE);
@@ -947,7 +949,7 @@ public class Gui extends JFrame {
 	 * Loads a public key from a file.
 	 */
 	private void loadPublicKey() {
-		openSave = new Open_Save(this);
+		openSave = new OpenSave(this);
 		RsaPublicKey pubKey = null;
 		try {
 			pubKey = openSave.loadPublicKey();
@@ -976,7 +978,7 @@ public class Gui extends JFrame {
 	 */
 	private void savePrivateKey() {
 		if (privateKey!=null) {
-			openSave = new Open_Save(this);
+			openSave = new OpenSave(this);
 			openSave.savePrivateKey(privateKey);
 		}else {
 			JOptionPane.showMessageDialog(this, "Private key is not created.", "Private key save error", JOptionPane.ERROR_MESSAGE);
@@ -987,10 +989,16 @@ public class Gui extends JFrame {
 	 * Loads a private key from a file.
 	 */
 	private void loadPrivateKey() {
-		openSave = new Open_Save(this);
+		openSave = new OpenSave(this);
+		RsaPrivateKey privKey = null;
 		try {
 			//create private & public keys and write values to textfields
-			privateKey = openSave.loadPrivateKey();
+			privKey = openSave.loadPrivateKey();
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(this, "Private key couldn't be loaded.", "Private key load error", JOptionPane.ERROR_MESSAGE);
+		}
+		if (privKey != null) {
+			privateKey = privKey;
 			publicKey = new RsaPublicKey(privateKey.getN(), privateKey.getE());
 			if (buttonGroup1.getSelection().getActionCommand().equals("Teach mode")) {
 				textField1.setText(privateKey.getPrimeP().toString());
@@ -999,8 +1007,6 @@ public class Gui extends JFrame {
 				textField4.setText(privateKey.getN().toString());
 				textField5.setText(privateKey.getPrivateExponent().toString());
 			}
-		}catch(Exception e) {
-			JOptionPane.showMessageDialog(this, "Private key couldn't be loaded.", "Private key load error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -1008,14 +1014,14 @@ public class Gui extends JFrame {
 	 * Saves execution textarea contents to a file.
 	 */
 	private void saveExecution() {
-		new Load_Save_Exec(this, textArea1).saveExecToFile();
+		new LoadSaveExec(this, textArea1).saveExecToFile();
 	}
 
 	/**
 	 * Loads content to the execution textarea from a file.
 	 */
 	private void loadExecution() {
-		new Load_Save_Exec(this, textArea1).loadExecFromFile();
+		new LoadSaveExec(this, textArea1).loadExecFromFile();
 	}
 
 	/**

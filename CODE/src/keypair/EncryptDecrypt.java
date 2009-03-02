@@ -9,7 +9,7 @@ import java.math.BigInteger;
  * @author Petri Tuononen
  * @since 1.2.2009
  */
-public class Encrypt_Decrypt {
+public class EncryptDecrypt {
 
     /**
      * Encrypts one encoded int.
@@ -26,7 +26,7 @@ public class Encrypt_Decrypt {
     }  
     
     /**
-     * Decrypts one BigInteger. 
+     * Decrypts one BigInteger and returns BigInteger. 
      * 
      * @param encrypted Encrypted BigInteger.
      * @param d Private exponent.
@@ -38,6 +38,14 @@ public class Encrypt_Decrypt {
     	return m;
     }  
     
+    /**
+     * Decrypts one BigInteger and returns int. 
+     * 
+     * @param encrypted Encrypted BigInteger.
+     * @param d Private exponent.
+     * @param n Modulus.
+     * @return Decrypted int.
+     */
     public int decryptToInt(BigInteger encrypted, BigInteger d, BigInteger n) {  
     	BigInteger m = encrypted.modPow(d, n); //decrypted
     	return m.intValue();

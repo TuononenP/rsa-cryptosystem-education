@@ -3,7 +3,7 @@ package keypair;
 import java.math.BigInteger;
 
 /**
- * Tests if a number is prime.
+ * Tests if a number is a prime.
  * 
  * @author Petri Tuononen
  * @since 19.02.2009
@@ -112,6 +112,11 @@ public class TestPrimality {
 						 7727,   7741,   7753,   7757,   7759,   7789,   7793,   7817,   7823,   7829, 
 						 7841,   7853,   7867,   7873,   7877,   7879,   7883,   7901,   7907,   7919};
 	
+	/**
+	 * Checks primality by first checking the prime table and then by calculating.
+	 * @param x
+	 * @return
+	 */
 	public boolean isPrime(BigInteger x) {
 		if (isFoundFromTable(x)) {
 			return true;
@@ -126,6 +131,11 @@ public class TestPrimality {
 		}
 	}
 	
+	/**
+	 * Looks if a given number is found from the prime table.
+	 * @param x	BigInteger
+	 * @return boolean
+	 */
 	public boolean isFoundFromTable(BigInteger x) {
 		for (int i: primes) {
 			if (x.intValue() == i) {
@@ -135,6 +145,11 @@ public class TestPrimality {
 		return false;
 	}
 	
+	/**
+	 * Checks primality by calculating.
+	 * @param x
+	 * @return
+	 */
 	private boolean isPrimeCalc(BigInteger x) {
 		long n = x.longValue();
 		boolean prime = true;

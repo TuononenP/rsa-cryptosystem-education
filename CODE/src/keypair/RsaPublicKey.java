@@ -62,6 +62,8 @@ import java.security.interfaces.RSAPublicKey;
 */
 public class RsaPublicKey extends RsaKey implements PublicKey, RSAPublicKey {
 
+private static final long serialVersionUID = -2504810529753771180L;
+
 // Constants and variables
 // -------------------------------------------------------------------------
 

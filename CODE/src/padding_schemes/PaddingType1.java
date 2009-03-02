@@ -1,6 +1,6 @@
 package padding_schemes;
 import java.math.BigInteger;
-import keypair.Encrypt_Decrypt;
+import keypair.EncryptDecrypt;
 /**
  * Padding type 1 for RSA cryptography
  * @author Jukka Tuominen
@@ -64,7 +64,7 @@ public class PaddingType1 {
 	public String getEnCrypted(String msg, BigInteger exp, BigInteger mod){
 		StringBuilder s = new StringBuilder();
 		AlphabetNum alpha = new AlphabetNum();
-		Encrypt_Decrypt encrypter = new Encrypt_Decrypt();
+		EncryptDecrypt encrypter = new EncryptDecrypt();
 		
 		//--------------------- enCoding-------------------------
 		
@@ -114,7 +114,7 @@ public class PaddingType1 {
 	public String getDeCrypted(String msg, BigInteger exp, BigInteger mod){
 		StringBuilder s = new StringBuilder();
 		AlphabetNum alpha = new AlphabetNum();
-		Encrypt_Decrypt decrypter = new Encrypt_Decrypt();
+		EncryptDecrypt decrypter = new EncryptDecrypt();
 		//--------------------cryptotext to numbers------------------
 		
 		s.append("Cryptotext: \n");
@@ -159,7 +159,7 @@ public class PaddingType1 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Encrypt_Decrypt c = new Encrypt_Decrypt();
+		EncryptDecrypt c = new EncryptDecrypt();
 		PaddingType1 koe = new PaddingType1();
 		String message = "help help";
 		Integer[] testi = new Integer[message.length()];

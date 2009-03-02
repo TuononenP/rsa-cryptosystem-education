@@ -4,13 +4,9 @@ import java.math.BigInteger;
 /**
  * This is for power dividing
  * @author Jukka Tuominen
- *
  */
 public class DividedPower extends PowerOfTwo {
 
-	public DividedPower(){
-
-	}
 	/**
 	 * Divides power
 	 * @param prime
@@ -30,6 +26,5 @@ public class DividedPower extends PowerOfTwo {
 		}
 		return pwr;
 	}
-
 
 }

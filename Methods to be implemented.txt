@@ -1,9 +1,0 @@
-Methods to be implemented:
-----------------------------
-DONE -Method that tests if p and q are equal
-
-DONE -Create a prime generator (~100% sure the number is a prime)
-
--Padding schemes - 3 different types (see the handout)
-
--Use multiple CPU cores when generating p and q primes.

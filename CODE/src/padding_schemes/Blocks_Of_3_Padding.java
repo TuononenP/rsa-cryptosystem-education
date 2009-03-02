@@ -1,14 +1,9 @@
 package padding_schemes;
 
-import gui.FullScreen;
-
-import java.awt.Font;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import javax.swing.JTextArea;
 
 import keypair.*;
 
@@ -409,7 +404,7 @@ public class Blocks_Of_3_Padding {
 	 * @return ArrayList.
 	 */
 	private ArrayList<BigInteger> encryptBlocksOfThree(int[] encoded, BigInteger e, BigInteger n) {
-		Encrypt_Decrypt encDec = new Encrypt_Decrypt();
+		EncryptDecrypt encDec = new EncryptDecrypt();
 		ArrayList<BigInteger> arrayL = new ArrayList<BigInteger>();
 		for (int i : encoded){ //goes through int array cells of encoded numbers
 			/*
@@ -433,7 +428,7 @@ public class Blocks_Of_3_Padding {
 	 * @return BigInteger[].
 	 */
 	private BigInteger[] decryptBlocksOfThree(ArrayList<BigInteger> encrypted, BigInteger d, BigInteger n) {
-		Encrypt_Decrypt encDec = new Encrypt_Decrypt();
+		EncryptDecrypt encDec = new EncryptDecrypt();
 		
 		Iterator<BigInteger> iter = encrypted.iterator();
 		BigInteger[] decrypted = new BigInteger[encrypted.size()];
@@ -649,116 +644,5 @@ public class Blocks_Of_3_Padding {
 		sB.append("\n");
 		return sB.toString();
 	}
-	
-	/**
-	 * Tests methods.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Blocks_Of_3_Padding pg = new Blocks_Of_3_Padding();
-		//generate keys
-//		GenerateKeys genKeys = new GenerateKeys(10);
-//		RsaPublicKey publicKey = genKeys.getPublicKey();
-//		RsaPrivateKey privateKey = genKeys.getPrivateKey();
 
-		//Load public key from a file
-//		Load_Save_Key open = new Load_Save_Key();
-//		Encode_Decode encDec = new Encode_Decode();
-//		File pub_file = new File("C:\\Users\\Pepe\\Documents\\rsa_testi\\100bit_rsa.pub");
-//		byte[] encoded = open.loadKeyFromFile(pub_file);
-//		RsaPublicKey publicKey = encDec.decPublicKey(encoded); //decode byte array to form a public key
-		
-		//Load private key from a file
-//		File priv_file = new File("C:\\Users\\Pepe\\Documents\\rsa_testi\\100bit_rsa.priv");
-//		byte[] encoded2 = open.loadKeyFromFile(priv_file);
-//		RsaPrivateKey privateKey = encDec.decPrivateKey(encoded2);
-		
-		//Tests
-//		String plaintext = "ATTACK AT SEVEN";
-//		System.out.println("Plaintext: "+plaintext);
-//		System.out.println("Blocks: "+pg.getBlocktext(plaintext)); //OK
-//		String[] blocks = pg.plaintextToBlocks(plaintext); //OK
-//		System.out.println("Encode formula of ATT");
-//		System.out.println(pg.getEncodeFormula("ATT")); //OK
-//		System.out.println("\nFull Encode formula of ATT");
-//		System.out.println(pg.getFullEncodeFormula("ATT")); //OK
-//		System.out.println("\nDecode 513");
-//		System.out.println(pg.decode(513)); //OK
-//		System.out.println("\nDecoded block formula of 513");
-//		System.out.println(pg.getDecodecBlockFormula(513)); //OK
-//		System.out.println("\nEncoded block ATT");
-//		System.out.println(pg.getEncodedBlock("ATT")); //OK
-//		System.out.println("Encode Formulas of all blocks");
-//		System.out.println(pg.getEncodeFormulas(blocks)); //OK
-//		System.out.println("Decode formulas of 513 & 62");
-//		System.out.println(pg.getDecodeFormulas("513 62")); //OK
-//		int[] encBlocks = pg.encodeBlocks(blocks); //OK
-//		System.out.println("Prints encoded blocks");
-//		System.out.println(pg.getEncodedConsecutively(encBlocks)); //OK
-//		System.out.println("Decodes 513 & 62");
-//		System.out.println(pg.getDecodedFullPhrase("513 62")); //OK
-//		System.out.println("\nEncodes and encrypts all");
-		
-//		System.out.println(pg.getEncodeAndEncryptBlocksOfThree(plaintext, publicKey.getPublicExponent(), publicKey.getModulus())); //OK
-//		String encrypted = pg.getEncodeAndEncrypt_secure(plaintext, publicKey.getE(), publicKey.getN()); //OK
-//		System.out.println("\nDecrypts and decodes all");
-//		System.out.println(pg.getDecryptAndDecodeBlocksOfThree(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus())); //OK
-//		System.out.println("\nSecure encrypt & encode");
-//		System.out.println(pg.getEncodeAndEncrypt_secure(plaintext, publicKey.getE(), publicKey.getN())); //OK
-//		System.out.println("\nSecure decrypt and decode");
-//		System.out.println(pg.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus())); //OK
-		
-		//with own e, n and d
-//		BigInteger  e = new BigInteger("7");
-//		BigInteger  n = new BigInteger("247");
-//		BigInteger  d = new BigInteger("31");
-//
-//		System.out.println(pg.getEncodeAndEncryptBlocksOfThree(plaintext, e, n)); //OK
-//		String encrypted = pg.getEncodeAndEncrypt_secure(plaintext, e, n); //OK
-//		System.out.println("\nDecrypts and decodes all");
-//		System.out.println(pg.getDecryptAndDecodeBlocksOfThree(encrypted, d, n)); //OK
-//		System.out.println("\nSecure encrypt & encode");
-//		System.out.println(pg.getEncodeAndEncrypt_secure(plaintext, e, n)); //OK
-//		System.out.println("\nSecure decrypt and decode");
-//		System.out.println(pg.getDecryptAndDecode_secure(encrypted, d, n)); //OK
-		
-		//create public key
-		BigInteger primeP = new BigInteger("137");
-		BigInteger primeQ = new BigInteger("131");
-		BigInteger exponentE = new BigInteger("3");
-		BigInteger modulus = primeP.multiply(primeQ);
-		RsaPublicKey pubKey2 = new RsaPublicKey(modulus, exponentE);
-		
-		//create private key
-		BigInteger exponentD = new BigInteger("11787");
-		RsaPrivateKey privKey2 = new RsaPrivateKey(primeP, primeQ, exponentE, exponentD);
-		
-		GenerateUserKeys gen = new GenerateUserKeys();
-		gen.createKeys(primeP, primeQ, exponentE);
-		RsaPublicKey pubKey3 = gen.getPublicKey();
-		RsaPrivateKey privKey3 = gen.getPrivateKey();
-		
-//		String encrypted = pg.getEncodeAndEncrypt_secure("ATTACK AT SEVEN", exponentE, modulus);
-//		String encryptPrint = pg.getEncodeAndEncryptBlocksOfThree("Attack at seven", exponentE, modulus); 
-//		String decryptPrint = pg.getDecryptAndDecodeBlocksOfThree(encrypted, exponentD, modulus);
-		
-		System.out.println("pubKey e "+pubKey3.getE());
-		System.out.println("pubKey modulus "+pubKey3.getModulus());
-		System.out.println("privKey d "+privKey3.getPrivateExponent());
-		System.out.println("privKey modulus "+privKey3.getModulus());
-		System.out.println("\n\n");
-		String encryptSecure = pg.getEncodeAndEncrypt_secure("attack at seven", pubKey3.getE(), pubKey3.getModulus());
-		String decryptSecure = pg.getDecryptAndDecode_secure(encryptSecure, privKey3.getPrivateExponent(), privKey3.getModulus());
-		System.out.println("cryptotext: "+encryptSecure);
-		System.out.println("decrypted: "+decryptSecure);
-		
-		String encryptPrint = pg.getEncodeAndEncryptBlocksOfThree("Attack at seven", pubKey3.getE(), pubKey3.getModulus()); 
-		String decryptPrint = pg.getDecryptAndDecodeBlocksOfThree(encryptSecure, privKey3.getPrivateExponent(), privKey3.getModulus());
-		
-		String fullPrint = encryptPrint +"\n\n\n"+ decryptPrint;
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
-		textArea.setText(fullPrint.toString());
-		new FullScreen(textArea);
-	}
 }

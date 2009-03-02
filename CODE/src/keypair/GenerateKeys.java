@@ -2,6 +2,12 @@ package keypair;
 
 import java.math.BigInteger;
 
+/**
+ * Generates public & private keys according to bitsize.
+ * 
+ * @author Petri Tuononen
+ * @since 16.1.2009
+ */
 public class GenerateKeys {
 
     private BigInteger p, q, n, phi, e, d;  
@@ -23,7 +29,7 @@ public class GenerateKeys {
      * Creates public and private keys.
      */  
     private void createKeys() {
-    	Miller_Rabin_Primality_Test primeTest = new Miller_Rabin_Primality_Test();
+    	MillerRabinPrimalityTest primeTest = new MillerRabinPrimalityTest();
     	/* Generate two big primes.
     	 * p and q aren't allowed to be equal for security reasons.
     	 * Generate until p and q are unique.

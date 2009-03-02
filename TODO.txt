@@ -19,5 +19,40 @@ DONE Screenshot of the GUI
 
 CODE:
 --------------------
-Design 3 types of padding schemes
+DONE Design 3 types of padding schemes
 
+DONE -right click opens copy/paste menu
+
+DONE-after encryption, convert numbers to alphabets
+
+DONE -change * signs
+
+DONE -cancel option for jfilechooser
+
+DONE -show encryption/decryption lines
+
+DONE -when using blocks of 3 padding, test that n is greater than 17575, if not show jdialogmessage
+
+DONE -change padding checkboxes to radiobuttons.
+
+DONE -change clear keys button placement.
+
+DONE -write help
+
+DONE -check that when loading keys in secure mode, they are not visible in teach mode key fields.
+
+DONE -paddingType1 has typo encryped
+
+DONE Exeptions to all classes (no sysout, use JOptionPane.showMessageDialog)
+
+NO NEED -reads advanced settings from a textfile (user editable: like 'pop-up execution: YES/NO')
+
+-test that when pressing 'Create keys' multiple times in a short perioid of time program won't lag infinitely
+
+-action events to external class
+
+-gpl lisence text file and info about GPL lisence to every class's comments.
+
+-use open source unicode font
+
+-copy/paste popup for full screen

@@ -9,9 +9,11 @@ import javax.swing.UIManager;
  * Paints a panel with gradient color.
  * 
  * @author Daniele @ koders.com /open source
- * Edited: Petri Tuononen
+ * Modified: Petri Tuononen
  */
 public class GradientPanel extends JPanel {
+
+	private static final long serialVersionUID = 7994720220746831366L;
 
 	/**
 	 * Constructor.

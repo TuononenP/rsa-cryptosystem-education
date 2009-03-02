@@ -36,7 +36,7 @@ import java.util.Scanner;
  * Modified by Petri Tuononen
  * 22.1.2009
  */
-public class Miller_Rabin_Primality_Test {
+public class MillerRabinPrimalityTest {
 	
 	//Creates secure random numbers
     private static final SecureRandom rnd = new SecureRandom();
@@ -132,7 +132,7 @@ public class Miller_Rabin_Primality_Test {
      * @param args
      */
     public static void main(String[] args) {
-    	Miller_Rabin_Primality_Test primeTest = new Miller_Rabin_Primality_Test();
+    	MillerRabinPrimalityTest primeTest = new MillerRabinPrimalityTest();
     	Scanner sc = new Scanner(System.in);
     	System.out.println("Type a large integer to test if it's prime: ");
     	BigInteger x = sc.nextBigInteger();

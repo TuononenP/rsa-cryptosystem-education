@@ -7,7 +7,7 @@ package keypair;
  * @author Petri Tuononen
  * @since 1.2.2009
  */
-public class Encode_Decode {
+public class EncodeDecode {
 
 	/**
 	 * Encodes public key.

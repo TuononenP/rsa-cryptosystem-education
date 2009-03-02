@@ -4,11 +4,18 @@ import java.math.BigInteger;
 import javax.swing.JTextArea;
 import gui.FullScreen;
 
+/**
+ * CalculationPhase is used in padding scheme calculations.
+ * Calculates encrypting formulas.
+ * 
+ * @author Jukka Tuominen
+ */
 public class CalculationPhase extends DividedPower {
 
 	private BigInteger number;
 	private BigInteger exponent;
 	private UnicodeConverter sc = new UnicodeConverter();
+	
 	/**
 	 * Constructor
 	 * 
@@ -162,24 +169,12 @@ public class CalculationPhase extends DividedPower {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// testing....
-
-
 		CalculationPhase f = new CalculationPhase(BigInteger.valueOf(63), new BigInteger("29"));
-		/*System.out.print(f.getFormula() + " = ");
-		System.out.print(f.getExpDiv() + " = ");
-		System.out.println(f.getAddition() + " = ");
-		System.out.println(f.getModulo(new BigInteger("91")));
-		 */
-
 
 		JTextArea j = new JTextArea();
 		j.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		j.setText(f.getAll(new BigInteger("91")).toString());
 		new FullScreen(j);
-
-
 	}
 
 }

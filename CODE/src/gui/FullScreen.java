@@ -1,6 +1,6 @@
 package gui;
 
-import gui_logics.Load_Save_Exec;
+import gui_logics.LoadSaveExec;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,6 +12,8 @@ import javax.swing.*;
  */
 public class FullScreen extends JFrame {
 	
+	private static final long serialVersionUID = -556243637750407246L;
+
 	/**
 	 * Constructor.
 	 * @param textArea
@@ -31,7 +33,7 @@ public class FullScreen extends JFrame {
 	private JButton button3;
 	private JComboBox comboBox1;
 	private JButton button1;
-	private Load_Save_Exec loadSaveExec;
+	private LoadSaveExec loadSaveExec;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 					"Font size 16 pt", "Font size 20 pt", "Font size 30 pt"};
 	//End of variables declaration
@@ -157,7 +159,7 @@ public class FullScreen extends JFrame {
 	 * @param e
 	 */
 	private void saveExecutionButtonActionPerformed(ActionEvent e) {
-		loadSaveExec = new Load_Save_Exec(this, textArea1);
+		loadSaveExec = new LoadSaveExec(this, textArea1);
 		loadSaveExec.saveExecToFile();
 	}
 
@@ -166,7 +168,7 @@ public class FullScreen extends JFrame {
 	 * @param e
 	 */
 	private void loadExecutionButtonActionPerformed(ActionEvent e) {
-		loadSaveExec = new Load_Save_Exec(this, textArea1);
+		loadSaveExec = new LoadSaveExec(this, textArea1);
 		loadSaveExec.loadExecFromFile();
 	}
 

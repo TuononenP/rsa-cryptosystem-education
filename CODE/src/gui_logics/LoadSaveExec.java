@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 
-import keypair.Open_Save;
+import keypair.OpenSave;
 
 /**
  * Saves execution text to a file.
@@ -20,9 +20,9 @@ import keypair.Open_Save;
  * @author Petri Tuononen
  * @since 8.2.2009
  */
-public class Load_Save_Exec {
+public class LoadSaveExec {
 
-	Open_Save openSave;
+	OpenSave openSave;
 	JFrame frame;
 	JTextArea textArea;
 	File file;
@@ -32,7 +32,7 @@ public class Load_Save_Exec {
 	 * @param frame
 	 * @param textArea
 	 */
-	public Load_Save_Exec(JFrame frame, JTextArea textArea) {
+	public LoadSaveExec(JFrame frame, JTextArea textArea) {
 		this.frame = frame;
 		this.textArea = textArea;
 	}

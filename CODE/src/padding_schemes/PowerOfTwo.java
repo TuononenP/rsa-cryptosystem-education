@@ -12,7 +12,6 @@ import java.math.BigInteger;
 public class PowerOfTwo {
 
 	private BigInteger result = BigInteger.ONE;
-	//private int round = 1;
 
 	/**
 	 * Calculates biggest power of two < given prime. 
@@ -21,10 +20,14 @@ public class PowerOfTwo {
 	 */
 	public BigInteger calculate(BigInteger prime){
 		result=BigInteger.ONE;
-		//round=1;
 		return calc(prime);
 	}
 
+	/**
+	 * Calculates biggest power of two < given prime. 
+	 * @param pri
+	 * @return BigInteger
+	 */
 	private BigInteger calc(BigInteger pri){
 		while((result.compareTo(pri))<0){
 			result=power(result);
@@ -35,8 +38,14 @@ public class PowerOfTwo {
 		return result.shiftRight(1);
 	}
 
-
-	private BigInteger power(BigInteger k){ // left shifting equals power of two
+	/**
+	 * Power of two.
+	 * @param k
+	 * @return
+	 */
+	private BigInteger power(BigInteger k){
+		// left shifting equals power of two
 		return k.shiftLeft(1);
 	}
+	
 }

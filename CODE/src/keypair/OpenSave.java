@@ -14,22 +14,21 @@ import gui_logics.*;
  * @author Petri Tuononen
  * @since 2.2.2009
  */
-public class Open_Save {
+public class OpenSave {
 
-	Encode_Decode encDec;
-	Open_Save OS;
-	Load_Save_Key loadSave;
-	RsaPublicKey pubKey;
-	RsaPrivateKey privKey;
-	File file;
-	JFrame frame;
+	private EncodeDecode encDec;
+	private LoadSaveKey loadSave;
+	private RsaPublicKey pubKey;
+	private RsaPrivateKey privKey;
+	private File file;
+	private JFrame frame;
 	byte[] encoded;
 	
 	/**
 	 * Constructor.
 	 * @param frame
 	 */
-	public Open_Save(JFrame frame) {
+	public OpenSave(JFrame frame) {
 		this.frame = frame;
 	}
 	
@@ -94,7 +93,7 @@ public class Open_Save {
 	 */
 	public void savePublicKey(RsaPublicKey publicKey) {
 		//Encode public key to a byte array
-		encDec = new Encode_Decode();
+		encDec = new EncodeDecode();
 		encoded = encDec.encPublicKey(publicKey);
 		
 		//Select the file where to save
@@ -119,7 +118,7 @@ public class Open_Save {
 			}
 			
 			//Save encoded byte array to a file
-			loadSave = new Load_Save_Key();
+			loadSave = new LoadSaveKey(frame);
 			loadSave.saveKeyToFile(encoded, file);
 		}
 	}
@@ -130,7 +129,7 @@ public class Open_Save {
 	 */
 	public void savePrivateKey(RsaPrivateKey privateKey) {
 		//Encode private key to a byte array
-		encDec = new Encode_Decode();
+		encDec = new EncodeDecode();
 		encoded = encDec.encPrivateKey(privateKey);
 		
 		//Select the file where to save
@@ -155,7 +154,7 @@ public class Open_Save {
 			}
 			
 			//Save encoded byte array to a file
-			loadSave = new Load_Save_Key();
+			loadSave = new LoadSaveKey(frame);
 			loadSave.saveKeyToFile(encoded, file);
 		}
 	}
@@ -175,11 +174,11 @@ public class Open_Save {
 			pubKey = null;
 		}else {
 			//Load encoded bytes from the file
-			loadSave = new Load_Save_Key();
+			loadSave = new LoadSaveKey(frame);
 			encoded = loadSave.loadKeyFromFile(file);
 			
 			//Decode to key instance
-			encDec = new Encode_Decode();
+			encDec = new EncodeDecode();
 			pubKey = encDec.decPublicKey(encoded);
 		}
 		return pubKey;
@@ -200,11 +199,11 @@ public class Open_Save {
 			privKey = null;
 		}else {
 			//Load encoded bytes from the file
-			loadSave = new Load_Save_Key();
+			loadSave = new LoadSaveKey(frame);
 			encoded = loadSave.loadKeyFromFile(file);
 			
 			//Decode to key instance
-			encDec = new Encode_Decode();
+			encDec = new EncodeDecode();
 			privKey = encDec.decPrivateKey(encoded);
 		}
 		return privKey;

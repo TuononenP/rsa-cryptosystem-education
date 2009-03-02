@@ -64,6 +64,8 @@ import java.security.interfaces.RSAPrivateKey;
 public class RsaPrivateKey extends RsaKey
 implements PrivateKey, RSAPrivateCrtKey {
 
+private static final long serialVersionUID = 2040896623722437691L;
+
 // Constants and variables
 // -------------------------------------------------------------------------
 
