@@ -16,8 +16,8 @@
 */
 package gui;
 
-import gui_logics.*;
-import padding_schemes.*;
+import guiLogics.*;
+import paddingSchemes.*;
 import keypair.*;
 
 import java.awt.*;
@@ -109,7 +109,7 @@ public class Gui extends JFrame {
 	private OpenSave openSave;
 	private PaddingType1 padding1;
 	private PaddingType2 padding2;
-	private Blocks_Of_3_Padding padding3;
+	private BlocksOf3Padding padding3;
 	private ClipboardCopyPaste clipboard;
 	private final String[] textSize = {"Font size 12 pt", "Font size 14 pt",
 			"Font size 16 pt", "Font size 18 pt", "Font size 20 pt"};
@@ -185,7 +185,7 @@ public class Gui extends JFrame {
 		
 		padding1 = new PaddingType1();
 		padding2 = new PaddingType2();
-		padding3 = new Blocks_Of_3_Padding();
+		padding3 = new BlocksOf3Padding();
 		
 		clipboard = new ClipboardCopyPaste();
 
@@ -1119,7 +1119,7 @@ public class Gui extends JFrame {
 					if (publicKey.getN().compareTo(new BigInteger("17575"))>0){
 						// check that input contains only allowed letters and catch all errors
 						try{
-						textArea1.setText(padding3.getEncodeAndEncrypt_secure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
+						textArea1.setText(padding3.getEncodeAndEncryptSecure(plaintext, publicKey.getPublicExponent(), publicKey.getModulus()));
 						textArea1.setCaretPosition(0);
 						}catch (Exception e){
 							JOptionPane.showMessageDialog(this, "Only letters A - Z are allowed.", "Input error", JOptionPane.ERROR_MESSAGE);
@@ -1255,7 +1255,7 @@ public class Gui extends JFrame {
 					if (privateKey.getN().compareTo(new BigInteger("17575"))>0){
 						// catch exceptions (exception comes if textarea contains illeagal letters
 						try{
-							textArea1.setText(padding3.getDecryptAndDecode_secure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
+							textArea1.setText(padding3.getDecryptAndDecodeSecure(encrypted, privateKey.getPrivateExponent(), privateKey.getModulus()));
 							textArea1.setCaretPosition(0);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(this, "Not a genuine cryptotext.", "Input error", JOptionPane.ERROR_MESSAGE);

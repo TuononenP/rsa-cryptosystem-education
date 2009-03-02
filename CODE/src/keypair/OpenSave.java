@@ -22,7 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import gui_logics.*;
+import guiLogics.*;
 
 /**
  * Save/load public/private key to/from the file.

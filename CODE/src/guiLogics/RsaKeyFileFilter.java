@@ -14,24 +14,24 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package gui_logics;
+package guiLogics;
 
 import java.io.*;
 
 /**
- * Custom file filter for JFileChooser used to load/save execution text files.
+ * Custom file filter for JFileChooser used to load/save RSA keys.
  * 
  * @author Petri Tuononen
  * @since 1.3.2009
  */
-public class ExecutionFileFilter extends javax.swing.filechooser.FileFilter {
+public class RsaKeyFileFilter extends javax.swing.filechooser.FileFilter {
     
 	/**
-	 * Accepts files that are either folders or .txt files.
+	 * Accepts files that are either folders or .pub / .priv files.
 	 * @return boolean
 	 */
 	public boolean accept(File f) {
-        return f.isDirectory() || f.getName().toLowerCase().endsWith(".txt");
+        return f.isDirectory() || f.getName().toLowerCase().endsWith(".pub") || f.getName().toLowerCase().endsWith(".priv");
     }
     
 	/**
@@ -39,7 +39,7 @@ public class ExecutionFileFilter extends javax.swing.filechooser.FileFilter {
 	 * @return description
 	 */
     public String getDescription() {
-        return ".txt files";
+        return ".pub & .priv files";
     }
     
 }

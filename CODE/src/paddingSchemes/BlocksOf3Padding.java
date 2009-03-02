@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package padding_schemes;
+package paddingSchemes;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -42,7 +42,7 @@ import keypair.*;
  * @author Petri Tuononen
  * @since 25.1.2009
  */
-public class Blocks_Of_3_Padding {
+public class BlocksOf3Padding {
 
 	//variable declarations and initializations
 	private AlphabetNum alphaNum = new AlphabetNum();
@@ -599,7 +599,7 @@ public class Blocks_Of_3_Padding {
 	 * @param n Modulus.
 	 * @return cryptotext
 	 */
-	public String getEncodeAndEncrypt_secure(String plaintext, BigInteger e, BigInteger n) {
+	public String getEncodeAndEncryptSecure(String plaintext, BigInteger e, BigInteger n) {
 		StringBuilder sB = new StringBuilder();
 		plaintext = plaintext.toUpperCase();
 		Iterator<BigInteger> iter = encryptBlocksOfThree(encodeFullPhrase(plaintext), e, n).iterator();
@@ -620,7 +620,7 @@ public class Blocks_Of_3_Padding {
 	 * @param n Modulus.
 	 * @return decrypted text
 	 */
-	public String getDecryptAndDecode_secure(String cryptotext, BigInteger d, BigInteger n) {
+	public String getDecryptAndDecodeSecure(String cryptotext, BigInteger d, BigInteger n) {
 		StringBuilder sB = new StringBuilder();
 		StringBuilder sB2 = new StringBuilder();
 		//convert alphabets to numbers

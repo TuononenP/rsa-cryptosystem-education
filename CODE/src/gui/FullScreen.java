@@ -16,8 +16,8 @@
 */
 package gui;
 
-import gui_logics.ClipboardCopyPaste;
-import gui_logics.LoadSaveExec;
+import guiLogics.ClipboardCopyPaste;
+import guiLogics.LoadSaveExec;
 
 import java.awt.*;
 import java.awt.event.*;
