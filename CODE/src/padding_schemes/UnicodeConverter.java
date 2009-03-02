@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 
 /**
- * Converts strings to mathematical
- * unicode symbols.
+ * Returns strings containing numbers to mathematical
+ * unicode superscript.
  * @author Jukka Tuominen
  *
  */
@@ -38,7 +38,10 @@ public class UnicodeConverter {
 		
 		return b.toString();
 	}
-
+	/**
+	 * Main for testing
+	 * @param args
+	 */
 	public static void main(String[] args){
 		UnicodeConverter h = new UnicodeConverter();
 		String k = h.superScript("123456");

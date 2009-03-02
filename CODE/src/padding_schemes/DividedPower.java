@@ -8,8 +8,9 @@ import java.math.BigInteger;
 public class DividedPower extends PowerOfTwo {
 
 	/**
-	 * Divides power
-	 * @param prime
+	 * Divides given number to fragments of power of two.
+	 * 
+	 * @param prime BigInteger
 	 * @return StringBuilder containing divided power
 	 */
 	public StringBuilder powerDivison(BigInteger prime){

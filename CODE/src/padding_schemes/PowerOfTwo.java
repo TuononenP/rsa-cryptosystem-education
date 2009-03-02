@@ -4,7 +4,8 @@ import java.math.BigInteger;
 /**
  * Calculates biggest power of two, 
  * that is smaller than given prime.
- * NOTE! Class assumes that it will get prime.
+ * NOTE! Class assumes that it gets a prime
+ * as a parameter.
  * 
  * @author Jukka Tuominen
  *
@@ -15,8 +16,8 @@ public class PowerOfTwo {
 
 	/**
 	 * Calculates biggest power of two < given prime. 
-	 * @param prime 
-	 * @return power_of_two
+	 * @param prime BigInteger
+	 * @return power_of_two BigInteger
 	 */
 	public BigInteger calculate(BigInteger prime){
 		result=BigInteger.ONE;
@@ -24,8 +25,9 @@ public class PowerOfTwo {
 	}
 
 	/**
+	 * Private method for calculate.
 	 * Calculates biggest power of two < given prime. 
-	 * @param pri
+	 * @param pri BigInteger
 	 * @return BigInteger
 	 */
 	private BigInteger calc(BigInteger pri){
@@ -40,8 +42,8 @@ public class PowerOfTwo {
 
 	/**
 	 * Power of two.
-	 * @param k
-	 * @return
+	 * @param k BigInteger
+	 * @return BigInteger
 	 */
 	private BigInteger power(BigInteger k){
 		// left shifting equals power of two

@@ -20,7 +20,7 @@ public class PaddingType2 {
 	
 	/**
 	 * Encodes message with padding type 2
-	 * @param msg 
+	 * @param msg String
 	 * @return ArrayList<Integer> containing encoded message
 	 */
 	public ArrayList<Integer> enCode(String msg){
@@ -68,7 +68,7 @@ public class PaddingType2 {
 	
 /**
  * Returns String containing letters
- * with numbers
+ * with numbers.
  * @param msg ArrayList<Integer> 
  * @return s String
  */
@@ -189,7 +189,7 @@ public class PaddingType2 {
 	
 	
 	/**
-	 * Returns whole enCode + enCrypt phase
+	 * Returns encrypted message. 
 	 * @param msg String message to encrypt
 	 * @param exp BigInteger
 	 * @param mod BigInteger
@@ -239,7 +239,7 @@ public class PaddingType2 {
 	
 	
 	/**
-	 * Returns all phases of deCrypt and deCode
+	 * Returns decoded message
 	 * @param msg message
 	 * @param exp BigInteger
 	 * @param mod BigInteger

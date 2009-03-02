@@ -6,7 +6,7 @@ import gui.FullScreen;
 
 /**
  * CalculationPhase is used in padding scheme calculations.
- * Calculates encrypting formulas.
+ * Constructs encrypting and decrypting calculation phases.
  * 
  * @author Jukka Tuominen
  */
@@ -15,12 +15,14 @@ public class CalculationPhase extends DividedPower {
 	private BigInteger number;
 	private BigInteger exponent;
 	private UnicodeConverter sc = new UnicodeConverter();
+	private final String kongru = "\u00d7";
+	private final String times = "\u2261";
 	
 	/**
 	 * Constructor
 	 * 
-	 * @param num number
-	 * @param exp exponent
+	 * @param num number BigInteger
+	 * @param exp exponent BigInteger
 	 */
 	public CalculationPhase(BigInteger num, BigInteger exp) {
 		number = num;
@@ -88,14 +90,14 @@ public class CalculationPhase extends DividedPower {
 			//s.append("^");
 			s.append(sc.superScript(p[i]));
 			if (i < p.length - 1) {
-				s.append("\u00d7");
+				s.append(kongru);
 			}
 		}
 		return s;
 	}
 
 	/**
-	 * Returns modulo phase
+	 * Returns modulo calculation phase
 	 * 
 	 * @param mod BigInteger modulo
 	 *            
@@ -112,7 +114,7 @@ public class CalculationPhase extends DividedPower {
 			if (new BigInteger(p[i]).compareTo(BigInteger.ONE) < 1) {
 				s.append(number);
 				if (i < p.length - 1) {
-					s.append("\u00d7");
+					s.append(kongru);
 					begin.append(s);
 				}
 			} else {
@@ -120,8 +122,8 @@ public class CalculationPhase extends DividedPower {
 				s.append(help);
 				begin.append(help);
 				if (i < p.length - 1) {
-					s.append("\u00d7");
-					begin.append("\u00d7");
+					s.append(kongru);
+					begin.append(kongru);
 				}
 
 				a = i;
@@ -132,20 +134,20 @@ public class CalculationPhase extends DividedPower {
 						s.append(sc.superScript(new BigInteger(p[j + 1])
 						.divide(new BigInteger(p[a])).toString()));
 						if (j + 1 < p.length - 1) {
-							s.append("\u00d7");
+							s.append(kongru);
 						}
 					}
 				}
 				if (i<p.length-1){
-					s.append("\n \u2261 ");
+					s.append("\n "+times);
 					s.append(begin);
 				}
 			}
 		}
 
-		s.append("\n \u2261 ");
+		s.append("\n "+times);
 		BigInteger answer = BigInteger.ONE;
-		String[] v = begin.toString().split("\u00d7");
+		String[] v = begin.toString().split(kongru);
 		for (int i = 0; i < v.length; i++) {
 			answer = answer.multiply(new BigInteger(v[i]));
 		}
@@ -154,18 +156,25 @@ public class CalculationPhase extends DividedPower {
 		s.append("(mod " + mod + ")");
 		return s;
 	}
-
+	
+	/**
+	 * Returns all calculation phases
+	 * for encrypting and decrypting.
+	 * @param modulo BigInteger
+	 * @return StringBuilder
+	 */
 	public StringBuilder getAll(BigInteger modulo){
 		StringBuilder s = new StringBuilder();
 		//SymbolicCalculation f = new SymbolicCalculation(num, exp);
 		s.append(getFormula()+ "\n = ");
 		s.append(getExpDiv()+"\n = ");
-		s.append(getAddition()+"\n \u2261 ");
+		s.append(getAddition()+"\n "+times+" ");
 		s.append(getModulo(modulo));
 		return s;
 	}
 
 	/**
+	 * Main for testing
 	 * @param args
 	 */
 	public static void main(String[] args) {
