@@ -124,8 +124,15 @@ is also capitalized. Due to this fact there are no reason to bother writing case
 
 <p><b>Padding schemes</b></p>
 <p>
-There are three types of padding schemes to choose from.
-</p>
+There are three types of padding schemes to choose from.</p>
+<p>All three padding  schemes use the old system to  encode the English alphabet: A = 00, B = 01, C = 02, D = 03, E = 04, &hellip;, Z = 25.</p>
+</font>
+<p>One letter:<br>
+  Simply  converts letters to numbers and calculates each number individually. So n &gt; 25 is  required.</p>
+<p>Two  letters:<br>
+  This method divides  the sequence into blocks of four digits. Biggest possible number is now 2525,  so n &gt; 2525 is required.</p>
+<p>Three letters:<br>
+  This will group the characters into  blocks of three and compute a message representative integer for each block. So n &gt; 17575 is required.</p>
 
 <p><b>Encrypt/Decrypt</b></p>
 <p>
