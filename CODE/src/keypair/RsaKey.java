@@ -57,6 +57,8 @@ public abstract class RsaKey implements Key, RSAKey {
 // Constants and variables
 // -------------------------------------------------------------------------
 
+private static final long serialVersionUID = -3818079750139280582L;
+
 /** The public modulus of an RSA key pair. */
 private final BigInteger n;
 /** The public exponent of an RSA key pair. */

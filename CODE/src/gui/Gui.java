@@ -882,7 +882,7 @@ public class Gui extends JFrame {
 				int value = 0;
 				if (Integer.parseInt(textField6.getText()) > 2048) {
 					//value=0 OK, value=2 CANCEL
-					value = JOptionPane.showConfirmDialog(this, "Are you sure you want to create primes largen than 2048 bits? It will take some time.", "Large bitsize warning", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					value = JOptionPane.showConfirmDialog(this, "Are you sure you want to create primes larger than 2048 bits? It will take some time.", "Large bitsize warning", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 				if (value==0) {
 					if (Integer.parseInt(textField6.getText()) <= 5) { //bit size under 5 bits.
