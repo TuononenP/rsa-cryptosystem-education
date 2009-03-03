@@ -196,7 +196,12 @@ public class Gui extends JFrame {
 		setTitle("RSA Education Cryptosystem");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setIconImage(new ImageIcon("images/icon.jpg").getImage());
+		try { //try to load icon image
+			ClassLoader cl = this.getClass().getClassLoader();
+			setIconImage(new ImageIcon(cl.getResource("images/icon.jpg")).getImage());
+		}catch (Exception e) { //if not run from jar packet
+		}
+		
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridBagLayout());
 		((GridBagLayout)contentPane.getLayout()).columnWidths = new int[] {10, 581, 10};

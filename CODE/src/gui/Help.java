@@ -19,8 +19,8 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.*;
 
@@ -45,7 +45,8 @@ public class Help extends JFrame {
 	private JScrollPane scrollPane1;
 	private JEditorPane editorPane1;
 	private JButton button1;
-	private String fileName = "./Help.html"; 
+	ClassLoader cl = this.getClass().getClassLoader();
+	URL urlHelp = cl.getResource("Help.html");
 
 	/**
 	 * Initializes graphical user interface components.
@@ -74,9 +75,7 @@ public class Help extends JFrame {
 			scrollPane1.setViewportView(editorPane1);
 			
 			try {
-				File file = new File(fileName);
-				String url = "file:///"+ file.getAbsolutePath();
-				editorPane1.setPage(url);
+				editorPane1.setPage(urlHelp);
 				
 			} catch (IOException e) {
 				editorPane1.setText("Help file not found");
