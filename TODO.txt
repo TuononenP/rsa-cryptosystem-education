@@ -49,7 +49,7 @@ DONE Exeptions to all classes (no sysout, use JOptionPane.showMessageDialog)
 
 DONE secure mode - erase rsa exec
 
-DONE jos yli 2048 -->messagdialog ()
+DONE >2048 -->messagdialog ()
 
 DONE -Padding type 1&2 in secure mode print only cryptotext
 
